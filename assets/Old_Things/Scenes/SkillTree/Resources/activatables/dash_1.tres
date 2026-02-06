@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DashSkillStrategy" load_steps=3 format=3 uid="uid://t8pec0paga6f"]
+
+[ext_resource type="Script" uid="uid://cy723tm2vk718" path="res://Scenes/SkillTree/Strategy/dash_skill_strategy.gd" id="1_62o8i"]
+[ext_resource type="Texture2D" uid="uid://da54qknlgdtwc" path="res://icon.svg" id="1_68xni"]
+
+[resource]
+script = ExtResource("1_62o8i")
+dash_force = 8.0
+cooldown = 5.0
+revert_timer = 0.1
+id = "dash_1"
+name = "Impulso"
+text = "Você da um impulso pra frente muito rápido, quer mais oque?"
+cost = 15
+requirements = Array[String](["speed_3"])
+img = ExtResource("1_68xni")
+metadata/_custom_type_script = "uid://cy723tm2vk718"

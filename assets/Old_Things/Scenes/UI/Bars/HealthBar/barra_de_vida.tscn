@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjfc6wheo3v7b"]
+
+[ext_resource type="Script" uid="uid://7dj13xoe7pu5" path="res://Scenes/UI/Bars/HealthBar/barra_de_vida.gd" id="1_ipu3v"]
+[ext_resource type="Texture2D" uid="uid://dudsh47itqesj" path="res://Assets/Barras/Icon_Vida.png" id="2_u1fyi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vhrxd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5adc"]
+bg_color = Color(0.3764706, 0.21176471, 0.21176471, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3v1h"]
+bg_color = Color(1, 0.23137255, 0.17254902, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="Barra_de_Vida" type="Control" node_paths=PackedStringArray("_progress_bar")]
+custom_minimum_size = Vector2(374, 50)
+layout_mode = 3
+anchors_preset = 0
+offset_bottom = 25.0
+script = ExtResource("1_ipu3v")
+_progress_bar = NodePath("PanelContainer/MarginContainer/HBoxContainer/ProgressBar")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vhrxd")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer"]
+z_index = 10
+custom_minimum_size = Vector2(42, 47)
+layout_mode = 2
+texture = ExtResource("2_u1fyi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HBoxContainer"]
+z_index = 9
+custom_minimum_size = Vector2(325, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_f5adc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_q3v1h")
+value = 100.0
+show_percentage = false

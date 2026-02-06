@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://d1tp1pytsywmx"]
+
+[ext_resource type="PackedScene" uid="uid://yeqx08b8q0f0" path="res://Scenes/Enemies/throwable.tscn" id="1_tsr5a"]
+[ext_resource type="Texture2D" uid="uid://bga15kt5is1cc" path="res://Assets/Sprites/Enemies/centaur-bullet-sprite.png" id="2_0ruu6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1018y"]
+atlas = ExtResource("2_0ruu6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvbpr"]
+atlas = ExtResource("2_0ruu6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xv4bv"]
+atlas = ExtResource("2_0ruu6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45lr7"]
+atlas = ExtResource("2_0ruu6")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ret15"]
+atlas = ExtResource("2_0ruu6")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8jgq"]
+atlas = ExtResource("2_0ruu6")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bejuf"]
+atlas = ExtResource("2_0ruu6")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgke2"]
+atlas = ExtResource("2_0ruu6")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_85lj6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1018y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvbpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xv4bv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45lr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ret15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8jgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bejuf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgke2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 17.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mdwy0"]
+radius = 14.035668
+
+[node name="CentaurBullet" instance=ExtResource("1_tsr5a")]
+scale = Vector2(3.5, 3.5)
+damage = 30
+speed = 3200
+
+[node name="Sprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_85lj6")
+autoplay = "default"
+frame_progress = 0.13911183
+
+[node name="Collision" parent="." index="1"]
+shape = SubResource("CircleShape2D_mdwy0")

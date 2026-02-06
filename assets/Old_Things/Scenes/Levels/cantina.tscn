@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://yr2ii07r30sr"]
+
+[ext_resource type="Script" uid="uid://be5y7lm56j821" path="res://Scenes/Levels/cantina.gd" id="1_7tu2f"]
+[ext_resource type="PackedScene" uid="uid://cx8p3c1ahsd7r" path="res://Scenes/Player/player.tscn" id="1_p7anc"]
+[ext_resource type="PackedScene" uid="uid://ba7ube4n1lcr4" path="res://Scenes/UI/hud.tscn" id="2_7tu2f"]
+[ext_resource type="Theme" uid="uid://dfna8vmwbdvyo" path="res://Scenes/UI/Themes/buttons.tres" id="3_kik1q"]
+[ext_resource type="AudioStream" uid="uid://dcfvia2q73jul" path="res://Assets/sounds/relax.mp3" id="5_kik1q"]
+
+[node name="Cantina" type="Node2D"]
+script = ExtResource("1_7tu2f")
+
+[node name="Player" parent="." instance=ExtResource("1_p7anc")]
+
+[node name="HUD" parent="." instance=ExtResource("2_7tu2f")]
+
+[node name="Button" type="Button" parent="HUD"]
+custom_minimum_size = Vector2(170, 60)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -78.0
+offset_top = -71.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_kik1q")
+theme_override_font_sizes/font_size = 32
+text = "Sair"
+
+[node name="Label" type="Label" parent="HUD"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -245.5
+offset_top = -88.0
+offset_right = 245.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 46
+text = "APENAS RELAXE"
+horizontal_alignment = 1
+
+[node name="Relax" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kik1q")
+volume_db = -7.736
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="HUD/Button" to="." method="_on_button_pressed"]

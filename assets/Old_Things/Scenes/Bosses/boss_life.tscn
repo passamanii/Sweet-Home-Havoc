@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkak8nbekq8i"]
+
+[ext_resource type="Script" uid="uid://c4amr5uy883gh" path="res://Scenes/Bosses/boss_life.gd" id="1_idn7k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rnotk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_idn7k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idn7k"]
+bg_color = Color(0.15167353, 1.3010343e-07, 2.7073547e-08, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xy0a7"]
+bg_color = Color(0.92941177, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[node name="BossLife" type="Control" node_paths=PackedStringArray("progress_bar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_idn7k")
+progress_bar = NodePath("CanvasLayer/PanelContainer/MarginContainer/PanelContainer/ProgressBar")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rnotk")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxEmpty_idn7k")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/PanelContainer/MarginContainer/PanelContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_idn7k")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xy0a7")
+show_percentage = false

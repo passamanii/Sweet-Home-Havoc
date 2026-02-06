@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DamageSkillStrategy" load_steps=3 format=3 uid="uid://n6gkys3qm03w"]
+
+[ext_resource type="Script" uid="uid://ct7mo3tukmbbe" path="res://Scenes/SkillTree/Strategy/damage_skill_strategy.gd" id="1_2odw6"]
+[ext_resource type="Texture2D" uid="uid://b3mgij5xw2vx" path="res://Assets/Imgs/seringa.png" id="1_wekne"]
+
+[resource]
+script = ExtResource("1_2odw6")
+add_to_damage_multiplier = 1.2
+id = "damage_1"
+name = "Agulhada"
+text = "Vou aplicar do um pouco pra ver o que acontece. Espero que não dê nada de errado!"
+cost = 5
+requirements = Array[String](["base"])
+img = ExtResource("1_wekne")
+metadata/_custom_type_script = "uid://ct7mo3tukmbbe"

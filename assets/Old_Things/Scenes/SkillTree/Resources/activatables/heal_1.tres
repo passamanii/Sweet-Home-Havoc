@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="HealSkillStrategy" load_steps=3 format=3 uid="uid://dfrlan0sv74mg"]
+
+[ext_resource type="Script" uid="uid://bi1t7rqef0psn" path="res://Scenes/SkillTree/Strategy/heal_skill_strategy.gd" id="1_0wk0q"]
+[ext_resource type="Texture2D" uid="uid://da54qknlgdtwc" path="res://icon.svg" id="1_4adji"]
+
+[resource]
+script = ExtResource("1_0wk0q")
+cooldown = 25.0
+id = "heal_1"
+name = "Cura"
+text = "Isso aqui vai deixar você novinho em folha. Porém apenas após levar outro golpe"
+cost = 2
+requirements = Array[String](["base"])
+img = ExtResource("1_4adji")
+metadata/_custom_type_script = "uid://bi1t7rqef0psn"

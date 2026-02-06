@@ -1,0 +1,103 @@
+[gd_scene load_steps=13 format=3 uid="uid://cfgam13lgq32r"]
+
+[ext_resource type="PackedScene" uid="uid://gmuuw3y5xma3" path="res://Scenes/Enemies/enemy_base.tscn" id="1_55p8x"]
+[ext_resource type="Texture2D" uid="uid://d0d1nt61mvmwl" path="res://Assets/Sprites/Boss/ant-sprite.png" id="2_ujvlp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlgs5"]
+atlas = ExtResource("2_ujvlp")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbc1a"]
+atlas = ExtResource("2_ujvlp")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86gmw"]
+atlas = ExtResource("2_ujvlp")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3n2o"]
+atlas = ExtResource("2_ujvlp")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7v75i"]
+atlas = ExtResource("2_ujvlp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkgpg"]
+atlas = ExtResource("2_ujvlp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwhws"]
+atlas = ExtResource("2_ujvlp")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p0bnt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlgs5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbc1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86gmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3n2o")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7v75i")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkgpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwhws")
+}],
+"loop": true,
+"name": &"running",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jp81j"]
+radius = 3.0
+height = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uda3n"]
+radius = 10.049875
+
+[node name="Ant" groups=["Ants"] instance=ExtResource("1_55p8x")]
+scale = Vector2(6, 6)
+collision_mask = 7
+_max_health = 50
+speed = 700
+_damage = 5
+attack_range = 170
+
+[node name="AnimTexture" parent="." index="0" groups=["Ants"]]
+sprite_frames = SubResource("SpriteFrames_p0bnt")
+animation = &"idle"
+
+[node name="Collision" parent="." index="1"]
+visible = false
+position = Vector2(0, 4)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_jp81j")
+
+[node name="HurtBox" parent="." index="2"]
+visible = false
+
+[node name="Collision" parent="HurtBox" index="0"]
+shape = SubResource("CircleShape2D_uda3n")
+debug_color = Color(1.1551381e-06, 0.64577454, 0.25947824, 0.41960785)

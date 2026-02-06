@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=3 uid="uid://rvpaars61d2c"]
+
+[ext_resource type="Script" uid="uid://nue0vemcd2gi" path="res://Scenes/SkillTree/skill_btn.gd" id="1_ygof0"]
+[ext_resource type="Texture2D" uid="uid://da54qknlgdtwc" path="res://icon.svg" id="2_px1yk"]
+[ext_resource type="Texture2D" uid="uid://bttcwcejl5isj" path="res://Assets/Imgs/check.png" id="3_45w8i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45w8i"]
+bg_color = Color(0.5649617, 0.5649616, 0.5649616, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="SkillBtn" type="Control" node_paths=PackedStringArray("texture_btn", "dark_overlay")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 25)
+mouse_filter = 1
+script = ExtResource("1_ygof0")
+texture_btn = NodePath("PanelContainer/MarginContainer/TextureButton")
+dark_overlay = NodePath("DarkOverlay")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -28.0
+offset_right = 28.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_45w8i")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="TextureButton" type="TextureButton" parent="PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+texture_normal = ExtResource("2_px1yk")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="DarkOverlay" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -28.0
+offset_right = 28.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CheckIcon" type="TextureRect" parent="DarkOverlay"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_45w8i")
+expand_mode = 1
+stretch_mode = 5

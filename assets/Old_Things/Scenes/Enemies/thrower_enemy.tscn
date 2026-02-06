@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4c0ss5m1wdmm"]
+
+[ext_resource type="PackedScene" uid="uid://gmuuw3y5xma3" path="res://Scenes/Enemies/enemy_base.tscn" id="1_dkir6"]
+[ext_resource type="Script" uid="uid://cv6x686lr23mm" path="res://Scenes/Enemies/thrower_enemy.gd" id="2_8chj7"]
+
+[node name="ThrowerEnemyTest" instance=ExtResource("1_dkir6")]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("2_8chj7")
+throwable_scene = null
+
+[node name="AnimTexture" parent="." index="0"]
+scale = Vector2(8, 8)
+animation = &""
+
+[node name="AttackCooldown" parent="." index="4"]
+wait_time = 2.0
+
+[node name="StateMachine" parent="." index="5" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("Chase")
+
+[connection signal="animation_finished" from="AnimTexture" to="StateMachine/Attack" method="_on_anim_texture_animation_finished"]

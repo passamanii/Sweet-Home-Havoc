@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://b8ectvcqwvocn"]
+
+[ext_resource type="Script" uid="uid://7858em473l7n" path="res://Scenes/SkillTree/skill_tree.gd" id="1_tq623"]
+[ext_resource type="PackedScene" uid="uid://rvpaars61d2c" path="res://Scenes/UI/Skills/SkillTree/skill_btn.tscn" id="2_a2lps"]
+[ext_resource type="Script" uid="uid://b841agacmsc6d" path="res://Scenes/SkillTree/skill_connections.gd" id="2_ceqrk"]
+[ext_resource type="PackedScene" uid="uid://d3hlu77i7a1ss" path="res://Scenes/UI/Skills/SkillTree/skill_info.tscn" id="3_a2lps"]
+[ext_resource type="Resource" uid="uid://bkbrl2nwn5x4n" path="res://Scenes/SkillTree/Resources/speed/speed_1.tres" id="4_4sfqd"]
+[ext_resource type="Resource" uid="uid://l6pay4l0egnh" path="res://Scenes/SkillTree/Resources/speed/speed_2.tres" id="5_7n06a"]
+[ext_resource type="Resource" uid="uid://bdd7iwt8thpoj" path="res://Scenes/SkillTree/Resources/speed/speed_3.tres" id="6_0blxj"]
+[ext_resource type="Resource" uid="uid://t8pec0paga6f" path="res://Scenes/SkillTree/Resources/activatables/dash_1.tres" id="7_0blxj"]
+[ext_resource type="Resource" uid="uid://dk8k1segwe1n3" path="res://Scenes/SkillTree/Resources/speed/speed_4.tres" id="7_nc3q8"]
+
+[node name="SkillTree" type="Control" node_paths=PackedStringArray("skill_canvas", "skill_info")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tq623")
+skill_canvas = NodePath("CanvasLayer/SkillCanvas")
+skill_info = NodePath("CanvasLayer/SkillInfo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.47843137)
+
+[node name="SkillCanvas" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 324)
+mouse_filter = 2
+
+[node name="SkillConnections" type="Control" parent="CanvasLayer/SkillCanvas"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ceqrk")
+connections = Dictionary[String, Array]({
+"0": ["1", "2", "4"],
+"2": ["3"]
+})
+
+[node name="0" parent="CanvasLayer/SkillCanvas" instance=ExtResource("2_a2lps")]
+layout_mode = 1
+skill_data = ExtResource("4_4sfqd")
+
+[node name="1" parent="CanvasLayer/SkillCanvas" instance=ExtResource("2_a2lps")]
+layout_mode = 1
+offset_left = 75.0
+offset_right = 125.0
+skill_data = ExtResource("5_7n06a")
+
+[node name="2" parent="CanvasLayer/SkillCanvas" instance=ExtResource("2_a2lps")]
+layout_mode = 1
+offset_left = 175.0
+offset_top = -27.0
+offset_right = 225.0
+offset_bottom = 23.0
+skill_data = ExtResource("6_0blxj")
+
+[node name="3" parent="CanvasLayer/SkillCanvas" instance=ExtResource("2_a2lps")]
+layout_mode = 1
+offset_left = 175.0
+offset_top = 75.0
+offset_right = 225.0
+offset_bottom = 125.0
+skill_data = ExtResource("7_0blxj")
+
+[node name="4" parent="CanvasLayer/SkillCanvas" instance=ExtResource("2_a2lps")]
+layout_mode = 1
+offset_left = 275.0
+offset_right = 325.0
+skill_data = ExtResource("7_nc3q8")
+
+[node name="SkillInfo" parent="CanvasLayer" instance=ExtResource("3_a2lps")]
+visible = false

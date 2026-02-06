@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpeedSkillStrategy" load_steps=3 format=3 uid="uid://l6pay4l0egnh"]
+
+[ext_resource type="Texture2D" uid="uid://cpvdaa3unwvad" path="res://Assets/Imgs/speed-skill-icon.png" id="1_ao413"]
+[ext_resource type="Script" uid="uid://drfx867j0d5rt" path="res://Scenes/SkillTree/Strategy/speed_skill_strategy.gd" id="2_rqylx"]
+
+[resource]
+script = ExtResource("2_rqylx")
+add_to_speed_multiplier = 1.2
+id = "speed_2"
+type = 1
+name = "Velocidade++"
+text = "Talvez agora você perceba a diferença."
+cost = 5
+requirements = Array[String](["speed_1"])
+img = ExtResource("1_ao413")
+metadata/_custom_type_script = "uid://drfx867j0d5rt"
