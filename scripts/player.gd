@@ -31,8 +31,7 @@ func movementPlayer() -> void:
 	
 	if Input.is_action_just_pressed("dash") and can_dash:
 		dash()
-	
-
+		
 	move_and_slide()
 	
 func animationsPlayer() -> void:
