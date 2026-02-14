@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://vqt0hc2oih5j"]
+
+[ext_resource type="Script" uid="uid://dit3tfk54f47b" path="res://scripts/Menus/main_menu.gd" id="1_ed1wg"]
+[ext_resource type="Texture2D" uid="uid://36ql6k2n6im3" path="res://assets/Cenario/Capa Menu.png" id="2_xu3ct"]
+[ext_resource type="PackedScene" uid="uid://dpm6regsguk6c" path="res://scenes/Transitions/Fade_Transition.tscn" id="3_x5no6"]
+
+[node name="Main_Menu" type="Node2D"]
+script = ExtResource("1_ed1wg")
+
+[node name="CapaMenu" type="Sprite2D" parent="."]
+position = Vector2(621.5, 359)
+scale = Vector2(1.9578127, 2.023611)
+texture = ExtResource("2_xu3ct")
+flip_h = true
+
+[node name="Button_Manager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start" type="Button" parent="Button_Manager"]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 152.0
+offset_right = 821.0
+offset_bottom = 234.0
+text = "Start Game"
+
+[node name="Options" type="Button" parent="Button_Manager"]
+light_mask = 3
+visibility_layer = 2
+layout_mode = 0
+offset_left = 539.0
+offset_top = 363.0
+offset_right = 783.0
+offset_bottom = 426.0
+text = "Options"
+
+[node name="Collectibles" type="Button" parent="Button_Manager"]
+layout_mode = 0
+offset_left = 539.0
+offset_top = 266.0
+offset_right = 783.0
+offset_bottom = 335.0
+text = "Collectibles
+"
+
+[node name="Exit" type="Button" parent="Button_Manager"]
+layout_mode = 0
+offset_left = 539.0
+offset_top = 471.0
+offset_right = 783.0
+offset_bottom = 532.0
+text = "Exit Game"
+
+[node name="Menu_Transition" parent="." instance=ExtResource("3_x5no6")]
+visible = false
+position = Vector2(0, -1)
+
+[node name="Fade_Timer" type="Timer" parent="Menu_Transition"]
+
+[connection signal="pressed" from="Button_Manager/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Button_Manager/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Button_Manager/Collectibles" to="." method="_on_collectibles_pressed"]
+[connection signal="pressed" from="Button_Manager/Exit" to="." method="_on_exit_pressed"]
+[connection signal="timeout" from="Menu_Transition/Fade_Timer" to="." method="_on_fade_timer_timeout"]

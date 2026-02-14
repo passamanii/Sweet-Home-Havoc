@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://bmqdk2hlt4s58"]
 
 [ext_resource type="Texture2D" uid="uid://dybf21lx3otev" path="res://assets/Cenario/Mundo/mato.png" id="1_2tvax"]
-[ext_resource type="Script" uid="uid://dvaoe2voghxfs" path="res://scripts/main_mapa.gd" id="1_j4qt1"]
+[ext_resource type="Script" uid="uid://dvaoe2voghxfs" path="res://scripts/Mapas/main_mapa.gd" id="1_j4qt1"]
 [ext_resource type="Texture2D" uid="uid://mytv0gjymvg0" path="res://assets/Cenario/Sala/piso15x15.png" id="2_j4qt1"]
 [ext_resource type="PackedScene" uid="uid://d0d3ltflnild1" path="res://scenes/Entidade/Player/player.tscn" id="3_hiv4x"]
 
@@ -46,6 +46,7 @@ tile_map_data = PackedByteArray("AAAiADkAAAAAAAAAAAAiAAwAAAAAAAAAAAAiAA0AAAAAAAA
 tile_set = SubResource("TileSet_jyhfs")
 
 [node name="Enter_Sala_Faimisson" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enter_Sala_Faimisson"]
 position = Vector2(1214, 261)
