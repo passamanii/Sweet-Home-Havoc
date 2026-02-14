@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=4 uid="uid://bmqdk2hlt4s58"]
+[gd_scene load_steps=10 format=4 uid="uid://bmqdk2hlt4s58"]
 
 [ext_resource type="Texture2D" uid="uid://dybf21lx3otev" path="res://assets/Cenario/Mundo/mato.png" id="1_2tvax"]
-[ext_resource type="Script" uid="uid://dvaoe2voghxfs" path="res://scenes/main_mapa.gd" id="1_j4qt1"]
+[ext_resource type="Script" uid="uid://dvaoe2voghxfs" path="res://scripts/main_mapa.gd" id="1_j4qt1"]
 [ext_resource type="Texture2D" uid="uid://mytv0gjymvg0" path="res://assets/Cenario/Sala/piso15x15.png" id="2_j4qt1"]
-[ext_resource type="PackedScene" uid="uid://d0d3ltflnild1" path="res://scenes/player.tscn" id="3_hiv4x"]
-[ext_resource type="PackedScene" uid="uid://ndsmjgflxgns" path="res://scenes/Entidade/Inimigos/robo.tscn" id="5_hiv4x"]
+[ext_resource type="PackedScene" uid="uid://d0d3ltflnild1" path="res://scenes/Entidade/Player/player.tscn" id="3_hiv4x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tbgi4"]
 texture = ExtResource("1_2tvax")
@@ -52,9 +51,6 @@ tile_set = SubResource("TileSet_jyhfs")
 position = Vector2(1214, 261)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_3enmg")
-
-[node name="Robo" parent="." instance=ExtResource("5_hiv4x")]
-position = Vector2(723, 239)
 
 [node name="player" parent="." instance=ExtResource("3_hiv4x")]
 position = Vector2(602, 357)

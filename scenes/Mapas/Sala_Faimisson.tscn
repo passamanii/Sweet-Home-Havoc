@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=4 uid="uid://b7a5kqanlxmid"]
+[gd_scene load_steps=13 format=4 uid="uid://b7a5kqanlxmid"]
 
+[ext_resource type="Script" uid="uid://457sykiu4ioa" path="res://scripts/sala_faimisson.gd" id="1_4yy4k"]
 [ext_resource type="Texture2D" uid="uid://bw63bniu48i6r" path="res://assets/Cenario/Sala/parede_madeira_frente.png" id="1_81uey"]
-[ext_resource type="PackedScene" uid="uid://d0d3ltflnild1" path="res://scenes/player.tscn" id="2_28b2l"]
+[ext_resource type="PackedScene" uid="uid://d0d3ltflnild1" path="res://scenes/Entidade/Player/player.tscn" id="2_28b2l"]
 [ext_resource type="Texture2D" uid="uid://dvvn0vukv56i" path="res://assets/Cenario/Sala/parede_lados_cima.png" id="2_towr7"]
 [ext_resource type="Texture2D" uid="uid://mytv0gjymvg0" path="res://assets/Cenario/Sala/piso15x15.png" id="3_we6tv"]
 [ext_resource type="Texture2D" uid="uid://c75sr3nx5ed7n" path="res://assets/Cenario/Sala/parede_madeira_frente_rodape.png" id="4_0ry6v"]
@@ -35,7 +36,11 @@ sources/1 = SubResource("TileSetAtlasSource_we6tv")
 sources/3 = SubResource("TileSetAtlasSource_mty8n")
 sources/4 = SubResource("TileSetAtlasSource_8c0d8")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8c8v"]
+size = Vector2(77, 130)
+
 [node name="Sala_Faimisson" type="Node2D"]
+script = ExtResource("1_4yy4k")
 
 [node name="Sala" type="TileMapLayer" parent="."]
 texture_filter = 2
@@ -45,4 +50,14 @@ tile_map_data = PackedByteArray("AAABAAAABAAAAAAAAAACAAAABAAAAAAAAAADAAAABAAAAAA
 tile_set = SubResource("TileSet_we6tv")
 
 [node name="Player" parent="." instance=ExtResource("2_28b2l")]
-position = Vector2(90, 58)
+position = Vector2(100, 60)
+up_direction = Vector2(0, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(54, 95)
+shape = SubResource("RectangleShape2D_n8c8v")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name BasePlayer
 
 const SPEED = 300.0
 const DASH_SPEED = 1500.0
@@ -6,8 +7,9 @@ var can_dash: bool = true
 var is_dashing: bool = false
 var is_attacking: bool = false
 var dir: Vector2
-
-@onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
+var facing: String = ''
+	
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
@@ -35,32 +37,62 @@ func movementPlayer() -> void:
 	move_and_slide()
 	
 func animationsPlayer() -> void:
+	
 	if (!is_attacking):
+		
 		if dir == Vector2.ZERO:
-			animated_sprite.play("Idle")
+			
+			if (facing == 'right'):
+				
+				animation_player.play("Idle_Right")
+				
+			elif (facing == 'left'):
+				
+				animation_player.play('Idle_Left')
+				
+			elif (facing == 'back'):
+				
+				animation_player.play('Idle_Back')
+				
+			else:
+				
+				animation_player.play('Idle_Front')
+			
 		elif dir.x > 0:
-			animated_sprite.play("Walking_right")
+			animation_player.play('Walking_Right')
+			facing = 'right'
+			
 		elif dir.x < 0:
-			animated_sprite.play("Walking_left")
+			animation_player.play("Walking_Left")
+			facing = 'left'
+			
 		elif dir.y < 0:
-			animated_sprite.play("Walking_back")
+			animation_player.play("Walking_Back")
+			facing = 'back'
+			
 		elif dir.y > 0:
-			animated_sprite.play("Walking_front")
-
+			animation_player.play("Walking_Front")
+			facing = 'front'
+			
 	if (is_dashing):
-		animated_sprite.play("Dash")
+		animation_player.play("Dash")
 	
 	if is_attacking:
-		if dir.x > 0:
-			animated_sprite.play("Attack_1_right")
-		elif dir.x < 0:
-			animated_sprite.play("Attack_1_left")
-		elif dir.y < 0:
-			animated_sprite.play("Attack_1_back")
-		elif dir.y > 0:
-			animated_sprite.play("Attack_1_front")
-		else:
-			animated_sprite.play("Attack_1_front")
+		if (dir.x > 0 or facing == 'right'):
+			
+			animation_player.play("Pen_Attack_Right")
+			
+		elif (dir.x < 0 or facing == 'left'):
+			
+			animation_player.play("Pen_Attack_Left")
+			
+		elif (dir.y < 0 or facing == 'back'):
+			
+			animation_player.play("Pen_Attack_Back")
+			
+		elif (dir.y > 0 or facing == 'front'):
+			
+			animation_player.play("Pen_Attack_Front")
 			
 
 func dash() -> void:
@@ -72,8 +104,8 @@ func dash() -> void:
 		can_dash = true
 
 
-
-func _on_animated_sprite_2d_animation_finished(source: AnimatedSprite2D) -> void:
-	print(source.animation)
-	if source.animation.contains("Attack"):
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	
+	if (anim_name.contains('Attack')):
+		
 		is_attacking = false
