@@ -1,5 +1,8 @@
 res://scenes/Menus
 res://assets/Personagens/Principal
+res://scenes/Entidade/Inimigos
+res://scripts/Entidades
+res://scripts/Entidades/Inimigos
 res://assets/Personagens/Boss/Leonardo/robos
 res://assets/Old_Things/Scenes/Enemies
 res://scenes

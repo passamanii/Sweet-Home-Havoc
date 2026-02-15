@@ -1,6 +1,4 @@
-Timer
-CollisionShape2D
-Area2D
+
 TileMapLayer
 TileMap
 AnimationPlayer

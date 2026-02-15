@@ -50,6 +50,7 @@ tile_map_data = PackedByteArray("AAAiADkAAAAAAAAAAAAiAAwAAAAAAAAAAAAiAA0AAAAAAAA
 tile_set = SubResource("TileSet_jyhfs")
 
 [node name="Enter_Sala_Faimisson" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enter_Sala_Faimisson"]
 position = Vector2(1214, 261)

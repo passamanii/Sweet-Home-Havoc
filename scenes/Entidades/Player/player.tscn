@@ -1172,6 +1172,8 @@ height = 32.5
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(4, 4)
+collision_layer = 2
+collision_mask = 17
 script = ExtResource("1_m80qi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -1185,6 +1187,8 @@ sprite_frames = SubResource("SpriteFrames_l71n6")
 animation = &"Dash"
 
 [node name="HurtAreaRoot" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 64
 
 [node name="HurtArea" type="CollisionShape2D" parent="HurtAreaRoot"]
 scale = Vector2(1.8, 1.8)

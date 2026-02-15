@@ -55,7 +55,8 @@ tile_set = SubResource("TileSet_we6tv")
 position = Vector2(59, 66)
 up_direction = Vector2(0, 1)
 
-[node name="Exit" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
 position = Vector2(-16, 62)

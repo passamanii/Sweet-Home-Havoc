@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://c0i7seowfxoui"]
+[gd_scene load_steps=14 format=4 uid="uid://ijiq1dhl8y2o"]
 
 [ext_resource type="Script" uid="uid://b6u1m62yxtcqk" path="res://scripts/Mapas/biblioteca.gd" id="1_5mgxb"]
 [ext_resource type="Texture2D" uid="uid://dvvn0vukv56i" path="res://assets/Cenario/Sala/parede_lados_cima.png" id="1_us5rh"]
@@ -51,6 +51,7 @@ tile_map_data = PackedByteArray("AAABAP7/AgAAAAAAAAACAP7/AgAAAAAAAAADAP7/AgAAAAA
 tile_set = SubResource("TileSet_rei28")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-9, -205.75)
