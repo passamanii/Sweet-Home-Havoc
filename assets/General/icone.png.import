@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://36ql6k2n6im3"
-path="res://.godot/imported/Capa Menu.png-0d990c030f595123a95192723361d400.ctex"
+uid="uid://qwfnvx4fs5gy"
+path="res://.godot/imported/icone.png-018ce2edca9929743856b4cf01644db0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Cenario/Capa Menu.png"
-dest_files=["res://.godot/imported/Capa Menu.png-0d990c030f595123a95192723361d400.ctex"]
+source_file="res://assets/General/icone.png"
+dest_files=["res://.godot/imported/icone.png-018ce2edca9929743856b4cf01644db0.ctex"]
 
 [params]
 
