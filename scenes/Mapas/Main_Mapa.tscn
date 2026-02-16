@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://bmqdk2hlt4s58"]
+[gd_scene load_steps=13 format=4 uid="uid://bmqdk2hlt4s58"]
 
 [ext_resource type="Texture2D" uid="uid://dybf21lx3otev" path="res://assets/Cenario/Mundo/mato.png" id="1_2tvax"]
 [ext_resource type="Script" uid="uid://dvaoe2voghxfs" path="res://scripts/Mapas/main_mapa.gd" id="1_j4qt1"]
 [ext_resource type="Texture2D" uid="uid://mytv0gjymvg0" path="res://assets/Cenario/Sala/piso15x15.png" id="2_j4qt1"]
 [ext_resource type="PackedScene" uid="uid://d0d3ltflnild1" path="res://scenes/Entidades/Player/player.tscn" id="3_hiv4x"]
+[ext_resource type="PackedScene" uid="uid://bk8cwdy7q3mnb" path="res://Test-Vinny/robot.tscn" id="5_cgexf"]
 [ext_resource type="PackedScene" uid="uid://dpm6regsguk6c" path="res://scenes/Transitions/Fade_Transition.tscn" id="5_tb2gh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tbgi4"]
@@ -69,6 +70,8 @@ shape = SubResource("RectangleShape2D_tb2gh")
 visible = false
 
 [node name="Timer" type="Timer" parent="Menu_Transition"]
+
+[node name="Robot" parent="." instance=ExtResource("5_cgexf")]
 
 [node name="player" parent="." instance=ExtResource("3_hiv4x")]
 position = Vector2(602, 357)

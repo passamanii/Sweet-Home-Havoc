@@ -14,11 +14,11 @@ class_name BaseEnemy
 @export var damage: int
 @export var speed: int
 @export var chase_range: int
-@export var attack_range: int
 @export var xp_amount: int
 
 var health: int
 var target: BasePlayer
+var is_in_range: bool
 
 func _ready() -> void:
 	health = max_health
@@ -36,35 +36,25 @@ func move() -> void:
 	move_and_slide()
 
 func attack() -> void:
-	hitbox_area.monitoring = true
-	print("TOMA")
+	if is_in_range:
+		target.get_hit(damage)
 
 func can_chase() -> bool:
-	if (self.position.distance_to(target.position) <= chase_range and !is_in_attack_range()):
-		return true
-	else:
-		return false
-
-func is_in_attack_range() -> bool:
-	if (self.position.distance_to(target.position) <= attack_range):
-		return true
-	else:
-		return false
+	return self.position.distance_to(target.position) <= chase_range and !is_in_range
 
 func can_attack() -> bool:
-	if (is_in_attack_range() and attack_cooldown.is_stopped()):
-		return true
-	else:
-		return false
+	return is_in_range and attack_cooldown.is_stopped()
 
 func start_cooldown() -> void:
-	print("ataque")
 	attack_cooldown.start()
 
 func die() -> void:
 	print("Morreu: ", self.name)
-	pass
 
-func _on_anim_player_animation_finished(anim_name: StringName) -> void:
-	if (anim_name == "Attacking"):
-		hitbox_area.monitoring = false
+func _on_hitbox_area_area_entered(area: Area2D) -> void:
+	if (area.get_parent().is_in_group("Player")):
+		is_in_range = true
+
+func _on_hitbox_area_area_exited(area: Area2D) -> void:
+	if (area.get_parent().is_in_group("Player")):
+		is_in_range = false

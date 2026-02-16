@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://d0d3ltflnild1"]
+[gd_scene load_steps=110 format=3 uid="uid://d0d3ltflnild1"]
 
 [ext_resource type="Script" uid="uid://ds510arw8whi" path="res://scripts/Entidades/Player/player.gd" id="1_m80qi"]
 [ext_resource type="Texture2D" uid="uid://pwxq3yg5h0ba" path="res://assets/Ataques/Principal/ataque_mlee/principal_costa_ataque.png" id="2_j7qac"]
@@ -1167,6 +1167,10 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oprun"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g6mm2"]
+radius = 7.2222223
+height = 21.944445
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
 height = 32.5
 
@@ -1186,14 +1190,25 @@ position = Vector2(0, -0.25)
 sprite_frames = SubResource("SpriteFrames_l71n6")
 animation = &"Idle_Front"
 
-[node name="HurtAreaRoot" type="Area2D" parent="."]
+[node name="HurtboxArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 64
 
-[node name="HurtArea" type="CollisionShape2D" parent="HurtAreaRoot"]
+[node name="HurtboxCollision" type="CollisionShape2D" parent="HurtboxArea"]
 scale = Vector2(1.8, 1.8)
 shape = SubResource("CapsuleShape2D_oprun")
 debug_color = Color(0.9033771, 0.30645284, 0.06732032, 0.41960785)
+
+[node name="HitboxArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 32
+
+[node name="HitboxCollision" type="CollisionShape2D" parent="HitboxArea"]
+position = Vector2(0, -1.75)
+scale = Vector2(1.8, 1.8)
+shape = SubResource("CapsuleShape2D_g6mm2")
+debug_color = Color(0.34153476, 0.6203204, 0, 0.41960785)
 
 [node name="PhysicsArea" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1.75)

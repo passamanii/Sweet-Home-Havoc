@@ -101,7 +101,6 @@ func animationsPlayer() -> void:
 		elif (dir.y > 0 or facing == 'front'):
 			
 			animation_player.play("Pen_Attack_Front")
-			
 
 func dash() -> void:
 		is_dashing = true
@@ -110,6 +109,16 @@ func dash() -> void:
 		can_dash = false
 		await get_tree().create_timer(1.0).timeout
 		can_dash = true
+
+func get_hit(damage) -> void:
+	print("Player: AI!")
+	PlayerStats.health -= damage;
+	
+	if (PlayerStats.health <= 0):
+		die()
+
+func die() -> void:
+	print("Morreu: ", self.name)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	
