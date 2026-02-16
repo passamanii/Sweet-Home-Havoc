@@ -23,4 +23,6 @@ func _on_timer_timeout() -> void:
 	
 	if (area_entered == 'main_mapa'):
 		
+		Globals.spawn_pos = Vector2(4842.0, 1064.0)
+		Globals.spawn_facing = Vector2.LEFT
 		get_tree().change_scene_to_file("res://scenes/Mapas/Main_Mapa.tscn")

@@ -81,7 +81,7 @@ visible = false
 [node name="Timer" type="Timer" parent="Menu_Transition"]
 
 [node name="player" parent="." instance=ExtResource("3_hiv4x")]
-position = Vector2(2404, 1049)
+position = Vector2(2383, 1045)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
