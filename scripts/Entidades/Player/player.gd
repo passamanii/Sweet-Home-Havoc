@@ -36,7 +36,9 @@ func attack() -> void:
 	if (Input.is_action_just_pressed("attack")):
 		is_attacking = true
 		update_attack_direction()
-		hitbox_area.monitorable = true
+
+func enable_hitbox_collision() -> void:
+	hitbox_collision.disabled = false
 
 func update_attack_direction() -> void:
 	var aim_dir := dir
@@ -142,4 +144,4 @@ func die() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if (anim_name.contains('Attack')):
 		is_attacking = false
-		hitbox_area.monitorable = false
+		hitbox_collision.disabled = true

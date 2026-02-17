@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddg7ip52jxuou"]
+[gd_scene load_steps=7 format=3 uid="uid://ddg7ip52jxuou"]
 
 [ext_resource type="Script" uid="uid://drjobnn8yikc" path="res://scripts/Entidades/Inimigos/base_enemy.gd" id="1_38g7m"]
 [ext_resource type="Script" uid="uid://d1dynej3y0rrn" path="res://scripts/Entidades/state_machine.gd" id="2_6osty"]
 [ext_resource type="Script" uid="uid://bx6idntjwkrlj" path="res://scripts/Entidades/idle.gd" id="3_6osty"]
 [ext_resource type="Script" uid="uid://wqhvpt880gh3" path="res://scripts/Entidades/chase.gd" id="4_4kxy8"]
 [ext_resource type="Script" uid="uid://bdwm5wygd0f01" path="res://scripts/Entidades/attack.gd" id="5_x5xt3"]
+[ext_resource type="Script" uid="uid://hjob27rww1ns" path="res://scripts/Entidades/knockback.gd" id="6_k786m"]
 
 [node name="Base_Enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite_2d", "anim_player", "enemy_collision", "hurtbox_area", "hitbox_area", "attack_cooldown")]
 collision_layer = 24
@@ -57,4 +58,9 @@ character = NodePath("../..")
 script = ExtResource("5_x5xt3")
 character = NodePath("../..")
 
+[node name="Knockback" type="Node" parent="StateMachine" node_paths=PackedStringArray("character")]
+script = ExtResource("6_k786m")
+character = NodePath("../..")
+
 [connection signal="animation_finished" from="AnimPlayer" to="." method="_on_anim_player_animation_finished"]
+[connection signal="area_entered" from="HurtboxArea" to="." method="_on_hurtbox_area_area_entered"]

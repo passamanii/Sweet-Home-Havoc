@@ -19,12 +19,20 @@ class_name BaseEnemy
 var health: int
 var target: BasePlayer
 var is_in_range: bool
+var knockback_force: int = 1000
+var knockback_decay: int = 3000
+var knockback_velocity: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	health = max_health
 	target = get_tree().get_first_node_in_group("Player")
 
 func move() -> void:
+	if (knockback_velocity.length()) > 0:
+		velocity = knockback_velocity
+		move_and_slide()
+		return
+	
 	var dir: Vector2 = self.position.direction_to(target.position)
 	velocity = dir * speed
 	
@@ -45,8 +53,20 @@ func can_chase() -> bool:
 func can_attack() -> bool:
 	return is_in_range and attack_cooldown.is_stopped()
 
+func get_hit() -> void:
+	print("Inimigo: AIiiiIíÍ!")
+	var direction = (global_position - target.global_position).normalized()
+	knockback_velocity = direction * knockback_force
+	
+	health -= PlayerStats.damage
+	if (health <= 0):
+		die()
+
 func start_cooldown() -> void:
 	attack_cooldown.start()
+
+func apply_knockback(delta) -> void:
+	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
 
 func die() -> void:
 	print("Morreu: ", self.name)
@@ -58,3 +78,7 @@ func _on_hitbox_area_area_entered(area: Area2D) -> void:
 func _on_hitbox_area_area_exited(area: Area2D) -> void:
 	if (area.get_parent().is_in_group("Player")):
 		is_in_range = false
+
+func _on_hurtbox_area_area_entered(area: Area2D) -> void:
+	if (area.get_parent().is_in_group("Player")):
+		get_hit()

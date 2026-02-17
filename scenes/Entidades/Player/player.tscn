@@ -304,6 +304,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable_hitbox_collision"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_d6vmw"]
 resource_name = "Pen_Attack_Front"
@@ -331,6 +345,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable_hitbox_collision"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_6ditr"]
@@ -360,6 +388,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable_hitbox_collision"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ymj5y"]
 resource_name = "Right_Pen_Attack"
@@ -387,6 +429,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.20000002),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable_hitbox_collision"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_sk83l"]
@@ -1190,7 +1246,8 @@ libraries = {
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
 position = Vector2(0, -0.25)
 sprite_frames = SubResource("SpriteFrames_l71n6")
-animation = &"Idle_Front"
+animation = &"Attack_1_right"
+frame = 1
 
 [node name="HurtboxArea" type="Area2D" parent="."]
 collision_layer = 4
@@ -1205,12 +1262,12 @@ debug_color = Color(0.9033771, 0.30645284, 0.06732032, 0.41960785)
 [node name="HitboxArea" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 32
-monitorable = false
 
 [node name="HitboxCollision" type="CollisionShape2D" parent="HitboxArea"]
 position = Vector2(25, 0)
 scale = Vector2(1.8, 1.8)
 shape = SubResource("CapsuleShape2D_g6mm2")
+disabled = true
 debug_color = Color(0.34153476, 0.6203204, 0, 0.41960785)
 
 [node name="PhysicsArea" type="CollisionShape2D" parent="."]

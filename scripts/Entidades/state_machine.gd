@@ -31,3 +31,4 @@ func on_state_transitioned(state: State, new_state_name: String):
 		curr_state.Exit();
 		curr_state = new_state;
 		curr_state.Enter();
+		print(curr_state)
