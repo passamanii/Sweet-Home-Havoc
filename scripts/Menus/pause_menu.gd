@@ -9,7 +9,6 @@ func resume() -> void:
 	get_tree().paused = false
 	
 func pause() -> void:
-	
 	get_tree().paused = true
 	visible = true
 	$AnimationPlayer.play('Menu_Fade_In')

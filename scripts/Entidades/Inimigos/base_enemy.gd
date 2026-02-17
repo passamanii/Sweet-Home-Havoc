@@ -27,6 +27,11 @@ func _ready() -> void:
 	health = max_health
 	target = get_tree().get_first_node_in_group("Player")
 
+func _physics_process(_delta: float) -> void:
+	var separation = (target.position - position).length()
+	if separation >= 1800:
+		queue_free()
+
 func move() -> void:
 	if (knockback_velocity.length()) > 0:
 		velocity = knockback_velocity
@@ -54,11 +59,10 @@ func can_attack() -> bool:
 	return is_in_range and attack_cooldown.is_stopped()
 
 func get_hit() -> void:
-	print("Inimigo: AIiiiIíÍ!")
 	var direction = (global_position - target.global_position).normalized()
 	knockback_velocity = direction * knockback_force
 	
-	health -= PlayerStats.damage
+	health -= Player_Stats.damage
 	if (health <= 0):
 		die()
 
@@ -69,7 +73,7 @@ func apply_knockback(delta) -> void:
 	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
 
 func die() -> void:
-	print("Morreu: ", self.name)
+	queue_free()
 
 func _on_hitbox_area_area_entered(area: Area2D) -> void:
 	if (area.get_parent().is_in_group("Player")):

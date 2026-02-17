@@ -55,10 +55,10 @@ func _physics_process(delta: float) -> void:
 	
 	apply_knockback(delta)
 		
-	if (!is_attacking):
+	if (!is_attacking or knockback_velocity.length() > 0):
 		movementPlayer()
 		
-	if (!is_dashing):
+	if (!is_dashing and !knockback_velocity.length() > 0):
 		attack()
 		
 	animationsPlayer()
@@ -88,6 +88,8 @@ func update_attack_direction() -> void:
 
 func apply_knockback(delta: float) -> void:
 	if (knockback_velocity.length() > 0):
+		is_attacking = false
+		hitbox_collision.disabled = true
 		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
 
 func movementPlayer() -> void:
@@ -113,35 +115,24 @@ func animationsPlayer() -> void:
 		return
 	
 	if (!is_attacking):
-		
 		if dir == Vector2.ZERO:
-			
 			if (facing == Vector2.RIGHT):
-				
 				animation_player.play("Idle_Right")
-				
 			elif (facing == Vector2.LEFT):
-				
 				animation_player.play('Idle_Left')
-				
 			elif (facing == Vector2.UP):
-				
 				animation_player.play('Idle_Back')
 			else:
 				animation_player.play('Idle_Front')
-			
 		elif (dir.x > 0):
 			animation_player.play('Walking_Right')
 			facing = Vector2.RIGHT
-			
 		elif (dir.x < 0):
 			animation_player.play("Walking_Left")
 			facing = Vector2.LEFT
-			
 		elif (dir.y < 0):
 			animation_player.play("Walking_Back")
 			facing = Vector2.UP
-			
 		elif (dir.y > 0):
 			animation_player.play("Walking_Front")
 			facing = Vector2.DOWN
@@ -150,21 +141,13 @@ func animationsPlayer() -> void:
 		animation_player.play("Dash")
 	
 	if is_attacking:
-		
 		if (dir.x > 0 or facing == Vector2.RIGHT):
-			
 			animation_player.play("Pen_Attack_Right")
-			
 		elif (dir.x < 0 or facing == Vector2.LEFT):
-			
 			animation_player.play("Pen_Attack_Left")
-			
 		elif (dir.y < 0 or facing == Vector2.UP):
-			
 			animation_player.play("Pen_Attack_Back")
-			
 		elif (dir.y > 0 or facing == Vector2.DOWN):
-			
 			animation_player.play("Pen_Attack_Front")
 
 func dash() -> void:
@@ -176,7 +159,6 @@ func dash() -> void:
 	can_dash = true
 	
 func get_hit(enemy_damage: int, hit_position: Vector2) -> void:
-	print("Player: AI!")
 	var direction = (global_position - hit_position).normalized()
 	knockback_velocity = direction * knockback_force
 	
@@ -185,7 +167,7 @@ func get_hit(enemy_damage: int, hit_position: Vector2) -> void:
 		die()
 
 func die() -> void:
-	print("Morreu: ", self.name)
+	pass
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if (anim_name.contains('Attack')):
