@@ -28,7 +28,7 @@ func _ready() -> void:
 		
 		facing = Player_Tracking.spawn_facing
 		
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("reset"):
 		
@@ -161,8 +161,8 @@ func get_hit(damage: int, hit_position: Vector2) -> void:
 	var direction = (global_position - hit_position).normalized()
 	knockback_velocity = direction * knockback_force
 	
-	PlayerStats.health -= damage
-	if (PlayerStats.health <= 0):
+	Player_Stats.health -= damage
+	if (Player_Stats.health <= 0):
 		die()
 
 func die() -> void:

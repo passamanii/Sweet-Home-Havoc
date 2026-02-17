@@ -7,11 +7,13 @@ func _process(_delta: float) -> void:
 func resume() -> void:
 	$AnimationPlayer.play("Menu_Fade_Out")
 	get_tree().paused = false
+	visible = false
 	
 func pause() -> void:
-	$".".show()
+	
 	get_tree().paused = true
 	$AnimationPlayer.play('Menu_Fade_In')
+	visible = true
 	
 func test_esc() -> void:
 	
