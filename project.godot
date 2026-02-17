@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Player_Tracking="*res://scripts/Globals/Player_Tracking.gd"
+Player_Stats="*res://scripts/Globals/Player_Stats.gd"
 
 [display]
 
