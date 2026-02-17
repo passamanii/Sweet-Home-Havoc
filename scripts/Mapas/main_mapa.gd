@@ -31,8 +31,12 @@ func _on_timer_timeout() -> void:
 	
 	if (area_entered == 'faimison'):
 		
+		Globals.spawn_pos = Vector2.ZERO
+		Globals.spawn_facing = Vector2.RIGHT
 		get_tree().change_scene_to_file('res://scenes/Mapas/Sala_Faimisson.tscn')
 		
 	elif (area_entered == 'biblioteca'):
 		
+		Globals.spawn_pos = Vector2.ZERO		
+		Globals.spawn_facing = Vector2.UP
 		get_tree().change_scene_to_file('res://scenes/Mapas/Biblioteca.tscn')

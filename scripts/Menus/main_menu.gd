@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var button_type: String = ''
 
@@ -18,16 +18,10 @@ func _on_start_pressed() -> void:
 func _on_options_pressed() -> void:
 	
 	button_type = 'options'
-	$Menu_Transition.show()
-	$Menu_Transition/Fade_Timer.start()
-	$Menu_Transition/AnimationPlayer.play('fade_in')
 	
 func _on_collectibles_pressed() -> void:
 	
 	button_type = 'collectibles'
-	$Menu_Transition.show()
-	$Menu_Transition/Fade_Timer.start()
-	$Menu_Transition/AnimationPlayer.play('fade_in')
 	
 func _on_exit_pressed() -> void:
 	

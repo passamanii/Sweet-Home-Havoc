@@ -1,24 +1,37 @@
 extends CharacterBody2D
 class_name BasePlayer
 
-const SPEED = 300.0
+const SPEED = 450.0
+const DASH_SPEED = SPEED * 5
 const ATTACK_DISTANCE := 25.0
-const DASH_SPEED = SPEED * 6
+
 var can_dash: bool = true
 var is_dashing: bool = false
 var is_attacking: bool = false
 var dir: Vector2
-var facing: String = ''
 var knockback_force: int = 1000
 var knockback_decay: int = 3000
 var knockback_velocity: Vector2 = Vector2.ZERO
+var facing: Vector2 = Vector2.ZERO
 	
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var hitbox_area: Area2D = $HitboxArea
 @onready var hitbox_collision: CollisionShape2D = $HitboxArea/HitboxCollision
 
-func _physics_process(delta: float) -> void:
-	if (Input.is_action_just_pressed("reset")):
+func _ready() -> void:
+	
+	if (Globals.spawn_pos != Vector2.ZERO):
+		
+		global_position = Globals.spawn_pos
+		
+	if (Globals.spawn_facing != Vector2.ZERO):
+		
+		facing = Globals.spawn_facing
+		
+func _physics_process(_delta: float) -> void:
+	
+	if Input.is_action_just_pressed("reset"):
+		
 		get_tree().reload_current_scene()
 	
 	apply_knockback(delta)
@@ -81,48 +94,63 @@ func animationsPlayer() -> void:
 		return
 	
 	if (!is_attacking):
-		if (dir == Vector2.ZERO):
-			if (facing == 'right'):
+		
+		if dir == Vector2.ZERO:
+			
+			if (facing == Vector2.RIGHT):
+				
 				animation_player.play("Idle_Right")
-			elif (facing == 'left'):
+				
+			elif (facing == Vector2.LEFT):
+				
 				animation_player.play('Idle_Left')
-			elif (facing == 'back'):
+				
+			elif (facing == Vector2.UP):
+				
 				animation_player.play('Idle_Back')
 			else:
 				animation_player.play('Idle_Front')
 			
 		elif (dir.x > 0):
 			animation_player.play('Walking_Right')
-			facing = 'right'
+			facing = Vector2.RIGHT
 			
 		elif (dir.x < 0):
 			animation_player.play("Walking_Left")
-			facing = 'left'
+			facing = Vector2.LEFT
 			
 		elif (dir.y < 0):
 			animation_player.play("Walking_Back")
-			facing = 'back'
+			facing = Vector2.UP
 			
 		elif (dir.y > 0):
 			animation_player.play("Walking_Front")
-			facing = 'front'
+			facing = Vector2.DOWN
 			
 	if (is_dashing):
 		animation_player.play("Dash")
 	
-	if (is_attacking):
-		if dir.x > 0 or facing == 'right':
+	if is_attacking:
+		
+		if (dir.x > 0 or facing == Vector2.RIGHT):
+			
 			animation_player.play("Pen_Attack_Right")
-		elif dir.x < 0 or facing == 'left':
+			
+		elif (dir.x < 0 or facing == Vector2.LEFT):
+			
 			animation_player.play("Pen_Attack_Left")
-		elif dir.y < 0 or facing == 'back':
+			
+		elif (dir.y < 0 or facing == Vector2.UP):
+			
 			animation_player.play("Pen_Attack_Back")
-		elif dir.y > 0 or facing == 'front':
+			
+		elif (dir.y > 0 or facing == Vector2.DOWN):
+			
 			animation_player.play("Pen_Attack_Front")
 
 func dash() -> void:
 	is_dashing = true
-	await get_tree().create_timer(0.4).timeout 
+	await get_tree().create_timer(0.3).timeout 
 	is_dashing = false
 	can_dash = false
 	await get_tree().create_timer(1.0).timeout

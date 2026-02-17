@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://b7a5kqanlxmid"]
+[gd_scene load_steps=15 format=4 uid="uid://b7a5kqanlxmid"]
 
 [ext_resource type="Script" uid="uid://457sykiu4ioa" path="res://scripts/Mapas/sala_faimisson.gd" id="1_4yy4k"]
 [ext_resource type="Texture2D" uid="uid://bw63bniu48i6r" path="res://assets/Cenario/Sala/parede_madeira_frente.png" id="1_81uey"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://mytv0gjymvg0" path="res://assets/Cenario/Sala/piso15x15.png" id="3_we6tv"]
 [ext_resource type="Texture2D" uid="uid://c75sr3nx5ed7n" path="res://assets/Cenario/Sala/parede_madeira_frente_rodape.png" id="4_0ry6v"]
 [ext_resource type="PackedScene" uid="uid://dpm6regsguk6c" path="res://scenes/Transitions/Fade_Transition.tscn" id="7_n8c8v"]
+[ext_resource type="PackedScene" uid="uid://cr8m852vu74l8" path="res://scenes/Menus/Pause_Menu.tscn" id="8_u32h0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_towr7"]
 texture = ExtResource("1_81uey")
@@ -66,6 +67,10 @@ visible = false
 [node name="Player" parent="." instance=ExtResource("2_28b2l")]
 position = Vector2(59, 66)
 up_direction = Vector2(0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("8_u32h0")]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Fade_Transition/Timer" to="." method="_on_timer_timeout"]
