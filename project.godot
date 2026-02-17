@@ -10,13 +10,8 @@ config_version=5
 
 [application]
 
-<<<<<<< HEAD
-config/name="Teste"
-run/main_scene="uid://bmqdk2hlt4s58"
-=======
-config/name="Sweet Home Avoc"
+config/name="Sweet Home Avoc II"
 run/main_scene="uid://vqt0hc2oih5j"
->>>>>>> 0040948b16dcf21937bd5f8c0e1e223b63622539
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
