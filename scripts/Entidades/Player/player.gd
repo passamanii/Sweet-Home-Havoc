@@ -13,13 +13,13 @@ var facing: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	
-	if (Globals.spawn_pos != Vector2.ZERO):
+	if (Player_Tracking.spawn_pos != Vector2.ZERO):
 		
-		global_position = Globals.spawn_pos
+		global_position = Player_Tracking.spawn_pos
 		
-	if (Globals.spawn_facing != Vector2.ZERO):
+	if (Player_Tracking.spawn_facing != Vector2.ZERO):
 		
-		facing = Globals.spawn_facing
+		facing = Player_Tracking.spawn_facing
 		
 func _physics_process(_delta: float) -> void:
 	
