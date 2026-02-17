@@ -13,6 +13,12 @@ var knockback_force: int = 1000
 var knockback_decay: int = 3000
 var knockback_velocity: Vector2 = Vector2.ZERO
 var facing: Vector2 = Vector2.ZERO
+
+var xp: int = 0
+var level: int = 1
+var health: int = 30 #Cada coração equivale à 10hp
+var max_health: int = 30
+var damage: float = 10 
 	
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var hitbox_area: Area2D = $HitboxArea
@@ -27,6 +33,19 @@ func _ready() -> void:
 	if (Player_Tracking.spawn_facing != Vector2.ZERO):
 		
 		facing = Player_Tracking.spawn_facing
+		
+	if (Player_Stats.xp != 0):
+		xp = Player_Stats.xp
+	
+	if (Player_Stats.level != 1):
+		level = Player_Stats.level
+		
+	if (Player_Stats.health != 30):
+		health = Player_Stats.health
+		max_health = Player_Stats.max_health
+		
+	if (Player_Stats.damage != 10):
+		damage = Player_Stats.damage
 		
 func _physics_process(delta: float) -> void:
 	
@@ -156,12 +175,12 @@ func dash() -> void:
 	await get_tree().create_timer(1.0).timeout
 	can_dash = true
 	
-func get_hit(damage: int, hit_position: Vector2) -> void:
+func get_hit(enemy_damage: int, hit_position: Vector2) -> void:
 	print("Player: AI!")
 	var direction = (global_position - hit_position).normalized()
 	knockback_velocity = direction * knockback_force
 	
-	Player_Stats.health -= damage
+	Player_Stats.health -= enemy_damage
 	if (Player_Stats.health <= 0):
 		die()
 
