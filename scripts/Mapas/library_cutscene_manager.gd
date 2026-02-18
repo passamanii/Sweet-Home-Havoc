@@ -203,5 +203,6 @@ func open_locker_cutscene() -> void:
 	print("*O livro agora está em suas mãos.*")
 	
 	Cutscenes_Controller.showed_open_locker_1 = true
+	Game_Controller.has_first_book = true
 	player.set_physics_process(true)
 	

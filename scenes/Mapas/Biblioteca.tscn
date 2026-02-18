@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://ijiq1dhl8y2o"]
+[gd_scene load_steps=29 format=4 uid="uid://ijiq1dhl8y2o"]
 
 [ext_resource type="Script" uid="uid://b6u1m62yxtcqk" path="res://scripts/Mapas/biblioteca.gd" id="1_5mgxb"]
 [ext_resource type="Texture2D" uid="uid://dvvn0vukv56i" path="res://assets/Cenario/Sala/parede_lados_cima.png" id="1_us5rh"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c75sr3nx5ed7n" path="res://assets/Cenario/Sala/parede_madeira_frente_rodape.png" id="3_5mgxb"]
 [ext_resource type="Texture2D" uid="uid://mytv0gjymvg0" path="res://assets/Cenario/Sala/piso15x15.png" id="4_wjcx0"]
 [ext_resource type="PackedScene" uid="uid://d0d3ltflnild1" path="res://scenes/Entidades/Player/player.tscn" id="5_0txmt"]
+[ext_resource type="Script" uid="uid://4f46hgtjpybd" path="res://scripts/Mapas/Library/enter_dungeon.gd" id="6_0vaec"]
 [ext_resource type="PackedScene" uid="uid://dpm6regsguk6c" path="res://scenes/Transitions/Fade_Transition.tscn" id="7_wjcx0"]
 [ext_resource type="PackedScene" uid="uid://cr8m852vu74l8" path="res://scenes/Menus/Pause_Menu.tscn" id="8_kf6d7"]
 [ext_resource type="Script" uid="uid://q2c7rcc6hk6r" path="res://scripts/Mapas/library_cutscene_manager.gd" id="9_cqi74"]
@@ -64,6 +65,9 @@ size = Vector2(35, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ie18g"]
 size = Vector2(35, 12.71875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rei28"]
+size = Vector2(34.625, 15.9375)
 
 [sub_resource type="Animation" id="Animation_kf6d7"]
 resource_name = "First_Enter_In_Library"
@@ -296,6 +300,14 @@ text = "Mesa"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="InteractArea" type="Area2D" parent="Objects/Mesa1"]
+collision_mask = 2
+script = ExtResource("6_0vaec")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa1/InteractArea"]
+position = Vector2(-0.1875, -2.46875)
+shape = SubResource("RectangleShape2D_rei28")
+
 [node name="Mesa2" type="StaticBody2D" parent="Objects"]
 position = Vector2(461.5, -587)
 scale = Vector2(4, 4)
@@ -316,6 +328,14 @@ theme_override_font_sizes/font_size = 8
 text = "Mesa"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="InteractArea" type="Area2D" parent="Objects/Mesa2"]
+collision_mask = 2
+script = ExtResource("6_0vaec")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa2/InteractArea"]
+position = Vector2(-0.1875, -2.46875)
+shape = SubResource("RectangleShape2D_rei28")
 
 [node name="Mesa3" type="StaticBody2D" parent="Objects"]
 position = Vector2(462.5, -470)
@@ -338,6 +358,14 @@ text = "Mesa"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="InteractArea" type="Area2D" parent="Objects/Mesa3"]
+collision_mask = 2
+script = ExtResource("6_0vaec")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa3/InteractArea"]
+position = Vector2(-0.1875, -2.46875)
+shape = SubResource("RectangleShape2D_rei28")
+
 [node name="Mesa4" type="StaticBody2D" parent="Objects"]
 position = Vector2(298.75, -470)
 scale = Vector2(4, 4)
@@ -358,6 +386,14 @@ theme_override_font_sizes/font_size = 8
 text = "Mesa"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="InteractArea" type="Area2D" parent="Objects/Mesa4"]
+collision_mask = 2
+script = ExtResource("6_0vaec")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa4/InteractArea"]
+position = Vector2(-0.1875, -2.46875)
+shape = SubResource("RectangleShape2D_rei28")
 
 [node name="Fade_Transition" parent="." instance=ExtResource("7_wjcx0")]
 visible = false
