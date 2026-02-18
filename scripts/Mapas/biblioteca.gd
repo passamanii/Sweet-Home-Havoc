@@ -1,25 +1,26 @@
 extends Node2D
 var area_entered: String = ''
 
+@export_category("Objects")
+@export var player: BasePlayer
+@export var fade_transition: FadeTransition
+@export var locker_code: CanvasLayer
+
 func _ready() -> void:
-	$Player/AnimationPlayer.play('Idle_Back')
-	$Fade_Transition.show()
-	$Fade_Transition/Timer.start()
-	$Fade_Transition/AnimationPlayer.play("fade_out")
+	fade_transition.transition_end.connect(_on_transition_end)
+	fade_transition.out()
 
 func _process(_delta: float) -> void:
 	pass
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if (body.is_in_group('Player')):
-		$Player/AnimationPlayer.play('Idle_Front')
-		$Player.set_physics_process(false)
+		player.animation_player.play('Idle_Front')
+		player.pause()
 		area_entered = 'main_mapa'
-		$Fade_Transition.show()
-		$Fade_Transition/Timer.start()
-		$Fade_Transition/AnimationPlayer.play("fade_in")
+		fade_transition.init()
 
-func _on_timer_timeout() -> void:
+func _on_transition_end() -> void:
 	if (area_entered == 'main_mapa'):
 		Player_Tracking.spawn_pos = Vector2(2407.0, -694)
 		Player_Tracking.spawn_facing = Vector2.DOWN
@@ -27,6 +28,5 @@ func _on_timer_timeout() -> void:
 
 func _on_old_locker_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		$LockerCodeCanvas.show()
-		print("Coloque a senha")
-		get_tree().get_first_node_in_group("Player").set_physics_process(false)
+		locker_code.show()
+		player.pause()

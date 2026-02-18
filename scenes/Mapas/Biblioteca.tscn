@@ -124,9 +124,12 @@ _data = {
 &"RESET": SubResource("Animation_cqi74")
 }
 
-[node name="Biblioteca" type="Node2D"]
+[node name="Biblioteca" type="Node2D" node_paths=PackedStringArray("player", "fade_transition", "locker_code")]
 scale = Vector2(4, 4)
 script = ExtResource("1_5mgxb")
+player = NodePath("Player")
+fade_transition = NodePath("Fade_Transition")
+locker_code = NodePath("LockerCodeCanvas")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-173.25, -630.75)
@@ -395,18 +398,18 @@ script = ExtResource("6_0vaec")
 position = Vector2(-0.1875, -2.46875)
 shape = SubResource("RectangleShape2D_rei28")
 
-[node name="Fade_Transition" parent="." instance=ExtResource("7_wjcx0")]
-visible = false
-
-[node name="Timer" type="Timer" parent="Fade_Transition"]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("8_kf6d7")]
-
 [node name="Player" parent="." instance=ExtResource("5_0txmt")]
 position = Vector2(-9.75, -232.25)
 scale = Vector2(1, 1)
+
+[node name="LockerCodeCanvas" parent="." instance=ExtResource("10_nm3hn")]
+visible = false
+
+[node name="Fade_Transition" parent="." instance=ExtResource("7_wjcx0")]
+
+[node name="PauseMenuCanvas" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="PauseMenuCanvas" instance=ExtResource("8_kf6d7")]
 
 [node name="CutsceneManager" type="Node" parent="." node_paths=PackedStringArray("player", "old_locker_1")]
 script = ExtResource("9_cqi74")
@@ -418,9 +421,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_nm3hn")
 }
 
-[node name="LockerCodeCanvas" parent="." instance=ExtResource("10_nm3hn")]
-visible = false
-
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Objects/Armarios2/OldLockerArea" to="." method="_on_old_locker_area_body_entered"]
-[connection signal="timeout" from="Fade_Transition/Timer" to="." method="_on_timer_timeout"]

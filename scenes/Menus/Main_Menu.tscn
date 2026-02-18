@@ -53,7 +53,7 @@ shadow_offset = Vector2(4.225, 4.225)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ohjt"]
 
-[node name="Main_Menu" type="Control"]
+[node name="Main_Menu" type="Control" node_paths=PackedStringArray("fade_transition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,6 +61,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ed1wg")
+fade_transition = NodePath("Fade_Transition")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -165,14 +166,12 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8w4bl")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8ohjt")
 text = "Exit Game"
 
-[node name="Menu_Transition" parent="." instance=ExtResource("3_x5no6")]
-visible = false
-position = Vector2(0, -1)
-
-[node name="Fade_Timer" type="Timer" parent="Menu_Transition"]
+[node name="Fade_Transition" parent="." instance=ExtResource("3_x5no6")]
+layout_mode = 0
+offset_top = -1.0
+offset_bottom = -1.0
 
 [connection signal="pressed" from="Button_Manager/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Button_Manager/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Button_Manager/VBoxContainer/Collectibles" to="." method="_on_collectibles_pressed"]
 [connection signal="pressed" from="Button_Manager/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
-[connection signal="timeout" from="Menu_Transition/Fade_Timer" to="." method="_on_fade_timer_timeout"]

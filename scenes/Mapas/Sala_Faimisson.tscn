@@ -42,8 +42,10 @@ sources/4 = SubResource("TileSetAtlasSource_8c0d8")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8c8v"]
 size = Vector2(50.5, 185.5)
 
-[node name="Sala_Faimisson" type="Node2D"]
+[node name="Sala_Faimisson" type="Node2D" node_paths=PackedStringArray("player", "fade_transition")]
 script = ExtResource("1_4yy4k")
+player = NodePath("Player")
+fade_transition = NodePath("Fade_Transition")
 
 [node name="Sala" type="TileMapLayer" parent="."]
 texture_filter = 2
@@ -60,9 +62,6 @@ position = Vector2(-16, 62)
 shape = SubResource("RectangleShape2D_n8c8v")
 
 [node name="Fade_Transition" parent="." instance=ExtResource("7_n8c8v")]
-visible = false
-
-[node name="Timer" type="Timer" parent="Fade_Transition"]
 
 [node name="Player" parent="." instance=ExtResource("2_28b2l")]
 position = Vector2(59, 66)
@@ -73,4 +72,3 @@ up_direction = Vector2(0, 1)
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("8_u32h0")]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="timeout" from="Fade_Transition/Timer" to="." method="_on_timer_timeout"]
