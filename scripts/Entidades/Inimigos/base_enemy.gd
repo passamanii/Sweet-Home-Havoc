@@ -8,6 +8,7 @@ class_name BaseEnemy
 @export var hurtbox_area: Area2D
 @export var hitbox_area: Area2D
 @export var attack_cooldown: Timer
+@export var damage_popup: PackedScene
 
 @export_category("Variables")
 @export var max_health: int
@@ -61,6 +62,11 @@ func can_attack() -> bool:
 func get_hit() -> void:
 	var direction = (global_position - target.global_position).normalized()
 	knockback_velocity = direction * knockback_force
+	
+	var popup = damage_popup.instantiate()
+	popup.text = Player_Stats.damage
+	popup.position = position + Vector2(-50, -25)
+	get_tree().current_scene.add_child(popup)
 	
 	health -= Player_Stats.damage
 	if (health <= 0):

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddg7ip52jxuou"]
+[gd_scene load_steps=8 format=3 uid="uid://ddg7ip52jxuou"]
 
 [ext_resource type="Script" uid="uid://drjobnn8yikc" path="res://scripts/Entidades/Inimigos/base_enemy.gd" id="1_38g7m"]
 [ext_resource type="Script" uid="uid://d1dynej3y0rrn" path="res://scripts/Entidades/state_machine.gd" id="2_6osty"]
+[ext_resource type="PackedScene" uid="uid://c1ugmctvlhh8m" path="res://scenes/UI/damage_popup.tscn" id="2_46vjq"]
 [ext_resource type="Script" uid="uid://bx6idntjwkrlj" path="res://scripts/Entidades/idle.gd" id="3_6osty"]
 [ext_resource type="Script" uid="uid://wqhvpt880gh3" path="res://scripts/Entidades/chase.gd" id="4_4kxy8"]
 [ext_resource type="Script" uid="uid://bdwm5wygd0f01" path="res://scripts/Entidades/attack.gd" id="5_x5xt3"]
@@ -18,6 +19,7 @@ enemy_collision = NodePath("EnemyCollision")
 hurtbox_area = NodePath("HurtboxArea")
 hitbox_area = NodePath("HitboxArea")
 attack_cooldown = NodePath("AttackCooldown")
+damage_popup = ExtResource("2_46vjq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
