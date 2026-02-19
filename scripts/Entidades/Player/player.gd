@@ -25,13 +25,9 @@ var damage: float = 10
 @onready var hitbox_collision: CollisionShape2D = $HitboxArea/HitboxCollision
 
 func _ready() -> void:
-	
 	if (Player_Tracking.spawn_pos != Vector2.ZERO):
-		
 		global_position = Player_Tracking.spawn_pos
-		
 	if (Player_Tracking.spawn_facing != Vector2.ZERO):
-		
 		facing = Player_Tracking.spawn_facing
 		
 	if (Player_Stats.xp != 0):
@@ -48,7 +44,6 @@ func _ready() -> void:
 		damage = Player_Stats.damage
 		
 func _physics_process(delta: float) -> void:
-	
 	if Input.is_action_just_pressed("reset"):
 		
 		get_tree().reload_current_scene()
@@ -168,6 +163,14 @@ func get_hit(enemy_damage: int, hit_position: Vector2) -> void:
 
 func die() -> void:
 	pass
+
+func pause() -> void:
+	set_physics_process(false)
+	set_process(false)
+
+func play() -> void:
+	set_physics_process(true)
+	set_process(true)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if (anim_name.contains('Attack')):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://ijiq1dhl8y2o"]
+[gd_scene load_steps=29 format=4 uid="uid://ijiq1dhl8y2o"]
 
 [ext_resource type="Script" uid="uid://b6u1m62yxtcqk" path="res://scripts/Mapas/biblioteca.gd" id="1_5mgxb"]
 [ext_resource type="Texture2D" uid="uid://dvvn0vukv56i" path="res://assets/Cenario/Sala/parede_lados_cima.png" id="1_us5rh"]
@@ -6,8 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://c75sr3nx5ed7n" path="res://assets/Cenario/Sala/parede_madeira_frente_rodape.png" id="3_5mgxb"]
 [ext_resource type="Texture2D" uid="uid://mytv0gjymvg0" path="res://assets/Cenario/Sala/piso15x15.png" id="4_wjcx0"]
 [ext_resource type="PackedScene" uid="uid://d0d3ltflnild1" path="res://scenes/Entidades/Player/player.tscn" id="5_0txmt"]
+[ext_resource type="Script" uid="uid://4f46hgtjpybd" path="res://scripts/Mapas/Library/enter_dungeon.gd" id="6_0vaec"]
 [ext_resource type="PackedScene" uid="uid://dpm6regsguk6c" path="res://scenes/Transitions/Fade_Transition.tscn" id="7_wjcx0"]
 [ext_resource type="PackedScene" uid="uid://cr8m852vu74l8" path="res://scenes/Menus/Pause_Menu.tscn" id="8_kf6d7"]
+[ext_resource type="Script" uid="uid://q2c7rcc6hk6r" path="res://scripts/Mapas/library_cutscene_manager.gd" id="9_cqi74"]
+[ext_resource type="PackedScene" uid="uid://cno61a8rqqjcg" path="res://scenes/Mapas/Library/locker_code_canvas.tscn" id="10_nm3hn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kf6d7"]
 texture = ExtResource("1_us5rh")
@@ -42,9 +45,91 @@ sources/3 = SubResource("TileSetAtlasSource_0vaec")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5mgxb"]
 size = Vector2(45, 17.375)
 
-[node name="Biblioteca" type="Node2D"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kf6d7"]
+size = Vector2(80, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqi74"]
+size = Vector2(80.625, 10.3125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nm3hn"]
+size = Vector2(9.9375, 2)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_nm3hn"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vaec"]
+size = Vector2(40, 39.9375)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rei28"]
+size = Vector2(35, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ie18g"]
+size = Vector2(35, 12.71875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rei28"]
+size = Vector2(34.625, 15.9375)
+
+[sub_resource type="Animation" id="Animation_kf6d7"]
+resource_name = "First_Enter_In_Library"
+length = 10.0
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 9.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-9.75, -232.25), Vector2(-9.75, -290), Vector2(350, -290)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"move_backwards"
+}, {
+"args": [],
+"method": &"move_right"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_cqi74"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-9.75, -232.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nm3hn"]
+_data = {
+&"First_Enter_In_Library": SubResource("Animation_kf6d7"),
+&"RESET": SubResource("Animation_cqi74")
+}
+
+[node name="Biblioteca" type="Node2D" node_paths=PackedStringArray("player", "fade_transition", "locker_code")]
 scale = Vector2(4, 4)
 script = ExtResource("1_5mgxb")
+player = NodePath("Player")
+fade_transition = NodePath("Fade_Transition")
+locker_code = NodePath("LockerCodeCanvas")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-173.25, -630.75)
@@ -58,18 +143,285 @@ collision_mask = 2
 position = Vector2(-9, -205.75)
 shape = SubResource("RectangleShape2D_5mgxb")
 
-[node name="Fade_Transition" parent="." instance=ExtResource("7_wjcx0")]
-visible = false
+[node name="Objects" type="Node2D" parent="."]
 
-[node name="Timer" type="Timer" parent="Fade_Transition"]
+[node name="Armarios1" type="StaticBody2D" parent="Objects"]
+position = Vector2(33.75, -356)
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/Armarios1"]
+texture = SubResource("PlaceholderTexture2D_kf6d7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Armarios1"]
+position = Vector2(0, -2.21875)
+shape = SubResource("RectangleShape2D_cqi74")
+
+[node name="Label" type="Label" parent="Objects/Armarios1"]
+offset_left = -16.8125
+offset_top = -10.125
+offset_right = 23.1875
+offset_bottom = 12.875
+theme_override_font_sizes/font_size = 8
+text = "Armários"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Armarios2" type="StaticBody2D" parent="Objects"]
+position = Vector2(34.75, -451.75)
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/Armarios2"]
+texture = SubResource("PlaceholderTexture2D_kf6d7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Armarios2"]
+position = Vector2(0, -2.219)
+shape = SubResource("RectangleShape2D_cqi74")
+
+[node name="Label" type="Label" parent="Objects/Armarios2"]
+offset_left = -16.8125
+offset_top = -10.125
+offset_right = 23.1875
+offset_bottom = 12.875
+theme_override_font_sizes/font_size = 8
+text = "Armários"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelVelho" type="Label" parent="Objects/Armarios2"]
+offset_left = -41.375
+offset_top = -12.4375
+offset_right = -1.375
+offset_bottom = 10.5625
+theme_override_font_sizes/font_size = 2
+text = "Armário
+Velho"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="Objects/Armarios2"]
+offset_left = -28.6875
+offset_top = -6.937498
+offset_right = -24.6875
+offset_bottom = 36.92279
+scale = Vector2(1, 0.33999985)
+
+[node name="VSeparator2" type="VSeparator" parent="Objects/Armarios2"]
+offset_left = -19.0
+offset_top = -6.749998
+offset_right = -15.0
+offset_bottom = 37.11029
+scale = Vector2(1, 0.33999985)
+
+[node name="OldLockerArea" type="Area2D" parent="Objects/Armarios2"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Armarios2/OldLockerArea"]
+position = Vector2(-21.5, 2.3125)
+shape = SubResource("RectangleShape2D_nm3hn")
+
+[node name="Estantes1" type="StaticBody2D" parent="Objects"]
+position = Vector2(36, -557.75)
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/Estantes1"]
+texture = SubResource("PlaceholderTexture2D_kf6d7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Estantes1"]
+position = Vector2(0, -2.219)
+shape = SubResource("RectangleShape2D_cqi74")
+
+[node name="Label" type="Label" parent="Objects/Estantes1"]
+offset_left = -16.8125
+offset_top = -10.125
+offset_right = 23.1875
+offset_bottom = 12.875
+theme_override_font_sizes/font_size = 8
+text = "Estantes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Estantes2" type="StaticBody2D" parent="Objects"]
+position = Vector2(36.25, -655)
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/Estantes2"]
+texture = SubResource("PlaceholderTexture2D_kf6d7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Estantes2"]
+position = Vector2(0, -2.219)
+shape = SubResource("RectangleShape2D_cqi74")
+
+[node name="Label" type="Label" parent="Objects/Estantes2"]
+offset_left = -16.8125
+offset_top = -10.125
+offset_right = 23.1875
+offset_bottom = 12.875
+theme_override_font_sizes/font_size = 8
+text = "Estantes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Recepção" type="StaticBody2D" parent="Objects"]
+position = Vector2(452.25, -306)
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/Recepção"]
+texture = SubResource("PlaceholderTexture2D_nm3hn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Recepção"]
+position = Vector2(0, -0.03125)
+shape = SubResource("RectangleShape2D_0vaec")
+
+[node name="Label" type="Label" parent="Objects/Recepção"]
+offset_left = -18.75
+offset_top = -9.5
+offset_right = 21.25
+offset_bottom = 13.5
+theme_override_font_sizes/font_size = 8
+text = "Recepção"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mesa1" type="StaticBody2D" parent="Objects"]
+position = Vector2(298.75, -588)
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/Mesa1"]
+texture = SubResource("PlaceholderTexture2D_rei28")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa1"]
+position = Vector2(0, -2.671875)
+shape = SubResource("RectangleShape2D_ie18g")
+
+[node name="Label" type="Label" parent="Objects/Mesa1"]
+offset_left = -18.75
+offset_top = -10.125
+offset_right = 21.25
+offset_bottom = 12.875
+theme_override_font_sizes/font_size = 8
+text = "Mesa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractArea" type="Area2D" parent="Objects/Mesa1" node_paths=PackedStringArray("fade_transition")]
+collision_mask = 2
+script = ExtResource("6_0vaec")
+fade_transition = NodePath("../../../Fade_Transition")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa1/InteractArea"]
+position = Vector2(-0.1875, -2.46875)
+shape = SubResource("RectangleShape2D_rei28")
+
+[node name="Mesa2" type="StaticBody2D" parent="Objects"]
+position = Vector2(461.5, -587)
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/Mesa2"]
+texture = SubResource("PlaceholderTexture2D_rei28")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa2"]
+position = Vector2(0, -2.672)
+shape = SubResource("RectangleShape2D_ie18g")
+
+[node name="Label" type="Label" parent="Objects/Mesa2"]
+offset_left = -18.75
+offset_top = -10.125
+offset_right = 21.25
+offset_bottom = 12.875
+theme_override_font_sizes/font_size = 8
+text = "Mesa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractArea" type="Area2D" parent="Objects/Mesa2" node_paths=PackedStringArray("fade_transition")]
+collision_mask = 2
+script = ExtResource("6_0vaec")
+fade_transition = NodePath("../../../Fade_Transition")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa2/InteractArea"]
+position = Vector2(-0.1875, -2.46875)
+shape = SubResource("RectangleShape2D_rei28")
+
+[node name="Mesa3" type="StaticBody2D" parent="Objects"]
+position = Vector2(462.5, -470)
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/Mesa3"]
+texture = SubResource("PlaceholderTexture2D_rei28")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa3"]
+position = Vector2(0, -2.672)
+shape = SubResource("RectangleShape2D_ie18g")
+
+[node name="Label" type="Label" parent="Objects/Mesa3"]
+offset_left = -18.75
+offset_top = -10.125
+offset_right = 21.25
+offset_bottom = 12.875
+theme_override_font_sizes/font_size = 8
+text = "Mesa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractArea" type="Area2D" parent="Objects/Mesa3" node_paths=PackedStringArray("fade_transition")]
+collision_mask = 2
+script = ExtResource("6_0vaec")
+fade_transition = NodePath("../../../Fade_Transition")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa3/InteractArea"]
+position = Vector2(-0.1875, -2.46875)
+shape = SubResource("RectangleShape2D_rei28")
+
+[node name="Mesa4" type="StaticBody2D" parent="Objects"]
+position = Vector2(298.75, -470)
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/Mesa4"]
+texture = SubResource("PlaceholderTexture2D_rei28")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa4"]
+position = Vector2(0, -2.672)
+shape = SubResource("RectangleShape2D_ie18g")
+
+[node name="Label" type="Label" parent="Objects/Mesa4"]
+offset_left = -18.75
+offset_top = -10.125
+offset_right = 21.25
+offset_bottom = 12.875
+theme_override_font_sizes/font_size = 8
+text = "Mesa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractArea" type="Area2D" parent="Objects/Mesa4" node_paths=PackedStringArray("fade_transition")]
+collision_mask = 2
+script = ExtResource("6_0vaec")
+fade_transition = NodePath("../../../Fade_Transition")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa4/InteractArea"]
+position = Vector2(-0.1875, -2.46875)
+shape = SubResource("RectangleShape2D_rei28")
+
+[node name="Fade_Transition" parent="." instance=ExtResource("7_wjcx0")]
 
 [node name="Player" parent="." instance=ExtResource("5_0txmt")]
 position = Vector2(-9.75, -232.25)
 scale = Vector2(1, 1)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="LockerCodeCanvas" parent="." instance=ExtResource("10_nm3hn")]
+visible = false
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("8_kf6d7")]
+[node name="PauseMenuCanvas" parent="." instance=ExtResource("8_kf6d7")]
+
+[node name="CutsceneManager" type="Node" parent="." node_paths=PackedStringArray("player", "old_locker_1")]
+script = ExtResource("9_cqi74")
+player = NodePath("../Player")
+old_locker_1 = NodePath("../Objects/Armarios2/OldLockerArea")
+
+[node name="LibraryAnimation" type="AnimationPlayer" parent="CutsceneManager"]
+libraries = {
+&"": SubResource("AnimationLibrary_nm3hn")
+}
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="timeout" from="Fade_Transition/Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Objects/Armarios2/OldLockerArea" to="." method="_on_old_locker_area_body_entered"]

@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://bk4s3llv2swwr" path="res://assets/General/MoonlitFlow-Regular.ttf" id="2_smx8u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ees4b"]
-bg_color = Color(0, 0, 0, 0)
+bg_color = Color(0, 0, 0, 0.46274507)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dc6e"]
 bg_color = Color(0, 0, 0, 0.31372547)
@@ -59,19 +59,19 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/0/path = NodePath("PauseMenu/Panel:theme_override_styles/panel:bg_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.3137255)]
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.4627451)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/path = NodePath("PauseMenu/PanelContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -87,7 +87,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/0/path = NodePath("PauseMenu/Panel:theme_override_styles/panel:bg_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -99,7 +99,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/path = NodePath("PauseMenu/PanelContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -114,7 +114,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PanelContainer:modulate")
+tracks/0/path = NodePath("PauseMenu/PanelContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -131,9 +131,11 @@ _data = {
 &"RESET": SubResource("Animation_283su")
 }
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenuCanvas" type="CanvasLayer"]
 process_mode = 3
 visible = false
+
+[node name="PauseMenu" type="Control" parent="." node_paths=PackedStringArray("pause_menu_canvas", "anim_player")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,8 +143,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ccwpd")
+pause_menu_canvas = NodePath("..")
+anim_player = NodePath("AnimationPlayer")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="PauseMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -151,7 +155,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ees4b")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="PauseMenu"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -160,18 +164,18 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -174.5
-offset_top = -227.49998
+offset_top = -227.5
 offset_right = 174.5
-offset_bottom = 227.49998
+offset_bottom = 227.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2dc6e")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 9
 
-[node name="Resume" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="Resume" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -183,7 +187,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_h6uta")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ees4b")
 text = "Resume"
 
-[node name="Options" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -195,7 +199,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_h6uta")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ees4b")
 text = "Options"
 
-[node name="Main Menu" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="Main Menu" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -207,7 +211,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_h6uta")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ees4b")
 text = "Main Menu"
 
-[node name="Exit Game" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="Exit Game" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -219,13 +223,14 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_h6uta")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ees4b")
 text = "Exit Game"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseMenu"]
+root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_12em7")
 }
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Exit Game" to="." method="_on_exit_game_pressed"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/Options" to="PauseMenu" method="_on_options_pressed"]
+[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/Main Menu" to="PauseMenu" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/Exit Game" to="PauseMenu" method="_on_exit_game_pressed"]
+[connection signal="animation_finished" from="PauseMenu/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
