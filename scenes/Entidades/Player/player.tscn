@@ -1249,7 +1249,8 @@ libraries = {
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
 position = Vector2(0, -0.25)
 sprite_frames = SubResource("SpriteFrames_l71n6")
-animation = &"Idle_Front"
+animation = &"Attack_1_back"
+frame = 1
 
 [node name="HurtboxArea" type="Area2D" parent="."]
 collision_layer = 4

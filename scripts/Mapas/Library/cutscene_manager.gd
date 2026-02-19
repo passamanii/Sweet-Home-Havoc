@@ -1,13 +1,12 @@
 extends Node
 
-@onready var library_animation: AnimationPlayer = $LibraryAnimation
-@onready var locker_code_canvas: CanvasLayer = $"../LockerCodeCanvas"
-
 @export var player: BasePlayer 
 @export var old_locker_1: Area2D
+@export var library_animation: AnimationPlayer
+@export var locker_code_canvas: CanvasLayer
 
 func _ready() -> void:
-	if !Cutscenes_Controller.showed_enter_library_cutscenes:
+	if !Cutscenes_Controller.showed_enter_library_cutscene:
 		player.pause()
 		first_time_in_library_cutscene()
 	
@@ -123,7 +122,7 @@ func first_time_in_library_cutscene() -> void:
 
 	print("Objetivo atualizado: Encontrar o armário do setor restrito.")
 	player.play()
-	Cutscenes_Controller.showed_enter_library_cutscenes = true
+	Cutscenes_Controller.showed_enter_library_cutscene = true
 
 func open_locker_cutscene() -> void:
 	locker_code_canvas.hide()

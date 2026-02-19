@@ -64,7 +64,7 @@ func get_hit() -> void:
 	knockback_velocity = direction * knockback_force
 	
 	var popup = damage_popup.instantiate()
-	popup.text = Player_Stats.damage
+	popup.text = str(Player_Stats.damage)
 	popup.position = position + Vector2(-50, -25)
 	get_tree().current_scene.add_child(popup)
 	

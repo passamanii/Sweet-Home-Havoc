@@ -1,36 +1,36 @@
 [gd_scene load_steps=29 format=4 uid="uid://ijiq1dhl8y2o"]
 
-[ext_resource type="Script" uid="uid://b6u1m62yxtcqk" path="res://scripts/Mapas/biblioteca.gd" id="1_5mgxb"]
-[ext_resource type="Texture2D" uid="uid://dvvn0vukv56i" path="res://assets/Cenario/Sala/parede_lados_cima.png" id="1_us5rh"]
-[ext_resource type="Texture2D" uid="uid://bw63bniu48i6r" path="res://assets/Cenario/Sala/parede_madeira_frente.png" id="2_0txmt"]
-[ext_resource type="Texture2D" uid="uid://c75sr3nx5ed7n" path="res://assets/Cenario/Sala/parede_madeira_frente_rodape.png" id="3_5mgxb"]
-[ext_resource type="Texture2D" uid="uid://mytv0gjymvg0" path="res://assets/Cenario/Sala/piso15x15.png" id="4_wjcx0"]
-[ext_resource type="PackedScene" uid="uid://d0d3ltflnild1" path="res://scenes/Entidades/Player/player.tscn" id="5_0txmt"]
-[ext_resource type="Script" uid="uid://4f46hgtjpybd" path="res://scripts/Mapas/Library/enter_dungeon.gd" id="6_0vaec"]
-[ext_resource type="PackedScene" uid="uid://dpm6regsguk6c" path="res://scenes/Transitions/Fade_Transition.tscn" id="7_wjcx0"]
-[ext_resource type="PackedScene" uid="uid://cr8m852vu74l8" path="res://scenes/Menus/Pause_Menu.tscn" id="8_kf6d7"]
-[ext_resource type="Script" uid="uid://q2c7rcc6hk6r" path="res://scripts/Mapas/library_cutscene_manager.gd" id="9_cqi74"]
-[ext_resource type="PackedScene" uid="uid://cno61a8rqqjcg" path="res://scenes/Mapas/Library/locker_code_canvas.tscn" id="10_nm3hn"]
+[ext_resource type="Script" uid="uid://b6u1m62yxtcqk" path="res://scripts/Mapas/Library/biblioteca.gd" id="1_hsy0m"]
+[ext_resource type="Texture2D" uid="uid://dvvn0vukv56i" path="res://assets/Cenario/Sala/parede_lados_cima.png" id="2_vvpf0"]
+[ext_resource type="Texture2D" uid="uid://bw63bniu48i6r" path="res://assets/Cenario/Sala/parede_madeira_frente.png" id="3_s1dus"]
+[ext_resource type="Texture2D" uid="uid://c75sr3nx5ed7n" path="res://assets/Cenario/Sala/parede_madeira_frente_rodape.png" id="4_cn2oa"]
+[ext_resource type="Texture2D" uid="uid://mytv0gjymvg0" path="res://assets/Cenario/Sala/piso15x15.png" id="5_w57vd"]
+[ext_resource type="Script" uid="uid://4f46hgtjpybd" path="res://scripts/Mapas/Library/enter_dungeon.gd" id="6_cpbyu"]
+[ext_resource type="PackedScene" uid="uid://dpm6regsguk6c" path="res://scenes/Transitions/Fade_Transition.tscn" id="7_q6esh"]
+[ext_resource type="PackedScene" uid="uid://d0d3ltflnild1" path="res://scenes/Entidades/Player/player.tscn" id="8_blly6"]
+[ext_resource type="PackedScene" uid="uid://cno61a8rqqjcg" path="res://scenes/Mapas/Library/locker_code_canvas.tscn" id="9_1d6pv"]
+[ext_resource type="PackedScene" uid="uid://cr8m852vu74l8" path="res://scenes/Menus/Pause_Menu.tscn" id="10_pmu04"]
+[ext_resource type="Script" uid="uid://q2c7rcc6hk6r" path="res://scripts/Mapas/Library/cutscene_manager.gd" id="11_qqq7f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kf6d7"]
-texture = ExtResource("1_us5rh")
+texture = ExtResource("2_vvpf0")
 texture_region_size = Vector2i(15, 15)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.5, -7.5, -7.5, 7.5, 7.5, 7.5, 7.5, -7.5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cqi74"]
-texture = ExtResource("2_0txmt")
+texture = ExtResource("3_s1dus")
 texture_region_size = Vector2i(15, 15)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.5, -7.5, -7.5, 7.5, 7.5, 7.5, 7.5, -7.5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nm3hn"]
-texture = ExtResource("3_5mgxb")
+texture = ExtResource("4_cn2oa")
 texture_region_size = Vector2i(15, 15)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0vaec"]
-texture = ExtResource("4_wjcx0")
+texture = ExtResource("5_w57vd")
 texture_region_size = Vector2i(15, 15)
 0:0/0 = 0
 
@@ -126,7 +126,7 @@ _data = {
 
 [node name="Biblioteca" type="Node2D" node_paths=PackedStringArray("player", "fade_transition", "locker_code")]
 scale = Vector2(4, 4)
-script = ExtResource("1_5mgxb")
+script = ExtResource("1_hsy0m")
 player = NodePath("Player")
 fade_transition = NodePath("Fade_Transition")
 locker_code = NodePath("LockerCodeCanvas")
@@ -305,7 +305,7 @@ vertical_alignment = 1
 
 [node name="InteractArea" type="Area2D" parent="Objects/Mesa1" node_paths=PackedStringArray("fade_transition")]
 collision_mask = 2
-script = ExtResource("6_0vaec")
+script = ExtResource("6_cpbyu")
 fade_transition = NodePath("../../../Fade_Transition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa1/InteractArea"]
@@ -335,7 +335,7 @@ vertical_alignment = 1
 
 [node name="InteractArea" type="Area2D" parent="Objects/Mesa2" node_paths=PackedStringArray("fade_transition")]
 collision_mask = 2
-script = ExtResource("6_0vaec")
+script = ExtResource("6_cpbyu")
 fade_transition = NodePath("../../../Fade_Transition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa2/InteractArea"]
@@ -365,7 +365,7 @@ vertical_alignment = 1
 
 [node name="InteractArea" type="Area2D" parent="Objects/Mesa3" node_paths=PackedStringArray("fade_transition")]
 collision_mask = 2
-script = ExtResource("6_0vaec")
+script = ExtResource("6_cpbyu")
 fade_transition = NodePath("../../../Fade_Transition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa3/InteractArea"]
@@ -395,28 +395,30 @@ vertical_alignment = 1
 
 [node name="InteractArea" type="Area2D" parent="Objects/Mesa4" node_paths=PackedStringArray("fade_transition")]
 collision_mask = 2
-script = ExtResource("6_0vaec")
+script = ExtResource("6_cpbyu")
 fade_transition = NodePath("../../../Fade_Transition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa4/InteractArea"]
 position = Vector2(-0.1875, -2.46875)
 shape = SubResource("RectangleShape2D_rei28")
 
-[node name="Fade_Transition" parent="." instance=ExtResource("7_wjcx0")]
+[node name="Fade_Transition" parent="." instance=ExtResource("7_q6esh")]
 
-[node name="Player" parent="." instance=ExtResource("5_0txmt")]
+[node name="Player" parent="." instance=ExtResource("8_blly6")]
 position = Vector2(-9.75, -232.25)
 scale = Vector2(1, 1)
 
-[node name="LockerCodeCanvas" parent="." instance=ExtResource("10_nm3hn")]
+[node name="LockerCodeCanvas" parent="." instance=ExtResource("9_1d6pv")]
 visible = false
 
-[node name="PauseMenuCanvas" parent="." instance=ExtResource("8_kf6d7")]
+[node name="PauseMenuCanvas" parent="." instance=ExtResource("10_pmu04")]
 
-[node name="CutsceneManager" type="Node" parent="." node_paths=PackedStringArray("player", "old_locker_1")]
-script = ExtResource("9_cqi74")
+[node name="CutsceneManager" type="Node" parent="." node_paths=PackedStringArray("player", "old_locker_1", "library_animation", "locker_code_canvas")]
+script = ExtResource("11_qqq7f")
 player = NodePath("../Player")
 old_locker_1 = NodePath("../Objects/Armarios2/OldLockerArea")
+library_animation = NodePath("LibraryAnimation")
+locker_code_canvas = NodePath("../LockerCodeCanvas")
 
 [node name="LibraryAnimation" type="AnimationPlayer" parent="CutsceneManager"]
 libraries = {

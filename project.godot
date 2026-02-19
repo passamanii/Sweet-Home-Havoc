@@ -26,6 +26,7 @@ Cutscenes_Controller="*res://scripts/Globals/Cutscenes_Controller.gd"
 
 window/size/viewport_width=1240
 window/size/viewport_height=720
+window/stretch/mode="canvas_items"
 
 [input]
 
