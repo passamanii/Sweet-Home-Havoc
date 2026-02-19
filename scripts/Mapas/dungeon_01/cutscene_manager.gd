@@ -20,10 +20,10 @@ func move_right() -> void:
 func hit_player() -> void:
 	player.animation_player.play("Hurt_Front")
 	dungeon_01_animation.play("Knockback_Player")
+	await player.animation_player.animation_finished
 
 func first_time_in_dungeon_01_cutscene() -> void:
-
-	player.set_physics_process(false)
+	player.pause()
 
 	print("QUE?! Onde eu tô?")
 	await get_tree().create_timer(0.1).timeout
@@ -32,13 +32,13 @@ func first_time_in_dungeon_01_cutscene() -> void:
 	await get_tree().create_timer(0.1).timeout
 
 	player.animation_player.play("Idle_Right")
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(1).timeout
 
 	player.animation_player.play("Idle_Left")
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(1).timeout
 
 	player.animation_player.play("Idle_Front")
-	await get_tree().create_timer(2.5).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Será que eu tô sonhando?")
 	await get_tree().create_timer(0.1).timeout
@@ -55,21 +55,21 @@ func first_time_in_dungeon_01_cutscene() -> void:
 	print("Aluno: O quê?! Quem falou isso?")
 	await get_tree().create_timer(0.1).timeout
 
+	print("Livro: Primeiro teste.")
 	dungeon_01_animation.play("Enemy_Approach")
 	anim_robot.play("Chasing")
-
-	print("Livro: Primeiro teste.")
 	await dungeon_01_animation.animation_finished
+	
 	anim_robot.play("Attacking")
-
+	await dungeon_01_animation.animation_finished
 	print("Aluno: EI EI EI CALMA AÍ!")
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("O que foi isso?!")
 	await get_tree().create_timer(0.1).timeout
 
 	player.animation_player.play("Idle_Back")
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Oloko!!! Que trem é esse?!")
 	await get_tree().create_timer(0.1).timeout

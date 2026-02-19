@@ -79,6 +79,7 @@ func apply_knockback(delta) -> void:
 	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
 
 func die() -> void:
+	Player_Stats.gain_xp(xp_amount)
 	queue_free()
 
 func _on_hitbox_area_area_entered(area: Area2D) -> void:
