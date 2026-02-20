@@ -11,6 +11,8 @@ func _ready() -> void:
 	player.animation_player.play('Idle_Right')
 	fade_transition.out()
 
+#ds
+			
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if (body.is_in_group('Player')):
 		area_entered = 'main_mapa'

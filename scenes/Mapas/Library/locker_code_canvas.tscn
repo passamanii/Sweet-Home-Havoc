@@ -1,7 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cno61a8rqqjcg"]
 
-[ext_resource type="Theme" uid="uid://bvl727iib4mtu" path="res://Themes/locker_code_canvas.tres" id="1_0uki2"]
+[ext_resource type="Theme" uid="uid://bvl727iib4mtu" path="res://assets/Themes/locker_code_canvas.tres" id="1_0uki2"]
 [ext_resource type="Script" uid="uid://kornbi8vy8m2" path="res://scripts/Mapas/Library/locker_code.gd" id="1_r5yfq"]
+
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qk10d"]
 bg_color = Color(0.43605796, 8.663535e-07, 1.6845763e-07, 1)

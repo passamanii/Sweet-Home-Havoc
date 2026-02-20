@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlmqtpplimku0"]
+
+[ext_resource type="FontFile" uid="uid://dl1p84ry4iww1" path="res://assets/General/UltimatePixelFont.ttf" id="1_04tkt"]
+[ext_resource type="Script" uid="uid://dx53mqbtq2rsb" path="res://scripts/Menus/Components/base_skill_details.gd" id="1_66upk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0dl6"]
+bg_color = Color(0.21960784, 0.21960784, 0.21960784, 0.5686275)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mv2kd"]
+bg_color = Color(0.21960784, 0.21960784, 0.21960784, 0.5686275)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bl8er"]
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abua3"]
+bg_color = Color(0.21960784, 0.21960784, 0.21960784, 0.5686275)
+
+[node name="Skill" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_66upk")
+
+[node name="Nome" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.073937155
+anchor_top = 0.09785933
+anchor_right = 0.64695007
+anchor_bottom = 0.33944955
+theme_override_fonts/font = ExtResource("1_04tkt")
+theme_override_styles/normal = SubResource("StyleBoxFlat_f0dl6")
+metadata/_edit_use_anchors_ = true
+
+[node name="Descrição" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.073937155
+anchor_top = 0.44036698
+anchor_right = 0.92236596
+anchor_bottom = 0.89908254
+theme_override_fonts/font = ExtResource("1_04tkt")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mv2kd")
+label_settings = SubResource("LabelSettings_bl8er")
+metadata/_edit_use_anchors_ = true
+
+[node name="Custo" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.6802218
+anchor_top = 0.09785933
+anchor_right = 0.92236596
+anchor_bottom = 0.33944955
+theme_override_fonts/font = ExtResource("1_04tkt")
+theme_override_styles/normal = SubResource("StyleBoxFlat_abua3")
+metadata/_edit_use_anchors_ = true

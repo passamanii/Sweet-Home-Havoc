@@ -6,11 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://c75sr3nx5ed7n" path="res://assets/Cenario/Sala/parede_madeira_frente_rodape.png" id="3_5mgxb"]
 [ext_resource type="Texture2D" uid="uid://mytv0gjymvg0" path="res://assets/Cenario/Sala/piso15x15.png" id="4_wjcx0"]
 [ext_resource type="PackedScene" uid="uid://d0d3ltflnild1" path="res://scenes/Entidades/Player/player.tscn" id="5_0txmt"]
-[ext_resource type="PackedScene" uid="uid://dpm6regsguk6c" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="7_wjcx0"]
 [ext_resource type="Script" uid="uid://4f46hgtjpybd" path="res://scripts/Mapas/Library/enter_dungeon.gd" id="6_0vaec"]
 [ext_resource type="PackedScene" uid="uid://cr8m852vu74l8" path="res://scenes/Menus/Pause_Menu.tscn" id="8_kf6d7"]
-[ext_resource type="Script" uid="uid://q2c7rcc6hk6r" path="res://scripts/Mapas/library_cutscene_manager.gd" id="9_cqi74"]
+[ext_resource type="Script" path="res://scripts/Mapas/library_cutscene_manager.gd" id="9_cqi74"]
 [ext_resource type="PackedScene" uid="uid://cno61a8rqqjcg" path="res://scenes/Mapas/Library/locker_code_canvas.tscn" id="10_nm3hn"]
+[ext_resource type="PackedScene" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="11_0vaec"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kf6d7"]
 texture = ExtResource("1_us5rh")
@@ -128,7 +128,7 @@ _data = {
 scale = Vector2(4, 4)
 script = ExtResource("1_5mgxb")
 player = NodePath("Player")
-fade_transition = NodePath("Fade_Transition")
+fade_transition = NodePath("CanvasLayer/Fade_Transition")
 locker_code = NodePath("LockerCodeCanvas")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -306,7 +306,7 @@ vertical_alignment = 1
 [node name="InteractArea" type="Area2D" parent="Objects/Mesa1" node_paths=PackedStringArray("fade_transition")]
 collision_mask = 2
 script = ExtResource("6_0vaec")
-fade_transition = NodePath("../../../Fade_Transition")
+fade_transition = NodePath("../../../CanvasLayer/Fade_Transition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa1/InteractArea"]
 position = Vector2(-0.1875, -2.46875)
@@ -336,7 +336,7 @@ vertical_alignment = 1
 [node name="InteractArea" type="Area2D" parent="Objects/Mesa2" node_paths=PackedStringArray("fade_transition")]
 collision_mask = 2
 script = ExtResource("6_0vaec")
-fade_transition = NodePath("../../../Fade_Transition")
+fade_transition = NodePath("../../../CanvasLayer/Fade_Transition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa2/InteractArea"]
 position = Vector2(-0.1875, -2.46875)
@@ -366,7 +366,7 @@ vertical_alignment = 1
 [node name="InteractArea" type="Area2D" parent="Objects/Mesa3" node_paths=PackedStringArray("fade_transition")]
 collision_mask = 2
 script = ExtResource("6_0vaec")
-fade_transition = NodePath("../../../Fade_Transition")
+fade_transition = NodePath("../../../CanvasLayer/Fade_Transition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa3/InteractArea"]
 position = Vector2(-0.1875, -2.46875)
@@ -396,13 +396,15 @@ vertical_alignment = 1
 [node name="InteractArea" type="Area2D" parent="Objects/Mesa4" node_paths=PackedStringArray("fade_transition")]
 collision_mask = 2
 script = ExtResource("6_0vaec")
-fade_transition = NodePath("../../../Fade_Transition")
+fade_transition = NodePath("../../../CanvasLayer/Fade_Transition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Mesa4/InteractArea"]
 position = Vector2(-0.1875, -2.46875)
 shape = SubResource("RectangleShape2D_rei28")
 
-[node name="Fade_Transition" parent="." instance=ExtResource("7_wjcx0")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Fade_Transition" parent="CanvasLayer" instance=ExtResource("11_0vaec")]
 
 [node name="Player" parent="." instance=ExtResource("5_0txmt")]
 position = Vector2(-9.75, -232.25)

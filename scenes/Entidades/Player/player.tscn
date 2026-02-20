@@ -1275,8 +1275,8 @@ radius = 9.166667
 height = 23.055557
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g6mm2"]
-radius = 7.2222223
-height = 21.944445
+radius = 11.944445
+height = 32.77778
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
 height = 32.5
@@ -1311,7 +1311,7 @@ collision_layer = 8
 collision_mask = 32
 
 [node name="HitboxCollision" type="CollisionShape2D" parent="HitboxArea"]
-position = Vector2(25, 0)
+position = Vector2(22, 0)
 scale = Vector2(1.8, 1.8)
 shape = SubResource("CapsuleShape2D_g6mm2")
 disabled = true

@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://c75sr3nx5ed7n" path="res://assets/Cenario/Sala/parede_madeira_frente_rodape.png" id="4_0ry6v"]
 [ext_resource type="Texture2D" uid="uid://bmqssqvaac8g6" path="res://assets/Cenario/objetos/mesa_aluno.png" id="4_vc4hs"]
 [ext_resource type="Texture2D" uid="uid://en3cogcu3ty0" path="res://assets/Cenario/objetos/cadeira_aluno.png" id="7_2p6v7"]
-[ext_resource type="PackedScene" uid="uid://dpm6regsguk6c" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="7_n8c8v"]
+[ext_resource type="PackedScene" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="7_n8c8v"]
 [ext_resource type="PackedScene" uid="uid://cr8m852vu74l8" path="res://scenes/Menus/Pause_Menu.tscn" id="8_u32h0"]
 [ext_resource type="Texture2D" uid="uid://bmajg1vobxnic" path="res://assets/Cenario/Sala/parede_cinza.png" id="8_ui406"]
-[ext_resource type="PackedScene" uid="uid://d2y70ddkajjfx" path="res://scenes/Entidades/NPC's/Faimisson.tscn" id="13_2p6v7"]
+[ext_resource type="PackedScene" uid="uid://bd3ekfcll3kxm" path="res://scenes/Entidades/NPC's/Faimisson.tscn" id="13_2p6v7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_towr7"]
 texture = ExtResource("1_81uey")
@@ -74,7 +74,7 @@ size = Vector2(50.5, 185.5)
 [node name="Sala_Faimisson" type="Node2D" node_paths=PackedStringArray("player", "fade_transition")]
 script = ExtResource("1_4yy4k")
 player = NodePath("Player")
-fade_transition = NodePath("Fade_Transition")
+fade_transition = NodePath("CanvasLayer/Fade_Transition")
 
 [node name="Sala" type="TileMapLayer" parent="."]
 texture_filter = 2
@@ -94,7 +94,9 @@ shape = SubResource("RectangleShape2D_n8c8v")
 position = Vector2(1264, -36)
 scale = Vector2(4, 4)
 
-[node name="Fade_Transition" parent="." instance=ExtResource("7_n8c8v")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Fade_Transition" parent="CanvasLayer" instance=ExtResource("7_n8c8v")]
 
 [node name="Player" parent="." instance=ExtResource("2_28b2l")]
 position = Vector2(116, -4)
@@ -105,12 +107,12 @@ up_direction = Vector2(0, 1)
 [node name="PauseMenu" parent="CanvasLayer(Pause)" instance=ExtResource("8_u32h0")]
 
 [node name="Button" type="Button" parent="."]
-offset_left = 1192.0
-offset_top = 392.0
-offset_right = 1310.0
-offset_bottom = 492.0
-text = "+10xp"
+offset_left = 1168.0
+offset_top = 388.0
+offset_right = 1311.0
+offset_bottom = 515.0
+theme_override_font_sizes/font_size = 26
+text = "+10xp (TEST)"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="timeout" from="Fade_Transition/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
