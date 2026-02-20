@@ -1,0 +1,205 @@
+[gd_scene load_steps=5 format=3 uid="uid://cno61a8rqqjcg"]
+
+[ext_resource type="Theme" uid="uid://bvl727iib4mtu" path="res://Themes/locker_code_canvas.tres" id="1_0uki2"]
+[ext_resource type="Script" uid="uid://kornbi8vy8m2" path="res://scripts/Mapas/Library/locker_code.gd" id="1_r5yfq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qk10d"]
+bg_color = Color(0.43605796, 8.663535e-07, 1.6845763e-07, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_0uki2"]
+font_size = 27
+
+[node name="LockerCodeCanvas" type="CanvasLayer"]
+
+[node name="LockerCode" type="Control" parent="." node_paths=PackedStringArray("grid_btns")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r5yfq")
+grid_btns = NodePath("Panel/MarginContainer/VBoxContainer/CenterContainer/Buttons")
+
+[node name="ColorRect" type="ColorRect" parent="LockerCode"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(2.4065375e-08, 0.23468077, 0.24084309, 0.09411765)
+
+[node name="Panel" type="Panel" parent="LockerCode"]
+custom_minimum_size = Vector2(450, 600)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -300.0
+offset_right = 225.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_qk10d")
+
+[node name="MarginContainer" type="MarginContainer" parent="LockerCode/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LockerCode/Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+
+[node name="MarginContainer" type="MarginContainer" parent="LockerCode/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Border" type="ColorRect" parent="LockerCode/Panel/MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(245, 55)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0, 0, 0, 1)
+
+[node name="Background" type="ColorRect" parent="LockerCode/Panel/MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(230, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.27097473, 0.3293342, 0, 1)
+
+[node name="LockerVisor" type="Label" parent="LockerCode/Panel/MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(220, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0000"
+label_settings = SubResource("LabelSettings_0uki2")
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="LockerCode/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 2
+
+[node name="Buttons" type="GridContainer" parent="LockerCode/Panel/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 3
+
+[node name="Button1" type="Button" parent="LockerCode/Panel/MarginContainer/VBoxContainer/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme = ExtResource("1_0uki2")
+text = "1"
+
+[node name="Button2" type="Button" parent="LockerCode/Panel/MarginContainer/VBoxContainer/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme = ExtResource("1_0uki2")
+text = "2"
+
+[node name="Button3" type="Button" parent="LockerCode/Panel/MarginContainer/VBoxContainer/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme = ExtResource("1_0uki2")
+text = "3"
+
+[node name="Button4" type="Button" parent="LockerCode/Panel/MarginContainer/VBoxContainer/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme = ExtResource("1_0uki2")
+text = "4"
+
+[node name="Button5" type="Button" parent="LockerCode/Panel/MarginContainer/VBoxContainer/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme = ExtResource("1_0uki2")
+text = "5"
+
+[node name="Button6" type="Button" parent="LockerCode/Panel/MarginContainer/VBoxContainer/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme = ExtResource("1_0uki2")
+text = "6"
+
+[node name="Button7" type="Button" parent="LockerCode/Panel/MarginContainer/VBoxContainer/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme = ExtResource("1_0uki2")
+text = "7"
+
+[node name="Button8" type="Button" parent="LockerCode/Panel/MarginContainer/VBoxContainer/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme = ExtResource("1_0uki2")
+text = "8"
+
+[node name="Button9" type="Button" parent="LockerCode/Panel/MarginContainer/VBoxContainer/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme = ExtResource("1_0uki2")
+text = "9"
+
+[node name="Button0" type="Button" parent="LockerCode/Panel/MarginContainer/VBoxContainer/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme = ExtResource("1_0uki2")
+text = "0"
+
+[node name="ButtonOk" type="Button" parent="LockerCode/Panel/MarginContainer/VBoxContainer/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme = ExtResource("1_0uki2")
+text = "OK"
+
+[node name="ButtonReset" type="Button" parent="LockerCode/Panel/MarginContainer/VBoxContainer/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme = ExtResource("1_0uki2")
+text = "x"
+
+[node name="ExitBtn" type="Button" parent="LockerCode"]
+custom_minimum_size = Vector2(130, 50)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -192.0
+offset_top = 49.0
+offset_right = -62.0
+offset_bottom = 99.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 28
+text = "Sair"
+
+[connection signal="pressed" from="LockerCode/ExitBtn" to="LockerCode" method="_on_exit_btn_pressed"]

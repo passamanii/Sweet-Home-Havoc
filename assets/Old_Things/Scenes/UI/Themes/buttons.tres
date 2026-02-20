@@ -1,7 +1,0 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dfna8vmwbdvyo"]
-
-[ext_resource type="FontFile" uid="uid://bx8l4oght8p7b" path="res://Assets/Fonts/Pixel Game.otf" id="1_s6b78"]
-
-[resource]
-default_font = ExtResource("1_s6b78")
-default_font_size = 50

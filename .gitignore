@@ -1,0 +1,17 @@
+# Godot 4
+.godot/
+
+# Builds
+build/
+*.exe
+*.apk
+*.x86_64
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
