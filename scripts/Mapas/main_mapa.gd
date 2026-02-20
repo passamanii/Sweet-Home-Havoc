@@ -32,7 +32,7 @@ func _on_transition_finished() -> void:
 	elif (area_entered == 'biblioteca'):
 		Player_Tracking.spawn_pos = Vector2.ZERO
 		Player_Tracking.spawn_facing = Vector2.UP
-		get_tree().change_scene_to_file('res://scenes/Mapas/Biblioteca.tscn')
+		get_tree().change_scene_to_file('res://scenes/Mapas/Library/Biblioteca.tscn')
 
 
 func _on_button_pressed() -> void:

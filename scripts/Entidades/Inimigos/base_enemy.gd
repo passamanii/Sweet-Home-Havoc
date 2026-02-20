@@ -8,6 +8,8 @@ class_name BaseEnemy
 @export var hurtbox_area: Area2D
 @export var hitbox_area: Area2D
 @export var attack_cooldown: Timer
+@export var damage_popup: PackedScene
+@export var gpu_particle: PackedScene
 
 @export_category("Variables")
 @export var max_health: int
@@ -28,9 +30,20 @@ func _ready() -> void:
 	target = get_tree().get_first_node_in_group("Player")
 
 func _physics_process(_delta: float) -> void:
-	var separation = (target.position - position).length()
-	if separation >= 1800:
-		queue_free()
+	if (Game_Controller.is_cutscene):
+		var dir = (global_position - target.global_position).normalized()
+		velocity = dir * speed * 3
+		if (dir.x > 0):
+			sprite_2d.flip_h = true
+		else:
+			sprite_2d.flip_h = false
+		move_and_slide()
+		return
+		
+	if (Game_Controller.player_alive):
+		var separation = (target.position - position).length()
+		if separation >= 1800:
+			queue_free()
 
 func move() -> void:
 	if (knockback_velocity.length()) > 0:
@@ -62,6 +75,11 @@ func get_hit() -> void:
 	var direction = (global_position - target.global_position).normalized()
 	knockback_velocity = direction * knockback_force
 	
+	var popup = damage_popup.instantiate()
+	popup.text = str(Player_Stats.damage)
+	popup.position = position + Vector2(-50, -25)
+	get_tree().current_scene.add_child(popup)
+	
 	health -= Player_Stats.damage
 	if (health <= 0):
 		die()
@@ -72,8 +90,19 @@ func start_cooldown() -> void:
 func apply_knockback(delta) -> void:
 	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
 
-func die() -> void:
+# Da pra melhorar isso, mas essa função existe para os finais das waves, pois
+# todos os inimigos morrem, mas não é pra dar xp
+func explode_and_die():
+	sprite_2d.hide()
+	var particle = gpu_particle.instantiate()
+	particle.position = position
+	get_tree().current_scene.add_child(particle)
+	particle.emitting = true
 	queue_free()
+
+func die() -> void:
+	Player_Stats.gain_xp(xp_amount)
+	explode_and_die()
 
 func _on_hitbox_area_area_entered(area: Area2D) -> void:
 	if (area.get_parent().is_in_group("Player")):

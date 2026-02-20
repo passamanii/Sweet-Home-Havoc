@@ -141,12 +141,12 @@ radius = 16.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_gp07y"]
 radius = 11.0
 
-[node name="Robot" groups=["Enemy"] instance=ExtResource("1_gg1tp")]
+[node name="Robot" instance=ExtResource("1_gg1tp")]
 modulate = Color(0.25565878, 0.25565878, 0.25565878, 1)
 scale = Vector2(4, 4)
 collision_mask = 19
 max_health = 25
-damage = 7
+damage = 3
 speed = 300
 chase_range = 999999
 xp_amount = 25
@@ -161,10 +161,17 @@ libraries = {
 }
 
 [node name="EnemyCollision" parent="." index="2"]
+visible = false
 shape = SubResource("CircleShape2D_gg1tp")
+
+[node name="HurtboxArea" parent="." index="3"]
+visible = false
 
 [node name="HurtboxCollision" parent="HurtboxArea" index="0"]
 shape = SubResource("CircleShape2D_qytof")
+
+[node name="HitboxArea" parent="." index="4"]
+visible = false
 
 [node name="HitboxCollision" parent="HitboxArea" index="0"]
 shape = SubResource("CircleShape2D_gp07y")

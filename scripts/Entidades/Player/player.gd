@@ -23,10 +23,15 @@ var damage: float = 10
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var hitbox_area: Area2D = $HitboxArea
 @onready var hitbox_collision: CollisionShape2D = $HitboxArea/HitboxCollision
+@onready var camera_2d: Camera2D = $Camera2D
+
+signal player_died
 
 func _ready() -> void:
 	if (Player_Tracking.spawn_pos != Vector2.ZERO):
-		global_position = Player_Tracking.spawn_pos
+		print(Player_Tracking.spawn_pos)
+		print(Player_Tracking.spawn_facing)
+		position = Player_Tracking.spawn_pos
 	if (Player_Tracking.spawn_facing != Vector2.ZERO):
 		facing = Player_Tracking.spawn_facing
 		
@@ -162,7 +167,12 @@ func get_hit(enemy_damage: int, hit_position: Vector2) -> void:
 		die()
 
 func die() -> void:
-	pass
+	Game_Controller.player_alive = false
+	var cam = camera_2d
+	cam.reparent(get_tree().current_scene)
+	cam.global_position = global_position
+	queue_free()
+	player_died.emit()
 
 func pause() -> void:
 	set_physics_process(false)

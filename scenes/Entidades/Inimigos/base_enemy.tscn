@@ -1,13 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddg7ip52jxuou"]
+[gd_scene load_steps=9 format=3 uid="uid://ddg7ip52jxuou"]
 
 [ext_resource type="Script" uid="uid://drjobnn8yikc" path="res://scripts/Entidades/Inimigos/base_enemy.gd" id="1_38g7m"]
 [ext_resource type="Script" uid="uid://d1dynej3y0rrn" path="res://scripts/Entidades/state_machine.gd" id="2_6osty"]
+[ext_resource type="PackedScene" uid="uid://c1ugmctvlhh8m" path="res://scenes/UI/damage_popup.tscn" id="2_46vjq"]
 [ext_resource type="Script" uid="uid://bx6idntjwkrlj" path="res://scripts/Entidades/idle.gd" id="3_6osty"]
+[ext_resource type="PackedScene" uid="uid://ch8umepnajawq" path="res://scenes/Entidades/Inimigos/enemy_explosion_particle.tscn" id="3_mbs6y"]
 [ext_resource type="Script" uid="uid://wqhvpt880gh3" path="res://scripts/Entidades/chase.gd" id="4_4kxy8"]
 [ext_resource type="Script" uid="uid://bdwm5wygd0f01" path="res://scripts/Entidades/attack.gd" id="5_x5xt3"]
 [ext_resource type="Script" uid="uid://hjob27rww1ns" path="res://scripts/Entidades/knockback.gd" id="6_k786m"]
 
-[node name="Base_Enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite_2d", "anim_player", "enemy_collision", "hurtbox_area", "hitbox_area", "attack_cooldown")]
+[node name="Base_Enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite_2d", "anim_player", "enemy_collision", "hurtbox_area", "hitbox_area", "attack_cooldown") groups=["Enemy"]]
+modulate = Color(12.794469, 12.522565, 0, 1)
 collision_layer = 24
 collision_mask = 3
 platform_floor_layers = 4294967169
@@ -18,6 +21,8 @@ enemy_collision = NodePath("EnemyCollision")
 hurtbox_area = NodePath("HurtboxArea")
 hitbox_area = NodePath("HitboxArea")
 attack_cooldown = NodePath("AttackCooldown")
+damage_popup = ExtResource("2_46vjq")
+gpu_particle = ExtResource("3_mbs6y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
