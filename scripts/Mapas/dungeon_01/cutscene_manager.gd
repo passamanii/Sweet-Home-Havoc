@@ -10,6 +10,8 @@ func _ready() -> void:
 		player.pause()
 		first_time_in_dungeon_01_cutscene()
 		spawner_timer.stop()
+	else:
+		$"../TempRobot".queue_free()
 
 func move_backwards() -> void:
 	player.animation_player.play("Walking_Back")
@@ -137,3 +139,10 @@ func first_time_in_dungeon_01_cutscene() -> void:
 	player.play()
 	spawner_timer.start()
 	Cutscenes_Controller.showed_enter_dungeon_01_cutscene = true
+
+func first_time_finishing_wave_1_cutscene() -> void:
+	player.pause()
+	print("Livro: PAREM!!!d")
+	for enemy in get_tree().get_nodes_in_group("Enemy"):
+		enemy.set_physics_process(false)
+		enemy.anim_player.play("Idle")

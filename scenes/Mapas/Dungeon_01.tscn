@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://dwcedkqt20w73"]
+[gd_scene load_steps=31 format=4 uid="uid://dwcedkqt20w73"]
 
 [ext_resource type="Script" uid="uid://bg3nhd164w8go" path="res://scripts/Mapas/dungeon_01/dungeon_01.gd" id="1_si0el"]
 [ext_resource type="PackedScene" uid="uid://bk8cwdy7q3mnb" path="res://scenes/Entidades/Inimigos/robot.tscn" id="2_j7wm2"]
@@ -7,9 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://bekoj3x21gc6r" path="res://assets/Cenario/Mundo/grama_alta.png" id="4_iek8t"]
 [ext_resource type="PackedScene" uid="uid://d0d3ltflnild1" path="res://scenes/Entidades/Player/player.tscn" id="6_64yte"]
 [ext_resource type="PackedScene" uid="uid://dpm6regsguk6c" path="res://scenes/Transitions/Fade_Transition.tscn" id="6_j7wm2"]
+[ext_resource type="FontFile" uid="uid://bk4s3llv2swwr" path="res://assets/General/MoonlitFlow-Regular.ttf" id="8_f7s7u"]
 [ext_resource type="PackedScene" uid="uid://cr8m852vu74l8" path="res://scenes/Menus/Pause_Menu.tscn" id="8_iek8t"]
 [ext_resource type="Script" uid="uid://twpjyv5xe2vj" path="res://scripts/Mapas/dungeon_01/spawner_controller.gd" id="9_dlx36"]
 [ext_resource type="Script" uid="uid://d2dcq47pccjbx" path="res://scripts/Mapas/dungeon_01/cutscene_manager.gd" id="10_64yte"]
+[ext_resource type="Script" uid="uid://bgy6w5gtmypre" path="res://scripts/Mapas/dungeon_01/waves_controller.gd" id="10_ygqwp"]
 [ext_resource type="Texture2D" uid="uid://d10vgv6u2trqu" path="res://assets/Personagens/Boss/Leonardo/robos/robo01_andando.png" id="11_fx8wr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fx8wr"]
@@ -162,6 +164,8 @@ _data = {
 &"RESET": SubResource("Animation_gp07y")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vpani"]
+
 [sub_resource type="Animation" id="Animation_64yte"]
 resource_name = "Enemy_Approach"
 length = 5.0
@@ -264,10 +268,12 @@ _data = {
 &"RESET": SubResource("Animation_fx8wr")
 }
 
-[node name="Dungeon01" type="Node2D" node_paths=PackedStringArray("fade_transition", "player")]
+[node name="Dungeon01" type="Node2D" node_paths=PackedStringArray("fade_transition", "player", "dungeon_hud", "waves_controller")]
 script = ExtResource("1_si0el")
 fade_transition = NodePath("Fade_Transition")
 player = NodePath("Player")
+dungeon_hud = NodePath("DungeonHudCanvas")
+waves_controller = NodePath("WavesController")
 metadata/_edit_vertical_guides_ = [4800.0]
 metadata/_edit_horizontal_guides_ = [2815.0]
 
@@ -302,13 +308,69 @@ top_level = true
 [node name="SpawnTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="DungeonHudCanvas" type="CanvasLayer" parent="."]
+
+[node name="DungeonHud" type="Control" parent="DungeonHudCanvas"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="DungeonHudCanvas/DungeonHud"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vpani")
+
+[node name="MarginContainer" type="MarginContainer" parent="DungeonHudCanvas/DungeonHud/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 40
+
+[node name="WaveLabel" type="Label" parent="DungeonHudCanvas/DungeonHud/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("8_f7s7u")
+theme_override_font_sizes/font_size = 46
+text = "Wave 1"
+
+[node name="TimeLeftLabel" type="Label" parent="DungeonHudCanvas/DungeonHud/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 53)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("8_f7s7u")
+theme_override_font_sizes/font_size = 38
+text = "1:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="PauseMenu" parent="." instance=ExtResource("8_iek8t")]
 
-[node name="SpawnerController" type="Node" parent="." node_paths=PackedStringArray("player", "spawn_timer")]
+[node name="WavesController" type="Node" parent="." node_paths=PackedStringArray("wave_label", "time_left_label", "spawner_controller", "cutscene_manager")]
+script = ExtResource("10_ygqwp")
+wave_label = NodePath("../DungeonHudCanvas/DungeonHud/PanelContainer/MarginContainer/WaveLabel")
+time_left_label = NodePath("../DungeonHudCanvas/DungeonHud/PanelContainer/MarginContainer/TimeLeftLabel")
+spawner_controller = NodePath("../SpawnerController")
+cutscene_manager = NodePath("../CutsceneManager")
+
+[node name="SpawnerController" type="Node" parent="." node_paths=PackedStringArray("player", "spawn_timer", "waves_controller")]
 script = ExtResource("9_dlx36")
 player = NodePath("../Player")
-enemy = ExtResource("2_j7wm2")
+enemyList = Array[PackedScene]([ExtResource("2_j7wm2"), ExtResource("2_j7wm2"), ExtResource("2_j7wm2"), ExtResource("2_j7wm2"), ExtResource("2_j7wm2")])
 spawn_timer = NodePath("../SpawnTimer")
+waves_controller = NodePath("../WavesController")
 
 [node name="CutsceneManager" type="Node" parent="." node_paths=PackedStringArray("player", "anim_robot", "dungeon_01_animation", "spawner_timer")]
 script = ExtResource("10_64yte")
@@ -323,4 +385,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_f11d0")
 }
 
+[connection signal="timeout" from="SpawnTimer" to="WavesController" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="SpawnTimer" to="SpawnerController" method="_on_spawn_timer_timeout"]

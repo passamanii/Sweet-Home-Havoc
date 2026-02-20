@@ -8,7 +8,8 @@
 [ext_resource type="Script" uid="uid://bdwm5wygd0f01" path="res://scripts/Entidades/attack.gd" id="5_x5xt3"]
 [ext_resource type="Script" uid="uid://hjob27rww1ns" path="res://scripts/Entidades/knockback.gd" id="6_k786m"]
 
-[node name="Base_Enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite_2d", "anim_player", "enemy_collision", "hurtbox_area", "hitbox_area", "attack_cooldown")]
+[node name="Base_Enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite_2d", "anim_player", "enemy_collision", "hurtbox_area", "hitbox_area", "attack_cooldown") groups=["Enemy"]]
+modulate = Color(12.794469, 12.522565, 0, 1)
 collision_layer = 24
 collision_mask = 3
 platform_floor_layers = 4294967169

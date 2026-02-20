@@ -26,7 +26,9 @@ var damage: float = 10
 
 func _ready() -> void:
 	if (Player_Tracking.spawn_pos != Vector2.ZERO):
-		global_position = Player_Tracking.spawn_pos
+		print(Player_Tracking.spawn_pos)
+		print(Player_Tracking.spawn_facing)
+		position = Player_Tracking.spawn_pos
 	if (Player_Tracking.spawn_facing != Vector2.ZERO):
 		facing = Player_Tracking.spawn_facing
 		

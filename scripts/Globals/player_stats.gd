@@ -8,11 +8,10 @@ var damage: float = 10
 var level_requirement: Array = [0, 100, 300, 600, 800, 1000, 1200, 1400, 1600, 2000]
 
 func gain_xp(xp_amount) -> void:
-	
 	if (level != 10):
 		xp += xp_amount
 		print('XP:', xp)
-		
+
 		if (xp >= level_requirement[level]):
 			level += 1
 			xp = 0
