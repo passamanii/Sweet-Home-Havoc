@@ -358,8 +358,9 @@ vertical_alignment = 1
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_iek8t")]
 
-[node name="WavesController" type="Node" parent="." node_paths=PackedStringArray("wave_label", "time_left_label", "spawner_controller", "cutscene_manager")]
+[node name="WavesController" type="Node" parent="." node_paths=PackedStringArray("player", "wave_label", "time_left_label", "spawner_controller", "cutscene_manager")]
 script = ExtResource("10_ygqwp")
+player = NodePath("../Player")
 wave_label = NodePath("../DungeonHudCanvas/DungeonHud/PanelContainer/MarginContainer/WaveLabel")
 time_left_label = NodePath("../DungeonHudCanvas/DungeonHud/PanelContainer/MarginContainer/TimeLeftLabel")
 spawner_controller = NodePath("../SpawnerController")

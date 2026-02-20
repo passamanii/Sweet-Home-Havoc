@@ -7,12 +7,20 @@ extends Node2D
 @export var waves_controller: Node
 
 func _ready() -> void:
+	Game_Controller.player_alive = true
 	player.animation_player.play("Idle_Front")
 	fade_transition.out()
-	waves_controller.finished_dungeon_01.connect(_on_dungeon_finish)
+	waves_controller.won_dungeon_01.connect(_on_dungeon_finish)
+	player.player_died.connect(_on_player_died)
 
-func _on_dungeon_finish(win: bool):
-	if win:
+func _on_player_died() -> void:
+	# Desfazer tudo que ele ganhou e talvez uma tela de morte, ou so uma tela escurecendo e ele renascendo
+	print("Não, se preocupe... você pode tentar denovo")
+	fade_transition.init()
+	await fade_transition.timer.timeout
+	get_tree().reload_current_scene()
+
+func _on_dungeon_finish():
 		player.pause()
 		player.animation_player.play("Idle_Front")
 		fade_transition.transition_end.connect(_on_transition_end)

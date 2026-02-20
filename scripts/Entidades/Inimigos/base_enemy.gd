@@ -39,10 +39,11 @@ func _physics_process(_delta: float) -> void:
 			sprite_2d.flip_h = false
 		move_and_slide()
 		return
-	
-	var separation = (target.position - position).length()
-	if separation >= 1800:
-		queue_free()
+		
+	if (Game_Controller.player_alive):
+		var separation = (target.position - position).length()
+		if separation >= 1800:
+			queue_free()
 
 func move() -> void:
 	if (knockback_velocity.length()) > 0:
