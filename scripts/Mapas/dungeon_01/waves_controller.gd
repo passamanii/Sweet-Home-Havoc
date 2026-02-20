@@ -45,7 +45,7 @@ func win() -> void:
 	won_dungeon_01.emit()
 
 func _on_spawn_timer_timeout() -> void:
-	seconds_left -= 1
+	seconds_left -= 30
 	if (seconds_left < 0 and actual_wave >= 5):
 		win()
 		time_left_label.text = "0:00"

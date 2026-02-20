@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://dl1p84ry4iww1" path="res://assets/General/UltimatePixelFont.ttf" id="3_8ohjt"]
 [ext_resource type="PackedScene" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="4_8ohjt"]
 
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x5no6"]
 texture = ExtResource("2_xu3ct")
 modulate_color = Color(0.7708395, 0.77083945, 0.77083945, 1)

@@ -9,7 +9,9 @@ func _ready() -> void:
 	if (!Cutscenes_Controller.showed_enter_library_cutscene):
 		first_time_in_library_cutscene()
 	
-	if (Cutscenes_Controller.showed_enter_library_cutscene and !Cutscenes_Controller.showed_first_dungeon_win_cutscene):
+	if (Cutscenes_Controller.showed_enter_library_cutscene and
+		!Cutscenes_Controller.showed_first_dungeon_win_cutscene and
+		Game_Controller.has_first_book):
 		win_coming_back_from_dungeon_cutscene()
 	
 	if (Cutscenes_Controller.showed_open_locker_1):

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c75sr3nx5ed7n" path="res://assets/Cenario/Sala/parede_madeira_frente_rodape.png" id="4_cn2oa"]
 [ext_resource type="Texture2D" uid="uid://mytv0gjymvg0" path="res://assets/Cenario/Sala/piso15x15.png" id="5_w57vd"]
 [ext_resource type="Script" uid="uid://4f46hgtjpybd" path="res://scripts/Mapas/Library/enter_dungeon.gd" id="6_cpbyu"]
-[ext_resource type="PackedScene" uid="uid://dpm6regsguk6c" path="res://scenes/Transitions/Fade_Transition.tscn" id="7_q6esh"]
+[ext_resource type="PackedScene" uid="uid://dpm6regsguk6c" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="7_q6esh"]
 [ext_resource type="PackedScene" uid="uid://d0d3ltflnild1" path="res://scenes/Entidades/Player/player.tscn" id="8_blly6"]
 [ext_resource type="PackedScene" uid="uid://cno61a8rqqjcg" path="res://scenes/Mapas/Library/locker_code_canvas.tscn" id="9_1d6pv"]
 [ext_resource type="PackedScene" uid="uid://cr8m852vu74l8" path="res://scenes/Menus/Pause_Menu.tscn" id="10_pmu04"]

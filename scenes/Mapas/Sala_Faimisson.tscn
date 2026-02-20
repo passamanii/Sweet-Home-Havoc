@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bmajg1vobxnic" path="res://assets/Cenario/Sala/parede_cinza.png" id="8_ui406"]
 [ext_resource type="PackedScene" uid="uid://bd3ekfcll3kxm" path="res://scenes/Entidades/NPC's/Faimisson.tscn" id="13_2p6v7"]
 
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_towr7"]
 texture = ExtResource("1_81uey")
 texture_region_size = Vector2i(15, 15)
