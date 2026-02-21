@@ -7,6 +7,7 @@ build/
 *.apk
 *.x86_64
 *.zip
+*.import
 
 # OS
 .DS_Store
