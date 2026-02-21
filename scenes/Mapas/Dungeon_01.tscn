@@ -1,14 +1,14 @@
-[gd_scene load_steps=31 format=4 uid="uid://dwcedkqt20w73"]
+[gd_scene load_steps=31 format=4 uid="uid://bqmab23bfmdo6"]
 
-[ext_resource type="Script" uid="uid://bg3nhd164w8go" path="res://scripts/Mapas/dungeon_01/dungeon_01.gd" id="1_si0el"]
-[ext_resource type="PackedScene" uid="uid://bk8cwdy7q3mnb" path="res://scenes/Entidades/Inimigos/robot.tscn" id="2_j7wm2"]
+[ext_resource type="Script" path="res://scripts/Mapas/dungeon_01/dungeon_01.gd" id="1_si0el"]
+[ext_resource type="PackedScene" path="res://scenes/Entidades/Inimigos/robot.tscn" id="2_j7wm2"]
 [ext_resource type="Texture2D" uid="uid://cfn7yh0yaouib" path="res://assets/Cenario/Mundo/grama_nada.png" id="2_lpgjh"]
 [ext_resource type="Texture2D" uid="uid://bne6lmybwoy6n" path="res://assets/Cenario/Mundo/grama_flor.png" id="3_j7wm2"]
 [ext_resource type="Texture2D" uid="uid://bekoj3x21gc6r" path="res://assets/Cenario/Mundo/grama_alta.png" id="4_iek8t"]
 [ext_resource type="PackedScene" uid="uid://d0d3ltflnild1" path="res://scenes/Entidades/Player/player.tscn" id="6_64yte"]
-[ext_resource type="PackedScene" uid="uid://dpm6regsguk6c" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="6_j7wm2"]
 [ext_resource type="FontFile" uid="uid://bk4s3llv2swwr" path="res://assets/General/MoonlitFlow-Regular.ttf" id="8_f7s7u"]
 [ext_resource type="PackedScene" uid="uid://cr8m852vu74l8" path="res://scenes/Menus/Pause_Menu.tscn" id="8_iek8t"]
+[ext_resource type="PackedScene" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="9_64yte"]
 [ext_resource type="Script" uid="uid://twpjyv5xe2vj" path="res://scripts/Mapas/dungeon_01/spawner_controller.gd" id="9_dlx36"]
 [ext_resource type="Script" uid="uid://d2dcq47pccjbx" path="res://scripts/Mapas/dungeon_01/cutscene_manager.gd" id="10_64yte"]
 [ext_resource type="Script" uid="uid://bgy6w5gtmypre" path="res://scripts/Mapas/dungeon_01/waves_controller.gd" id="10_ygqwp"]
@@ -300,7 +300,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_vwtdd")
 }
 
-[node name="Fade_Transition" parent="." instance=ExtResource("6_j7wm2")]
+[node name="Fade_Transition" parent="." instance=ExtResource("9_64yte")]
 
 [node name="Player" parent="." instance=ExtResource("6_64yte")]
 top_level = true

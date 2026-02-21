@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bne6lmybwoy6n" path="res://assets/Cenario/Mundo/grama_flor.png" id="3_h8wpe"]
 [ext_resource type="PackedScene" uid="uid://d0d3ltflnild1" path="res://scenes/Entidades/Player/player.tscn" id="3_hiv4x"]
 [ext_resource type="Texture2D" uid="uid://cfn7yh0yaouib" path="res://assets/Cenario/Mundo/grama_nada.png" id="4_elsig"]
-[ext_resource type="PackedScene" uid="uid://dpm6regsguk6c" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="5_tb2gh"]
+[ext_resource type="PackedScene" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="5_tb2gh"]
 [ext_resource type="Texture2D" uid="uid://c457ai8ytlh5u" path="res://assets/Cenario/Mundo/arvore.png" id="6_elsig"]
 [ext_resource type="PackedScene" uid="uid://cr8m852vu74l8" path="res://scenes/Menus/Pause_Menu.tscn" id="8_h8wpe"]
 

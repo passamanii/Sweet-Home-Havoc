@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn32nq6w615xl"]
+
+[ext_resource type="Script" uid="uid://bv3aqg20chrhg" path="res://scripts/Modules/Interactions/interaction_manager.gd" id="1_e0r4h"]
+[ext_resource type="FontFile" uid="uid://bk4s3llv2swwr" path="res://assets/General/MoonlitFlow-Regular.ttf" id="1_wwvro"]
+[ext_resource type="FontFile" uid="uid://dl1p84ry4iww1" path="res://assets/General/UltimatePixelFont.ttf" id="3_f6gn2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kibbl"]
+font = ExtResource("3_f6gn2")
+font_size = 46
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 9
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="InteractManager" type="Node2D"]
+script = ExtResource("1_e0r4h")
+
+[node name="Label" type="Label" parent="."]
+z_index = 12
+offset_left = -180.0
+offset_top = -329.0
+offset_right = 180.0
+offset_bottom = -264.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_wwvro")
+theme_override_font_sizes/font_size = 46
+text = "[E] TO INTERACT"
+label_settings = SubResource("LabelSettings_kibbl")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

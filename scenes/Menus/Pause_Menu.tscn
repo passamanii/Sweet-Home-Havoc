@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://cr8m852vu74l8"]
 
 [ext_resource type="Script" uid="uid://cbgp61ye6nr1j" path="res://scripts/Menus/pause_menu.gd" id="1_ccwpd"]
-[ext_resource type="FontFile" uid="uid://bk4s3llv2swwr" path="res://assets/General/MoonlitFlow-Regular.ttf" id="2_smx8u"]
+[ext_resource type="FontFile" uid="uid://dl1p84ry4iww1" path="res://assets/General/UltimatePixelFont.ttf" id="2_smx8u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ees4b"]
 bg_color = Color(0, 0, 0, 0.46274507)

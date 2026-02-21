@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2y70ddkajjfx"]
+
+[ext_resource type="PackedScene" uid="uid://bgwcy0gl75reu" path="res://scenes/Interaction_Components/Interactible.tscn" id="1_fbb7o"]
+[ext_resource type="Script" uid="uid://dci3pygcjgo16" path="res://scripts/Entidades/NPC's/faimisson.gd" id="1_u4kdk"]
+[ext_resource type="PackedScene" uid="uid://2mw1dh7o0cd5" path="res://scenes/Menus/Upgrade_Menu.tscn" id="3_dx5nc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vc4hs"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2p6v7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ui406"]
+size = Vector2(2.055488, 2.8277655)
+
+[node name="_faimisson_" type="MeshInstance2D"]
+scale = Vector2(103.625015, 97.25)
+mesh = SubResource("BoxMesh_vc4hs")
+texture = SubResource("PlaceholderTexture2D_2p6v7")
+script = ExtResource("1_u4kdk")
+
+[node name="Interactible" parent="." instance=ExtResource("1_fbb7o")]
+collision_layer = 128
+collision_mask = 0
+interactible_name = "Talk to Faimisson"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactible"]
+position = Vector2(-0.0048246384, 0.7455008)
+scale = Vector2(0.9999998, 0.9999992)
+shape = SubResource("RectangleShape2D_ui406")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UpgradeMenu" parent="CanvasLayer" instance=ExtResource("3_dx5nc")]
+visible = false
