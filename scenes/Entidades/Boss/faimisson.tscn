@@ -1,0 +1,372 @@
+[gd_scene load_steps=35 format=3 uid="uid://cfqstfbmkgj77"]
+
+[ext_resource type="Script" uid="uid://bpu0s5d30whls" path="res://scripts/Entidades/Boss/faimisson.gd" id="1_pk2ip"]
+[ext_resource type="Texture2D" uid="uid://bq0ggs0268jyt" path="res://assets/Personagens/Boss/Faimison/faimisson-sheet.png" id="2_ee6pk"]
+[ext_resource type="PackedScene" uid="uid://db2mc4jnjevvn" path="res://scenes/Entidades/Boss/supersonic_power.tscn" id="2_iqxje"]
+[ext_resource type="PackedScene" uid="uid://30bvspxyjpt" path="res://scenes/Entidades/Boss/tornado.tscn" id="3_31ydo"]
+[ext_resource type="PackedScene" uid="uid://daxtrwmeb4u2g" path="res://scenes/Entidades/fall_warning.tscn" id="4_pab8x"]
+[ext_resource type="PackedScene" uid="uid://lhlrufu3najh" path="res://scenes/Entidades/Inimigos/naranja_gigante.tscn" id="5_ug4b0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iqxje"]
+radius = 12.75
+height = 40.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pab8x"]
+radius = 13.25
+height = 42.5
+
+[sub_resource type="Animation" id="Animation_pab8x"]
+resource_name = "Breath"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"throw_tornado"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ug4b0"]
+resource_name = "Dash"
+length = 0.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_o65tj"]
+resource_name = "Kick"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"throw_supersonic_power"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_hfk5q"]
+resource_name = "Naranjas"
+length = 0.08
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.02, 0.03, 0.04, 0.049999997, 0.06, 0.07),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"add_naranja_fall_warn"
+}, {
+"args": [],
+"method": &"add_naranja_fall_warn"
+}, {
+"args": [],
+"method": &"add_naranja_fall_warn"
+}, {
+"args": [],
+"method": &"add_naranja_fall_warn"
+}, {
+"args": [],
+"method": &"add_naranja_fall_warn"
+}, {
+"args": [],
+"method": &"add_naranja_fall_warn"
+}, {
+"args": [],
+"method": &"add_naranja_fall_warn"
+}, {
+"args": [],
+"method": &"add_naranja_fall_warn"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_iqxje"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_7b5xw"]
+resource_name = "Talk"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_31ydo"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 2]
+}
+
+[sub_resource type="Animation" id="Animation_1dyfc"]
+resource_name = "Dash_Brake"
+length = 0.8
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 22, 23]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_dash"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_31ydo"]
+_data = {
+&"Breath": SubResource("Animation_pab8x"),
+&"Dash": SubResource("Animation_ug4b0"),
+&"Dash_Brake": SubResource("Animation_1dyfc"),
+&"Idle": SubResource("Animation_31ydo"),
+&"Kick": SubResource("Animation_o65tj"),
+&"Naranjas": SubResource("Animation_hfk5q"),
+&"RESET": SubResource("Animation_iqxje"),
+&"Talk": SubResource("Animation_7b5xw")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_31ydo"]
+animation = &"Breath"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7b5xw"]
+animation = &"Dash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hfk5q"]
+animation = &"Dash_Brake"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ug4b0"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iqxje"]
+animation = &"Kick"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pab8x"]
+animation = &"Naranjas"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hfk5q"]
+advance_mode = 2
+advance_expression = "Se eu colocar isso aqui vai funcionar"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o65tj"]
+advance_mode = 2
+advance_expression = "Se eu colocar isso aqui vai funcionar"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1dyfc"]
+advance_mode = 2
+advance_expression = "Se eu colocar isso aqui vai funcionar"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kku5y"]
+advance_mode = 2
+advance_expression = "Se eu colocar isso aqui vai funcionar"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ne51p"]
+advance_mode = 2
+advance_expression = "Se eu colocar isso aqui vai funcionar"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j8rm7"]
+advance_mode = 2
+advance_expression = "Se eu colocar isso aqui vai funcionar"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iqxje"]
+advance_mode = 2
+advance_expression = "Se eu colocar isso aqui vai funcionar"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_31ydo"]
+advance_mode = 2
+advance_expression = "Se eu colocar isso aqui vai funcionar"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sfy1f"]
+advance_mode = 2
+advance_expression = "Se eu colocar isso aqui vai funcionar"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gkcbo"]
+advance_mode = 2
+advance_expression = "Se eu colocar isso aqui vai funcionar"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kku5y"]
+states/Breath/node = SubResource("AnimationNodeAnimation_31ydo")
+states/Breath/position = Vector2(525, 284)
+states/Dash/node = SubResource("AnimationNodeAnimation_7b5xw")
+states/Dash/position = Vector2(344, 185)
+states/Dash_Brake/node = SubResource("AnimationNodeAnimation_hfk5q")
+states/Dash_Brake/position = Vector2(192, 185)
+states/End/position = Vector2(901, 53)
+states/Idle/node = SubResource("AnimationNodeAnimation_ug4b0")
+states/Idle/position = Vector2(525, 185)
+states/Kick/node = SubResource("AnimationNodeAnimation_iqxje")
+states/Kick/position = Vector2(682, 185)
+states/Naranjas/node = SubResource("AnimationNodeAnimation_pab8x")
+states/Naranjas/position = Vector2(525, 87)
+states/Start/position = Vector2(344, 53)
+transitions = ["Dash", "Idle", SubResource("AnimationNodeStateMachineTransition_hfk5q"), "Idle", "Dash", SubResource("AnimationNodeStateMachineTransition_o65tj"), "Idle", "Naranjas", SubResource("AnimationNodeStateMachineTransition_1dyfc"), "Naranjas", "Idle", SubResource("AnimationNodeStateMachineTransition_kku5y"), "Kick", "Idle", SubResource("AnimationNodeStateMachineTransition_ne51p"), "Idle", "Kick", SubResource("AnimationNodeStateMachineTransition_j8rm7"), "Breath", "Idle", SubResource("AnimationNodeStateMachineTransition_iqxje"), "Idle", "Breath", SubResource("AnimationNodeStateMachineTransition_31ydo"), "Dash", "Dash_Brake", SubResource("AnimationNodeStateMachineTransition_sfy1f"), "Dash_Brake", "Dash", SubResource("AnimationNodeStateMachineTransition_gkcbo")]
+graph_offset = Vector2(-5, 106)
+
+[node name="Faimisson" type="CharacterBody2D" node_paths=PackedStringArray("kick_marker", "blow_marker", "anim_tree", "sprite", "hitbox_area")]
+scale = Vector2(4, 4)
+collision_layer = 16
+platform_floor_layers = 4294901761
+script = ExtResource("1_pk2ip")
+max_health = 1000
+kick_marker = NodePath("PunchMarker")
+blow_marker = NodePath("BlowMarker")
+supersonic_power_scene = ExtResource("2_iqxje")
+tornado_scene = ExtResource("3_31ydo")
+fall_warn_scene = ExtResource("4_pab8x")
+naranja_gigante_scene = ExtResource("5_ug4b0")
+anim_tree = NodePath("AnimationTree")
+sprite = NodePath("Sprite2D")
+hitbox_area = NodePath("HitboxArea")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ee6pk")
+hframes = 4
+vframes = 6
+
+[node name="BossCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_iqxje")
+
+[node name="HitboxArea" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 4
+monitoring = false
+
+[node name="HitboxCollison" type="CollisionShape2D" parent="HitboxArea"]
+position = Vector2(0, -1.75)
+shape = SubResource("CapsuleShape2D_pab8x")
+debug_color = Color(0.9882353, 0, 0, 0.41960785)
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_31ydo")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_kku5y")
+anim_player = NodePath("../AnimPlayer")
+
+[node name="BlowMarker" type="Marker2D" parent="."]
+position = Vector2(0, -3)
+
+[node name="PunchMarker" type="Marker2D" parent="."]
+position = Vector2(0, 12.5)
+
+[connection signal="area_entered" from="HitboxArea" to="." method="_on_hitbox_area_area_entered"]

@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://daxtrwmeb4u2g"]
+
+[ext_resource type="Script" uid="uid://c6mehewqdr782" path="res://scripts/Entidades/Boss/fall_warning.gd" id="1_q1fs3"]
+[ext_resource type="Texture2D" uid="uid://mkvnlonwx368" path="res://assets/Personagens/Boss/Faimison/fall-area-Sheet.png" id="1_urdsb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1fs3"]
+atlas = ExtResource("1_urdsb")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyv4q"]
+atlas = ExtResource("1_urdsb")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mmo65"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1fs3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyv4q")
+}],
+"loop": true,
+"name": &"Warn",
+"speed": 1.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_urdsb"]
+radius = 8.625
+height = 31.0
+
+[node name="FallWarning" type="Area2D"]
+scale = Vector2(8, 8)
+collision_layer = 64
+collision_mask = 4
+monitoring = false
+script = ExtResource("1_q1fs3")
+
+[node name="AnimSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.6458333, 0.6770833)
+sprite_frames = SubResource("SpriteFrames_mmo65")
+animation = &"Warn"
+autoplay = "Warn"
+frame_progress = 0.87720895
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_urdsb")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

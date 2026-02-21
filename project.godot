@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Sweet Home Avoc II"
-run/main_scene="uid://vqt0hc2oih5j"
+config/name="Sweet Home Avoch"
+run/main_scene="uid://dkgmlvh8h1nva"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
