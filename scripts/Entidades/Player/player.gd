@@ -1,8 +1,7 @@
-extends CharacterBody2D
-class_name BasePlayer
+class_name BasePlayer extends CharacterBody2D
 
-const SPEED = 450.0
-const DASH_SPEED = SPEED * 5
+var SPEED: int = 450
+var DASH_SPEED: int = SPEED * 5
 const ATTACK_DISTANCE := 25.0
 
 var can_dash: bool = true
@@ -16,9 +15,11 @@ var facing: Vector2 = Vector2.ZERO
 
 var xp: int = 0
 var level: int = 1
-var health: int = 30 #Cada coração equivale à 10hp
+var health: int = 5 #Cada coração equivale à 10hp
 var max_health: int = 30
-var damage: float = 10 
+var damage: float = 10
+var regen_time: int = 5
+var armor: int = 0
 	
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var hitbox_area: Area2D = $HitboxArea
@@ -28,26 +29,9 @@ var damage: float = 10
 signal player_died
 
 func _ready() -> void:
-	if (Player_Tracking.spawn_pos != Vector2.ZERO):
-		print(Player_Tracking.spawn_pos)
-		print(Player_Tracking.spawn_facing)
-		position = Player_Tracking.spawn_pos
-	if (Player_Tracking.spawn_facing != Vector2.ZERO):
-		facing = Player_Tracking.spawn_facing
-		
-	if (Player_Stats.xp != 0):
-		xp = Player_Stats.xp
-	
-	if (Player_Stats.level != 1):
-		level = Player_Stats.level
-		
-	if (Player_Stats.health != 30):
-		health = Player_Stats.health
-		max_health = Player_Stats.max_health
-		
-	if (Player_Stats.damage != 10):
-		damage = Player_Stats.damage
-		
+	define_spawn()
+	define_stats()
+
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
 		
@@ -63,6 +47,39 @@ func _physics_process(delta: float) -> void:
 		
 	animationsPlayer()
 
+func _process(_delta: float) -> void:
+	define_stats()
+
+func define_spawn():
+	if (Player_Tracking.spawn_pos != Vector2.ZERO):
+		print(Player_Tracking.spawn_pos)
+		print(Player_Tracking.spawn_facing)
+		position = Player_Tracking.spawn_pos
+	if (Player_Tracking.spawn_facing != Vector2.ZERO):
+		facing = Player_Tracking.spawn_facing
+	
+func define_stats():
+	if (Player_Stats.xp != 0):
+		xp = Player_Stats.xp
+	
+	if (Player_Stats.level != 1):
+		level = Player_Stats.level
+		
+	if (Player_Stats.health != 30):
+		health = Player_Stats.health
+		max_health = Player_Stats.max_health
+		
+	if (Player_Stats.damage != 10):
+		damage = Player_Stats.damage
+		
+	if (Player_Stats.speed != SPEED):
+		SPEED = Player_Stats.speed	
+		
+func regenerate():
+	if health != max_health:
+		health += 5
+		await get_tree().create_timer(regen_time).timeout
+		
 func attack() -> void:
 	if (Input.is_action_just_pressed("attack")):
 		is_attacking = true

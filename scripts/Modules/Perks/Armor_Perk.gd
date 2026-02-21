@@ -1,0 +1,1 @@
+class_name Armor_Perk extends BasePerk

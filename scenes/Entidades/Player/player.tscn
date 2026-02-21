@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://d0d3ltflnild1"]
+[gd_scene load_steps=114 format=3 uid="uid://d0d3ltflnild1"]
 
 [ext_resource type="Script" uid="uid://ds510arw8whi" path="res://scripts/Entidades/Player/player.gd" id="1_m80qi"]
 [ext_resource type="Texture2D" uid="uid://pwxq3yg5h0ba" path="res://assets/Ataques/Principal/ataque_mlee/principal_costa_ataque.png" id="2_j7qac"]
@@ -459,6 +459,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_j6wa4"]
 resource_name = "Walking_Back"
@@ -822,6 +834,22 @@ region = Rect2(0, 0, 48, 48)
 atlas = ExtResource("14_4oy00")
 region = Rect2(0, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvfu1"]
+atlas = ExtResource("14_4oy00")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok7js"]
+atlas = ExtResource("14_4oy00")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rhju"]
+atlas = ExtResource("14_4oy00")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1io8"]
+atlas = ExtResource("14_4oy00")
+region = Rect2(144, 0, 48, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
 atlas = ExtResource("8_d6vmw")
 region = Rect2(0, 0, 48, 48)
@@ -1158,6 +1186,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_bvfu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok7js")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rhju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1io8")
+}],
+"loop": true,
+"name": &"Test_Dash_Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_smehm")
 }, {
 "duration": 1.0,
@@ -1230,8 +1275,8 @@ radius = 9.166667
 height = 23.055557
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g6mm2"]
-radius = 7.2222223
-height = 21.944445
+radius = 11.944445
+height = 32.77778
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
 height = 32.5
@@ -1266,7 +1311,7 @@ collision_layer = 8
 collision_mask = 32
 
 [node name="HitboxCollision" type="CollisionShape2D" parent="HitboxArea"]
-position = Vector2(25, 0)
+position = Vector2(22, 0)
 scale = Vector2(1.8, 1.8)
 shape = SubResource("CapsuleShape2D_g6mm2")
 disabled = true

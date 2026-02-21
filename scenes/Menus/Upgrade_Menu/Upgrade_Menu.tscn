@@ -1,0 +1,200 @@
+[gd_scene load_steps=10 format=3 uid="uid://c4xgm1m1pev1d"]
+
+[ext_resource type="Script" uid="uid://b44c54m0eqwkk" path="res://scripts/Menus/Upgrade_Menu/upgrade_menu.gd" id="1_bce5w"]
+[ext_resource type="PackedScene" uid="uid://c5v8pnct04rff" path="res://scenes/Menus/Upgrade_Menu/Components/Skill_Button.tscn" id="2_op85r"]
+[ext_resource type="Resource" uid="uid://nf4fvnheg1gy" path="res://resources/Perks/Health_Perk.tres" id="3_0im3q"]
+[ext_resource type="FontFile" uid="uid://dl1p84ry4iww1" path="res://assets/General/UltimatePixelFont.ttf" id="3_f0dl6"]
+[ext_resource type="Resource" uid="uid://dghnx4n6mmt2h" path="res://resources/Perks/Strengh_Perk.tres" id="4_0aebm"]
+[ext_resource type="PackedScene" uid="uid://dlmqtpplimku0" path="res://scenes/Menus/Upgrade_Menu/Components/Skill_Details.tscn" id="4_mv2kd"]
+[ext_resource type="Resource" uid="uid://fn2osaymxes" path="res://resources/Perks/Speed_Perk.tres" id="5_v31v4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f0dl6"]
+font = ExtResource("3_f0dl6")
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_mv2kd"]
+font = ExtResource("3_f0dl6")
+font_size = 36
+
+[node name="UpgradeMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bce5w")
+
+[node name="Menu_Brackground" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.48629034
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Skill_Button_1" parent="Menu_Brackground" instance=ExtResource("2_op85r")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.44444445
+anchor_top = 0.80972224
+anchor_right = 0.59335744
+anchor_bottom = 0.9388889
+offset_left = -1.0
+offset_right = -1.0000305
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+skill_data = ExtResource("3_0im3q")
+metadata/_edit_use_anchors_ = true
+
+[node name="Skill_Button_2" parent="Menu_Brackground/Skill_Button_1" instance=ExtResource("2_op85r")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0022886188
+anchor_top = -1.9354838
+anchor_right = 1.0
+anchor_bottom = -0.9354839
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+skill_data = ExtResource("4_0aebm")
+metadata/_edit_use_anchors_ = true
+
+[node name="Skill_Button_3" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2" instance=ExtResource("2_op85r")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.0566974
+anchor_top = -0.4516129
+anchor_right = -1.0566971
+anchor_bottom = 0.5483871
+offset_right = 7.6293945e-06
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+skill_data = ExtResource("5_v31v4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Skill_Button_4" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2" instance=ExtResource("2_op85r")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.0544143
+anchor_top = -0.4516129
+anchor_right = 3.0544143
+anchor_bottom = 0.5483871
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Skill_Button_5" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2" instance=ExtResource("2_op85r")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -2.6236558
+anchor_right = 1.0
+anchor_bottom = -1.6236559
+offset_right = 0.0
+offset_bottom = -7.6293945e-06
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Skill_Button_6" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2/Skill_Button_5" instance=ExtResource("2_op85r")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.0555556
+anchor_top = -0.29032257
+anchor_right = -1.0555556
+anchor_bottom = 0.7096774
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Skill_Button_7" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2/Skill_Button_5" instance=ExtResource("2_op85r")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.0555556
+anchor_top = -0.29032257
+anchor_right = 3.0555556
+anchor_bottom = 0.7096774
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel(Xp)" type="Panel" parent="Menu_Brackground"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -219.5
+offset_top = 24.0
+offset_right = 240.5
+offset_bottom = 102.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Menu_Brackground/Panel(Xp)"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "XP: XXXX"
+label_settings = SubResource("LabelSettings_f0dl6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Skills_Details" parent="." instance=ExtResource("4_mv2kd")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 639.0
+offset_top = 344.0
+offset_right = 1238.0
+offset_bottom = 639.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Panel(Close)" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.71370965
+anchor_top = 0.9
+anchor_right = 0.99274194
+anchor_bottom = 1.0027778
+offset_left = 6.1035156e-05
+grow_horizontal = 0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Panel(Close)"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.5
+offset_top = -19.0
+offset_right = 161.5
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press [E] to Close "
+label_settings = SubResource("LabelSettings_mv2kd")
+horizontal_alignment = 1
+vertical_alignment = 1

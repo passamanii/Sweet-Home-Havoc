@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5v8pnct04rff"]
+
+[ext_resource type="Texture2D" uid="uid://qwfnvx4fs5gy" path="res://assets/General/icone.png" id="1_asj5n"]
+[ext_resource type="Script" uid="uid://ds7t4m8ebh7mx" path="res://scripts/Menus/Upgrade_Menu/Components/base_skill_button.gd" id="2_2lww3"]
+[ext_resource type="FontFile" uid="uid://bk4s3llv2swwr" path="res://assets/General/MoonlitFlow-Regular.ttf" id="2_ne1w2"]
+[ext_resource type="FontFile" uid="uid://dl1p84ry4iww1" path="res://assets/General/UltimatePixelFont.ttf" id="4_2lww3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bl8er"]
+font = ExtResource("4_2lww3")
+font_size = 26
+shadow_size = 16
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Skill_Button" type="TextureButton"]
+offset_right = 90.0
+offset_bottom = 93.0
+toggle_mode = true
+texture_normal = ExtResource("1_asj5n")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_2lww3")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ne1w2")
+theme_override_font_sizes/font_size = 36
+text = "0/3"
+label_settings = SubResource("LabelSettings_bl8er")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Line2D" type="Line2D" parent="."]
+top_level = true
+z_index = -1
+default_color = Color(0.22670749, 0.22670749, 0.22670746, 1)
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="resized" from="." to="." method="_on_resized"]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpeedPerk" load_steps=2 format=3 uid="uid://fn2osaymxes"]
+
+[ext_resource type="Script" uid="uid://dhmjr3wei8lvh" path="res://scripts/Modules/Perks/Speed_Perk.gd" id="1_b44vl"]
+
+[resource]
+script = ExtResource("1_b44vl")
+perk_name = "Corredor"
+perk_id = 3
+perk_description = "Você decide correr na praia aos domingos (+10SPD)"
+perk_cost = Array[int]([100, 300, 500])
+metadata/_custom_type_script = "uid://dhmjr3wei8lvh"
