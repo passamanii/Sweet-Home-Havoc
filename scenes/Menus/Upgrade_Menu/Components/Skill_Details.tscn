@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dlmqtpplimku0"]
 
 [ext_resource type="FontFile" uid="uid://dl1p84ry4iww1" path="res://assets/General/UltimatePixelFont.ttf" id="1_04tkt"]
-[ext_resource type="Script" uid="uid://dx53mqbtq2rsb" path="res://scripts/Menus/Components/base_skill_details.gd" id="1_66upk"]
+[ext_resource type="Script" uid="uid://dx53mqbtq2rsb" path="res://scripts/Menus/Upgrade_Menu/Components/base_skill_details.gd" id="1_66upk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0dl6"]
 bg_color = Color(0.21960784, 0.21960784, 0.21960784, 0.5686275)
@@ -16,6 +16,7 @@ shadow_color = Color(0, 0, 0, 1)
 bg_color = Color(0.21960784, 0.21960784, 0.21960784, 0.5686275)
 
 [node name="Skill" type="Panel"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

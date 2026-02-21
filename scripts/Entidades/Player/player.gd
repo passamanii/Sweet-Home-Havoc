@@ -1,5 +1,4 @@
-extends CharacterBody2D
-class_name BasePlayer
+class_name BasePlayer extends CharacterBody2D
 
 const SPEED = 450.0
 const DASH_SPEED = SPEED * 5
@@ -19,6 +18,8 @@ var level: int = 1
 var health: int = 30 #Cada coração equivale à 10hp
 var max_health: int = 30
 var damage: float = 10 
+
+var perks: Array[BasePerk]
 	
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var hitbox_area: Area2D = $HitboxArea
@@ -28,6 +29,9 @@ var damage: float = 10
 signal player_died
 
 func _ready() -> void:
+	for perk in perks:
+		perk.apply_perk()
+		
 	if (Player_Tracking.spawn_pos != Vector2.ZERO):
 		print(Player_Tracking.spawn_pos)
 		print(Player_Tracking.spawn_facing)

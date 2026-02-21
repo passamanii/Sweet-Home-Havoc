@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BasePerk" load_steps=2 format=3 uid="uid://dghnx4n6mmt2h"]
+
+[ext_resource type="Script" uid="uid://ccbgmi5qgb6vn" path="res://scripts/Modules/Perks/Base_Perk.gd" id="1_kmu2y"]
+
+[resource]
+script = ExtResource("1_kmu2y")
+perk_name = "Bomba"
+perk_id = 2
+perk_description = "Você aceita uma agulha suspeita que te ofereceram no banheiro do Eixo 1 (+10DMG)"
+perk_cost = Array[int]([100, 300, 500])
+metadata/_custom_type_script = "uid://ccbgmi5qgb6vn"

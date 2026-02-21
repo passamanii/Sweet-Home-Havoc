@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bxyw8ku1ufebk" path="res://assets/Personagens/Boss/Faimison/Faimison_base_fala_pisca.png" id="1_fbb7o"]
 [ext_resource type="Script" uid="uid://camfyfed3os24" path="res://scripts/Entidades/NPC's/faimisson.gd" id="1_u4kdk"]
 [ext_resource type="PackedScene" path="res://scenes/Modules/Interactions/Interact_With.tscn" id="2_u4kdk"]
-[ext_resource type="PackedScene" uid="uid://cdelya2alea61" path="res://scenes/Menus/Upgrade_Menu.tscn" id="4_56iqj"]
+[ext_resource type="PackedScene" uid="uid://c4xgm1m1pev1d" path="res://scenes/Menus/Upgrade_Menu/Upgrade_Menu.tscn" id="4_56iqj"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dx5nc"]
 size = Vector2(30, 88)

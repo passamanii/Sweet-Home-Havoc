@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdelya2alea61"]
+[gd_scene load_steps=9 format=3 uid="uid://c4xgm1m1pev1d"]
 
 [ext_resource type="Script" uid="uid://b44c54m0eqwkk" path="res://scripts/Menus/Upgrade_Menu/upgrade_menu.gd" id="1_bce5w"]
 [ext_resource type="PackedScene" uid="uid://c5v8pnct04rff" path="res://scenes/Menus/Upgrade_Menu/Components/Skill_Button.tscn" id="2_op85r"]
+[ext_resource type="Script" uid="uid://b0t8wys00hgtf" path="res://scripts/Modules/Perks/Health_Perk.gd" id="3_bl8er"]
 [ext_resource type="FontFile" uid="uid://dl1p84ry4iww1" path="res://assets/General/UltimatePixelFont.ttf" id="3_f0dl6"]
-[ext_resource type="PackedScene" path="res://scenes/Menus/Components/Base_Skill_Details.tscn" id="4_mv2kd"]
+[ext_resource type="PackedScene" uid="uid://dlmqtpplimku0" path="res://scenes/Menus/Upgrade_Menu/Components/Skill_Details.tscn" id="4_mv2kd"]
 
+[sub_resource type="Resource" id="Resource_bl8er"]
+script = ExtResource("3_bl8er")
+metadata/_custom_type_script = "uid://b0t8wys00hgtf"
 
 [sub_resource type="LabelSettings" id="LabelSettings_f0dl6"]
 font = ExtResource("3_f0dl6")
@@ -30,9 +34,10 @@ anchor_right = 0.48629034
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Saudável" parent="Menu_Brackground" instance=ExtResource("2_op85r")]
+[node name="Skill_Button_1" parent="Menu_Brackground" instance=ExtResource("2_op85r")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.44444445
@@ -44,11 +49,10 @@ offset_right = -1.0000305
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
-nome = "Saudável"
-descricao = "Você se exercita e como consequência ganha +10HP!"
-custo = 50
+skill_data = SubResource("Resource_bl8er")
+metadata/_edit_use_anchors_ = true
 
-[node name="Fortão" parent="Menu_Brackground/Saudável" instance=ExtResource("2_op85r")]
+[node name="Skill_Button_2" parent="Menu_Brackground/Skill_Button_1" instance=ExtResource("2_op85r")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.0022886188
@@ -59,12 +63,9 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
-nome = "Fortão"
-descricao = "Você faz flexões e ganha +10DMG com isso!"
-custo = 150
 metadata/_edit_use_anchors_ = true
 
-[node name="Skill_Button_3" parent="Menu_Brackground/Saudável/Fortão" instance=ExtResource("2_op85r")]
+[node name="Skill_Button_3" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2" instance=ExtResource("2_op85r")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -2.0566974
@@ -77,7 +78,7 @@ grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Skill_Button_4" parent="Menu_Brackground/Saudável/Fortão" instance=ExtResource("2_op85r")]
+[node name="Skill_Button_4" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2" instance=ExtResource("2_op85r")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 2.0544143
@@ -90,7 +91,7 @@ grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Skill_Button_5" parent="Menu_Brackground/Saudável/Fortão" instance=ExtResource("2_op85r")]
+[node name="Skill_Button_5" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2" instance=ExtResource("2_op85r")]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = -2.6236558
@@ -101,7 +102,7 @@ offset_bottom = -7.6293945e-06
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Skill_Button_6" parent="Menu_Brackground/Saudável/Fortão/Skill_Button_5" instance=ExtResource("2_op85r")]
+[node name="Skill_Button_6" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2/Skill_Button_5" instance=ExtResource("2_op85r")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -2.0555556
@@ -114,7 +115,7 @@ grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Skill_Button_7" parent="Menu_Brackground/Saudável/Fortão/Skill_Button_5" instance=ExtResource("2_op85r")]
+[node name="Skill_Button_7" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2/Skill_Button_5" instance=ExtResource("2_op85r")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 2.0555556
@@ -155,11 +156,12 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
+offset_left = 639.0
+offset_top = 344.0
+offset_right = 1238.0
+offset_bottom = 639.0
 grow_horizontal = 1
 grow_vertical = 1
-skill_name = null
-skill_description = null
-skill_cost = null
 
 [node name="Panel(Close)" type="Panel" parent="."]
 layout_mode = 1
@@ -190,6 +192,3 @@ text = "Press [E] to Close "
 label_settings = SubResource("LabelSettings_mv2kd")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[connection signal="mouse_entered" from="Menu_Brackground/Saudável" to="." method="_on_saudável_mouse_entered"]
-[connection signal="mouse_entered" from="Menu_Brackground/Saudável/Fortão" to="." method="_on_fortão_mouse_entered"]
