@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_b44vl")
+speed_boost = 75
 perk_name = "Corredor"
 perk_id = 3
 perk_description = "Você decide correr na praia aos domingos (+10SPD)"
