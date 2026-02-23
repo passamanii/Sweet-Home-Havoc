@@ -7,9 +7,9 @@ func Enter() -> void:
 	await get_tree().create_timer(0.2).timeout
 	boss_head.stones_attack()
 	boss_head.rotation_speed = 15
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(5).timeout
 	
-	Transitioned.emit(self, "PurpleStone")
+	Transitioned.emit(self, "BlueStone")
 
 func Update(delta: float) -> void:
 	boss_head.move(delta)

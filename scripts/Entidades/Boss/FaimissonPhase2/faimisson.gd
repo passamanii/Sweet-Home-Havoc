@@ -51,15 +51,16 @@ func do_air_punchs() -> bool:
 	anim_player.play("Prepare_To_Flight_Punch")
 	await anim_player.animation_finished
 	start_punch()
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(5).timeout
 	punch_mode = false
 	velocity = Vector2.ZERO
 	position = Vector2.ZERO
-	anim_player.play("Idle")
+	anim_player.play("Flying_Still")
 	await get_tree().create_timer(2).timeout
 	return true
 
 func _on_hurtbox_area_area_entered(_area: Area2D) -> void:
 	health -= Player_Stats.damage
 	if health <= 0:
+		print("Matou")
 		killed_faimisson.emit()

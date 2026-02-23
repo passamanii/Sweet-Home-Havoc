@@ -138,6 +138,8 @@ shield = NodePath("ShielddArea")
 shield_sprite = NodePath("ShielddArea/ShieldSprite")
 boss_body = NodePath("Boss")
 
+[node name="Boss" parent="." instance=ExtResource("1_q4qic")]
+
 [node name="ShielddArea" type="Area2D" parent="."]
 collision_layer = 64
 collision_mask = 4
@@ -152,9 +154,6 @@ autoplay = "default"
 frame = 7
 frame_progress = 0.29563338
 
-[node name="Boss" parent="." instance=ExtResource("1_q4qic")]
-scale = Vector2(4, 4)
-
 [node name="StonesContainer" type="Node2D" parent="."]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -165,9 +164,10 @@ initial_state = NodePath("BlayBlade")
 script = ExtResource("7_4vpvw")
 boss_body = NodePath("../../Boss")
 
-[node name="DomainExpansion" type="Node" parent="StateMachine" node_paths=PackedStringArray("boss_head")]
+[node name="DomainExpansion" type="Node" parent="StateMachine" node_paths=PackedStringArray("boss_head", "boss_body")]
 script = ExtResource("8_w2yf1")
 boss_head = NodePath("../..")
+boss_body = NodePath("../../Boss")
 
 [node name="StonesLaser" type="Node" parent="StateMachine" node_paths=PackedStringArray("boss_head")]
 script = ExtResource("9_smqhx")
@@ -220,6 +220,7 @@ shape = SubResource("RectangleShape2D_kn25v")
 debug_color = Color(0, 1, 0.16862746, 0.72156864)
 
 [node name="Sprite2D" type="Sprite2D" parent="StateMachine/PurpleStone/SafeArea"]
+visible = false
 scale = Vector2(1, 1.5)
 texture = ExtResource("18_mbmqo")
 offset = Vector2(0, -60)

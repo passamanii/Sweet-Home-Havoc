@@ -6,46 +6,48 @@ extends Control
 @onready var desc_label: Label = $"Skills_Details/Descrição"
 @onready var cost_label: Label = $Skills_Details/Custo
 @onready var skills_details: Panel = $Skills_Details
-@onready var skill_button_1: SkillButton = $Menu_Brackground/Skill_Button_1
-@onready var skill_button_2: SkillButton = $Menu_Brackground/Skill_Button_1/Skill_Button_2
-@onready var skill_button_5: SkillButton = $Menu_Brackground/Skill_Button_1/Skill_Button_2/Skill_Button_5
+@export var skill_buttons: Array[SkillButton]
 
+var player: BasePlayer
 var base_txt: String = 'XP: '
 var base_lvl_txt: String = '/3'
 
 func _ready() -> void:
+	process_unlocked_skills_on_reload()
 	connect_signals()
-			
+	player = get_tree().get_first_node_in_group('Player')
+
 func _process(_delta: float) -> void:
 	update_xp_shown()
-
-func check_unlocked_skills():
-	pass
-	#falta verificar quais skills o personagem já tem assim que ele
-	#entra dnv na sala, pra árvore de habilidades ser condizente
+	check_visibility()
 	
+func check_unlocked_skills(button: SkillButton):
+	var skill_data = button.skill_data
+	if skill_data.level == 0:
+		pass
+	else:
+		button.level_label.text = str(skill_data.level) + base_lvl_txt
+		button.panel.show_behind_parent = true
+		button.line_2d.default_color = Color(0.671, 0.536, 0.251, 1.0)
+		button.unlock_children()
+
+func process_unlocked_skills_on_reload():
+	for button in skill_buttons:
+		check_unlocked_skills(button)
+
+func check_visibility():
+	if self.is_visible_in_tree():
+		player.animation_player.play('Idle_Back')
+		player.pause()
+	elif !self.is_visible_in_tree():
+		player.play()
+
 func connect_signals():
-	for button in menu_brackground.get_children():
-		if button is SkillButton:
-			button.hovered.connect(_on_skill_hovered)
-			button.unhovered.connect(_on_skill_unhovered)
-			button.clicked.connect(_on_skill_clicked)
-	for button in skill_button_1.get_children():
-		if button is SkillButton:
-			button.hovered.connect(_on_skill_hovered)
-			button.unhovered.connect(_on_skill_unhovered)
-			button.clicked.connect(_on_skill_clicked)
-	for button in skill_button_2.get_children():
-		if button is SkillButton:
-			button.hovered.connect(_on_skill_hovered)
-			button.unhovered.connect(_on_skill_unhovered)
-			button.clicked.connect(_on_skill_clicked)
-	for button in skill_button_5.get_children():
-		if button is SkillButton:
-			button.hovered.connect(_on_skill_hovered)
-			button.unhovered.connect(_on_skill_unhovered)
-			button.clicked.connect(_on_skill_clicked)
-			
+	for button in skill_buttons:
+		button.hovered.connect(_on_skill_hovered)
+		button.unhovered.connect(_on_skill_unhovered)
+		button.clicked.connect(_on_skill_clicked)
+		
 func _on_skill_clicked(button: SkillButton):
 	update_detail_labels_shown(button)
 	update_button_level_label(button)
@@ -66,9 +68,9 @@ func update_detail_labels_shown(button: SkillButton):
 		return
 	name_label.text = skill_data.perk_name
 	desc_label.text = skill_data.perk_description
-	if skill_data.level <= 2:
+	if skill_data.level < 3:
 		cost_label.text = 'Custo: %d' %skill_data.perk_cost[skill_data.level]
-	else:
+	elif skill_data.level == 3:
 		cost_label.text = 'MAX'	
 	
 func update_button_level_label(button: SkillButton):

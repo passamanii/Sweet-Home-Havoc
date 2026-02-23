@@ -14,6 +14,8 @@ func Enter() -> void:
 	purple_stone.anim_sprite.play("Attacking")
 
 func Update(delta: float) -> void:
+	if purple_stone.shield_on:
+		return
 	boss_head.purple_barrier_collision.shape.radius -= delta * boss_head.purple_barrier_shrink_speed
 	
 	var radius = boss_head.purple_barrier_collision.shape.radius
@@ -34,7 +36,10 @@ func Update(delta: float) -> void:
 		Transitioned.emit(self, "FinishIt")
 
 func Exit() -> void:
+	boss_head.safe_from_purple_barrier = true
+	boss_head.is_out_from_purple_area = false
 	boss_head.purple_barrier_area.monitoring = false
 	boss_head.purple_barrier_safe_area.monitoring = false
 	boss_head.purple_barrier_sprite.hide()
+	boss_head.purple_barrier_safe_sprite.hide()
 	print("SAIU")

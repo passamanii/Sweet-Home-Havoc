@@ -19,3 +19,9 @@ func Update(_delta: float):
 			boss_body.start_punch()
 			
 		boss_body.move_and_slide()
+
+func Exit() -> void:
+	boss_body.punch_mode = false
+	boss_body.velocity = Vector2.ZERO
+	boss_body.anim_player.play("Idle")
+	boss_body.position = Vector2.ZERO

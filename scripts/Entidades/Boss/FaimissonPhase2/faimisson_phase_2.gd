@@ -34,7 +34,6 @@ var safe_from_purple_barrier: bool = false
 var is_out_from_purple_area: bool = false
 
 func _ready() -> void:
-	boss_body.killed_faimisson.connect(_on_killed_faimisson)
 	player = get_tree().get_first_node_in_group("Player")
 	spawn_stones()
 
@@ -66,10 +65,6 @@ func stones_idle():
 		if !stone.broken:
 			stone.anim_sprite.play("Idle")
 
-func _on_killed_faimisson() -> void:
-	# Final Cutscene
-	pass
-
 #########################
 #      PURPLE STONE     #
 #########################
@@ -81,6 +76,8 @@ func start_purple_barrier() -> void:
 	safe_from_purple_barrier = false
 	is_out_from_purple_area = false
 	purple_barrier_sprite.show()
+	purple_barrier_safe_sprite.show()
+
 
 func spawn_safe_zone() -> void:
 	var pos = purple_barrier_initial_radius * Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
@@ -147,7 +144,7 @@ func start_stones_laser() -> bool:
 	for stone in stones:
 		stone.start_laser()
 	
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(2).timeout
 	return true
 
 #########################

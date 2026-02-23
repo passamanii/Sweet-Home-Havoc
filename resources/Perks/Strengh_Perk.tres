@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="StrenghPerk" load_steps=2 format=3 uid="uid://dghnx4n6mmt2h"]
+[gd_resource type="Resource" script_class="StrenghPerk" load_steps=3 format=3 uid="uid://dghnx4n6mmt2h"]
 
 [ext_resource type="Script" uid="uid://ctnjydanvrplt" path="res://scripts/Modules/Perks/Strengh_Perk.gd" id="1_kmu2y"]
+[ext_resource type="Texture2D" uid="uid://qwfnvx4fs5gy" path="res://assets/General/icone.png" id="1_q217t"]
 
 [resource]
 script = ExtResource("1_kmu2y")
+icon = ExtResource("1_q217t")
 perk_name = "Bomba"
 perk_id = 2
 perk_description = "Você aceita uma agulha suspeita que te ofereceram no banheiro do Eixo 1 (+10DMG)"

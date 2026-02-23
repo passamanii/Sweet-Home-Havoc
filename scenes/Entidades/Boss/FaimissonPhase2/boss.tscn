@@ -269,8 +269,9 @@ height = 44.0
 
 [node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox_area", "anim_player")]
 top_level = true
-collision_layer = 0
-collision_mask = 0
+scale = Vector2(4, 4)
+collision_layer = 16
+collision_mask = 2
 platform_floor_layers = 4294901761
 script = ExtResource("1_p3t4s")
 sprite = NodePath("Sprite2D")
