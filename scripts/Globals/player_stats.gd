@@ -15,16 +15,18 @@ func gain_xp(xp_amount) -> void:
 		xp += xp_amount
 		spentable_xp += xp_amount * 2
 		print('XP:', xp)
-
-		if (xp >= level_requirement[level]):
-			level += 1
-			damage += 1.2 * level
-			
-			if (level % 2 == 0):
-				health += 10
-				max_health += 10
-			
-		print('Nível:', level)
-		print('Dano:', damage)
-		print('HP:', health)
+		
+		while true:
+			if (level < 10 and xp >= level_requirement[level]):
+				level += 1
+				damage += 1.2 * level
+				if (level % 2 == 0):
+					health += 10
+					max_health += 10
+			else:
+				break
+				
+			print('Nível:', level)
+			print('Dano:', damage)
+			print('HP:', health)
 	

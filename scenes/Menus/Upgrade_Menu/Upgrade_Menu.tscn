@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4xgm1m1pev1d"]
+[gd_scene load_steps=17 format=3 uid="uid://c4xgm1m1pev1d"]
 
 [ext_resource type="Script" uid="uid://b44c54m0eqwkk" path="res://scripts/Menus/Upgrade_Menu/upgrade_menu.gd" id="1_bce5w"]
 [ext_resource type="PackedScene" uid="uid://c5v8pnct04rff" path="res://scenes/Menus/Upgrade_Menu/Components/Skill_Button.tscn" id="2_op85r"]
@@ -8,6 +8,37 @@
 [ext_resource type="PackedScene" uid="uid://dlmqtpplimku0" path="res://scenes/Menus/Upgrade_Menu/Components/Skill_Details.tscn" id="4_mv2kd"]
 [ext_resource type="Resource" uid="uid://fn2osaymxes" path="res://resources/Perks/Speed_Perk.tres" id="5_v31v4"]
 [ext_resource type="Resource" uid="uid://cfvmxi37lserd" path="res://resources/Perks/Armor_Perk.tres" id="6_lnq8a"]
+[ext_resource type="Script" uid="uid://cjb1skok54iib" path="res://scripts/Modules/Perks/Cooldown_Perk.gd" id="7_eeyf2"]
+[ext_resource type="Script" uid="uid://c33cb6jl7ycof" path="res://scripts/Modules/Perks/Regen_Perk.gd" id="8_1g3u5"]
+[ext_resource type="Script" uid="uid://dhmjr3wei8lvh" path="res://scripts/Modules/Perks/Speed_Perk.gd" id="9_e2cog"]
+
+[sub_resource type="Resource" id="Resource_827na"]
+script = ExtResource("7_eeyf2")
+perk_name = null
+perk_id = null
+skill_type = null
+perk_description = null
+perk_cost = null
+metadata/_custom_type_script = "uid://cjb1skok54iib"
+
+[sub_resource type="Resource" id="Resource_k82r0"]
+script = ExtResource("8_1g3u5")
+perk_name = null
+perk_id = null
+skill_type = null
+perk_description = null
+perk_cost = null
+metadata/_custom_type_script = "uid://c33cb6jl7ycof"
+
+[sub_resource type="Resource" id="Resource_7mdb2"]
+script = ExtResource("9_e2cog")
+speed_boost = null
+perk_name = null
+perk_id = null
+skill_type = null
+perk_description = null
+perk_cost = null
+metadata/_custom_type_script = "uid://dhmjr3wei8lvh"
 
 [sub_resource type="LabelSettings" id="LabelSettings_f0dl6"]
 font = ExtResource("3_f0dl6")
@@ -107,6 +138,7 @@ offset_right = 0.0
 offset_bottom = -7.6293945e-06
 grow_horizontal = 2
 grow_vertical = 2
+skill_data = SubResource("Resource_827na")
 
 [node name="Skill_Button_6" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2/Skill_Button_5" instance=ExtResource("2_op85r")]
 visible = false
@@ -120,6 +152,7 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
+skill_data = SubResource("Resource_k82r0")
 metadata/_edit_use_anchors_ = true
 
 [node name="Skill_Button_7" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2/Skill_Button_5" instance=ExtResource("2_op85r")]
@@ -134,6 +167,7 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
+skill_data = SubResource("Resource_7mdb2")
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel(Xp)" type="Panel" parent="Menu_Brackground"]

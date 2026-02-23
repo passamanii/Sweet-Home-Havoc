@@ -18,10 +18,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 Player_Tracking="*res://scripts/Globals/Player_Tracking.gd"
-Player_Stats="*res://scripts/Globals/Player_Stats.gd"
 Interaction_Manager="*res://scenes/Modules/Interactions/Interaction_Manager.tscn"
 Game_Controller="*res://scripts/Globals/Game_Controller.gd"
 Cutscenes_Controller="*res://scripts/Globals/Cutscenes_Controller.gd"
+Player_Stats="*res://scripts/Globals/player_stats.gd"
+Skills_Stats="*res://scripts/Globals/Skills_Stats.gd"
 
 [display]
 

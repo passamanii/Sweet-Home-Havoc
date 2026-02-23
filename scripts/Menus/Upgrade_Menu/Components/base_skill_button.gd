@@ -34,6 +34,14 @@ func _on_pressed() -> void:
 	if Player_Stats.spentable_xp >= current_cost:
 		Player_Stats.spentable_xp -= current_cost
 		skill_data.level += 1
+		if skill_data == HealthPerk:
+			Skills_Stats.health_perk_lvl += 1
+		elif skill_data == StrenghPerk:
+			Skills_Stats.strengh_perk_lvl += 1
+		elif skill_data == SpeedPerk:
+			Skills_Stats.speed_perk_lvl += 1
+		elif skill_data == Armor_Perk:
+			Skills_Stats.armor_perk_lvl += 1
 		panel.show_behind_parent = true
 		line_2d.default_color = Color(0.671, 0.536, 0.251, 1.0)
 		unlock_children()
