@@ -8,7 +8,6 @@ func Enter() -> void:
 	await get_tree().create_timer(5).timeout
 
 func Update(delta: float):
-	
 	if boss_head.expanding and boss_head.orbit_radius <= 1500:
 		boss_head.expand_orbit(delta)
 	elif boss_head.shrinking and boss_head.orbit_radius >= 300:

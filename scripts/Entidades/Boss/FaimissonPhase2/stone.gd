@@ -7,7 +7,7 @@ extends Node2D
 @export var laser_collision: CollisionShape2D
 @export var laser_damage: int = 1
 
-var health: float = 500
+var health: float = 50
 var shield_on: bool = true
 var broken: bool = false
 var player: BasePlayer
@@ -35,7 +35,7 @@ func _on_hitbox_area_area_entered(_area: Area2D) -> void:
 	
 	var popup = damage_popup.instantiate()
 	popup.text = str(Player_Stats.damage)
-	popup.position = position + Vector2(-50, -25)
+	popup.global_position = global_position + Vector2(-50, -25)
 	get_tree().current_scene.add_child(popup)
 	
 	health -= Player_Stats.damage

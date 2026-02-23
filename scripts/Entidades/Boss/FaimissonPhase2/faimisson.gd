@@ -11,11 +11,13 @@ class_name Faimisson2
 @export var hitbox_area: Area2D
 @export var anim_player: AnimationPlayer
 
-var health: int
+var health: float
 var player: BasePlayer
 var dir: Vector2
 var punch_mode: bool = false
 var punch_target: Vector2
+
+signal killed_faimisson
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
@@ -24,6 +26,11 @@ func _ready() -> void:
 
 func _on_hitbox_area_area_entered(_area: Area2D) -> void:
 	player.get_hit(damage, (player.global_position - global_position).normalized())
+
+func move() -> void:
+	var direction = global_position.direction_to(player.global_position)
+	velocity = direction * get_parent().blay_blade_speed
+	move_and_slide()
 
 func start_punch() -> void:
 	anim_player.play("Flying_Still")
@@ -51,3 +58,8 @@ func do_air_punchs() -> bool:
 	anim_player.play("Idle")
 	await get_tree().create_timer(2).timeout
 	return true
+
+func _on_hurtbox_area_area_entered(_area: Area2D) -> void:
+	health -= Player_Stats.damage
+	if health <= 0:
+		killed_faimisson.emit()

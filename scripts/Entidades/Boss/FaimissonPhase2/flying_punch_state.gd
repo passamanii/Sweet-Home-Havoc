@@ -6,7 +6,7 @@ func Enter() -> void:
 	await get_tree().create_timer(1).timeout
 	await boss_body.do_air_punchs()
 	
-	Transitioned.emit(self, "OrbitExpand")
+	Transitioned.emit(self, "DomainExpansion")
 
 func Update(_delta: float):
 	if boss_body.punch_mode:

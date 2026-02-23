@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ccsnbkqk5gsj3"]
+[gd_scene load_steps=20 format=3 uid="uid://ccsnbkqk5gsj3"]
 
 [ext_resource type="Script" uid="uid://dlkvjij1ifpk5" path="res://scripts/Entidades/Boss/FaimissonPhase2/faimisson_phase_2.gd" id="1_hobne"]
 [ext_resource type="PackedScene" uid="uid://cw38ytq6wjnh3" path="res://scenes/Entidades/Boss/FaimissonPhase2/boss.tscn" id="1_q4qic"]
@@ -10,118 +10,22 @@
 [ext_resource type="PackedScene" uid="uid://i1sny6dbrit4" path="res://scenes/Entidades/Boss/FaimissonPhase2/red_stone_projectile.tscn" id="6_kn25v"]
 [ext_resource type="Script" uid="uid://cyiobase1dc0h" path="res://scripts/Entidades/Boss/FaimissonPhase2/boss_attack_state.gd" id="7_2o72l"]
 [ext_resource type="Script" uid="uid://c8grh8wn8c8no" path="res://scripts/Entidades/Boss/FaimissonPhase2/flying_punch_state.gd" id="7_4vpvw"]
-[ext_resource type="Texture2D" uid="uid://baakif6567cds" path="res://assets/Personagens/Boss/Faimison/faimisson-aura-Sheet.png" id="8_mskrf"]
 [ext_resource type="Script" uid="uid://dk5frt8iv3eap" path="res://scripts/Entidades/Boss/FaimissonPhase2/orbit_expand_state.gd" id="8_w2yf1"]
 [ext_resource type="Script" uid="uid://dnbggqg174xvx" path="res://scripts/Entidades/Boss/FaimissonPhase2/stones_laser_state.gd" id="9_smqhx"]
 [ext_resource type="Script" uid="uid://dxmiydi6uy4bf" path="res://scripts/Entidades/Boss/FaimissonPhase2/blue_stone_stone.gd" id="11_p0551"]
 [ext_resource type="Script" uid="uid://dfjjlphmb0lcv" path="res://scripts/Entidades/Boss/FaimissonPhase2/red_stone_state.gd" id="13_qcnwl"]
 [ext_resource type="Script" uid="uid://brbrhif6m3yo7" path="res://scripts/Entidades/Boss/FaimissonPhase2/purple_stone_state.gd" id="14_d4kwe"]
 [ext_resource type="Script" uid="uid://dr77wownxmb6b" path="res://scripts/Entidades/Boss/FaimissonPhase2/finish_it_state.gd" id="15_dh4gf"]
-[ext_resource type="Texture2D" uid="uid://dcmqqa4c6jgj5" path="res://assets/Personagens/Boss/Faimison/purple-aura-sheet.png" id="17_3kumv"]
-[ext_resource type="Texture2D" uid="uid://dc41e5vxrnsn4" path="res://assets/Personagens/Boss/Faimison/safe-zone.png" id="18_mbmqo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ppjuv"]
-radius = 80.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mskrf"]
-atlas = ExtResource("8_mskrf")
-region = Rect2(0, 0, 160, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3kumv"]
-atlas = ExtResource("8_mskrf")
-region = Rect2(1120, 0, 160, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mbmqo"]
-atlas = ExtResource("8_mskrf")
-region = Rect2(320, 0, 160, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_klpf5"]
-atlas = ExtResource("8_mskrf")
-region = Rect2(160, 0, 160, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hon63"]
-atlas = ExtResource("8_mskrf")
-region = Rect2(800, 0, 160, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h8t0p"]
-atlas = ExtResource("8_mskrf")
-region = Rect2(640, 0, 160, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o1ukg"]
-atlas = ExtResource("8_mskrf")
-region = Rect2(480, 0, 160, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cr77s"]
-atlas = ExtResource("8_mskrf")
-region = Rect2(960, 0, 160, 160)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0aupt"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mskrf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3kumv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mbmqo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_klpf5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hon63")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h8t0p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o1ukg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cr77s")
-}],
-"loop": true,
-"name": &"default",
-"speed": 8.0
-}]
+radius = 77.28276
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kn25v"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sk6ng"]
-atlas = ExtResource("17_3kumv")
-region = Rect2(0, 0, 640, 640)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0aupt"]
-atlas = ExtResource("17_3kumv")
-region = Rect2(640, 0, 640, 640)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yej1a"]
-atlas = ExtResource("17_3kumv")
-region = Rect2(1280, 0, 640, 640)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qihgi"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sk6ng")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0aupt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yej1a")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kn25v"]
-size = Vector2(450, 180)
+size = Vector2(494.85535, 160.46387)
 
-[node name="FaimissonPhase2" type="Node2D" node_paths=PackedStringArray("stones_container", "purple_barrier_area", "purple_barrier_collision", "purple_barrier_safe_area", "purple_barrier_safe_collision", "purple_barrier_safe_sprite", "purple_barrier_sprite", "shield", "shield_sprite", "boss_body")]
+[node name="FaimissonPhase2" type="Node2D" node_paths=PackedStringArray("stones_container", "purple_barrier_area", "purple_barrier_collision", "purple_barrier_safe_area", "purple_barrier_safe_collision", "shield", "boss_body")]
 scale = Vector2(4, 4)
 script = ExtResource("1_hobne")
 stones_container = NodePath("StonesContainer")
@@ -132,11 +36,13 @@ purple_barrier_area = NodePath("StateMachine/PurpleStone/PurplerBarrier")
 purple_barrier_collision = NodePath("StateMachine/PurpleStone/PurplerBarrier/PurpleBarrierCollision")
 purple_barrier_safe_area = NodePath("StateMachine/PurpleStone/SafeArea")
 purple_barrier_safe_collision = NodePath("StateMachine/PurpleStone/SafeArea/SafeCollision")
-purple_barrier_safe_sprite = NodePath("StateMachine/PurpleStone/SafeArea/Sprite2D")
-purple_barrier_sprite = NodePath("StateMachine/PurpleStone/PurplerBarrier/AnimatedSprite2D")
 shield = NodePath("ShielddArea")
-shield_sprite = NodePath("ShielddArea/ShieldSprite")
 boss_body = NodePath("Boss")
+
+[node name="Boss" parent="." instance=ExtResource("1_q4qic")]
+scale = Vector2(4, 4)
+
+[node name="StonesContainer" type="Node2D" parent="."]
 
 [node name="ShielddArea" type="Area2D" parent="."]
 collision_layer = 64
@@ -144,18 +50,6 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShielddArea"]
 shape = SubResource("CircleShape2D_ppjuv")
-
-[node name="ShieldSprite" type="AnimatedSprite2D" parent="ShielddArea"]
-texture_repeat = 2
-sprite_frames = SubResource("SpriteFrames_0aupt")
-autoplay = "default"
-frame = 7
-frame_progress = 0.29563338
-
-[node name="Boss" parent="." instance=ExtResource("1_q4qic")]
-scale = Vector2(4, 4)
-
-[node name="StonesContainer" type="Node2D" parent="."]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_8r87q")
@@ -207,11 +101,6 @@ monitoring = false
 shape = SubResource("CircleShape2D_kn25v")
 debug_color = Color(0.41676375, 0.001920417, 0.69553125, 0.41960785)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StateMachine/PurpleStone/PurplerBarrier"]
-visible = false
-scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_qihgi")
-
 [node name="SafeArea" type="Area2D" parent="StateMachine/PurpleStone"]
 collision_mask = 2
 
@@ -219,15 +108,9 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_kn25v")
 debug_color = Color(0, 1, 0.16862746, 0.72156864)
 
-[node name="Sprite2D" type="Sprite2D" parent="StateMachine/PurpleStone/SafeArea"]
-scale = Vector2(1, 1.5)
-texture = ExtResource("18_mbmqo")
-offset = Vector2(0, -60)
-
-[node name="FinishIt" type="Node" parent="StateMachine" node_paths=PackedStringArray("boss_head", "boss_body")]
+[node name="FinishIt" type="Node" parent="StateMachine" node_paths=PackedStringArray("boss_head")]
 script = ExtResource("15_dh4gf")
-boss_head = NodePath("../..")
-boss_body = NodePath("../../Boss")
+boss_head = NodePath("../../Boss")
 
 [connection signal="area_entered" from="ShielddArea" to="." method="_on_shieldd_area_area_entered"]
 [connection signal="timeout" from="StateMachine/BlueStone/Timer" to="StateMachine/BlueStone" method="_on_timer_timeout"]

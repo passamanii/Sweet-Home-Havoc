@@ -1,6 +1,6 @@
 extends Node
 
-var xp: int = 3000
+var xp: int = 0
 var spentable_xp: int = xp
 var level: int = 1
 var health: int = 30 #Cada coração equivale à 10hp
