@@ -102,17 +102,15 @@ scale = Vector2(4, 4)
 position = Vector2(116, -4)
 up_direction = Vector2(0, 1)
 
-[node name="CanvasLayer(Pause)" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="CanvasLayer(Pause)" instance=ExtResource("8_u32h0")]
-
 [node name="Button" type="Button" parent="."]
 offset_left = 1168.0
 offset_top = 388.0
 offset_right = 1311.0
 offset_bottom = 515.0
 theme_override_font_sizes/font_size = 26
-text = "+2000XP"
+text = "+2500xp"
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_u32h0")]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
