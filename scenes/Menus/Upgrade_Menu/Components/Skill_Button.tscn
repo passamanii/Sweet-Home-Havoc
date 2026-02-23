@@ -40,7 +40,7 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="Level_Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -58,4 +58,3 @@ z_index = -1
 default_color = Color(0.22670749, 0.22670749, 0.22670746, 1)
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
-[connection signal="resized" from="." to="." method="_on_resized"]
