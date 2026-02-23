@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://dit3tfk54f47b" path="res://scripts/Menus/main_menu.gd" id="1_ed1wg"]
 [ext_resource type="Texture2D" uid="uid://36ql6k2n6im3" path="res://assets/General/Capa Menu.png" id="2_xu3ct"]
 [ext_resource type="FontFile" uid="uid://dl1p84ry4iww1" path="res://assets/General/UltimatePixelFont.ttf" id="3_8ohjt"]
-[ext_resource type="PackedScene" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="4_8ohjt"]
-
+[ext_resource type="PackedScene" uid="uid://dpm6regsguk6c" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="4_8ohjt"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x5no6"]
 texture = ExtResource("2_xu3ct")

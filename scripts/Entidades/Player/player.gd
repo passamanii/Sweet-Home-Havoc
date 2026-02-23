@@ -177,11 +177,10 @@ func dash() -> void:
 	await get_tree().create_timer(1.0).timeout
 	can_dash = true
 	
-func get_hit(enemy_damage: int, hit_position: Vector2) -> void:
-	var direction = (global_position - hit_position).normalized()
+func get_hit(enemy_damage: int, knockback_dir: Vector2, knockback_power: int = knockback_force) -> void:
+	knockback_velocity = knockback_dir * knockback_power
 	var resultant_damage = enemy_damage - floor(armor / 10)
 	
-	knockback_velocity = direction * knockback_force
 	regeneration_timer.start()
 	Player_Stats.health -= resultant_damage
 	if (Player_Stats.health <= 0):

@@ -1,0 +1,128 @@
+[gd_scene load_steps=18 format=3 uid="uid://d28005ch07b6e"]
+
+[ext_resource type="PackedScene" uid="uid://d4jioe3mwngxu" path="res://scenes/Entidades/Boss/FaimissonPhase2/stone.tscn" id="1_abntp"]
+[ext_resource type="Texture2D" uid="uid://dlku5o6afqn40" path="res://assets/Personagens/Boss/Faimison/stonse-sheet.png" id="3_it4c5"]
+[ext_resource type="Texture2D" uid="uid://dta1k5xvvvgbp" path="res://assets/Personagens/Boss/Faimison/blue-laser.png" id="4_wutin"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dad3"]
+atlas = ExtResource("3_it4c5")
+region = Rect2(0, 288, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyljh"]
+atlas = ExtResource("3_it4c5")
+region = Rect2(48, 288, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq0p5"]
+atlas = ExtResource("3_it4c5")
+region = Rect2(96, 288, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvocj"]
+atlas = ExtResource("3_it4c5")
+region = Rect2(144, 288, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yo12h"]
+atlas = ExtResource("3_it4c5")
+region = Rect2(0, 384, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy0q2"]
+atlas = ExtResource("3_it4c5")
+region = Rect2(48, 384, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vb52f"]
+atlas = ExtResource("3_it4c5")
+region = Rect2(96, 384, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnfm7"]
+atlas = ExtResource("3_it4c5")
+region = Rect2(144, 384, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abntp"]
+atlas = ExtResource("3_it4c5")
+region = Rect2(0, 336, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it4c5"]
+atlas = ExtResource("3_it4c5")
+region = Rect2(48, 336, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hspuf"]
+atlas = ExtResource("3_it4c5")
+region = Rect2(96, 336, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wutin"]
+atlas = ExtResource("3_it4c5")
+region = Rect2(144, 336, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jnlob"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dad3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyljh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq0p5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvocj")
+}],
+"loop": true,
+"name": &"Attacking",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yo12h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sy0q2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vb52f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnfm7")
+}],
+"loop": true,
+"name": &"Broken",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abntp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it4c5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hspuf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wutin")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u0n4u"]
+radius = 15.0
+height = 48.0
+
+[node name="BlueStone" instance=ExtResource("1_abntp")]
+
+[node name="StoneAnimSprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_jnlob")
+animation = &"Attacking"
+autoplay = "Idle"
+
+[node name="HitboxCollision" parent="HitboxArea" index="0"]
+shape = SubResource("CapsuleShape2D_u0n4u")
+debug_color = Color(0, 0.64643383, 0.24452707, 0.41960785)
+
+[node name="TextureRect" parent="Laser/LaserArea" index="0"]
+texture = ExtResource("4_wutin")
+
+[node name="LaserCollision" parent="Laser/LaserArea" index="1"]
+debug_color = Color(0.99999994, 0.008083367, 0.07147714, 0.41960785)
