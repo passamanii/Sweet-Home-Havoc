@@ -1,8 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://30bvspxyjpt"]
 
 [ext_resource type="PackedScene" uid="uid://ctti6v6ywm68k" path="res://scenes/Entidades/projectile_base.tscn" id="1_1xlsr"]
-[ext_resource type="Script" uid="uid://dap3j24o0nbet" path="res://scripts/Entidades/Boss/tornado.gd" id="2_ccrxq"]
+[ext_resource type="Script" uid="uid://dap3j24o0nbet" path="res://scripts/Entidades/Boss/FaimissonPhase1/tornado.gd" id="2_ccrxq"]
 [ext_resource type="Texture2D" uid="uid://x4gwxyoo5p2" path="res://assets/Personagens/Boss/Faimison/Tornado.png" id="2_x42r8"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ccrxq"]
 atlas = ExtResource("2_x42r8")

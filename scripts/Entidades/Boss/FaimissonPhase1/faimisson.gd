@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Faimisson
+class_name Faimisson1
 
 @export_category("Variables")
 @export var max_health: int
@@ -10,7 +10,6 @@ class_name Faimisson
 
 @export_category("Objects")
 @export var kick_marker: Marker2D
-@export var blow_marker: Marker2D
 @export var supersonic_power_scene: PackedScene
 @export var tornado_scene: PackedScene
 @export var fall_warn_scene: PackedScene
@@ -40,7 +39,6 @@ func _physics_process(delta: float) -> void:
 
 		var to_target = dash_target - global_position
 
-		# Quando passar do ponto além do player, começa a frear
 		if to_target.dot(dir) <= 0:
 			state_machine.travel("Dash_Brake")
 			if dir.x > 0:
@@ -49,7 +47,6 @@ func _physics_process(delta: float) -> void:
 				sprite.flip_h = false
 			dash_velocity = dash_velocity.move_toward(Vector2.ZERO, dash_brake_force * delta)
 
-			# Quando parar completamente
 			if dash_velocity.length() < 10:
 				dash = false
 				velocity = Vector2.ZERO
@@ -67,7 +64,6 @@ func start_dash() -> void:
 	elif dir.x < 0:
 		sprite.flip_h = true
 
-	# Define ponto além do player
 	dash_target = player_pos + dir * dash_extra_distance
 
 	dash_velocity = dir * dash_force
@@ -137,4 +133,4 @@ func boss_cycle():
 
 
 func _on_hitbox_area_area_entered(_area: Area2D) -> void:
-	player.get_hit(damage, global_position)
+	player.get_hit(damage, (player.global_position - global_position).normalized())

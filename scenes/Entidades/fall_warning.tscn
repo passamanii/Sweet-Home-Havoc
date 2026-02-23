@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://daxtrwmeb4u2g"]
 
-[ext_resource type="Script" uid="uid://c6mehewqdr782" path="res://scripts/Entidades/Boss/fall_warning.gd" id="1_q1fs3"]
+[ext_resource type="Script" uid="uid://c6mehewqdr782" path="res://scripts/Entidades/Boss/FaimissonPhase1/fall_warning.gd" id="1_q1fs3"]
 [ext_resource type="Texture2D" uid="uid://mkvnlonwx368" path="res://assets/Personagens/Boss/Faimison/fall-area-Sheet.png" id="1_urdsb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q1fs3"]

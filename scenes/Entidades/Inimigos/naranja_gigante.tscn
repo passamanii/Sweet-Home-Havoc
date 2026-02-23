@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://lhlrufu3najh"]
 
 [ext_resource type="PackedScene" uid="uid://ctti6v6ywm68k" path="res://scenes/Entidades/projectile_base.tscn" id="1_qpx0f"]
-[ext_resource type="Script" uid="uid://bikpr22mmge0u" path="res://scripts/Entidades/Boss/naranja_gigante.gd" id="2_d63h6"]
+[ext_resource type="Script" uid="uid://bikpr22mmge0u" path="res://scripts/Entidades/Boss/FaimissonPhase1/naranja_gigante.gd" id="2_d63h6"]
 [ext_resource type="Texture2D" uid="uid://bobbxva0eeifo" path="res://assets/Personagens/Boss/Faimison/naranja-Sheet.png" id="3_0pje3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d63h6"]

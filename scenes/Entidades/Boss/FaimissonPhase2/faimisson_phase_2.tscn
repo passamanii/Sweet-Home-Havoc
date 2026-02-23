@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=3 uid="uid://ccsnbkqk5gsj3"]
+
+[ext_resource type="Script" uid="uid://dlkvjij1ifpk5" path="res://scripts/Entidades/Boss/FaimissonPhase2/faimisson_phase_2.gd" id="1_hobne"]
+[ext_resource type="PackedScene" uid="uid://cw38ytq6wjnh3" path="res://scenes/Entidades/Boss/FaimissonPhase2/boss.tscn" id="1_q4qic"]
+[ext_resource type="PackedScene" uid="uid://brdrgoajua67a" path="res://scenes/Entidades/Boss/FaimissonPhase2/red_stone.tscn" id="2_vsmd2"]
+[ext_resource type="PackedScene" uid="uid://b37m6o3s8jlkg" path="res://scenes/Entidades/Boss/FaimissonPhase2/purple_stone.tscn" id="3_ppjuv"]
+[ext_resource type="PackedScene" uid="uid://d28005ch07b6e" path="res://scenes/Entidades/Boss/FaimissonPhase2/blue_stone.tscn" id="4_8r87q"]
+[ext_resource type="Script" path="res://scripts/Entidades/States/state_machine.gd" id="5_8r87q"]
+[ext_resource type="Script" uid="uid://cyiobase1dc0h" path="res://scripts/Entidades/Boss/FaimissonPhase2/boss_attack_state.gd" id="7_2o72l"]
+[ext_resource type="Script" uid="uid://c8grh8wn8c8no" path="res://scripts/Entidades/Boss/FaimissonPhase2/flying_punch_state.gd" id="7_4vpvw"]
+[ext_resource type="Script" uid="uid://dk5frt8iv3eap" path="res://scripts/Entidades/Boss/FaimissonPhase2/orbit_expand_state.gd" id="8_w2yf1"]
+[ext_resource type="Script" uid="uid://dnbggqg174xvx" path="res://scripts/Entidades/Boss/FaimissonPhase2/stones_laser_state.gd" id="9_smqhx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ppjuv"]
+radius = 77.28276
+
+[node name="FaimissonPhase2" type="Node2D" node_paths=PackedStringArray("stones_container", "shield")]
+scale = Vector2(4, 4)
+script = ExtResource("1_hobne")
+stones_container = NodePath("StonesContainer")
+stones_scene = Array[PackedScene]([ExtResource("4_8r87q"), ExtResource("2_vsmd2"), ExtResource("3_ppjuv")])
+shield = NodePath("ShielddArea")
+
+[node name="Boss" parent="." instance=ExtResource("1_q4qic")]
+scale = Vector2(4, 4)
+
+[node name="StonesContainer" type="Node2D" parent="."]
+
+[node name="ShielddArea" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShielddArea"]
+shape = SubResource("CircleShape2D_ppjuv")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_8r87q")
+initial_state = NodePath("BlayBlade")
+
+[node name="FlyingPunch" type="Node" parent="StateMachine" node_paths=PackedStringArray("boss_body")]
+script = ExtResource("7_4vpvw")
+boss_body = NodePath("../../Boss")
+
+[node name="OrbitExpand" type="Node" parent="StateMachine" node_paths=PackedStringArray("boss_head")]
+script = ExtResource("8_w2yf1")
+boss_head = NodePath("../..")
+
+[node name="StonesLaser" type="Node" parent="StateMachine" node_paths=PackedStringArray("boss_head")]
+script = ExtResource("9_smqhx")
+boss_head = NodePath("../..")
+
+[node name="BlayBlade" type="Node" parent="StateMachine" node_paths=PackedStringArray("boss_head")]
+script = ExtResource("7_2o72l")
+boss_head = NodePath("../..")
+
+[node name="BlueStone" type="Node" parent="StateMachine"]
+
+[node name="RedStone" type="Node" parent="StateMachine"]
+
+[node name="PurpleStone" type="Node" parent="StateMachine"]
+
+[connection signal="area_entered" from="ShielddArea" to="." method="_on_shieldd_area_area_entered"]

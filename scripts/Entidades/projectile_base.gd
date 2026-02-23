@@ -28,5 +28,5 @@ func _on_life_time_timeout() -> void:
 	queue_free()
 
 func _on_area_entered(_area: Area2D) -> void:
-	target.get_hit(damage, position)
+	target.get_hit(damage, (target.position - position).normalized())
 	queue_free()
