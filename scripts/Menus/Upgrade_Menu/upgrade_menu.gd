@@ -21,6 +21,8 @@ func _process(_delta: float) -> void:
 
 func check_unlocked_skills():
 	pass
+	#falta verificar quais skills o personagem já tem assim que ele
+	#entra dnv na sala, pra árvore de habilidades ser condizente
 	
 func connect_signals():
 	for button in menu_brackground.get_children():
