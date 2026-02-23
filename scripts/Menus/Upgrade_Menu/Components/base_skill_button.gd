@@ -1,18 +1,14 @@
 class_name SkillButton extends TextureButton
 
 @onready var panel: Panel = $Panel
-@onready var label: Label = $MarginContainer/Label
+@onready var level_label: Label = $MarginContainer/Level_Label
 @onready var line_2d: Line2D = $Line2D
 @export var skill_data: BasePerk
 
 signal hovered(button)
+signal clicked(button)
 signal unhovered
 
-#var level : int = 0:
-	#set(value):
-		#level = value
-		#label.text = str(level) + '/3'
-		#
 func _ready() -> void:
 	update_lines()
 	mouse_entered.connect(_on_mouse_entered)
@@ -29,7 +25,6 @@ func update_lines() -> void:
 	if (get_parent() is SkillButton):
 		line_2d.add_point(global_position + size/2)
 		line_2d.add_point(get_parent().global_position + size/2)
-		
 
 func _on_pressed() -> void:
 	
@@ -42,10 +37,8 @@ func _on_pressed() -> void:
 		panel.show_behind_parent = true
 		line_2d.default_color = Color(0.671, 0.536, 0.251, 1.0)
 		unlock_children()
-		print('Tentando aplicar: ', skill_data)
-		print('Classe: ', skill_data.get_class())
 		skill_data.apply_perk()
-	
+	emit_signal('clicked', self)
 			
 func unlock_children():
 	var skills = get_children()

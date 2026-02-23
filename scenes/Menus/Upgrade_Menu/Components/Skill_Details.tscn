@@ -6,11 +6,16 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0dl6"]
 bg_color = Color(0.21960784, 0.21960784, 0.21960784, 0.5686275)
 
+[sub_resource type="LabelSettings" id="LabelSettings_4a4je"]
+paragraph_spacing = 13.0
+font = ExtResource("1_04tkt")
+font_size = 26
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(3, 3)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mv2kd"]
 bg_color = Color(0.21960784, 0.21960784, 0.21960784, 0.5686275)
-
-[sub_resource type="LabelSettings" id="LabelSettings_bl8er"]
-shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abua3"]
 bg_color = Color(0.21960784, 0.21960784, 0.21960784, 0.5686275)
@@ -32,6 +37,12 @@ anchor_right = 0.64695007
 anchor_bottom = 0.33944955
 theme_override_fonts/font = ExtResource("1_04tkt")
 theme_override_styles/normal = SubResource("StyleBoxFlat_f0dl6")
+label_settings = SubResource("LabelSettings_4a4je")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+uppercase = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Descrição" type="Label" parent="."]
@@ -42,7 +53,12 @@ anchor_right = 0.92236596
 anchor_bottom = 0.89908254
 theme_override_fonts/font = ExtResource("1_04tkt")
 theme_override_styles/normal = SubResource("StyleBoxFlat_mv2kd")
-label_settings = SubResource("LabelSettings_bl8er")
+label_settings = SubResource("LabelSettings_4a4je")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+uppercase = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Custo" type="Label" parent="."]
@@ -53,4 +69,10 @@ anchor_right = 0.92236596
 anchor_bottom = 0.33944955
 theme_override_fonts/font = ExtResource("1_04tkt")
 theme_override_styles/normal = SubResource("StyleBoxFlat_abua3")
+label_settings = SubResource("LabelSettings_4a4je")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+uppercase = true
 metadata/_edit_use_anchors_ = true
