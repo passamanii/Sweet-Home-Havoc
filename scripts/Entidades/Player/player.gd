@@ -18,8 +18,8 @@ var level: int = 1
 var health: int = 5 #Cada coração equivale à 10hp
 var max_health: int = 30
 var damage: float = 10
-var regen_time: int = 5
-var armor: int = 0
+var regen: int = 0
+var armor: float = 0
 	
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var hitbox_area: Area2D = $HitboxArea
@@ -49,11 +49,10 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	define_stats()
+	regenerate()
 
 func define_spawn():
 	if (Player_Tracking.spawn_pos != Vector2.ZERO):
-		print(Player_Tracking.spawn_pos)
-		print(Player_Tracking.spawn_facing)
 		position = Player_Tracking.spawn_pos
 	if (Player_Tracking.spawn_facing != Vector2.ZERO):
 		facing = Player_Tracking.spawn_facing
@@ -61,24 +60,25 @@ func define_spawn():
 func define_stats():
 	if (Player_Stats.xp != 0):
 		xp = Player_Stats.xp
-	
 	if (Player_Stats.level != 1):
 		level = Player_Stats.level
-		
 	if (Player_Stats.health != 30):
 		health = Player_Stats.health
 		max_health = Player_Stats.max_health
-		
 	if (Player_Stats.damage != 10):
 		damage = Player_Stats.damage
-		
 	if (Player_Stats.speed != SPEED):
 		SPEED = Player_Stats.speed	
+	if (Player_Stats.armor != armor):
+		armor = Player_Stats.armor
+	if (Player_Stats.regen != regen):
+		regen = Player_Stats.regen
 		
 func regenerate():
 	if health != max_health:
-		health += 5
-		await get_tree().create_timer(regen_time).timeout
+		await get_tree().create_timer(5).timeout
+		health += 1 + regen
+		print(health)
 		
 func attack() -> void:
 	if (Input.is_action_just_pressed("attack")):
@@ -179,7 +179,8 @@ func get_hit(enemy_damage: int, hit_position: Vector2) -> void:
 	var direction = (global_position - hit_position).normalized()
 	knockback_velocity = direction * knockback_force
 	
-	Player_Stats.health -= enemy_damage
+	var resultant_damage = enemy_damage - floor(armor / 10)
+	Player_Stats.health -= resultant_damage
 	if (Player_Stats.health <= 0):
 		die()
 
