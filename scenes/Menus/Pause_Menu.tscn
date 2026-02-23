@@ -136,6 +136,7 @@ process_mode = 3
 visible = false
 
 [node name="PauseMenu" type="Control" parent="." node_paths=PackedStringArray("pause_menu_canvas", "anim_player")]
+top_level = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

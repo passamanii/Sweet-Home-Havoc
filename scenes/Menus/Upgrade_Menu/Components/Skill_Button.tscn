@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5v8pnct04rff"]
+[gd_scene load_steps=5 format=3 uid="uid://c5v8pnct04rff"]
 
-[ext_resource type="Texture2D" uid="uid://qwfnvx4fs5gy" path="res://assets/General/icone.png" id="1_asj5n"]
 [ext_resource type="Script" uid="uid://ds7t4m8ebh7mx" path="res://scripts/Menus/Upgrade_Menu/Components/base_skill_button.gd" id="2_2lww3"]
 [ext_resource type="FontFile" uid="uid://bk4s3llv2swwr" path="res://assets/General/MoonlitFlow-Regular.ttf" id="2_ne1w2"]
 [ext_resource type="FontFile" uid="uid://dl1p84ry4iww1" path="res://assets/General/UltimatePixelFont.ttf" id="4_2lww3"]
@@ -12,10 +11,10 @@ shadow_size = 16
 shadow_color = Color(0, 0, 0, 1)
 
 [node name="Skill_Button" type="TextureButton"]
-offset_right = 90.0
-offset_bottom = 93.0
+anchors_preset = -1
+anchor_right = 0.07258064
+anchor_bottom = 0.12916666
 toggle_mode = true
-texture_normal = ExtResource("1_asj5n")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_2lww3")

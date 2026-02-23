@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RegenPerk" load_steps=3 format=3 uid="uid://2xxkgat5rw7q"]
+
+[ext_resource type="Script" uid="uid://c33cb6jl7ycof" path="res://scripts/Modules/Perks/Regen_Perk.gd" id="1_awjkg"]
+[ext_resource type="Texture2D" uid="uid://cv4sskkh0o3cg" path="res://icon.svg" id="1_jsok7"]
+
+[resource]
+script = ExtResource("1_awjkg")
+icon = ExtResource("1_jsok7")
+perk_name = "Fã do Wolwerine"
+perk_id = 5
+perk_description = "Você maratona todos os filmes do Wolwerine durante as aulas de Cálculo III (+10REG)"
+perk_cost = Array[int]([100, 300, 500])
+metadata/_custom_type_script = "uid://c33cb6jl7ycof"
