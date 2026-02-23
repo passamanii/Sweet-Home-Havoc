@@ -13,6 +13,7 @@ var base_txt: String = 'XP: '
 var base_lvl_txt: String = '/3'
 
 func _ready() -> void:
+	process_unlocked_skills_on_reload()
 	connect_signals()
 	player = get_tree().get_first_node_in_group('Player')
 
@@ -20,24 +21,23 @@ func _process(_delta: float) -> void:
 	update_xp_shown()
 	check_visibility()
 	
-#func check_unlocked_skills(button: SkillButton):
-	#var skill_data = button.skill_data
-	#if skill_data.level == 0:
-		#pass
-	#else:
-		#button.level_label.text = str(skill_data.level) + base_lvl_txt
-		#button.panel.show_behind_parent = true
-		#button.line_2d.default_color = Color(0.671, 0.536, 0.251, 1.0)
-		#button.unlock_children()
-		#
-#func process_unlocked_skills_on_reload():
-	#for button in skill_buttons:
-		#check_unlocked_skills(button)
-		#print(button.skill_data)
-		#print(button.skill_data.level)
-	#
+func check_unlocked_skills(button: SkillButton):
+	var skill_data = button.skill_data
+	if skill_data.level == 0:
+		pass
+	else:
+		button.level_label.text = str(skill_data.level) + base_lvl_txt
+		button.panel.show_behind_parent = true
+		button.line_2d.default_color = Color(0.671, 0.536, 0.251, 1.0)
+		button.unlock_children()
+
+func process_unlocked_skills_on_reload():
+	for button in skill_buttons:
+		check_unlocked_skills(button)
+
 func check_visibility():
 	if self.is_visible_in_tree():
+		player.animation_player.play('Idle_Back')
 		player.pause()
 	elif !self.is_visible_in_tree():
 		player.play()
@@ -68,9 +68,9 @@ func update_detail_labels_shown(button: SkillButton):
 		return
 	name_label.text = skill_data.perk_name
 	desc_label.text = skill_data.perk_description
-	if skill_data.level <= 2 and skill_data.level > 0:
+	if skill_data.level < 3:
 		cost_label.text = 'Custo: %d' %skill_data.perk_cost[skill_data.level]
-	else:
+	elif skill_data.level == 3:
 		cost_label.text = 'MAX'	
 	
 func update_button_level_label(button: SkillButton):

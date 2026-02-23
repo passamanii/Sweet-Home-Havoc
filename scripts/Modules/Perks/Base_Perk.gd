@@ -5,6 +5,7 @@ enum SkillType {
 	Ativa
 }
 
+@export var icon: Texture2D
 @export var perk_name: String 
 @export var perk_id: int
 @export var skill_type: SkillType
@@ -13,8 +14,10 @@ enum SkillType {
 var level: int = 0
 
 func _init() -> void:
-	if self.get_class().
 	pass
+	
+func get_type() -> String:
+	return 'base'
 	
 func apply_perk() -> void:
 	pass
