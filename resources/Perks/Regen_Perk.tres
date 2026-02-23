@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_awjkg")
+regen_bonus = 5.0
 icon = ExtResource("1_jsok7")
 perk_name = "Fã do Wolwerine"
 perk_id = 5

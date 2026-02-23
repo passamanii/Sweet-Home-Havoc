@@ -4,9 +4,10 @@ var xp: int = 0
 var spentable_xp: int = xp
 var level: int = 1
 var health: int = 30 #Cada coração equivale à 10hp
-var max_health: int = health
-var defense: int = 0
+var max_health: int = 30
 var damage: float = 10 
+var armor: int = 0
+var regen: int = 0
 var level_requirement: Array = [0, 100, 300, 600, 800, 1000, 
 1200, 1400, 1600, 2250]
 var speed: int = 450
