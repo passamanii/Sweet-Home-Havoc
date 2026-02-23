@@ -13,6 +13,7 @@ var knockback_force: int = 1000
 var knockback_decay: int = 3000
 var knockback_velocity: Vector2 = Vector2.ZERO
 var facing: Vector2 = Vector2.ZERO
+var can_move: bool = true
 
 var xp: int = 0
 var level: int = 1
@@ -24,6 +25,8 @@ var damage: float = 10
 @onready var hitbox_area: Area2D = $HitboxArea
 @onready var hitbox_collision: CollisionShape2D = $HitboxArea/HitboxCollision
 @onready var camera_2d: Camera2D = $Camera2D
+
+@onready var ray_cast_2d: RayCast2D = $RayCast2D
 
 signal player_died
 
@@ -47,7 +50,9 @@ func _ready() -> void:
 		
 	if (Player_Stats.damage != 10):
 		damage = Player_Stats.damage
-		
+	
+	Player_Tracking.player = self
+
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
 		
@@ -55,10 +60,10 @@ func _physics_process(delta: float) -> void:
 	
 	apply_knockback(delta)
 		
-	if (!is_attacking or knockback_velocity.length() > 0):
+	if (can_move and (!is_attacking or knockback_velocity.length() > 0)):
 		movementPlayer()
 		
-	if (!is_dashing and !knockback_velocity.length() > 0):
+	if (can_move and !is_dashing and !knockback_velocity.length() > 0):
 		attack()
 		
 	animationsPlayer()
@@ -100,6 +105,10 @@ func movementPlayer() -> void:
 	
 	dir = Input.get_vector("left", "right", "up", "down")
 	velocity = dir * SPEED
+	
+	if (velocity != Vector2.ZERO):
+		ray_cast_2d.target_position = velocity.normalized() * 50
+		
 	
 	if (is_dashing):
 		velocity = dir * DASH_SPEED
@@ -186,3 +195,13 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if (anim_name.contains('Attack')):
 		is_attacking = false
 		hitbox_collision.disabled = true
+
+func _input(event: InputEvent) -> void:
+	if can_move:
+		if event.is_action_pressed("interact"):
+			var target = ray_cast_2d.get_collider()
+			if target != null:
+				if target.is_in_group("NPC"):
+					print("ashbalala")
+					can_move = false
+					target.start_dialog()

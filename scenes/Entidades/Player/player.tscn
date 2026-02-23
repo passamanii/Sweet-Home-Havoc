@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://d0d3ltflnild1"]
+[gd_scene format=3 uid="uid://d0d3ltflnild1"]
 
 [ext_resource type="Script" uid="uid://ds510arw8whi" path="res://scripts/Entidades/Player/player.gd" id="1_m80qi"]
 [ext_resource type="Texture2D" uid="uid://pwxq3yg5h0ba" path="res://assets/Ataques/Principal/ataque_mlee/principal_costa_ataque.png" id="2_j7qac"]
@@ -1236,48 +1236,46 @@ height = 21.944445
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
 height = 32.5
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1817651562 groups=["Player"]]
 scale = Vector2(4, 4)
 collision_layer = 2
 script = ExtResource("1_m80qi")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_a8ls1")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=493939824]
+libraries/ = SubResource("AnimationLibrary_a8ls1")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1407949831 groups=["Player"]]
 position = Vector2(0, -0.25)
 sprite_frames = SubResource("SpriteFrames_l71n6")
-animation = &"Idle_Front"
+animation = &"Dash"
 
-[node name="HurtboxArea" type="Area2D" parent="."]
+[node name="HurtboxArea" type="Area2D" parent="." unique_id=709946085]
 collision_layer = 4
 collision_mask = 64
 
-[node name="HurtboxCollision" type="CollisionShape2D" parent="HurtboxArea"]
+[node name="HurtboxCollision" type="CollisionShape2D" parent="HurtboxArea" unique_id=1249980339]
 position = Vector2(0, -2)
 scale = Vector2(1.8, 1.8)
 shape = SubResource("CapsuleShape2D_oprun")
 debug_color = Color(0.9033771, 0.30645284, 0.06732032, 0.41960785)
 
-[node name="HitboxArea" type="Area2D" parent="."]
+[node name="HitboxArea" type="Area2D" parent="." unique_id=1310102321]
 collision_layer = 8
 collision_mask = 32
 
-[node name="HitboxCollision" type="CollisionShape2D" parent="HitboxArea"]
+[node name="HitboxCollision" type="CollisionShape2D" parent="HitboxArea" unique_id=746085275]
 position = Vector2(25, 0)
 scale = Vector2(1.8, 1.8)
 shape = SubResource("CapsuleShape2D_g6mm2")
 disabled = true
 debug_color = Color(0.34153476, 0.6203204, 0, 0.41960785)
 
-[node name="PhysicsArea" type="CollisionShape2D" parent="."]
+[node name="PhysicsArea" type="CollisionShape2D" parent="." unique_id=937078575]
 position = Vector2(0, -1.75)
 scale = Vector2(1.1, 1.1)
 shape = SubResource("CapsuleShape2D_dqkch")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1686276555]
 zoom = Vector2(0.7, 0.7)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
@@ -1285,6 +1283,8 @@ drag_left_margin = 0.12
 drag_top_margin = 0.12
 drag_right_margin = 0.12
 drag_bottom_margin = 0.12
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1451910985]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="HitboxArea" to="." method="_on_hitbox_area_area_entered"]

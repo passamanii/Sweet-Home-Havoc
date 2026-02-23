@@ -1,0 +1,36 @@
+{
+	"faimisson": {
+		"trees": [
+			{
+				"branch_id": "faimisson_1",
+				"dialogs": [
+					{
+						"state": "start",
+						"text": "oi",
+						"options": {
+							"oi": "quest",
+							"tchau": "exit"
+						}
+					},
+					{
+						"state": "quest",
+						"text": "vai pra biblioteca",
+						"options": {
+							"blz": "exit"
+						}
+					},
+					{
+						"state": "end",
+						"text": "flw",
+						"options": {}
+					},
+					{
+						"state": "exit",
+						"text": "flw se cuida",
+						"options": {}
+					}
+				]
+			}
+		]
+	}
+}
