@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Armor_Perk" load_steps=2 format=3 uid="uid://cfvmxi37lserd"]
+
+[ext_resource type="Script" uid="uid://c3y3qmpk2015l" path="res://scripts/Modules/Perks/Armor_Perk.gd" id="1_7le4k"]
+
+[resource]
+script = ExtResource("1_7le4k")
+perk_name = "Encouraçado"
+perk_id = 4
+perk_description = "Você rouba a caracaça de um tatu à caminho da faculdade (+10DEF)"
+perk_cost = Array[int]([100, 300, 500])
+metadata/_custom_type_script = "uid://c3y3qmpk2015l"

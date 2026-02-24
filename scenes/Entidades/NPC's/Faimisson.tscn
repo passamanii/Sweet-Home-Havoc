@@ -1,0 +1,119 @@
+[gd_scene load_steps=13 format=3 uid="uid://bd3ekfcll3kxm"]
+
+[ext_resource type="Texture2D" uid="uid://bxyw8ku1ufebk" path="res://assets/Personagens/Boss/Faimison/Faimison_base_fala_pisca.png" id="1_fbb7o"]
+[ext_resource type="Script" uid="uid://camfyfed3os24" path="res://scripts/Entidades/NPC's/faimisson.gd" id="1_u4kdk"]
+[ext_resource type="PackedScene" path="res://scenes/Modules/Interactions/Interact_With.tscn" id="2_u4kdk"]
+[ext_resource type="PackedScene" uid="uid://c4xgm1m1pev1d" path="res://scenes/Menus/Upgrade_Menu/Upgrade_Menu.tscn" id="4_56iqj"]
+
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dx5nc"]
+size = Vector2(30, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4kdk"]
+atlas = ExtResource("1_fbb7o")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56iqj"]
+atlas = ExtResource("1_fbb7o")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2u7l"]
+atlas = ExtResource("1_fbb7o")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_snxsd"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_u4kdk")
+}, {
+"duration": 0.11,
+"texture": SubResource("AtlasTexture_56iqj")
+}, {
+"duration": 0.21,
+"texture": SubResource("AtlasTexture_x2u7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4kdk")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_dx5nc"]
+resource_name = "Idle"
+length = 5.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 2.0414839, 2.3291163),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_56iqj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x2u7l"]
+_data = {
+&"Idle": SubResource("Animation_dx5nc"),
+&"RESET": SubResource("Animation_56iqj")
+}
+
+[node name="Faimisson" type="Node2D"]
+script = ExtResource("1_u4kdk")
+
+[node name="InteractWith" parent="." instance=ExtResource("2_u4kdk")]
+action = "Open Upgrades"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractWith"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_dx5nc")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_snxsd")
+animation = &"Idle"
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_x2u7l")
+}
+
+[node name="CanvasLayer(Upgrade)" type="CanvasLayer" parent="."]
+
+[node name="UpgradeMenu" parent="CanvasLayer(Upgrade)" instance=ExtResource("4_56iqj")]
+visible = false
+top_level = true

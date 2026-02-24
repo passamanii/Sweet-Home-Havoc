@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://d3nk8vps2n0es"]
+
+[node name="Collectibles" type="Control"]
+layout_mode = 3
+anchors_preset = 0
