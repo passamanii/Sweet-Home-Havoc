@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cwucf0dgilgw5"]
+
+[ext_resource type="Script" uid="uid://d4gdemhiax557" path="res://scripts/Dialog/dialog_ui.gd" id="1_tubdg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cmeh0"]
+bg_color = Color(0.21332772, 0.21332772, 0.21332766, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[node name="DialogUI" type="Control" unique_id=1452570662]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tubdg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=55173605]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1771528483]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -192.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cmeh0")
+
+[node name="DialogBox" type="VBoxContainer" parent="CanvasLayer/Panel" unique_id=1633731771]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="DialogSpeaker" type="Label" parent="CanvasLayer/Panel/DialogBox" unique_id=1050311593]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "Name"
+
+[node name="DialogText" type="Label" parent="CanvasLayer/Panel/DialogBox" unique_id=1445133759]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "Text blablabla"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DialogOptions" type="HBoxContainer" parent="CanvasLayer/Panel/DialogBox" unique_id=40792853]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1

@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4jioe3mwngxu"]
+
+[ext_resource type="Script" uid="uid://m1a3pgsitvua" path="res://scripts/Entidades/Boss/FaimissonPhase2/stone.gd" id="1_kpjt5"]
+[ext_resource type="PackedScene" uid="uid://c1ugmctvlhh8m" path="res://scenes/UI/damage_popup.tscn" id="2_7i3hv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7i3hv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7i3hv"]
+size = Vector2(10000, 48)
+
+[node name="Stone" type="Node2D" node_paths=PackedStringArray("anim_sprite", "laser_pivot", "laser", "laser_collision")]
+script = ExtResource("1_kpjt5")
+damage_popup = ExtResource("2_7i3hv")
+anim_sprite = NodePath("StoneAnimSprite")
+laser_pivot = NodePath("Laser")
+laser = NodePath("Laser/LaserArea")
+laser_collision = NodePath("Laser/LaserArea/LaserCollision")
+
+[node name="StoneAnimSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7i3hv")
+
+[node name="HitboxArea" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 8
+
+[node name="HitboxCollision" type="CollisionShape2D" parent="HitboxArea"]
+
+[node name="Laser" type="Node2D" parent="."]
+
+[node name="LaserArea" type="Area2D" parent="Laser"]
+visible = false
+collision_layer = 64
+collision_mask = 4
+monitoring = false
+
+[node name="TextureRect" type="TextureRect" parent="Laser/LaserArea"]
+offset_left = 24.0
+offset_top = -24.0
+offset_right = 10024.0
+offset_bottom = 24.0
+pivot_offset = Vector2(0, 24)
+stretch_mode = 1
+
+[node name="LaserCollision" type="CollisionShape2D" parent="Laser/LaserArea"]
+position = Vector2(5024, 0)
+shape = SubResource("RectangleShape2D_7i3hv")
+
+[connection signal="area_entered" from="HitboxArea" to="." method="_on_hitbox_area_area_entered"]
+[connection signal="area_entered" from="Laser/LaserArea" to="." method="_on_laser_area_area_entered"]

@@ -28,7 +28,7 @@ func spawn(pos: Vector2, glitched: bool = false) -> void:
 			enemy_instance.max_health *= 4
 			enemy_instance.scale *= 1.8
 			enemy_instance.xp_amount *= 2
-			enemy_instance.sprite_2d.material = load("res://Shaders/glitch.tres")
+			enemy_instance.sprite_2d.material = load("res://assets/Shaders/glitch.tres")
 		get_tree().current_scene.add_child(enemy_instance)
 		spawn_sequence += 1
 

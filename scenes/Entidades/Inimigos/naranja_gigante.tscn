@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://lhlrufu3najh"]
+
+[ext_resource type="PackedScene" uid="uid://ctti6v6ywm68k" path="res://scenes/Entidades/projectile_base.tscn" id="1_qpx0f"]
+[ext_resource type="Script" uid="uid://bikpr22mmge0u" path="res://scripts/Entidades/Boss/FaimissonPhase1/naranja_gigante.gd" id="2_d63h6"]
+[ext_resource type="Texture2D" uid="uid://bobbxva0eeifo" path="res://assets/Personagens/Boss/Faimison/naranja-Sheet.png" id="3_0pje3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d63h6"]
+atlas = ExtResource("3_0pje3")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtbao"]
+atlas = ExtResource("3_0pje3")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nl4q"]
+atlas = ExtResource("3_0pje3")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pje3"]
+atlas = ExtResource("3_0pje3")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqr1t"]
+atlas = ExtResource("3_0pje3")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euu1o"]
+atlas = ExtResource("3_0pje3")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mqr1t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d63h6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtbao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nl4q")
+}],
+"loop": true,
+"name": &"Falling",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pje3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqr1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euu1o")
+}],
+"loop": false,
+"name": &"Hits",
+"speed": 14.0
+}]
+
+[node name="NaranjaGigante" node_paths=PackedStringArray("anim_sprite") instance=ExtResource("1_qpx0f")]
+top_level = true
+scale = Vector2(8, 8)
+monitoring = false
+script = ExtResource("2_d63h6")
+anim_sprite = NodePath("AnimSprite")
+damage = 1
+speed = 600
+
+[node name="AnimSprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_mqr1t")
+animation = &"Hits"
+autoplay = "Falling"
+frame = 2
+frame_progress = 1.0
+offset = Vector2(0, -14)
+
+[node name="LifeTime" parent="." index="2"]
+wait_time = 15.0
+one_shot = false
