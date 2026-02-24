@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg6dkdf4iidr8"]
+
+[ext_resource type="Script" uid="uid://bld05all2p7v2" path="res://scripts/UI/Player_UI/player_hud.gd" id="1_nopnq"]
+[ext_resource type="PackedScene" uid="uid://b0q667ht4varg" path="res://scenes/UI/Player_UI/heart_ui.tscn" id="2_cdrrh"]
+
+[node name="Player_HUD" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_nopnq")
+
+[node name="Control" type="Control" parent="."]
+z_index = 5
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Control"]
+layout_mode = 0
+offset_right = 620.0
+offset_bottom = 96.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+
+[node name="Heart_UI" parent="Control/HFlowContainer" instance=ExtResource("2_cdrrh")]
+layout_mode = 2
+
+[node name="Heart_UI2" parent="Control/HFlowContainer" instance=ExtResource("2_cdrrh")]
+layout_mode = 2
+
+[node name="Heart_UI3" parent="Control/HFlowContainer" instance=ExtResource("2_cdrrh")]
+layout_mode = 2
+
+[node name="Heart_UI4" parent="Control/HFlowContainer" instance=ExtResource("2_cdrrh")]
+layout_mode = 2
+
+[node name="Heart_UI5" parent="Control/HFlowContainer" instance=ExtResource("2_cdrrh")]
+layout_mode = 2
+
+[node name="Heart_UI6" parent="Control/HFlowContainer" instance=ExtResource("2_cdrrh")]
+layout_mode = 2

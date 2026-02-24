@@ -33,3 +33,6 @@ func _on_transition_finished() -> void:
 		Player_Tracking.spawn_pos = Vector2.ZERO
 		Player_Tracking.spawn_facing = Vector2.UP
 		get_tree().change_scene_to_file('res://scenes/Mapas/Library/Biblioteca.tscn')
+
+func _on_button_pressed() -> void:
+	player.get_hit(10, Vector2.ZERO)

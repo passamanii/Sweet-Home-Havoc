@@ -23,6 +23,7 @@ Game_Controller="*res://scripts/Globals/Game_Controller.gd"
 Cutscenes_Controller="*res://scripts/Globals/Cutscenes_Controller.gd"
 Player_Stats="*res://scripts/Globals/player_stats.gd"
 Skills_Stats="*res://scripts/Globals/Skills_Stats.gd"
+PlayerHud="*res://scenes/UI/Player_UI/player_hud.tscn"
 
 [display]
 

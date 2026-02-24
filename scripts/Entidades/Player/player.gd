@@ -16,7 +16,7 @@ var facing: Vector2 = Vector2.ZERO
 var xp: int = 0
 var level: int = 1
 var health: int = 30 #Cada coração equivale à 10hp
-var max_health: int = 30
+var max_health: float = 30
 var damage: float = 10
 var regen: int = 0
 var armor: float = 0
@@ -28,10 +28,12 @@ var armor: float = 0
 @onready var regeneration_timer: Timer = $Regeneration_Timer
 
 signal player_died
+signal took_damage
 
 func _ready() -> void:
 	define_spawn()
 	define_stats()
+	update_health_bar()
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
@@ -50,6 +52,7 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	define_stats()
+	update_health_bar()
 
 func define_spawn():
 	if (Player_Tracking.spawn_pos != Vector2.ZERO):
@@ -73,7 +76,10 @@ func define_stats():
 		armor = Player_Stats.armor
 	if (Player_Stats.regen != regen):
 		regen = Player_Stats.regen
-		
+
+func update_health_bar():
+	PlayerHud.update_hp(health, max_health)
+
 func regenerate():
 	var health_to_regenerate = 5 + regen
 	if Player_Stats.health != Player_Stats.max_health:
@@ -81,7 +87,7 @@ func regenerate():
 			Player_Stats.health = Player_Stats.max_health
 		else:
 			Player_Stats.health += health_to_regenerate
-		
+
 func attack() -> void:
 	if (Input.is_action_just_pressed("attack")):
 		is_attacking = true
@@ -186,7 +192,8 @@ func get_hit(enemy_damage: int, hit_position: Vector2) -> void:
 	Player_Stats.health -= resultant_damage
 	if (Player_Stats.health <= 0):
 		die()
-
+	emit_signal('took_damage')
+	
 func die() -> void:
 	Game_Controller.player_alive = false
 	var cam = camera_2d
@@ -194,6 +201,7 @@ func die() -> void:
 	cam.global_position = global_position
 	queue_free()
 	player_died.emit()
+	get_tree().reload_current_scene()
 
 func pause() -> void:
 	set_physics_process(false)
@@ -207,7 +215,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if (anim_name.contains('Attack')):
 		is_attacking = false
 		hitbox_collision.disabled = true
-
 
 func _on_regeneration_timer_timeout() -> void:
 	regenerate()
