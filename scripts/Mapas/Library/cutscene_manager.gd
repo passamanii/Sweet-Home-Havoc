@@ -26,6 +26,7 @@ func move_right() -> void:
 func first_time_in_library_cutscene() -> void:
 	Game_Controller.is_cutscene = true
 	player.pause()
+	player.can_move = false
 	
 	print("Acho que é aqui que vou ter que ficar durante o resto da semana...")
 	await get_tree().create_timer(2).timeout
@@ -128,6 +129,7 @@ func first_time_in_library_cutscene() -> void:
 	await get_tree().create_timer(0.1).timeout
 
 	print("Objetivo atualizado: Encontrar o armário do setor restrito.")
+	player.can_move = true
 	player.play()
 	Cutscenes_Controller.showed_enter_library_cutscene = true
 	Game_Controller.is_cutscene = false
@@ -135,6 +137,7 @@ func first_time_in_library_cutscene() -> void:
 func open_locker_cutscene() -> void:
 	Game_Controller.is_cutscene = true
 	locker_code_canvas.hide()
+	player.can_move = false
 	player.pause()
 	player.animation_player.play("Idle_Back")
 	old_locker_1.monitoring = false
@@ -213,6 +216,7 @@ func open_locker_cutscene() -> void:
 	Cutscenes_Controller.showed_open_locker_1 = true
 	Game_Controller.has_first_book = true
 	Game_Controller.is_cutscene = false
+	player.can_move = true
 	player.play()
 
 func win_coming_back_from_dungeon_cutscene() -> void:
@@ -314,7 +318,7 @@ func win_coming_back_from_dungeon_cutscene() -> void:
 	print("Objetivo atualizado: Dominar o próximo capítulo.")
 	await get_tree().create_timer(2).timeout
 
-	player.play()
+	player.can_move = true
 	Game_Controller.is_cutscene = false
 	Cutscenes_Controller.showed_first_dungeon_win_cutscene = true
 	

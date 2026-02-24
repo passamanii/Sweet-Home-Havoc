@@ -46,7 +46,7 @@ func amount(number: int = 1):
 		if waves_controller.actual_wave >= 2 and second % (8 - waves_controller.actual_wave) == 0 and i <= (waves_controller.actual_wave - 1):
 			spawn(get_random_position(), true)
 		
-		spawn(get_random_position(), true)
+		spawn(get_random_position())
 
 func pause() -> void:
 	can_spanw = false
