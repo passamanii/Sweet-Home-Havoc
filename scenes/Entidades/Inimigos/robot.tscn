@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://bk8cwdy7q3mnb"]
+[gd_scene load_steps=12 format=3 uid="uid://mykqxws22bec"]
 
-[ext_resource type="PackedScene" uid="uid://ddg7ip52jxuou" path="res://scenes/Entidades/Inimigos/base_enemy.tscn" id="1_gg1tp"]
+[ext_resource type="PackedScene" path="res://scenes/Entidades/Inimigos/base_enemy.tscn" id="1_gg1tp"]
 [ext_resource type="Texture2D" uid="uid://d10vgv6u2trqu" path="res://assets/Personagens/Boss/Leonardo/robos/robo01_andando.png" id="2_qytof"]
 
 [sub_resource type="Animation" id="Animation_ogmgt"]
@@ -149,7 +149,7 @@ max_health = 25
 damage = 3
 speed = 300
 chase_range = 999999
-xp_amount = 25
+xp_amount = 5
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_qytof")

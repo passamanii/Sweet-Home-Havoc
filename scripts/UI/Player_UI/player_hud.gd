@@ -28,9 +28,7 @@ func update_heart(index: int, hp: int) -> void:
 	var local_hp: int = hp - index * hp_per_heart
 	if local_hp >= 10:
 		hearts[index].value = 2
-	elif local_hp >= 5:
+	elif (local_hp >= 5 or local_hp < 5) and local_hp > 0:
 		hearts[index].value = 1
 	else:
 		hearts[index].value = 0
-	#var _value: int = clampi(hp - index * 10, 0, 2)
-	#hearts[index].value = _value

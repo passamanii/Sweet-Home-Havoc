@@ -2080,7 +2080,6 @@ libraries = {
 position = Vector2(0, -0.25)
 sprite_frames = SubResource("SpriteFrames_l71n6")
 animation = &"Shoot_Front"
-frame = 1
 
 [node name="HurtboxArea" type="Area2D" parent="."]
 collision_layer = 4
@@ -2127,5 +2126,4 @@ position = Vector2(14.25, 6.5)
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="area_entered" from="HitboxArea" to="." method="_on_hitbox_area_area_entered"]
 [connection signal="timeout" from="Regeneration_Timer" to="." method="_on_regeneration_timer_timeout"]

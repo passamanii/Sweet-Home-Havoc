@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cg6dkdf4iidr8"]
+[gd_scene load_steps=4 format=3 uid="uid://cg6dkdf4iidr8"]
 
 [ext_resource type="Script" uid="uid://bld05all2p7v2" path="res://scripts/UI/Player_UI/player_hud.gd" id="1_nopnq"]
 [ext_resource type="PackedScene" uid="uid://b0q667ht4varg" path="res://scenes/UI/Player_UI/heart_ui.tscn" id="2_cdrrh"]
+[ext_resource type="PackedScene" uid="uid://5v5ekpfvgx5m" path="res://scenes/UI/Player_UI/xp_ui.tscn" id="3_cdrrh"]
 
 [node name="Player_HUD" type="CanvasLayer"]
 process_mode = 3
@@ -41,3 +42,18 @@ layout_mode = 2
 
 [node name="Heart_UI6" parent="Control/HFlowContainer" instance=ExtResource("2_cdrrh")]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+custom_minimum_size = Vector2(380, 27)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.68064517
+anchor_top = 0.05
+anchor_right = 1.0024194
+anchor_bottom = 0.3138889
+offset_right = -19.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Xp_UI" parent="Control/MarginContainer" instance=ExtResource("3_cdrrh")]
+layout_mode = 2
+size_flags_vertical = 0

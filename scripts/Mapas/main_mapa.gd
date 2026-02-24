@@ -35,4 +35,8 @@ func _on_transition_finished() -> void:
 		get_tree().change_scene_to_file('res://scenes/Mapas/Library/Biblioteca.tscn')
 
 func _on_button_pressed() -> void:
-	player.get_hit(10, Vector2.ZERO)
+	player.get_hit(10, Vector2.RIGHT)
+
+
+func _on_button_2_pressed() -> void:
+	Player_Stats.gain_xp(50)
