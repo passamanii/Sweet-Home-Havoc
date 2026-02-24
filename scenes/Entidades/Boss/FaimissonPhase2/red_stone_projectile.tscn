@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://i1sny6dbrit4"]
+
+[ext_resource type="PackedScene" uid="uid://ctti6v6ywm68k" path="res://scenes/Entidades/projectile_base.tscn" id="1_2tuma"]
+[ext_resource type="Script" uid="uid://doex0g84ere80" path="res://scripts/Entidades/Boss/FaimissonPhase2/red_stone_projectile.gd" id="2_cdqtc"]
+[ext_resource type="Texture2D" uid="uid://wwopr3sa6q28" path="res://assets/Personagens/Boss/Faimison/red-stone-projectile.png" id="2_idctk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdqtc"]
+atlas = ExtResource("2_idctk")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p4pm5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdqtc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oj1in"]
+radius = 4.0
+height = 10.5
+
+[sub_resource type="Gradient" id="Gradient_idctk"]
+offsets = PackedFloat32Array(0, 0.4642857, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.25552166, 3.7150923e-07, 6.016344e-08, 1, 0.9646802, 0, 0.4832314, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cdqtc"]
+gradient = SubResource("Gradient_idctk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_idctk"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 5.0
+angle_min = -99.99999
+angle_max = 100.000015
+direction = Vector3(0, 0, 0)
+initial_velocity_min = -5.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_cdqtc")
+
+[node name="RedStoneProjectile" groups=["RedStone"] instance=ExtResource("1_2tuma")]
+collision_mask = 69
+script = ExtResource("2_cdqtc")
+turn_velocity = 1
+damage = 1
+speed = 300
+life_time = 15.0
+
+[node name="AnimSprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_p4pm5")
+autoplay = "default"
+
+[node name="Collision" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_oj1in")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="3"]
+position = Vector2(0, 2.75)
+amount = 80
+process_material = SubResource("ParticleProcessMaterial_idctk")

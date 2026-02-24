@@ -1,42 +1,40 @@
 extends Node2D
 
+@onready var npc_cutscene: CharacterBody2D = $NPC_Cutscene
+
+@export_category("Objects")
+@export var player: BasePlayer
+@export var fade_transition: FadeTransition
+
 var area_entered: String = ''
 
 func _ready() -> void:
-	
-	$Menu_Transition.show()
-	$Menu_Transition/AnimationPlayer.play("fade_out")
+	fade_transition.transition_end.connect(_on_transition_finished)
+	fade_transition.out()
+	await get_tree().create_timer(0.5).timeout 
+	npc_cutscene.start_dialog()
+	Player_Tracking.player.can_move = false
 	
 func on_Enter_Sala_Faimisson_body_entered(body: Node2D) -> void:
-
 	if (body.is_in_group('Player')):
-		
-		$player.set_physics_process(false)
+		player.animation_player.play('Idle_Right')
+		player.pause()
 		area_entered = 'faimison'
-		$Menu_Transition.show()
-		$Menu_Transition/Timer.start()
-		$Menu_Transition/AnimationPlayer.play('fade_in')
+		fade_transition.init()
 		
 func _on_enter_biblioteca_body_entered(body: Node2D) -> void:
-	
 	if (body.is_in_group('Player')):
-		
-		$player.set_physics_process(false)
+		player.animation_player.play('Idle_Back')
+		player.pause()
 		area_entered = 'biblioteca'
-		$Menu_Transition.show()
-		$Menu_Transition/Timer.start()
-		$Menu_Transition/AnimationPlayer.play('fade_in')
+		fade_transition.init()
 		
-func _on_timer_timeout() -> void:
-	
+func _on_transition_finished() -> void:
 	if (area_entered == 'faimison'):
-		
 		Player_Tracking.spawn_pos = Vector2.ZERO
 		Player_Tracking.spawn_facing = Vector2.RIGHT
 		get_tree().change_scene_to_file('res://scenes/Mapas/Sala_Faimisson.tscn')
-		
 	elif (area_entered == 'biblioteca'):
-		
-		Player_Tracking.spawn_pos = Vector2.ZERO		
+		Player_Tracking.spawn_pos = Vector2.ZERO
 		Player_Tracking.spawn_facing = Vector2.UP
-		get_tree().change_scene_to_file('res://scenes/Mapas/Biblioteca.tscn')
+		get_tree().change_scene_to_file('res://scenes/Mapas/Library/Biblioteca.tscn')

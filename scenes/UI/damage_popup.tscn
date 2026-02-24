@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1ugmctvlhh8m"]
+
+[ext_resource type="FontFile" uid="uid://bk4s3llv2swwr" path="res://assets/General/MoonlitFlow-Regular.ttf" id="1_g0r5e"]
+[ext_resource type="Script" uid="uid://b80lqq5dsh7t1" path="res://scripts/UI/damage_popup.gd" id="1_kqpo5"]
+
+[node name="Damage_Popup" type="Label"]
+offset_left = -50.0
+offset_top = -12.0
+offset_right = 50.0
+offset_bottom = 12.0
+pivot_offset = Vector2(50, 12)
+theme_override_fonts/font = ExtResource("1_g0r5e")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_kqpo5")
