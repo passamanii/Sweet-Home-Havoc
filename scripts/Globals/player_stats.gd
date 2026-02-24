@@ -12,6 +12,9 @@ var level_requirement: Array = [0, 100, 300, 600, 800, 1000,
 1200, 1400, 1600, 2250]
 var speed: int = 450
 
+enum weapon {PEN, INK, JBL}
+var weapen_equipped: weapon = weapon.PEN
+
 func gain_xp(xp_amount) -> void:
 	if (level != 10):
 		xp += xp_amount

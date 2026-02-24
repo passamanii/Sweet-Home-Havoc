@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://w8s4rygyr8i1"]
+
+[ext_resource type="PackedScene" uid="uid://ctti6v6ywm68k" path="res://scenes/Entidades/projectile_base.tscn" id="1_hblho"]
+[ext_resource type="Script" uid="uid://dlqd50y5gx6yy" path="res://scripts/Entidades/Player/jbl_sound.gd" id="2_drmr7"]
+[ext_resource type="Texture2D" uid="uid://0oosnjbw2100" path="res://assets/Ataques/Principal/ataque_ranged/som_da_jbl.png" id="2_vdcxa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drmr7"]
+atlas = ExtResource("2_vdcxa")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wb264"]
+atlas = ExtResource("2_vdcxa")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgkdc"]
+atlas = ExtResource("2_vdcxa")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twcdi"]
+atlas = ExtResource("2_vdcxa")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tdl5b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drmr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wb264")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgkdc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twcdi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hblho"]
+size = Vector2(54.5, 67.25)
+
+[node name="JblSound" instance=ExtResource("1_hblho")]
+collision_layer = 8
+collision_mask = 32
+script = ExtResource("2_drmr7")
+damage = 10
+speed = 200
+life_time = 1.0
+
+[node name="AnimSprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_tdl5b")
+autoplay = "default"
+frame_progress = 0.5946167
+
+[node name="Collision" parent="." index="1"]
+position = Vector2(9.5, -0.375)
+shape = SubResource("RectangleShape2D_hblho")
+
+[node name="LifeTime" parent="." index="2"]
+wait_time = 2.0
+
+[node name="DmgPerSec" type="Timer" parent="." index="3"]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="DmgPerSec" to="." method="_on_dmg_per_sec_timeout"]
