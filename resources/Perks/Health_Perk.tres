@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_mnw7r")
+health_bonus = 5
 icon = ExtResource("1_22wdj")
 perk_name = "Fitness"
 perk_id = 1

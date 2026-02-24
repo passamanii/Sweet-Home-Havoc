@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6a1wkp5gi3vb"]
+
+[ext_resource type="FontFile" uid="uid://dl1p84ry4iww1" path="res://assets/General/UltimatePixelFont.ttf" id="1_ec8d5"]
+[ext_resource type="Script" uid="uid://5xqr0ocxr1ee" path="res://scripts/UI/xp_popup.gd" id="2_2gqya"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2gqya"]
+font = ExtResource("1_ec8d5")
+font_color = Color(0.22477925, 0.72383237, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[node name="Xp_Popup" type="Label"]
+z_index = 5
+offset_left = -60.0
+offset_top = -17.5
+offset_right = 48.0
+offset_bottom = 17.5
+text = "+ 0 xp"
+label_settings = SubResource("LabelSettings_2gqya")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_2gqya")

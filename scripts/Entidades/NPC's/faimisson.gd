@@ -11,9 +11,11 @@ func _ready() -> void:
 func _on_interact():
 	if menu_open == false:
 		show_upgrade_menu()
+		PlayerHud.hide()
 	else:
 		hide_upgrade_menu()
 		set_physics_process(true)
+		PlayerHud.show()
 	
 func show_upgrade_menu():
 	menu_open = true
