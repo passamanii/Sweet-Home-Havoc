@@ -1,0 +1,66 @@
+{
+	"cutscene": {
+		"trees": [
+			{
+				"branch_id": "dia_1",
+				"dialogs": [
+					{
+						"state": "start",
+						"text": "Prova na sexta...",
+						"options": {
+							"...": "next_1"
+						}
+					},
+					{
+						"state": "next_1",
+						"text": "Eu devia ter estudado.",
+						"options": {
+							"...": "next_2"
+						}
+					},
+					{
+						"state": "next_2",
+						"text": "Tá. Hoje eu resolvo isso.",
+						"options": {
+							"...": "exit"
+						}
+					},
+				]
+			}
+		]
+	},
+	"faimisson": {
+		"trees": [
+			{
+				"branch_id": "faimisson_1",
+				"dialogs": [
+					{
+						"state": "start",
+						"text": "oi",
+						"options": {
+							"oi": "quest",
+							"tchau": "exit"
+						}
+					},
+					{
+						"state": "quest",
+						"text": "vai pra biblioteca",
+						"options": {
+							"blz": "exit"
+						}
+					},
+					{
+						"state": "end",
+						"text": "flw",
+						"options": {}
+					},
+					{
+						"state": "exit",
+						"text": "flw se cuida",
+						"options": {}
+					}
+				]
+			}
+		]
+	},
+}
