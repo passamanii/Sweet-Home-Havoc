@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4xgm1m1pev1d"]
+[gd_scene load_steps=12 format=3 uid="uid://c4xgm1m1pev1d"]
 
 [ext_resource type="Script" uid="uid://b44c54m0eqwkk" path="res://scripts/Menus/Upgrade_Menu/upgrade_menu.gd" id="1_bce5w"]
 [ext_resource type="PackedScene" uid="uid://c5v8pnct04rff" path="res://scenes/Menus/Upgrade_Menu/Components/Skill_Button.tscn" id="2_op85r"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dlmqtpplimku0" path="res://scenes/Menus/Upgrade_Menu/Components/Skill_Details.tscn" id="4_mv2kd"]
 [ext_resource type="Resource" uid="uid://fn2osaymxes" path="res://resources/Perks/Speed_Perk.tres" id="5_v31v4"]
 [ext_resource type="Resource" uid="uid://cfvmxi37lserd" path="res://resources/Perks/Armor_Perk.tres" id="6_lnq8a"]
+[ext_resource type="Resource" uid="uid://2xxkgat5rw7q" path="res://resources/Perks/Regen_Perk.tres" id="7_eeyf2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f0dl6"]
 font = ExtResource("3_f0dl6")
@@ -17,7 +18,7 @@ font_size = 36
 font = ExtResource("3_f0dl6")
 font_size = 36
 
-[node name="UpgradeMenu" type="Control"]
+[node name="UpgradeMenu" type="Control" node_paths=PackedStringArray("skill_buttons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,6 +26,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bce5w")
+skill_buttons = [NodePath("Menu_Brackground/Skill_Button_1"), NodePath("Menu_Brackground/Skill_Button_1/Skill_Button_2"), NodePath("Menu_Brackground/Skill_Button_1/Skill_Button_2/Skill_Button_3"), NodePath("Menu_Brackground/Skill_Button_1/Skill_Button_2/Skill_Button_4"), NodePath("Menu_Brackground/Skill_Button_1/Skill_Button_2/Skill_Button_5")]
 
 [node name="Menu_Brackground" type="Panel" parent="."]
 layout_mode = 1
@@ -38,103 +40,58 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Skill_Button_1" parent="Menu_Brackground" instance=ExtResource("2_op85r")]
 layout_mode = 1
-anchors_preset = -1
 anchor_left = 0.44444445
 anchor_top = 0.80972224
 anchor_right = 0.59335744
 anchor_bottom = 0.9388889
 offset_left = -1.0
 offset_right = -1.0000305
-offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
 skill_data = ExtResource("3_0im3q")
-metadata/_edit_use_anchors_ = true
 
 [node name="Skill_Button_2" parent="Menu_Brackground/Skill_Button_1" instance=ExtResource("2_op85r")]
 visible = false
 layout_mode = 1
-anchors_preset = -1
 anchor_left = -0.0022886188
 anchor_top = -1.9354838
 anchor_right = 1.0
 anchor_bottom = -0.9354839
-offset_right = 0.0
-offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
 skill_data = ExtResource("4_0aebm")
-metadata/_edit_use_anchors_ = true
 
 [node name="Skill_Button_3" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2" instance=ExtResource("2_op85r")]
 visible = false
 layout_mode = 1
-anchors_preset = -1
 anchor_left = -2.0566974
 anchor_top = -0.4516129
 anchor_right = -1.0566971
 anchor_bottom = 0.5483871
-offset_right = 7.6293945e-06
-offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
 skill_data = ExtResource("5_v31v4")
-metadata/_edit_use_anchors_ = true
 
 [node name="Skill_Button_4" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2" instance=ExtResource("2_op85r")]
 visible = false
 layout_mode = 1
-anchors_preset = -1
 anchor_left = 2.0544143
 anchor_top = -0.4516129
 anchor_right = 3.0544143
 anchor_bottom = 0.5483871
-offset_right = 0.0
-offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
 skill_data = ExtResource("6_lnq8a")
-metadata/_edit_use_anchors_ = true
 
 [node name="Skill_Button_5" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2" instance=ExtResource("2_op85r")]
 visible = false
 layout_mode = 1
-anchors_preset = -1
 anchor_top = -2.6236558
 anchor_right = 1.0
 anchor_bottom = -1.6236559
-offset_right = 0.0
-offset_bottom = -7.6293945e-06
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Skill_Button_6" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2/Skill_Button_5" instance=ExtResource("2_op85r")]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -2.0555556
-anchor_top = -0.29032257
-anchor_right = -1.0555556
-anchor_bottom = 0.7096774
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="Skill_Button_7" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2/Skill_Button_5" instance=ExtResource("2_op85r")]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 2.0555556
-anchor_top = -0.29032257
-anchor_right = 3.0555556
-anchor_bottom = 0.7096774
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 0
-metadata/_edit_use_anchors_ = true
+skill_data = ExtResource("7_eeyf2")
 
 [node name="Panel(Xp)" type="Panel" parent="Menu_Brackground"]
 layout_mode = 1
@@ -160,7 +117,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Skills_Details" parent="." instance=ExtResource("4_mv2kd")]
-visible = true
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0

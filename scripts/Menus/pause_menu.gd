@@ -10,6 +10,7 @@ func _process(_delta: float) -> void:
 func resume() -> void:
 	anim_player.play("Menu_Fade_Out")
 	get_tree().paused = false
+	pause_menu_canvas.hide()
 	
 func pause() -> void:
 	get_tree().paused = true
@@ -17,12 +18,14 @@ func pause() -> void:
 	anim_player.play('Menu_Fade_In')
 	
 func test_esc() -> void:
-	
-	if (Input.is_action_just_pressed('menu') and get_tree().paused == false):
-		pause()
-		
-	elif (Input.is_action_just_pressed('menu') and get_tree().paused == true):
-		resume()		
+	if Game_Controller.can_pause:
+		if (Input.is_action_just_pressed('menu') and get_tree().paused == false):
+			pause()
+			
+		elif (Input.is_action_just_pressed('menu') and get_tree().paused == true):
+			resume()
+	else:
+		return
 		
 func _on_resume_pressed() -> void:
 	resume()
