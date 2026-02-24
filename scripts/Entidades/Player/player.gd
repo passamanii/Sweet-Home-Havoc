@@ -20,20 +20,23 @@ var max_health: float = 30
 var damage: float = 10
 var regen: int = 0
 var armor: float = 0
-	
+
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var hitbox_area: Area2D = $HitboxArea
 @onready var hitbox_collision: CollisionShape2D = $HitboxArea/HitboxCollision
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var regeneration_timer: Timer = $Regeneration_Timer
 
+@export var xp_popup: PackedScene
+@export var lvl_popup: PackedScene
+
 signal player_died
-signal took_damage
 
 func _ready() -> void:
 	define_spawn()
 	define_stats()
 	update_health_bar()
+	connect_signals()
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
@@ -54,6 +57,10 @@ func _process(_delta: float) -> void:
 	define_stats()
 	update_health_bar()
 
+func connect_signals():
+	Player_Stats.gained_xp.connect(_show_xp_gained)
+	Player_Stats.gained_lvl.connect(_show_new_level)
+	
 func define_spawn():
 	if (Player_Tracking.spawn_pos != Vector2.ZERO):
 		position = Player_Tracking.spawn_pos
@@ -192,7 +199,19 @@ func get_hit(enemy_damage: int, hit_position: Vector2) -> void:
 	Player_Stats.health -= resultant_damage
 	if (Player_Stats.health <= 0):
 		die()
-	emit_signal('took_damage')
+
+func _show_xp_gained(_xp):
+	var popup = xp_popup.instantiate()
+	popup.text = '+ %s XP' % _xp
+	popup.position = self.global_position + Vector2(-50, -50)
+	get_tree().current_scene.add_child(popup)
+
+func _show_new_level(_lvl):
+	await get_tree().create_timer(2.5).timeout
+	var popup = lvl_popup.instantiate()
+	popup.text = 'LVL %s!' % _lvl
+	popup.position = self.global_position + Vector2(-50, -50)
+	get_tree().current_scene.add_child(popup)
 	
 func die() -> void:
 	Game_Controller.player_alive = false
