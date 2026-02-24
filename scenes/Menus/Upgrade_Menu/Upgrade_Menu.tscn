@@ -49,26 +49,26 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Skill_Button_1" parent="Menu_Brackground" instance=ExtResource("2_op85r")]
 layout_mode = 1
-anchor_left = 0.4792703
-anchor_top = 0.7361111
-anchor_right = 0.58838224
-anchor_bottom = 0.81805557
+anchor_left = 0.45014244
+anchor_top = 0.69402117
+anchor_right = 0.5726496
+anchor_bottom = 0.787689
 grow_horizontal = 2
 grow_vertical = 0
 skill_data = ExtResource("3_0im3q")
-metadata/_edit_use_anchors_ = true
 
 [node name="Skill_Button_2" parent="Menu_Brackground/Skill_Button_1" instance=ExtResource("2_op85r")]
+visible = false
 layout_mode = 1
-anchor_top = -1.9830508
+anchor_top = -1.8022839
 anchor_right = 1.0022886
-anchor_bottom = -0.983051
+anchor_bottom = -0.8022841
 grow_horizontal = 2
 grow_vertical = 0
 skill_data = ExtResource("4_0aebm")
-metadata/_edit_use_anchors_ = true
 
 [node name="Skill_Button_3" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2" instance=ExtResource("2_op85r")]
+visible = false
 layout_mode = 1
 anchor_left = -1.6377265
 anchor_top = -0.45434704
@@ -77,9 +77,9 @@ anchor_bottom = 0.5456529
 grow_horizontal = 2
 grow_vertical = 0
 skill_data = ExtResource("5_v31v4")
-metadata/_edit_use_anchors_ = true
 
 [node name="Skill_Button_4" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2" instance=ExtResource("2_op85r")]
+visible = false
 layout_mode = 1
 anchor_left = 1.7287111
 anchor_top = -0.45434704
@@ -88,25 +88,24 @@ anchor_bottom = 0.5456529
 grow_horizontal = 2
 grow_vertical = 0
 skill_data = ExtResource("6_lnq8a")
-metadata/_edit_use_anchors_ = true
 
 [node name="Skill_Button_5" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2" instance=ExtResource("2_op85r")]
+visible = false
 layout_mode = 1
 anchor_left = -0.0008329908
-anchor_top = -1.9119741
+anchor_top = -1.746676
 anchor_right = 0.999167
-anchor_bottom = -0.91197425
+anchor_bottom = -0.7466761
 grow_horizontal = 2
 grow_vertical = 2
 skill_data = ExtResource("7_eeyf2")
-metadata/_edit_use_anchors_ = true
 
 [node name="Panel(Xp)" type="TextureRect" parent="Menu_Brackground"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.30698004
+anchor_left = 0.292735
 anchor_top = 0.1594373
-anchor_right = 0.752849
+anchor_right = 0.738604
 anchor_bottom = 0.33645958
 offset_left = 1.5258789e-05
 grow_horizontal = 2
@@ -129,10 +128,10 @@ vertical_alignment = 1
 [node name="Skills_Details" parent="." instance=ExtResource("4_mv2kd")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.44435483
-anchor_top = 0.24583334
-anchor_right = 1.0693549
-anchor_bottom = 0.9722222
+anchor_left = 0.51532257
+anchor_top = 0.36944443
+anchor_right = 1.0564517
+anchor_bottom = 0.95555556
 offset_right = -0.00012207031
 grow_horizontal = 1
 grow_vertical = 1

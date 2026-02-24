@@ -13,7 +13,7 @@ corner_radius_bottom_left = 13
 [sub_resource type="LabelSettings" id="LabelSettings_4a4je"]
 paragraph_spacing = 13.0
 font = ExtResource("1_04tkt")
-font_size = 26
+font_size = 20
 shadow_size = 3
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(3, 3)

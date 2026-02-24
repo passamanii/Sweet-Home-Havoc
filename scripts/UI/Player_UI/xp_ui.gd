@@ -1,4 +1,4 @@
-extends Control
+class_name XpUi extends Control
 
 @onready var progress_bar: TextureProgressBar = %Progress_Bar
 @onready var level_label: Label = $Level_Label

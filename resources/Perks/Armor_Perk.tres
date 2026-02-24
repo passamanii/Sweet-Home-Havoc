@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ArmorPerk" load_steps=3 format=3 uid="uid://cfvmxi37lserd"]
 
 [ext_resource type="Script" uid="uid://c3y3qmpk2015l" path="res://scripts/Modules/Perks/Armor_Perk.gd" id="1_7le4k"]
-[ext_resource type="Texture2D" uid="uid://qwfnvx4fs5gy" path="res://assets/General/icone.png" id="1_ejeb2"]
+[ext_resource type="Texture2D" uid="uid://b5rby6xdvml5m" path="res://assets/Caixas/Habilidades/armor-icon.png" id="1_ejeb2"]
 
 [resource]
 script = ExtResource("1_7le4k")
