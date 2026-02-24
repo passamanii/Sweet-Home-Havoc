@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlmqtpplimku0"]
+[gd_scene load_steps=5 format=3 uid="uid://dlmqtpplimku0"]
 
-[ext_resource type="FontFile" uid="uid://dl1p84ry4iww1" path="res://assets/General/UltimatePixelFont.ttf" id="1_04tkt"]
-[ext_resource type="Script" uid="uid://dx53mqbtq2rsb" path="res://scripts/Menus/Upgrade_Menu/Components/base_skill_details.gd" id="1_66upk"]
+[ext_resource type="Texture2D" uid="uid://bua3oknb0ld1d" path="res://assets/Caixas/Habilidades/caixa_habilidades_mini.png" id="1_2u38a"]
+[ext_resource type="FontFile" uid="uid://5f0vtbtakhtc" path="res://assets/General/UltimatePixelFont.ttf" id="1_04tkt"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0dl6"]
-bg_color = Color(0.21960784, 0.21960784, 0.21960784, 0.5686275)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4a4je"]
+bg_color = Color(0.7529412, 0.5803922, 0.4509804, 1)
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
 
 [sub_resource type="LabelSettings" id="LabelSettings_4a4je"]
 paragraph_spacing = 13.0
@@ -14,29 +18,24 @@ shadow_size = 3
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(3, 3)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mv2kd"]
-bg_color = Color(0.21960784, 0.21960784, 0.21960784, 0.5686275)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abua3"]
-bg_color = Color(0.21960784, 0.21960784, 0.21960784, 0.5686275)
-
-[node name="Skill" type="Panel"]
-visible = false
+[node name="Skill" type="TextureRect"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_66upk")
+texture = ExtResource("1_2u38a")
+expand_mode = 2
 
 [node name="Nome" type="Label" parent="."]
-layout_mode = 0
-anchor_left = 0.073937155
-anchor_top = 0.09785933
-anchor_right = 0.64695007
-anchor_bottom = 0.33944955
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.19596775
+anchor_top = 0.27222222
+anchor_right = 0.53629035
+anchor_bottom = 0.42550853
 theme_override_fonts/font = ExtResource("1_04tkt")
-theme_override_styles/normal = SubResource("StyleBoxFlat_f0dl6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4a4je")
 label_settings = SubResource("LabelSettings_4a4je")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -46,13 +45,14 @@ uppercase = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Descrição" type="Label" parent="."]
-layout_mode = 0
-anchor_left = 0.073937155
-anchor_top = 0.44036698
-anchor_right = 0.92236596
-anchor_bottom = 0.89908254
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.19596775
+anchor_top = 0.47777778
+anchor_right = 0.78064513
+anchor_bottom = 0.7430556
 theme_override_fonts/font = ExtResource("1_04tkt")
-theme_override_styles/normal = SubResource("StyleBoxFlat_mv2kd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4a4je")
 label_settings = SubResource("LabelSettings_4a4je")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -62,13 +62,14 @@ uppercase = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Custo" type="Label" parent="."]
-layout_mode = 0
-anchor_left = 0.6802218
-anchor_top = 0.09785933
-anchor_right = 0.92236596
-anchor_bottom = 0.33944955
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5645161
+anchor_top = 0.27222222
+anchor_right = 0.78064513
+anchor_bottom = 0.42583564
 theme_override_fonts/font = ExtResource("1_04tkt")
-theme_override_styles/normal = SubResource("StyleBoxFlat_abua3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4a4je")
 label_settings = SubResource("LabelSettings_4a4je")
 horizontal_alignment = 1
 vertical_alignment = 1
