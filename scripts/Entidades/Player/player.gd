@@ -1,5 +1,7 @@
 class_name BasePlayer extends CharacterBody2D
 
+@export var ink_ball_scene: PackedScene
+
 var SPEED: int = 450
 var DASH_SPEED: int = SPEED * 5
 const ATTACK_DISTANCE := 25.0
@@ -12,6 +14,7 @@ var knockback_force: int = 1000
 var knockback_decay: int = 3000
 var knockback_velocity: Vector2 = Vector2.ZERO
 var facing: Vector2 = Vector2.ZERO
+var mouse_dir: Vector2 = Vector2.ZERO
 
 var xp: int = 0
 var level: int = 1
@@ -22,10 +25,12 @@ var regen: int = 0
 var armor: float = 0
 	
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox_area: Area2D = $HitboxArea
 @onready var hitbox_collision: CollisionShape2D = $HitboxArea/HitboxCollision
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var regeneration_timer: Timer = $Regeneration_Timer
+@onready var marker_2d: Marker2D = $Marker2D
 
 signal player_died
 
@@ -34,13 +39,27 @@ func _ready() -> void:
 	define_stats()
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("reset"):
+	if Input.is_action_just_pressed("change_weapon"):
+		is_attacking = false
+		hitbox_collision.disabled = true
+		animated_sprite.flip_h = false
+		if Player_Stats.weapen_equipped == Player_Stats.weapon.PUNCH:
+			Player_Stats.weapen_equipped = Player_Stats.weapon.PEN
+		else:
+			Player_Stats.weapen_equipped = Player_Stats.weapon.PUNCH
 		
+		return
+		
+	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
 	
 	apply_knockback(delta)
+	
+	if (Player_Stats.weapen_equipped == Player_Stats.weapon.PEN):
+		var mouse_pos = get_global_mouse_position()
+		mouse_dir = (mouse_pos - global_position).normalized()
 		
-	if (!is_attacking or knockback_velocity.length() > 0):
+	if (!is_attacking or Player_Stats.weapen_equipped == Player_Stats.weapon.PEN or knockback_velocity.length() > 0):
 		movementPlayer()
 		
 	if (!is_dashing and !knockback_velocity.length() > 0):
@@ -85,7 +104,14 @@ func regenerate():
 func attack() -> void:
 	if (Input.is_action_just_pressed("attack")):
 		is_attacking = true
-		update_attack_direction()
+		if (Player_Stats.weapen_equipped == Player_Stats.weapon.PUNCH):
+			update_attack_direction()
+		elif (Player_Stats.weapen_equipped == Player_Stats.weapon.PEN):
+			if get_tree().current_scene.name == "Biblioteca":
+				return
+			var ink_ball = ink_ball_scene.instantiate()
+			ink_ball.global_position = marker_2d.global_position
+			get_tree().current_scene.add_child(ink_ball)
 
 func enable_hitbox_collision() -> void:
 	hitbox_collision.disabled = false
@@ -118,6 +144,7 @@ func movementPlayer() -> void:
 		return
 	
 	dir = Input.get_vector("left", "right", "up", "down")
+	
 	velocity = dir * SPEED
 	
 	if (is_dashing):
@@ -127,32 +154,87 @@ func movementPlayer() -> void:
 		dash()
 		
 	move_and_slide()
-	
+
 func animationsPlayer() -> void:
 	if (knockback_velocity.length() > 0):
 		animation_player.play("Hurt_Front")
 		return
 	
-	if (!is_attacking):
-		if dir == Vector2.ZERO:
-			if (facing == Vector2.RIGHT):
-				animation_player.play("Idle_Right")
-			elif (facing == Vector2.LEFT):
-				animation_player.play('Idle_Left')
-			elif (facing == Vector2.UP):
-				animation_player.play('Idle_Back')
+	var using_pen = Player_Stats.weapen_equipped == Player_Stats.weapon.PEN
+	
+	var current_dir = dir
+	if (using_pen):
+		current_dir = mouse_dir
+		if abs(mouse_dir.x) > abs(mouse_dir.y):
+			if mouse_dir.x > 0:
+				marker_2d.position = Vector2(16, 6.5)
+				facing = Vector2.RIGHT
 			else:
-				animation_player.play('Idle_Front')
-		elif (dir.x > 0):
-			animation_player.play('Walking_Right')
+				marker_2d.position = Vector2(-16, 6.5)
+				facing = Vector2.LEFT
+		else:
+			if mouse_dir.y < 0:
+				marker_2d.position = Vector2(11.5, -18)
+				facing = Vector2.UP
+			else:
+				marker_2d.position = Vector2(-11, 28)
+				facing = Vector2.DOWN
+
+	if (!is_attacking):
+		if velocity == Vector2.ZERO:
+			if using_pen:
+				if abs(mouse_dir.x) > abs(mouse_dir.y):
+					if mouse_dir.x > 0:
+						animation_player.play("Idle_Pen_Side")
+						animated_sprite.flip_h = false
+					else:
+						animation_player.play("Idle_Pen_Side")
+						animated_sprite.flip_h = true
+				else:
+					if mouse_dir.y < 0:
+						animation_player.play("Idle_Pen_Back")
+					else:
+						animation_player.play("Idle_Pen_Front")
+			else:
+				if facing == Vector2.RIGHT:
+					animation_player.play("Idle_Right")
+				elif facing == Vector2.LEFT:
+					animation_player.play("Idle_Left")
+				elif facing == Vector2.UP:
+					animation_player.play("Idle_Back")
+				else:
+					animation_player.play("Idle_Front")
+			return
+
+		if using_pen:
+			if abs(mouse_dir.x) > abs(mouse_dir.y):
+				if mouse_dir.x > 0:
+					animation_player.play("Walking_Pen_Side")
+					animated_sprite.flip_h = false
+					facing = Vector2.RIGHT
+				else:
+					animation_player.play("Walking_Pen_Side")
+					animated_sprite.flip_h = true
+					facing = Vector2.LEFT
+			else:
+				if mouse_dir.y < 0:
+					animation_player.play("Walking_Pen_Back")
+					facing = Vector2.UP
+				else:
+					animation_player.play("Walking_Pen_Front")
+					facing = Vector2.DOWN
+			
+
+		elif current_dir.x > 0:
+			animation_player.play("Walking_Right")
 			facing = Vector2.RIGHT
-		elif (dir.x < 0):
+		elif current_dir.x < 0:
 			animation_player.play("Walking_Left")
 			facing = Vector2.LEFT
-		elif (dir.y < 0):
+		elif current_dir.y < 0:
 			animation_player.play("Walking_Back")
 			facing = Vector2.UP
-		elif (dir.y > 0):
+		elif current_dir.y > 0:
 			animation_player.play("Walking_Front")
 			facing = Vector2.DOWN
 			
@@ -160,14 +242,35 @@ func animationsPlayer() -> void:
 		animation_player.play("Dash")
 	
 	if is_attacking:
-		if (dir.x > 0 or facing == Vector2.RIGHT):
-			animation_player.play("Pen_Attack_Right")
-		elif (dir.x < 0 or facing == Vector2.LEFT):
-			animation_player.play("Pen_Attack_Left")
-		elif (dir.y < 0 or facing == Vector2.UP):
-			animation_player.play("Pen_Attack_Back")
-		elif (dir.y > 0 or facing == Vector2.DOWN):
-			animation_player.play("Pen_Attack_Front")
+		if (Player_Stats.weapen_equipped == Player_Stats.weapon.PUNCH):
+			if (dir.x > 0 or facing == Vector2.RIGHT):
+				animation_player.play("Pen_Attack_Right")
+			elif (dir.x < 0 or facing == Vector2.LEFT):
+				animation_player.play("Pen_Attack_Left")
+			elif (dir.y < 0 or facing == Vector2.UP):
+				animation_player.play("Pen_Attack_Back")
+			elif (dir.y > 0 or facing == Vector2.DOWN):
+				animation_player.play("Pen_Attack_Front")
+
+		elif using_pen:
+			if get_tree().current_scene.name == "Biblioteca":
+				is_attacking = false
+				return
+			if animation_player.current_animation.contains("Shoot"):
+				return
+				
+			if abs(mouse_dir.x) > abs(mouse_dir.y):
+				if mouse_dir.x > 0:
+					animation_player.play("Shoot_Side")
+					animated_sprite.flip_h = false
+				else:
+					animation_player.play("Shoot_Side")
+					animated_sprite.flip_h = true
+			else:
+				if mouse_dir.y < 0:
+					animation_player.play("Shoot_Back")
+				else:
+					animation_player.play("Shoot_Front")
 
 func dash() -> void:
 	is_dashing = true
@@ -205,7 +308,10 @@ func play() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if (anim_name.contains('Attack')):
 		is_attacking = false
+		animated_sprite.flip_h = false
 		hitbox_collision.disabled = true
+	elif (anim_name.contains("Shoot")):
+		is_attacking = false
 
 
 func _on_regeneration_timer_timeout() -> void:
