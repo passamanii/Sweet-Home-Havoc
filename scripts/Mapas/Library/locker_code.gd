@@ -3,6 +3,7 @@ extends Control
 @export var grid_btns: GridContainer
 @onready var locker_visor: Label = $Panel/MarginContainer/VBoxContainer/MarginContainer/LockerVisor
 @onready var cutscene_manager = $"../../CutsceneManager"
+@onready var player: BasePlayer = $"../../Player"
 
 var digits: String
 
@@ -42,5 +43,4 @@ func verify_password() -> void:
 
 func _on_exit_btn_pressed() -> void:
 	self.get_parent().hide()
-	print(get_tree().get_first_node_in_group("Player"))
-	get_tree().get_first_node_in_group("Player").set_physics_process(true)
+	player.can_move = true
