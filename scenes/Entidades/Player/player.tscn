@@ -2075,6 +2075,7 @@ lvl_popup = ExtResource("3_1rhju")
 libraries = {
 &"": SubResource("AnimationLibrary_a8ls1")
 }
+autoplay = "Idle_Back"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
 position = Vector2(0, -0.25)
