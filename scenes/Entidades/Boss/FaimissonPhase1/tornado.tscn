@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://30bvspxyjpt"]
+
+[ext_resource type="PackedScene" uid="uid://ctti6v6ywm68k" path="res://scenes/Entidades/projectile_base.tscn" id="1_1xlsr"]
+[ext_resource type="Script" uid="uid://dap3j24o0nbet" path="res://scripts/Entidades/Boss/FaimissonPhase1/tornado.gd" id="2_ccrxq"]
+[ext_resource type="Texture2D" uid="uid://x4gwxyoo5p2" path="res://assets/Personagens/Boss/Faimison/Tornado.png" id="2_x42r8"]
+
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccrxq"]
+atlas = ExtResource("2_x42r8")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrg8b"]
+atlas = ExtResource("2_x42r8")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0ayc"]
+atlas = ExtResource("2_x42r8")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gfxhs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccrxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrg8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0ayc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7v87h"]
+radius = 20.0
+
+[node name="Tornado" instance=ExtResource("1_1xlsr")]
+script = ExtResource("2_ccrxq")
+speed = 500
+life_time = 3.0
+
+[node name="AnimSprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_gfxhs")
+autoplay = "default"
+frame_progress = 0.50011814
+
+[node name="Collision" parent="." index="1"]
+shape = SubResource("CircleShape2D_7v87h")
+
+[node name="LifeTime" parent="." index="2"]
+wait_time = 6.0

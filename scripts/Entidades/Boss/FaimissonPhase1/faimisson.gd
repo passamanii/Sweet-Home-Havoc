@@ -1,0 +1,136 @@
+extends CharacterBody2D
+class_name Faimisson1
+
+@export_category("Variables")
+@export var max_health: int
+@export var dash_force: float = 2000.0
+@export var dash_extra_distance: float = 300.0
+@export var dash_brake_force: float = 3000.0
+@export var damage: int = 1
+
+@export_category("Objects")
+@export var kick_marker: Marker2D
+@export var supersonic_power_scene: PackedScene
+@export var tornado_scene: PackedScene
+@export var fall_warn_scene: PackedScene
+@export var naranja_gigante_scene: PackedScene
+@export var anim_tree: AnimationTree
+@export var sprite: Sprite2D
+@export var hitbox_area: Area2D
+
+var health: int
+var player: BasePlayer
+var dash: bool = false
+var state_machine
+var dash_velocity: Vector2 = Vector2.ZERO
+var dash_target: Vector2
+var dir: Vector2
+
+func _ready() -> void:
+	state_machine = anim_tree.get("parameters/playback")
+	player = get_tree().get_first_node_in_group("Player")
+	health = max_health
+	boss_cycle()
+
+func _physics_process(delta: float) -> void:
+	if dash:
+		velocity = dash_velocity
+		move_and_slide()
+
+		var to_target = dash_target - global_position
+
+		if to_target.dot(dir) <= 0:
+			state_machine.travel("Dash_Brake")
+			if dir.x > 0:
+				sprite.flip_h = true
+			elif dir.x < 0:
+				sprite.flip_h = false
+			dash_velocity = dash_velocity.move_toward(Vector2.ZERO, dash_brake_force * delta)
+
+			if dash_velocity.length() < 10:
+				dash = false
+				velocity = Vector2.ZERO
+				dash_velocity = Vector2.ZERO
+
+func start_dash() -> void:
+	state_machine.travel("Dash")
+	dash = true
+	
+	var player_pos = player.global_position
+	dir = global_position.direction_to(player_pos)
+
+	if dir.x > 0:
+		sprite.flip_h = false
+	elif dir.x < 0:
+		sprite.flip_h = true
+
+	dash_target = player_pos + dir * dash_extra_distance
+
+	dash_velocity = dir * dash_force
+
+func throw_tornado() -> void:
+	for rad in [0, 45, 90, 135, 180, 225, 270]:
+		var tornado = tornado_scene.instantiate()
+		var spawn_pos = global_position + 200 * Vector2.RIGHT.rotated(deg_to_rad(rad))
+		tornado.dir = Vector2(cos(deg_to_rad(rad)), sin(deg_to_rad(rad)))
+		tornado.global_position = spawn_pos
+		get_tree().current_scene.add_child(tornado)
+
+func throw_supersonic_power() -> void:
+	var supersonic_power = supersonic_power_scene.instantiate()
+	supersonic_power.global_position = kick_marker.global_position
+	get_tree().current_scene.add_child(supersonic_power)
+
+func add_naranja_fall_warn() -> void:
+	var fall_warn = fall_warn_scene.instantiate()
+	var naranja_gigante = naranja_gigante_scene.instantiate()
+	
+	var warn_pos = global_position + randi_range(200, 3000) * Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+	fall_warn.global_position = warn_pos
+	fall_warn.naranja = naranja_gigante
+	get_tree().current_scene.add_child(fall_warn)
+	
+	naranja_gigante.warn = fall_warn
+	naranja_gigante.global_position = warn_pos - Vector2(0, 2000)
+	get_tree().current_scene.add_child(naranja_gigante)
+
+func do_kick() -> void:
+	state_machine.travel("Kick")
+	await get_tree().create_timer(3).timeout
+	state_machine.travel("Idle")
+	await get_tree().create_timer(2).timeout
+
+func do_breath() -> void:
+	state_machine.travel("Breath")
+	await get_tree().create_timer(8).timeout
+	state_machine.travel("Idle")
+	await get_tree().create_timer(2).timeout
+
+func do_dash() -> void:
+	hitbox_area.monitoring = true
+	start_dash()
+	await get_tree().create_timer(10).timeout
+	dash = false
+	velocity = Vector2.ZERO
+	dash_velocity = Vector2.ZERO
+	hitbox_area.monitoring = false
+	state_machine.travel("Idle")
+	await get_tree().create_timer(2).timeout
+
+func do_naranjas() -> void:
+	state_machine.travel("Naranjas")
+	await get_tree().create_timer(5).timeout
+	state_machine.travel("Idle")
+	await get_tree().create_timer(2).timeout
+
+func boss_cycle():
+	await get_tree().create_timer(2).timeout
+	while true:
+		await do_kick()
+		await do_dash()
+		await do_naranjas()
+		await do_breath()
+
+
+func _on_hitbox_area_area_entered(_area: Area2D) -> void:
+	player.get_hit(damage, (player.global_position - global_position).normalized())

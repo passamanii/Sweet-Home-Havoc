@@ -1,6 +1,10 @@
 extends Node
 
-var locker_1_code = "4269"
-var has_first_book = true
-var is_cutscene = false
-var player_alive = true
+#Variables
+var locker_1_code: String = "4269"
+
+#Bools
+var has_first_book: bool = true
+var is_cutscene: bool = false
+var player_alive: bool = true
+var can_pause: bool = true
