@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0q667ht4varg"]
+
+[ext_resource type="Script" uid="uid://ce1xqpaf0v1r5" path="res://scripts/UI/Player_UI/heart_ui.gd" id="1_fqq56"]
+[ext_resource type="Texture2D" uid="uid://jea02vgj3gif" path="res://assets/Personagens/Principal/Barras/hearts-sprite.png" id="2_fqq56"]
+
+[node name="Heart_UI" type="Control"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchor_right = 0.077419356
+anchor_bottom = 0.13333334
+script = ExtResource("1_fqq56")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("2_fqq56")
+centered = false
+hframes = 3

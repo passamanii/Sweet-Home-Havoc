@@ -9,7 +9,7 @@ func get_type() -> String:
 	return 'armor'
 	
 func apply_perk() -> void:
-	Player_Stats.defense += defense_bonus
+	Player_Stats.armor += defense_bonus
 	if Skills_Stats.skills_levels['ArmorPerk'] < 3:
 		Skills_Stats.skills_levels['ArmorPerk'] += 1
 		_init()

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1brrg00nr6is"]
+
+[ext_resource type="FontFile" uid="uid://dl1p84ry4iww1" path="res://assets/General/UltimatePixelFont.ttf" id="1_bmssx"]
+[ext_resource type="Script" uid="uid://dmsjky211228q" path="res://scripts/UI/lvl_popup.gd" id="2_al6j6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_al6j6"]
+font = ExtResource("1_bmssx")
+font_color = Color(0.22477925, 0.72383237, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[node name="Lvl_Popup" type="Label"]
+z_index = 5
+offset_left = -60.0
+offset_top = -17.5
+offset_right = 48.0
+offset_bottom = 17.5
+text = "+ 1 lvl"
+label_settings = SubResource("LabelSettings_al6j6")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_al6j6")

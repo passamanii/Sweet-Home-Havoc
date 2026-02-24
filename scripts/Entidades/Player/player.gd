@@ -21,11 +21,11 @@ var can_move: bool = true
 var xp: int = 0
 var level: int = 1
 var health: int = 30 #Cada coração equivale à 10hp
-var max_health: int = 30
+var max_health: float = 30
 var damage: float = 10
 var regen: int = 0
 var armor: float = 0
-	
+
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox_area: Area2D = $HitboxArea
@@ -34,6 +34,8 @@ var armor: float = 0
 @onready var regeneration_timer: Timer = $Regeneration_Timer
 @onready var marker_2d: Marker2D = $Marker2D
 
+@export var xp_popup: PackedScene
+@export var lvl_popup: PackedScene
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 
 signal player_died
@@ -62,6 +64,8 @@ func _ready() -> void:
 	Player_Tracking.player = self
 	define_spawn()
 	define_stats()
+	update_health_bar()
+	connect_signals()
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("change_weapon"):
@@ -97,7 +101,12 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	define_stats()
+	update_health_bar()
 
+func connect_signals():
+	Player_Stats.gained_xp.connect(_show_xp_gained)
+	Player_Stats.gained_lvl.connect(_show_new_level)
+	
 func define_spawn():
 	if (Player_Tracking.spawn_pos != Vector2.ZERO):
 		position = Player_Tracking.spawn_pos
@@ -120,7 +129,10 @@ func define_stats():
 		armor = Player_Stats.armor
 	if (Player_Stats.regen != regen):
 		regen = Player_Stats.regen
-		
+
+func update_health_bar():
+	PlayerHud.update_hp(health, max_health)
+
 func regenerate():
 	var health_to_regenerate = 5 + regen
 	if Player_Stats.health != Player_Stats.max_health:
@@ -128,7 +140,7 @@ func regenerate():
 			Player_Stats.health = Player_Stats.max_health
 		else:
 			Player_Stats.health += health_to_regenerate
-		
+
 func attack() -> void:
 	if (Input.is_action_just_pressed("attack")):
 		is_attacking = true
@@ -339,6 +351,19 @@ func get_hit(enemy_damage: int, knockback_dir: Vector2, knockback_power: int = k
 	if (Player_Stats.health <= 0):
 		die()
 
+func _show_xp_gained(_xp):
+	var popup = xp_popup.instantiate()
+	popup.text = '+ %s XP' % _xp
+	popup.position = self.global_position + Vector2(-50, -50)
+	get_tree().current_scene.add_child(popup)
+
+func _show_new_level(_lvl):
+	await get_tree().create_timer(2.5).timeout
+	var popup = lvl_popup.instantiate()
+	popup.text = 'LVL %s!' % _lvl
+	popup.position = self.global_position + Vector2(-50, -50)
+	get_tree().current_scene.add_child(popup)
+	
 func die() -> void:
 	Game_Controller.player_alive = false
 	var cam = camera_2d
@@ -346,6 +371,7 @@ func die() -> void:
 	cam.global_position = global_position
 	queue_free()
 	player_died.emit()
+	get_tree().reload_current_scene()
 
 func pause() -> void:
 	set_physics_process(false)
