@@ -107,10 +107,17 @@ position = Vector2(2383, 1045)
 [node name="PauseMenuCanvas" parent="." unique_id=2139642695 instance=ExtResource("8_h8wpe")]
 
 [node name="NPC" parent="." unique_id=93359192 instance=ExtResource("10_r06wf")]
-position = Vector2(715, 271)
+position = Vector2(2010, 768)
 scale = Vector2(4, 4)
 npc_id = "faimisson"
 npc_name = "Faimisson"
+dialog_resource = SubResource("Resource_kkdve")
+
+[node name="NPC_Cutscene" parent="." unique_id=819749820 instance=ExtResource("10_r06wf")]
+position = Vector2(7959, 772)
+scale = Vector2(4, 4)
+npc_id = "cutscene"
+npc_name = "Aluno"
 dialog_resource = SubResource("Resource_kkdve")
 
 [connection signal="body_entered" from="Enter_Sala_Faimisson" to="." method="on_Enter_Sala_Faimisson_body_entered"]

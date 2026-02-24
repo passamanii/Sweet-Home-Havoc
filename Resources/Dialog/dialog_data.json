@@ -1,4 +1,34 @@
 {
+	"cutscene": {
+		"trees": [
+			{
+				"branch_id": "dia_1",
+				"dialogs": [
+					{
+						"state": "start",
+						"text": "Prova na sexta...",
+						"options": {
+							"...": "next_1"
+						}
+					},
+					{
+						"state": "next_1",
+						"text": "Eu devia ter estudado.",
+						"options": {
+							"...": "next_2"
+						}
+					},
+					{
+						"state": "next_2",
+						"text": "Tá. Hoje eu resolvo isso.",
+						"options": {
+							"...": "exit"
+						}
+					},
+				]
+			}
+		]
+	},
 	"faimisson": {
 		"trees": [
 			{
@@ -32,5 +62,5 @@
 				]
 			}
 		]
-	}
+	},
 }

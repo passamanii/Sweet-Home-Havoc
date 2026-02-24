@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var npc_cutscene: CharacterBody2D = $NPC_Cutscene
+
 @export_category("Objects")
 @export var player: BasePlayer
 @export var fade_transition: FadeTransition
@@ -9,6 +11,9 @@ var area_entered: String = ''
 func _ready() -> void:
 	fade_transition.transition_end.connect(_on_transition_finished)
 	fade_transition.out()
+	await get_tree().create_timer(0.5).timeout 
+	npc_cutscene.start_dialog()
+	Player_Tracking.player.can_move = false
 	
 func on_Enter_Sala_Faimisson_body_entered(body: Node2D) -> void:
 	if (body.is_in_group('Player')):
