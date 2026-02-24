@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7kgygy0wqbr6"]
+
+[ext_resource type="PackedScene" uid="uid://ctti6v6ywm68k" path="res://scenes/Entidades/projectile_base.tscn" id="1_sxoht"]
+[ext_resource type="Script" uid="uid://bqxl7i48vvfbv" path="res://scripts/Entidades/Player/ink_ball.gd" id="2_tfi1a"]
+[ext_resource type="Texture2D" uid="uid://et3gyyp0ksq7" path="res://assets/Personagens/armas/bola_azul.png" id="3_odq4v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvilr"]
+atlas = ExtResource("3_odq4v")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gilyb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvilr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rd60k"]
+radius = 4.7565746
+
+[node name="InkBall" instance=ExtResource("1_sxoht")]
+collision_layer = 8
+collision_mask = 33
+script = ExtResource("2_tfi1a")
+damage = 5
+speed = 700
+
+[node name="AnimSprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_gilyb")
+
+[node name="Collision" parent="." index="1"]
+shape = SubResource("CircleShape2D_rd60k")

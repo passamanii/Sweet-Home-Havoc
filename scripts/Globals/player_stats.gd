@@ -15,6 +15,8 @@ var speed: int = 450
 
 signal gained_xp(_xp)
 signal gained_lvl(_lvl)
+enum weapon {PEN, INK, JBL}
+var weapen_equipped: weapon = weapon.PEN
 
 func gain_xp(xp_amount) -> void:
 	var leveled_up: bool = false
