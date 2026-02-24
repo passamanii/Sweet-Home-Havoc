@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxyw8ku1ufebk"
-path="res://.godot/imported/Faimison_base_fala_pisca.png-b8e8d8969d0a124ad485dbc1708def73.ctex"
+uid="uid://c5xy058n5sq6b"
+path="res://.godot/imported/Fantasma.png-59c91dfd342c92f51bde3ff89fcb5551.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Personagens/Boss/Faimison/Faimison_base_fala_pisca.png"
-dest_files=["res://.godot/imported/Faimison_base_fala_pisca.png-b8e8d8969d0a124ad485dbc1708def73.ctex"]
+source_file="res://assets/Personagens/Boss/Aleatorios/Fantasma.png"
+dest_files=["res://.godot/imported/Fantasma.png-59c91dfd342c92f51bde3ff89fcb5551.ctex"]
 
 [params]
 

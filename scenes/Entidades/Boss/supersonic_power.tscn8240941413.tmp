@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://db2mc4jnjevvn"]
+
+[ext_resource type="PackedScene" uid="uid://ctti6v6ywm68k" path="res://scenes/Entidades/projectile_base.tscn" id="1_juai8"]
+[ext_resource type="Texture2D" uid="uid://b5p6w263d80l0" path="res://assets/Personagens/Boss/Faimison/poder_chute.png" id="2_g7fki"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7fki"]
+atlas = ExtResource("2_g7fki")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o11b3"]
+atlas = ExtResource("2_g7fki")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgl4g"]
+atlas = ExtResource("2_g7fki")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g7fki"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7fki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o11b3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgl4g")
+}],
+"loop": true,
+"name": &"SupersonicPower",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x283m"]
+radius = 21.023796
+
+[node name="SupersonicPower" node_paths=PackedStringArray("life_time_timer") instance=ExtResource("1_juai8")]
+speed = 600
+life_time = 3.0
+life_time_timer = NodePath("LifeTime")
+
+[node name="AnimSprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_g7fki")
+animation = &"SupersonicPower"
+frame_progress = 0.3447413
+offset = Vector2(0, 17)
+
+[node name="Collision" parent="." index="1"]
+position = Vector2(0, 21.75)
+shape = SubResource("CircleShape2D_x283m")
+
+[node name="LifeTime" parent="." index="2"]
+wait_time = 3.0

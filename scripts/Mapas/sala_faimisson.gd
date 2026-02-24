@@ -30,4 +30,4 @@ func _on_transition_end() -> void:
 
 
 func _on_button_pressed() -> void:
-	Player_Stats.gain_xp(2000)
+	Player_Stats.gain_xp(2250)

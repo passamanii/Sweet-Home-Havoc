@@ -12,53 +12,34 @@ var knockback_force: int = 1000
 var knockback_decay: int = 3000
 var knockback_velocity: Vector2 = Vector2.ZERO
 var facing: Vector2 = Vector2.ZERO
+var can_move: bool = true
 
 var xp: int = 0
 var level: int = 1
-var health: int = 5 #Cada coração equivale à 10hp
+var health: int = 30 #Cada coração equivale à 10hp
 var max_health: int = 30
 var damage: float = 10
-var regen_time: int = 5
-var armor: int = 0
+var regen: int = 0
+var armor: float = 0
 	
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var hitbox_area: Area2D = $HitboxArea
 @onready var hitbox_collision: CollisionShape2D = $HitboxArea/HitboxCollision
 @onready var camera_2d: Camera2D = $Camera2D
+@onready var regeneration_timer: Timer = $Regeneration_Timer
+
+@onready var ray_cast_2d: RayCast2D = $RayCast2D
 
 signal player_died
 
 func _ready() -> void:
-	define_spawn()
-	define_stats()
-
-func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("reset"):
-		
-		get_tree().reload_current_scene()
-	
-	apply_knockback(delta)
-		
-	if (!is_attacking or knockback_velocity.length() > 0):
-		movementPlayer()
-		
-	if (!is_dashing and !knockback_velocity.length() > 0):
-		attack()
-		
-	animationsPlayer()
-
-func _process(_delta: float) -> void:
-	define_stats()
-
-func define_spawn():
 	if (Player_Tracking.spawn_pos != Vector2.ZERO):
 		print(Player_Tracking.spawn_pos)
 		print(Player_Tracking.spawn_facing)
 		position = Player_Tracking.spawn_pos
 	if (Player_Tracking.spawn_facing != Vector2.ZERO):
 		facing = Player_Tracking.spawn_facing
-	
-func define_stats():
+		
 	if (Player_Stats.xp != 0):
 		xp = Player_Stats.xp
 	
@@ -71,14 +52,59 @@ func define_stats():
 		
 	if (Player_Stats.damage != 10):
 		damage = Player_Stats.damage
+	
+	Player_Tracking.player = self
+	define_spawn()
+	define_stats()
+
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("reset"):
 		
+		get_tree().reload_current_scene()
+	
+	apply_knockback(delta)
+		
+	if (can_move and (!is_attacking or knockback_velocity.length() > 0)):
+		movementPlayer()
+		
+	if (can_move and !is_dashing and !knockback_velocity.length() > 0):
+		attack()
+		
+	animationsPlayer()
+
+func _process(_delta: float) -> void:
+	define_stats()
+
+func define_spawn():
+	if (Player_Tracking.spawn_pos != Vector2.ZERO):
+		position = Player_Tracking.spawn_pos
+	if (Player_Tracking.spawn_facing != Vector2.ZERO):
+		facing = Player_Tracking.spawn_facing
+	
+func define_stats():
+	if (Player_Stats.xp != xp):
+		xp = Player_Stats.xp
+	if (Player_Stats.level != level):
+		level = Player_Stats.level
+	if (Player_Stats.health != health):
+		health = Player_Stats.health
+		max_health = Player_Stats.max_health
+	if (Player_Stats.damage != damage):
+		damage = Player_Stats.damage
 	if (Player_Stats.speed != SPEED):
 		SPEED = Player_Stats.speed	
+	if (Player_Stats.armor != armor):
+		armor = Player_Stats.armor
+	if (Player_Stats.regen != regen):
+		regen = Player_Stats.regen
 		
 func regenerate():
-	if health != max_health:
-		health += 5
-		await get_tree().create_timer(regen_time).timeout
+	var health_to_regenerate = 5 + regen
+	if Player_Stats.health != Player_Stats.max_health:
+		if (health_to_regenerate + Player_Stats.health) > Player_Stats.max_health:
+			Player_Stats.health = Player_Stats.max_health
+		else:
+			Player_Stats.health += health_to_regenerate
 		
 func attack() -> void:
 	if (Input.is_action_just_pressed("attack")):
@@ -117,6 +143,10 @@ func movementPlayer() -> void:
 	
 	dir = Input.get_vector("left", "right", "up", "down")
 	velocity = dir * SPEED
+	
+	if (velocity != Vector2.ZERO):
+		ray_cast_2d.target_position = velocity.normalized() * 50
+		
 	
 	if (is_dashing):
 		velocity = dir * DASH_SPEED
@@ -175,11 +205,12 @@ func dash() -> void:
 	await get_tree().create_timer(1.0).timeout
 	can_dash = true
 	
-func get_hit(enemy_damage: int, hit_position: Vector2) -> void:
-	var direction = (global_position - hit_position).normalized()
-	knockback_velocity = direction * knockback_force
+func get_hit(enemy_damage: int, knockback_dir: Vector2, knockback_power: int = knockback_force) -> void:
+	knockback_velocity = knockback_dir * knockback_power
+	var resultant_damage = enemy_damage - floor(armor / 10)
 	
-	Player_Stats.health -= enemy_damage
+	regeneration_timer.start()
+	Player_Stats.health -= resultant_damage
 	if (Player_Stats.health <= 0):
 		die()
 
@@ -203,3 +234,16 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if (anim_name.contains('Attack')):
 		is_attacking = false
 		hitbox_collision.disabled = true
+
+func _input(event: InputEvent) -> void:
+	if can_move:
+		if event.is_action_pressed("interact"):
+			var target = ray_cast_2d.get_collider()
+			if target != null:
+				if target.is_in_group("NPC"):
+					print("ashbalala")
+					can_move = false
+					target.start_dialog()
+
+func _on_regeneration_timer_timeout() -> void:
+	regenerate()
