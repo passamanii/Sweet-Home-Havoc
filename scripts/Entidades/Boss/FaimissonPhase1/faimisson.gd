@@ -19,6 +19,8 @@ class_name Faimisson1
 @export var hitbox_area: Area2D
 @export var hurtbox_area: Area2D
 @export var health_bar: CanvasLayer
+@export var warns: Node2D
+@export var fade_transition: FadeTransition
 
 var health: float
 var player: BasePlayer
@@ -77,7 +79,7 @@ func throw_tornado() -> void:
 	
 	for i in range(quantity):
 		var tornado = tornado_scene.instantiate()
-		var spawn_pos = global_position + 200 * Vector2.RIGHT.rotated((i * (TAU / quantity)))
+		var spawn_pos = global_position + 150 * Vector2.RIGHT.rotated((i * (TAU / quantity)))
 		tornado.dir = Vector2(cos(i * (TAU / quantity)), sin(i * (TAU / quantity)))
 		tornado.global_position = spawn_pos
 		get_tree().current_scene.add_child(tornado)
@@ -94,7 +96,7 @@ func add_naranja_fall_warn() -> void:
 	var warn_pos = global_position + randi_range(200, 1800) * Vector2.RIGHT.rotated(randf_range(0, TAU))
 	fall_warn.global_position = warn_pos
 	fall_warn.naranja = naranja_gigante
-	get_tree().current_scene.add_child(fall_warn)
+	warns.add_child(fall_warn)
 	
 	naranja_gigante.warn = fall_warn
 	naranja_gigante.global_position = warn_pos - Vector2(0, 2000)
@@ -114,7 +116,7 @@ func do_breath() -> void:
 
 func do_dash() -> void:
 	start_dash()
-	# 
+	# Dependendo da quantidade de tempo buga:
 	await get_tree().create_timer(7).timeout
 	state_machine.travel("Idle")
 	dash = false
@@ -142,16 +144,20 @@ func do_vulnerable() -> void:
 func boss_cycle():
 	await get_tree().create_timer(2).timeout
 	while true:
+		await do_vulnerable()
+		await do_breath()
 		await do_dash()
 		await do_kick()
-		await do_breath()
 		await do_naranjas()
-		await do_vulnerable()
 		if health <= 0:
 			break
 
 func go_to_second_fase() -> void:
-	pass
+	fade_transition.init_white()
+	fade_transition.transition_end.connect(_cabou)
+
+func _cabou() -> void:
+	get_tree().change_scene_to_file("res://scenes/Mapas/final_boss_room_02.tscn")
 
 func _on_hitbox_area_area_entered(_area: Area2D) -> void:
 	player.get_hit(damage, (player.global_position - global_position).normalized())
@@ -166,7 +172,6 @@ func get_hit() -> void:
 			
 			go_to_second_fase()
 			health_bar.hide()
-			
 
 func _on_hurtbox_area_entered(_area: Area2D) -> void:
 	get_hit()

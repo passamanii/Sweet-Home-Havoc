@@ -34,7 +34,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7v87h"]
-radius = 20.0
+radius = 16.25769
 
 [node name="Tornado" instance=ExtResource("1_1xlsr")]
 script = ExtResource("2_ccrxq")

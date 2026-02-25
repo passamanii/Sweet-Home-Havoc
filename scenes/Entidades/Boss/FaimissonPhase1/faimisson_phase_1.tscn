@@ -11,6 +11,10 @@
 radius = 12.75
 height = 40.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jvk2q"]
+radius = 16.0
+height = 44.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pab8x"]
 radius = 13.25
 height = 42.5
@@ -307,10 +311,6 @@ states/Start/position = Vector2(344, 53)
 transitions = ["Dash", "Idle", SubResource("AnimationNodeStateMachineTransition_hfk5q"), "Idle", "Dash", SubResource("AnimationNodeStateMachineTransition_o65tj"), "Idle", "Naranjas", SubResource("AnimationNodeStateMachineTransition_1dyfc"), "Naranjas", "Idle", SubResource("AnimationNodeStateMachineTransition_kku5y"), "Kick", "Idle", SubResource("AnimationNodeStateMachineTransition_ne51p"), "Idle", "Kick", SubResource("AnimationNodeStateMachineTransition_j8rm7"), "Breath", "Idle", SubResource("AnimationNodeStateMachineTransition_iqxje"), "Idle", "Breath", SubResource("AnimationNodeStateMachineTransition_31ydo"), "Dash", "Dash_Brake", SubResource("AnimationNodeStateMachineTransition_sfy1f"), "Dash_Brake", "Dash", SubResource("AnimationNodeStateMachineTransition_gkcbo")]
 graph_offset = Vector2(-4, 21)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jvk2q"]
-radius = 16.0
-height = 44.0
-
 [node name="Faimisson" type="CharacterBody2D" node_paths=PackedStringArray("kick_marker", "anim_tree", "sprite", "hitbox_area", "hurtbox_area")]
 scale = Vector2(4, 4)
 collision_layer = 16
@@ -337,10 +337,19 @@ vframes = 6
 position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_iqxje")
 
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 8
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_jvk2q")
+debug_color = Color(5.3425133e-06, 0.6433958, 0.3064144, 0.41960785)
+
 [node name="HitboxArea" type="Area2D" parent="."]
 collision_layer = 64
 collision_mask = 4
-monitoring = false
 
 [node name="HitboxCollison" type="CollisionShape2D" parent="HitboxArea"]
 position = Vector2(0, -1.75)
@@ -359,14 +368,5 @@ anim_player = NodePath("../AnimPlayer")
 [node name="PunchMarker" type="Marker2D" parent="."]
 position = Vector2(0, 12.5)
 
-[node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 32
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, -2)
-shape = SubResource("CapsuleShape2D_jvk2q")
-debug_color = Color(5.3425133e-06, 0.6433958, 0.3064144, 0.41960785)
-
-[connection signal="area_entered" from="HitboxArea" to="." method="_on_hitbox_area_area_entered"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_entered" from="HitboxArea" to="." method="_on_hitbox_area_area_entered"]

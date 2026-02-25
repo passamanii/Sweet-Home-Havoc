@@ -158,7 +158,7 @@ frame_progress = 0.29563338
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_8r87q")
-initial_state = NodePath("BlayBlade")
+initial_state = NodePath("FlyingPunch")
 
 [node name="FlyingPunch" type="Node" parent="StateMachine" node_paths=PackedStringArray("boss_body")]
 script = ExtResource("7_4vpvw")

@@ -14,6 +14,7 @@ class_name Faimisson2Head
 @export var shield: Area2D
 @export var shield_sprite: AnimatedSprite2D
 @export var boss_body: Faimisson2
+@export var fade_transition: FadeTransition
 @export var orbit_increase_speed: int = 1000
 @export var orbit_shrink_speed: int = 400
 @export var blay_blade_speed: int = 300
@@ -34,8 +35,16 @@ var safe_from_purple_barrier: bool = false
 var is_out_from_purple_area: bool = false
 
 func _ready() -> void:
+	boss_body.killed_faimisson.connect(_matooooou)
 	player = get_tree().get_first_node_in_group("Player")
 	spawn_stones()
+
+func _matooooou() -> void:
+	fade_transition.transition_end.connect(_creditos)
+	fade_transition.init()
+
+func _creditos() -> void:
+	get_tree().change_scene_to_file("res://scenes/UI/fim.tscn")
 
 func _physics_process(delta: float) -> void:
 	current_angle += rotation_speed * delta

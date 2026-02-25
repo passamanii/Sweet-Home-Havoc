@@ -33,7 +33,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x283m"]
-radius = 21.023796
+radius = 17.00735
 
 [node name="SupersonicPower" instance=ExtResource("1_juai8")]
 damage = 20

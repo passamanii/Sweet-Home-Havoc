@@ -10,6 +10,7 @@ class_name Faimisson2
 @export var sprite: Sprite2D
 @export var hitbox_area: Area2D
 @export var anim_player: AnimationPlayer
+@export var fade_transition: FadeTransition
 
 var health: float
 var player: BasePlayer
