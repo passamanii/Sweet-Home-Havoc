@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b3e5h8oqclk8v" path="res://scripts/Entidades/NPCs/npc.gd" id="1_ls1eb"]
 [ext_resource type="Script" uid="uid://44fq77a4gu4g" path="res://Resources/Dialog/Dialog.gd" id="2_btsg8"]
-[ext_resource type="Texture2D" uid="uid://blasdfe4r37m3" path="res://assets/Personagens/outros/veterano.png" id="4_l82u4"]
+[ext_resource type="Texture2D" uid="uid://cjkms3w7ccinf" path="res://assets/Personagens/base personagens1.png" id="4_l82u4"]
 [ext_resource type="PackedScene" uid="uid://c20ij0oso17wr" path="res://scenes/Dialog/DialogManager.tscn" id="16_dgyu3"]
 
 [sub_resource type="Resource" id="Resource_cnjdt"]
@@ -17,21 +17,14 @@ height = 40.0
 atlas = ExtResource("4_l82u4")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t17yp"]
-atlas = ExtResource("4_l82u4")
-region = Rect2(48, 0, 48, 48)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_fn5fr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kmrf5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t17yp")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"new_animation",
 "speed": 5.0
 }]
 
@@ -49,4 +42,5 @@ shape = SubResource("CapsuleShape2D_l82u4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1007361026]
 position = Vector2(7, -1)
 sprite_frames = SubResource("SpriteFrames_fn5fr")
-animation = &"idle"
+animation = &"new_animation"
+frame_progress = 0.35502315

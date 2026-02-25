@@ -200,11 +200,11 @@ _data = {
 &"RESET": SubResource("Animation_283su")
 }
 
-[node name="PauseMenuCanvas" type="CanvasLayer"]
+[node name="PauseMenuCanvas" type="CanvasLayer" unique_id=1450921297]
 process_mode = 3
 visible = false
 
-[node name="PauseMenu" type="Control" parent="." node_paths=PackedStringArray("pause_menu_canvas", "anim_player")]
+[node name="PauseMenu" type="Control" parent="." unique_id=1922411991 node_paths=PackedStringArray("pause_menu_canvas", "anim_player")]
 top_level = true
 layout_mode = 3
 anchors_preset = 15
@@ -216,7 +216,7 @@ script = ExtResource("1_ccwpd")
 pause_menu_canvas = NodePath("..")
 anim_player = NodePath("AnimationPlayer")
 
-[node name="Panel" type="Panel" parent="PauseMenu"]
+[node name="Panel" type="Panel" parent="PauseMenu" unique_id=1642441085]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -282,11 +282,9 @@ texture_normal = ExtResource("7_pddaj")
 texture_pressed = ExtResource("8_kt1n6")
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseMenu"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseMenu" unique_id=1325796333]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_12em7")
-}
+libraries/ = SubResource("AnimationLibrary_12em7")
 
 [connection signal="pressed" from="PauseMenu/Panel/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Panel/Options" to="PauseMenu" method="_on_options_pressed"]
