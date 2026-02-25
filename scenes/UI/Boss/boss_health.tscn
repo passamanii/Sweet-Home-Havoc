@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b15iis0n61nx4"]
 
 [ext_resource type="Script" uid="uid://icsloelwks2s" path="res://scripts/UI/Boss/boss_health.gd" id="1_2wkoo"]
-[ext_resource type="Texture2D" uid="uid://c3falj2disa5v" path="res://assets/Personagens/Boss/health-bar.png" id="1_nhl3r"]
+[ext_resource type="Texture2D" uid="uid://bj86utgdno67n" path="res://assets/Personagens/Boss/health-bar.png" id="1_nhl3r"]
 
 [sub_resource type="Gradient" id="Gradient_nhl3r"]
 colors = PackedColorArray(0.69411767, 0, 0, 1, 0.7137255, 0, 0, 1)
@@ -9,8 +9,9 @@ colors = PackedColorArray(0.69411767, 0, 0, 1, 0.7137255, 0, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2wkoo"]
 gradient = SubResource("Gradient_nhl3r")
 
-[node name="BossHealth" type="CanvasLayer"]
+[node name="BossHealth" type="CanvasLayer" node_paths=PackedStringArray("bar")]
 script = ExtResource("1_2wkoo")
+bar = NodePath("HealthBar/MarginContainer/NinePatchRect/TextureProgressBar")
 
 [node name="HealthBar" type="Control" parent="."]
 layout_mode = 3

@@ -1,31 +1,31 @@
 [gd_scene load_steps=20 format=4 uid="uid://od02whue0t6m"]
 
-[ext_resource type="Script" uid="uid://qwd4gcyidnte" path="res://scripts/Mapas/final_boss_room.gd" id="1_ghs1d"]
-[ext_resource type="Texture2D" uid="uid://cn10x4fb7lq6m" path="res://assets/Cenario/Sala/parede_madeira_frente.png" id="1_hrwh3"]
-[ext_resource type="Texture2D" uid="uid://ci1tggj62wmeg" path="res://assets/Cenario/Sala/parede_lados_cima.png" id="2_yp244"]
-[ext_resource type="Texture2D" uid="uid://p7qk8wtkjguq" path="res://assets/Cenario/objetos/mesa_aluno.png" id="3_ghs1d"]
-[ext_resource type="Texture2D" uid="uid://dwfak01och6io" path="res://assets/Cenario/Sala/piso15x15.png" id="4_1j81v"]
-[ext_resource type="Texture2D" uid="uid://c2bt2yt2rdjp0" path="res://assets/Cenario/Sala/parede_madeira_frente_rodape.png" id="5_msywq"]
-[ext_resource type="Texture2D" uid="uid://bn1d705a4w61t" path="res://assets/Cenario/objetos/cadeira_aluno.png" id="6_s6dja"]
-[ext_resource type="Texture2D" uid="uid://djroyu6vnywh7" path="res://assets/Cenario/Sala/parede_cinza.png" id="7_b4w6u"]
-[ext_resource type="PackedScene" uid="uid://d0d3ltflnild1" path="res://scenes/Entidades/Player/player.tscn" id="8_54ud0"]
-[ext_resource type="PackedScene" uid="uid://cfqstfbmkgj77" path="res://scenes/Entidades/Boss/FaimissonPhase1/faimisson_phase_1.tscn" id="9_yp244"]
-[ext_resource type="PackedScene" uid="uid://b15iis0n61nx4" path="res://scenes/UI/Boss/boss_health.tscn" id="11_1j81v"]
+[ext_resource type="Script" uid="uid://qwd4gcyidnte" path="res://scripts/Mapas/final_boss_room.gd" id="1_7k1t5"]
+[ext_resource type="Texture2D" uid="uid://cn10x4fb7lq6m" path="res://assets/Cenario/Sala/parede_madeira_frente.png" id="2_2q58a"]
+[ext_resource type="Texture2D" uid="uid://ci1tggj62wmeg" path="res://assets/Cenario/Sala/parede_lados_cima.png" id="3_sblk3"]
+[ext_resource type="Texture2D" uid="uid://p7qk8wtkjguq" path="res://assets/Cenario/objetos/mesa_aluno.png" id="4_a5vj5"]
+[ext_resource type="Texture2D" uid="uid://dwfak01och6io" path="res://assets/Cenario/Sala/piso15x15.png" id="5_fwmw6"]
+[ext_resource type="Texture2D" uid="uid://c2bt2yt2rdjp0" path="res://assets/Cenario/Sala/parede_madeira_frente_rodape.png" id="6_ryf8u"]
+[ext_resource type="Texture2D" uid="uid://bn1d705a4w61t" path="res://assets/Cenario/objetos/cadeira_aluno.png" id="7_iy7a0"]
+[ext_resource type="Texture2D" uid="uid://djroyu6vnywh7" path="res://assets/Cenario/Sala/parede_cinza.png" id="8_q7xoj"]
+[ext_resource type="PackedScene" uid="uid://cfqstfbmkgj77" path="res://scenes/Entidades/Boss/FaimissonPhase1/faimisson_phase_1.tscn" id="9_u3g6t"]
+[ext_resource type="PackedScene" uid="uid://d0d3ltflnild1" path="res://scenes/Entidades/Player/player.tscn" id="10_n1jbp"]
+[ext_resource type="PackedScene" uid="uid://b15iis0n61nx4" path="res://scenes/UI/Boss/boss_health.tscn" id="11_5dptn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eq22d"]
-texture = ExtResource("1_hrwh3")
+texture = ExtResource("2_2q58a")
 texture_region_size = Vector2i(15, 15)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.5, -7.5, -7.5, 7.5, 7.5, 7.5, 7.5, -7.5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3aa8u"]
-texture = ExtResource("2_yp244")
+texture = ExtResource("3_sblk3")
 texture_region_size = Vector2i(15, 15)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.5, 7.5, -7.5, -7.5, 7.5, -7.5, 7.5, 7.5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f21ek"]
-texture = ExtResource("3_ghs1d")
+texture = ExtResource("4_a5vj5")
 texture_region_size = Vector2i(15, 15)
 0:0/0 = 0
 1:0/0 = 0
@@ -33,17 +33,17 @@ texture_region_size = Vector2i(15, 15)
 1:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v3ev1"]
-texture = ExtResource("4_1j81v")
+texture = ExtResource("5_fwmw6")
 texture_region_size = Vector2i(15, 15)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pr5ks"]
-texture = ExtResource("5_msywq")
+texture = ExtResource("6_ryf8u")
 texture_region_size = Vector2i(15, 15)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e3dda"]
-texture = ExtResource("6_s6dja")
+texture = ExtResource("7_iy7a0")
 texture_region_size = Vector2i(15, 15)
 0:0/0 = 0
 1:0/0 = 0
@@ -51,7 +51,7 @@ texture_region_size = Vector2i(15, 15)
 1:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ltik7"]
-texture = ExtResource("7_b4w6u")
+texture = ExtResource("8_q7xoj")
 texture_region_size = Vector2i(15, 15)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.5, -5.036044, -7.5, -7.5, 7.5, -7.5, 7.5, -5.2159023)
@@ -67,8 +67,9 @@ sources/2 = SubResource("TileSetAtlasSource_f21ek")
 sources/5 = SubResource("TileSetAtlasSource_e3dda")
 sources/6 = SubResource("TileSetAtlasSource_ltik7")
 
-[node name="FinalBossRoom" type="Node2D"]
-script = ExtResource("1_ghs1d")
+[node name="FinalBossRoom" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_7k1t5")
+player = NodePath("Player")
 
 [node name="Sala" type="TileMapLayer" parent="."]
 texture_filter = 2
@@ -79,17 +80,13 @@ tile_set = SubResource("TileSet_dhk0v")
 
 [node name="Warns" type="Node2D" parent="."]
 
-[node name="Faimisson" parent="." node_paths=PackedStringArray("health_bar") instance=ExtResource("9_yp244")]
-max_health = 0.0
-dash_force = 2000.0
-dash_extra_distance = 300.0
-dash_brake_force = 3000.0
+[node name="Faimisson" parent="." node_paths=PackedStringArray("health_bar") instance=ExtResource("9_u3g6t")]
 damage = 1
 health_bar = NodePath("../BossHealth")
 
-[node name="Player" parent="." instance=ExtResource("8_54ud0")]
+[node name="Player" parent="." instance=ExtResource("10_n1jbp")]
 position = Vector2(-223, 328)
 
-[node name="BossHealth" parent="." instance=ExtResource("11_1j81v")]
+[node name="BossHealth" parent="." node_paths=PackedStringArray("boss") instance=ExtResource("11_5dptn")]
 visible = false
-script = null
+boss = NodePath("../Faimisson")

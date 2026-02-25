@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://daxtrwmeb4u2g"]
+[gd_scene load_steps=6 format=3 uid="uid://daxtrwmeb4u2g"]
 
 [ext_resource type="Script" uid="uid://c6mehewqdr782" path="res://scripts/Entidades/Boss/FaimissonPhase1/fall_warning.gd" id="1_q1fs3"]
-[ext_resource type="Texture2D" uid="uid://mkvnlonwx368" path="res://assets/Personagens/Boss/Faimison/fall-area-Sheet.png" id="1_urdsb"]
+[ext_resource type="Texture2D" uid="uid://xrewp6u8k7s8" path="res://assets/Personagens/Boss/Faimison/fall-area-Sheet.png" id="1_urdsb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q1fs3"]
 atlas = ExtResource("1_urdsb")
@@ -25,10 +25,6 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_urdsb"]
-radius = 8.625
-height = 31.0
-
 [node name="FallWarning" type="Area2D"]
 scale = Vector2(8, 8)
 collision_layer = 64
@@ -43,8 +39,8 @@ animation = &"Warn"
 autoplay = "Warn"
 frame_progress = 0.87720895
 
-[node name="Collision" type="CollisionShape2D" parent="."]
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_urdsb")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -3.875)
+polygon = PackedVector2Array(11.625, -0.75, 7.375, -2.875, 0.25, -4.125, -6.625, -3.25, -11.625, -0.875, -0.25, 0)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
