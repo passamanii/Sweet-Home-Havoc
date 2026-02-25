@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Faimisson1
 
 @export_category("Variables")
-@export var max_health: int
+@export var max_health: float
 @export var dash_force: float = 2000.0
 @export var dash_extra_distance: float = 300.0
 @export var dash_brake_force: float = 3000.0
@@ -17,14 +17,18 @@ class_name Faimisson1
 @export var anim_tree: AnimationTree
 @export var sprite: Sprite2D
 @export var hitbox_area: Area2D
+@export var hurtbox_area: Area2D
+@export var health_bar: CanvasLayer
 
-var health: int
+var health: float
 var player: BasePlayer
 var dash: bool = false
 var state_machine
 var dash_velocity: Vector2 = Vector2.ZERO
 var dash_target: Vector2
 var dir: Vector2
+
+signal updated_health(damage: float)
 
 func _ready() -> void:
 	state_machine = anim_tree.get("parameters/playback")
@@ -123,14 +127,40 @@ func do_naranjas() -> void:
 	state_machine.travel("Idle")
 	await get_tree().create_timer(2).timeout
 
+func do_vulnerable() -> void:
+	hitbox_area.monitoring = false
+	hurtbox_area.monitoring = true
+	health_bar.show()
+	await get_tree().create_timer(5).timeout
+	health_bar.hide()
+	await get_tree().create_timer(1).timeout
+	hitbox_area.monitoring = true
+	hurtbox_area.monitoring = false
+
 func boss_cycle():
 	await get_tree().create_timer(2).timeout
 	while true:
+		await do_vulnerable()
 		await do_kick()
 		await do_dash()
 		await do_naranjas()
 		await do_breath()
 
+func go_to_second_fase() -> void:
+	pass
 
 func _on_hitbox_area_area_entered(_area: Area2D) -> void:
 	player.get_hit(damage, (player.global_position - global_position).normalized())
+
+func get_hit() -> void:
+	if hurtbox_area.monitoring:
+		health -= Player_Stats.damage
+		updated_health.emit(Player_Stats.damage)
+		
+		if health <= 0:
+			go_to_second_fase()
+			health_bar.hide()
+			
+
+func _on_hurtbox_area_entered(_area: Area2D) -> void:
+	get_hit()
