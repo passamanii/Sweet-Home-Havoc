@@ -1,7 +1,7 @@
 extends ProjectileBase
 
-var amplitude = 500.0
-var frequency = 8.0
+var amplitude = 800.0
+var frequency = 6.0
 var time_passed = 0.0
 
 func _ready() -> void:

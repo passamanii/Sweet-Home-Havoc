@@ -385,7 +385,6 @@ func die() -> void:
 	var cam = camera_2d
 	cam.reparent(get_tree().current_scene)
 	cam.global_position = global_position
-	queue_free()
 	player_died.emit()
 	get_tree().reload_current_scene()
 	update_stats_on_death()

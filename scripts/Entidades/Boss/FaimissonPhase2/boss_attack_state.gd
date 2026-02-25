@@ -6,8 +6,8 @@ extends State
 func Enter() -> void:
 	await get_tree().create_timer(0.2).timeout
 	boss_head.stones_attack()
-	boss_head.rotation_speed = 15
-	await get_tree().create_timer(5).timeout
+	boss_head.rotation_speed = 25
+	await get_tree().create_timer(12).timeout
 	
 	Transitioned.emit(self, "BlueStone")
 

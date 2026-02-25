@@ -19,6 +19,8 @@ class_name Faimisson1
 @export var hitbox_area: Area2D
 @export var hurtbox_area: Area2D
 @export var health_bar: CanvasLayer
+@export var warns: Node2D
+@export var fade_transition: FadeTransition
 
 var health: float
 var player: BasePlayer
@@ -73,10 +75,12 @@ func start_dash() -> void:
 	dash_velocity = dir * dash_force
 
 func throw_tornado() -> void:
-	for rad in [0, 45, 90, 135, 180, 225, 270]:
+	var quantity: int = 12
+	
+	for i in range(quantity):
 		var tornado = tornado_scene.instantiate()
-		var spawn_pos = global_position + 200 * Vector2.RIGHT.rotated(deg_to_rad(rad))
-		tornado.dir = Vector2(cos(deg_to_rad(rad)), sin(deg_to_rad(rad)))
+		var spawn_pos = global_position + 150 * Vector2.RIGHT.rotated((i * (TAU / quantity)))
+		tornado.dir = Vector2(cos(i * (TAU / quantity)), sin(i * (TAU / quantity)))
 		tornado.global_position = spawn_pos
 		get_tree().current_scene.add_child(tornado)
 
@@ -89,10 +93,10 @@ func add_naranja_fall_warn() -> void:
 	var fall_warn = fall_warn_scene.instantiate()
 	var naranja_gigante = naranja_gigante_scene.instantiate()
 	
-	var warn_pos = global_position + randi_range(200, 3000) * Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+	var warn_pos = global_position + randi_range(200, 1800) * Vector2.RIGHT.rotated(randf_range(0, TAU))
 	fall_warn.global_position = warn_pos
 	fall_warn.naranja = naranja_gigante
-	get_tree().current_scene.add_child(fall_warn)
+	warns.add_child(fall_warn)
 	
 	naranja_gigante.warn = fall_warn
 	naranja_gigante.global_position = warn_pos - Vector2(0, 2000)
@@ -100,7 +104,7 @@ func add_naranja_fall_warn() -> void:
 
 func do_kick() -> void:
 	state_machine.travel("Kick")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(7).timeout
 	state_machine.travel("Idle")
 	await get_tree().create_timer(2).timeout
 
@@ -111,19 +115,19 @@ func do_breath() -> void:
 	await get_tree().create_timer(2).timeout
 
 func do_dash() -> void:
-	hitbox_area.monitoring = true
 	start_dash()
-	await get_tree().create_timer(10).timeout
+	# Dependendo da quantidade de tempo buga:
+	await get_tree().create_timer(7).timeout
+	state_machine.travel("Idle")
 	dash = false
 	velocity = Vector2.ZERO
 	dash_velocity = Vector2.ZERO
-	hitbox_area.monitoring = false
-	state_machine.travel("Idle")
+	global_position = Vector2.ZERO
 	await get_tree().create_timer(2).timeout
 
 func do_naranjas() -> void:
 	state_machine.travel("Naranjas")
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(8).timeout
 	state_machine.travel("Idle")
 	await get_tree().create_timer(2).timeout
 
@@ -141,12 +145,18 @@ func boss_cycle():
 	await get_tree().create_timer(2).timeout
 	while true:
 		await do_vulnerable()
-		await do_kick()
+		await do_breath()
 		await do_dash()
 		await do_naranjas()
-		await do_breath()
+		if health <= 0:
+			break
 
 func go_to_second_fase() -> void:
+	fade_transition.init_white()
+	fade_transition.transition_end.connect(_cabou)
+
+func _cabou() -> void:
+	get_tree().change_scene_to_file("res://scenes/Mapas/final_boss_room_02.tscn")
 	pass
 
 func _on_hitbox_area_area_entered(_area: Area2D) -> void:
@@ -155,12 +165,13 @@ func _on_hitbox_area_area_entered(_area: Area2D) -> void:
 func get_hit() -> void:
 	if hurtbox_area.monitoring:
 		health -= Player_Stats.damage
-		updated_health.emit(Player_Stats.damage)
+		updated_health.emit()
 		
+		print(health)
 		if health <= 0:
+			
 			go_to_second_fase()
 			health_bar.hide()
-			
 
 func _on_hurtbox_area_entered(_area: Area2D) -> void:
 	get_hit()

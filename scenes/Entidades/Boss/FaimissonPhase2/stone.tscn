@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d4jioe3mwngxu"]
 
 [ext_resource type="Script" uid="uid://m1a3pgsitvua" path="res://scripts/Entidades/Boss/FaimissonPhase2/stone.gd" id="1_kpjt5"]
-[ext_resource type="PackedScene" uid="uid://c1ugmctvlhh8m" path="res://scenes/UI/damage_popup.tscn" id="2_7i3hv"]
+[ext_resource type="PackedScene" uid="uid://c1ugmctvlhh8m" path="res://scenes/UI/Popups/damage_popup.tscn" id="2_7i3hv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7i3hv"]
 

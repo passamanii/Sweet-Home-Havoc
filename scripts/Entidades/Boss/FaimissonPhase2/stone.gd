@@ -29,7 +29,7 @@ func stop_laser():
 	laser.visible = false
 	laser.monitoring = false
 
-func _on_hitbox_area_area_entered(_area: Area2D) -> void:
+func get_hit() -> void:
 	if shield_on:
 		return
 	
@@ -43,6 +43,9 @@ func _on_hitbox_area_area_entered(_area: Area2D) -> void:
 	if health <= 0:
 		anim_sprite.play("Broken")
 		broken = true
+
+func _on_hitbox_area_area_entered(_area: Area2D) -> void:
+	get_hit()
 
 func _on_laser_area_area_entered(_area: Area2D) -> void:
 	var laser_dir = (laser_collision.global_position - global_position).normalized()
