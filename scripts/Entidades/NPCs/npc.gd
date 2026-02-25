@@ -11,7 +11,7 @@ extends CharacterBody2D
 
 var dialog_info = {
 	"current_state" : "start",
-	"current_branch_index" : 1
+	"current_branch_index" : 0
 }
 
 func _ready():

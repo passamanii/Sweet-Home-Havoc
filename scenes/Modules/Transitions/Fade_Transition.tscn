@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpm6regsguk6c"]
+[gd_scene format=3 uid="uid://dpm6regsguk6c"]
 
-[ext_resource type="Script" path="res://scripts/Modules/Transitions/fade_transition.gd" id="1_4ydro"]
-
+[ext_resource type="Script" uid="uid://ba4qt08ack6wd" path="res://scripts/Modules/Transitions/fade_transition.gd" id="1_4ydro"]
 
 [sub_resource type="Animation" id="Animation_xie56"]
 resource_name = "fade_in"
@@ -40,7 +39,7 @@ _data = {
 &"fade_out": SubResource("Animation_syjg4")
 }
 
-[node name="Fade_Transition" type="Control" node_paths=PackedStringArray("timer", "anim_transition")]
+[node name="Fade_Transition" type="Control" unique_id=897182185 node_paths=PackedStringArray("timer", "anim_transition")]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -48,19 +47,17 @@ script = ExtResource("1_4ydro")
 timer = NodePath("Timer")
 anim_transition = NodePath("AnimTransition")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1237257520]
 layout_mode = 0
 offset_left = -31245.0
 offset_top = -19479.0
 offset_right = 30381.0
 offset_bottom = 20551.0
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 
-[node name="AnimTransition" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_jncpl")
-}
+[node name="AnimTransition" type="AnimationPlayer" parent="." unique_id=610814774]
+libraries/ = SubResource("AnimationLibrary_jncpl")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=2115473521]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
