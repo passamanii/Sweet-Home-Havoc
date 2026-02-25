@@ -1,0 +1,98 @@
+[gd_scene load_steps=5 format=3 uid="uid://crah7f37xseg6"]
+
+[ext_resource type="FontFile" uid="uid://5f0vtbtakhtc" path="res://assets/General/UltimatePixelFont.ttf" id="1_454s7"]
+[ext_resource type="Script" uid="uid://mf32hig0d670" path="res://scenes/UI/fim.gd" id="1_g86hf"]
+[ext_resource type="FontFile" uid="uid://dytaks4k8o8x7" path="res://assets/General/MoonlitFlow-Regular.ttf" id="2_hmrwf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_454s7"]
+
+[node name="Fim" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g86hf")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_454s7")
+theme_override_font_sizes/font_size = 28
+text = "Você passou na prova =)"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxFlat_454s7")
+
+[node name="Label5" type="Label" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_454s7")
+theme_override_font_sizes/font_size = 21
+text = "DESENVOLVEDORES"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxFlat_454s7")
+
+[node name="Label2" type="Label" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hmrwf")
+theme_override_font_sizes/font_size = 23
+text = "- Victor Brito Medrado"
+
+[node name="Label3" type="Label" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hmrwf")
+theme_override_font_sizes/font_size = 23
+text = "- Dieimisson Rian Silva"
+
+[node name="Label4" type="Label" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hmrwf")
+theme_override_font_sizes/font_size = 23
+text = "- Vinny Daros Trindade"
+
+[node name="Label6" type="Label" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hmrwf")
+theme_override_font_sizes/font_size = 23
+text = "- Luís Felipe Passamani Santos"
+
+[node name="HSeparator3" type="HSeparator" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxFlat_454s7")
+
+[node name="Button" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Menu"
+
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/Button" to="Control" method="_on_button_pressed"]

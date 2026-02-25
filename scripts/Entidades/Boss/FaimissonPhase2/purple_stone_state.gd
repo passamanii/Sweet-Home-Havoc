@@ -42,4 +42,3 @@ func Exit() -> void:
 	boss_head.purple_barrier_safe_area.monitoring = false
 	boss_head.purple_barrier_sprite.hide()
 	boss_head.purple_barrier_safe_sprite.hide()
-	print("SAIU")

@@ -50,7 +50,7 @@ script = ExtResource("2_cdqtc")
 turn_velocity = 1
 damage = 1
 speed = 300
-life_time = 15.0
+life_time = 8.0
 
 [node name="AnimSprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_p4pm5")

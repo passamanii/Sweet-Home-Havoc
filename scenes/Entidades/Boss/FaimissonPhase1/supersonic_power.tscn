@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://db2mc4jnjevvn"]
 
 [ext_resource type="PackedScene" uid="uid://ctti6v6ywm68k" path="res://scenes/Entidades/projectile_base.tscn" id="1_juai8"]
-[ext_resource type="Texture2D" uid="uid://b5p6w263d80l0" path="res://assets/Personagens/Boss/Faimison/poder_chute.png" id="2_g7fki"]
+[ext_resource type="Texture2D" uid="uid://4icwbnqfdajt" path="res://assets/Personagens/Boss/Faimison/poder_chute.png" id="2_g7fki"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g7fki"]
 atlas = ExtResource("2_g7fki")
@@ -33,11 +33,12 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x283m"]
-radius = 21.023796
+radius = 17.00735
 
 [node name="SupersonicPower" instance=ExtResource("1_juai8")]
-speed = 600
-life_time = 3.0
+damage = 20
+speed = 900
+life_time = 5.0
 
 [node name="AnimSprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_g7fki")
