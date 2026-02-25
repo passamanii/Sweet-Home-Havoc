@@ -18,6 +18,22 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_7f88n"]
+resource_name = "fade_in_white"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_syjg4"]
 resource_name = "fade_out"
 tracks/0/type = "value"
@@ -48,22 +64,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_7f88n"]
-resource_name = "fade_in_white"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jncpl"]
 _data = {
 &"fade_in": SubResource("Animation_xie56"),
@@ -73,7 +73,8 @@ _data = {
 }
 
 [node name="Fade_Transition" type="Control" node_paths=PackedStringArray("timer", "anim_transition")]
-visible = false
+process_mode = 3
+process_priority = 1
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_4ydro")
@@ -89,6 +90,7 @@ offset_bottom = 20551.0
 color = Color(0, 0, 0, 0)
 
 [node name="AnimTransition" type="AnimationPlayer" parent="."]
+callback_mode_discrete = 2
 libraries = {
 &"": SubResource("AnimationLibrary_jncpl")
 }

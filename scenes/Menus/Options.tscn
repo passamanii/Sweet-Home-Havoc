@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cqys0xkjdptam" path="res://scenes/Menus/Base_Menu_Button/Base_Menu_Button.tscn" id="3_hr0t0"]
 [ext_resource type="Texture2D" uid="uid://d07jnaxw0kth8" path="res://assets/Caixas/Menu/menu-button-white.png" id="4_xvxgp"]
 [ext_resource type="Texture2D" uid="uid://daq2n1x2u1mqq" path="res://assets/Caixas/Menu/menu-button-black.png" id="5_fgxch"]
-[ext_resource type="PackedScene" uid="uid://c2j88fhmw3cm0" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="6_hr0t0"]
+[ext_resource type="PackedScene" uid="uid://dpm6regsguk6c" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="6_hr0t0"]
 [ext_resource type="FontFile" uid="uid://5f0vtbtakhtc" path="res://assets/General/UltimatePixelFont.ttf" id="7_xvxgp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hr0t0"]

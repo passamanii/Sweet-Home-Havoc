@@ -2081,7 +2081,6 @@ autoplay = "Idle_Back"
 position = Vector2(0, -0.25)
 sprite_frames = SubResource("SpriteFrames_l71n6")
 animation = &"Shoot_Front"
-frame = 1
 
 [node name="HurtboxArea" type="Area2D" parent="."]
 collision_layer = 4
