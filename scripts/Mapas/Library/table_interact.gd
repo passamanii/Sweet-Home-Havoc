@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _interact() -> void:
 
-	if self.is_in_area and Game_Controller.has_first_book:
+	if Game_Controller.has_first_book:
 		player.can_move = false
 		print("Você se senta para estudar... mas começa a ter uma sensação ruim.")
 		await get_tree().create_timer(1).timeout

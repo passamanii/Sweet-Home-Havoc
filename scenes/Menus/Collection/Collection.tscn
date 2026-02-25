@@ -1,0 +1,157 @@
+[gd_scene load_steps=20 format=3 uid="uid://coaekdgc6nj52"]
+
+[ext_resource type="Script" uid="uid://cgsrxs0dagbjf" path="res://scripts/Menus/Collection/collection.gd" id="1_30twq"]
+[ext_resource type="Texture2D" uid="uid://dne01oumimlub" path="res://assets/General/Capa Menu.png" id="1_q6c0c"]
+[ext_resource type="PackedScene" uid="uid://cqys0xkjdptam" path="res://scenes/Menus/Base_Menu_Button/Base_Menu_Button.tscn" id="2_30twq"]
+[ext_resource type="Texture2D" uid="uid://d07jnaxw0kth8" path="res://assets/Caixas/Menu/menu-button-white.png" id="3_8qsa4"]
+[ext_resource type="Texture2D" uid="uid://daq2n1x2u1mqq" path="res://assets/Caixas/Menu/menu-button-black.png" id="4_wbuks"]
+[ext_resource type="PackedScene" uid="uid://c2j88fhmw3cm0" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="6_8qsa4"]
+[ext_resource type="PackedScene" uid="uid://dhfcpmtn4l14k" path="res://scenes/Menus/Collection/collection_base_item.tscn" id="6_wbuks"]
+[ext_resource type="Script" uid="uid://cffjhg6f7q4sx" path="res://scripts/Menus/Collection/Collection_Items/cheese.gd" id="7_qxdo3"]
+[ext_resource type="Script" uid="uid://bntmpch4q8kmc" path="res://scripts/Menus/Collection/Collection_Items/book.gd" id="8_conxu"]
+[ext_resource type="Script" uid="uid://chw07mw6g14ir" path="res://scripts/Menus/Collection/Collection_Items/cirgarette.gd" id="9_35g7j"]
+[ext_resource type="Script" uid="uid://bcnbb0g7qxq8s" path="res://scripts/Menus/Collection/Collection_Items/girl_teardrop.gd" id="10_o05ok"]
+[ext_resource type="Script" uid="uid://chwu4dnqjvk15" path="res://scripts/Menus/Collection/Collection_Items/grass.gd" id="11_nf330"]
+[ext_resource type="Script" uid="uid://dcfc0vffowgce" path="res://scripts/Menus/Collection/Collection_Items/him.gd" id="12_j0fgh"]
+[ext_resource type="Script" uid="uid://d2yeiaiaoeky5" path="res://scripts/Menus/Collection/Collection_Items/nugget.gd" id="13_ipeod"]
+[ext_resource type="Script" uid="uid://bpwkirmadrh74" path="res://scripts/Menus/Collection/Collection_Items/orange.gd" id="14_hbp0c"]
+[ext_resource type="Script" uid="uid://o07nk773dpbs" path="res://scripts/Menus/Collection/Collection_Items/pen.gd" id="15_2uifs"]
+[ext_resource type="Script" uid="uid://cobrvhiwekqqf" path="res://scripts/Menus/Collection/Collection_Items/yellow_ball.gd" id="16_nuxe0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_474v6"]
+bg_color = Color(0.6784314, 0.46666667, 0.34117648, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqqky"]
+bg_color = Color(0.7529412, 0.5803922, 0.4509804, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 12
+
+[node name="Collection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_30twq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.4509804, 0.4509804, 0.4509804, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_q6c0c")
+
+[node name="Main_Menu" parent="." instance=ExtResource("2_30twq")]
+layout_mode = 0
+offset_left = 997.0
+offset_top = 597.0
+offset_right = 1234.0
+offset_bottom = 715.5
+texture_normal = ExtResource("3_8qsa4")
+texture_pressed = ExtResource("4_wbuks")
+
+[node name="Outline_Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08467742
+anchor_top = 0.104166664
+anchor_right = 0.9072581
+anchor_bottom = 0.80972224
+theme_override_styles/panel = SubResource("StyleBoxFlat_474v6")
+metadata/_edit_use_anchors_ = true
+
+[node name="Interior_Panel" type="Panel" parent="Outline_Panel"]
+layout_mode = 0
+anchor_left = 0.010784314
+anchor_top = 0.037401576
+anchor_right = 0.9882353
+anchor_bottom = 0.96653545
+theme_override_styles/panel = SubResource("StyleBoxFlat_cqqky")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Outline_Panel/Interior_Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Cheese" parent="Outline_Panel/Interior_Panel/HBoxContainer" instance=ExtResource("6_wbuks")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("7_qxdo3")
+
+[node name="Book" parent="Outline_Panel/Interior_Panel/HBoxContainer" instance=ExtResource("6_wbuks")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("8_conxu")
+
+[node name="Cigarette" parent="Outline_Panel/Interior_Panel/HBoxContainer" instance=ExtResource("6_wbuks")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("9_35g7j")
+
+[node name="Girl_Teardrop" parent="Outline_Panel/Interior_Panel/HBoxContainer" instance=ExtResource("6_wbuks")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("10_o05ok")
+
+[node name="Grass" parent="Outline_Panel/Interior_Panel/HBoxContainer" instance=ExtResource("6_wbuks")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("11_nf330")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Outline_Panel/Interior_Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Him" parent="Outline_Panel/Interior_Panel/HBoxContainer2" instance=ExtResource("6_wbuks")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("12_j0fgh")
+
+[node name="Nugget" parent="Outline_Panel/Interior_Panel/HBoxContainer2" instance=ExtResource("6_wbuks")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("13_ipeod")
+
+[node name="Orange" parent="Outline_Panel/Interior_Panel/HBoxContainer2" instance=ExtResource("6_wbuks")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("14_hbp0c")
+
+[node name="Pen" parent="Outline_Panel/Interior_Panel/HBoxContainer2" instance=ExtResource("6_wbuks")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("15_2uifs")
+
+[node name="Yellow_Ball" parent="Outline_Panel/Interior_Panel/HBoxContainer2" instance=ExtResource("6_wbuks")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("16_nuxe0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Fade_Transition" parent="CanvasLayer" instance=ExtResource("6_8qsa4")]
+
+[connection signal="pressed" from="Main_Menu" to="." method="_on_main_menu_pressed"]

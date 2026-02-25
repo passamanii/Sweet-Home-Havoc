@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="StrenghPerk" load_steps=3 format=3 uid="uid://dghnx4n6mmt2h"]
 
 [ext_resource type="Script" uid="uid://ctnjydanvrplt" path="res://scripts/Modules/Perks/Strengh_Perk.gd" id="1_kmu2y"]
-[ext_resource type="Texture2D" uid="uid://qwfnvx4fs5gy" path="res://assets/General/icone.png" id="1_q217t"]
+[ext_resource type="Texture2D" uid="uid://b4rw6nbnu6fcn" path="res://assets/Caixas/Habilidades/damage-icon.png" id="1_q217t"]
 
 [resource]
 script = ExtResource("1_kmu2y")

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="HealthPerk" load_steps=3 format=3 uid="uid://nf4fvnheg1gy"]
 
-[ext_resource type="Texture2D" uid="uid://cv4sskkh0o3cg" path="res://icon.svg" id="1_22wdj"]
+[ext_resource type="Texture2D" uid="uid://d35ms2waa85gn" path="res://assets/Caixas/Habilidades/health-icon.png" id="1_22wdj"]
 [ext_resource type="Script" uid="uid://b0t8wys00hgtf" path="res://scripts/Modules/Perks/Health_Perk.gd" id="1_mnw7r"]
 
 [resource]

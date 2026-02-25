@@ -36,6 +36,7 @@ func wave_finished() -> void:
 	actual_wave += 1
 	wave_label.text = "Wave " + str(actual_wave)
 	spawner_controller.start()
+	player.save_stats()
 	print(actual_wave)
 
 func win() -> void:
