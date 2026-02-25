@@ -2,392 +2,65 @@
 	"cutscene": {
 		"trees": [
 			{
-				"branch_id": "starter",
+				"branch_id": "dia_1",
 				"dialogs": [
 					{
 						"state": "start",
-						"speaker": "Aluno",
-						"text": "A prova é hoje...",
+						"text": "Prova na sexta...",
 						"options": {
 							"...": "next_1"
 						}
 					},
 					{
 						"state": "next_1",
-						"speaker": "Aluno",
 						"text": "Eu devia ter estudado.",
 						"options": {
 							"...": "next_2"
 						}
 					},
 					{
-						"state": "next_3",
-						"speaker": "Aluno",
-						"text": "Tá. Vou ter que dar uma estudada pra eu não reprovar",
+						"state": "next_2",
+						"text": "Tá. Hoje eu resolvo isso.",
 						"options": {
 							"...": "exit"
 						}
 					},
-					{
-						"state": "next_3",
-						"speaker": "Aluno",
-						"text": "Vou começar indo até a biblioteca",
-						"options": {
-							"...": "end"
-						}
-					},
-				]
-			},
-			{
-				"branch_id": "enters_library",
-				"dialogs": [
-					{
-						"state": "start",
-						"speaker": "Aluno",
-						"text": "Nossa, faz muito tempo que eu não entro aqui...",
-						"options": {
-							"...": "next_1"
-						}
-					},
-					{
-						"state": "next_1",
-						"speaker": "Aluno",
-						"text": "Vou perguntar à bibliotecária qual livro eu devo pegar",
-						"options": {
-							"...": "end"
-						}
-					}
 				]
 			}
 		]
 	},
-	"bibliotecaria": {
+	"faimisson": {
 		"trees": [
 			{
-				"branch_id": "int_1",
+				"branch_id": "faimisson_1",
 				"dialogs": [
 					{
 						"state": "start",
-						"speaker": "Aluno",
-						"text": "Oi, bom dia. Eu tenho uma prova hoje. Onde que estão os livros de cálculo aqui?",
+						"text": "oi",
 						"options": {
-							"...": "next_1"
+							"oi": "quest",
+							"tchau": "exit"
 						}
 					},
 					{
-						"state": "next_1",
-						"speaker": "Bibliotecária",
-						"text": "Hm, então você veio estudar para a prova, né?",
+						"state": "quest",
+						"text": "vai pra biblioteca",
 						"options": {
-							"...": "next_2"
+							"blz": "exit"
 						}
 					},
 					{
-						"state": "next_2",
-						"speaker": "Bibliotecária",
-						"text": "Bom, em algumas dessas estantes aí deve ter alguns livros de cálculos",
-						"options": {
-							"...": "next_3"
-						}
+						"state": "end",
+						"text": "flw",
+						"options": {}
 					},
 					{
-						"state": "next_3",
-						"speaker": "Bibliotecária",
-						"text": "Bom, também tem um armário antigo ali no fundo.",
-						"options": {
-							"...": "next_4"
-						}
-					},
-					{
-						"state": "next_4",
-						"speaker": "Aluno",
-						"text": "E tem o quê nesse armário?",
-						"options": {
-							"...": "next_5"
-						}
-					},
-					{
-						"state": "next_5",
-						"speaker": "Bibliotecária",
-						"text": "Dentro dele tem um livro… diferente. Aparentemente todo mundo que lê ele completo passa em qualquer matéria",
-						"options": {
-							"...": "next_6"
-						}
-					},
-					{
-						"state": "next_6",
-						"speaker": "Bibliotecária",
-						"text": "Só que esse armário está trancado, para abrir ele é preciso de uma senha",
-						"options": {
-							"...": "next_7"
-						}
-					},
-					{
-						"state": "next_7",
-						"speaker": "Bibliotecária",
-						"text": "Não, não sei. Mas algum veterano do seu curso deve saber",
-						"options": {
-							"...": "next_8"
-						}
-					},
-					{
-						"state": "next_8",
-						"speaker": "Bibliotecária",
-						"text": "Tenta conversar com algum, quem sabe ele te fala qual é a senha",
-						"options": {
-							"...": "end"
-						}
+						"state": "exit",
+						"text": "flw se cuida",
+						"options": {}
 					}
 				]
-			},
-			{
-				"branch_id": "default",
-				"dialogs": [
-					{
-						"state": "start",
-						"speaker": "Bibliotecaria",
-						"text": "Se você quiser, você pode sentar em umas das mesas dali e estudar, só não faça barulho",
-						"options": {
-							"...": "exit"
-						}
-					}
-				]
-			},
-		]
-	},
-	"veterano": {
-		"trees": [
-			{
-				"branch_id": "int_1",
-				"dialogs": [
-					{
-						"state": "start",
-						"speaker": "Aluno",
-						"text": "Opa, bom dia. Você é de qual curso?",
-						"options": {
-							"...": "next_1"
-						}
-					},
-					{
-						"state": "next_1",
-						"speaker": "Veterano",
-						"text": "Bom dia, sou de Ciências da Computação, e você?",
-						"options": {
-							"...": "next_2"
-						}
-					},
-					{
-						"state": "next_2",
-						"speaker": "Aluno",
-						"text": "Eu também sou. Vem cá, a bibliotecária falou de um armário antigo com uma senha. Por acaso você sabe qual é ela?",
-						"options": {
-							"...": "next_3"
-						}
-					},
-					{
-						"state": "next_3",
-						"speaker": "Veterano",
-						"text": "Hm, o armário antigo né. Eu sei qual é. Mas tome cuidado com aquele livro.",
-						"options": {
-							"...": "next_4"
-						}
-					},
-					{
-						"state": "next_4",
-						"speaker": "Aluno",
-						"text": "Como assim? O que esse livro faz?",
-						"options": {
-							"...": "next_5"
-						}
-					},
-					{
-						"state": "next_5",
-						"speaker": "Veterano",
-						"text": "Bom, vamos dizer que ele testa bastante a sua força de vontade de estudar. E se você falha nesse teste...",
-						"options": {
-							"...": "next_6"
-						}
-					},
-					{
-						"state": "next_6",
-						"speaker": "Veterano",
-						"text": "Vamos dizer que sua matricula é trancada...",
-						"options": {
-							"...": "next_7"
-						}
-					},
-					{
-						"state": "next_7",
-						"speaker": "Veterano",
-						"text": "Permanentemente",
-						"options": {
-							"...": "next_8"
-						}
-					},
-					{
-						"state": "next_8",
-						"speaker": "Aluno",
-						"text": "Nossa... Mas é a minha única opção. Qual que é a senha do armário?",
-						"options": {
-							"...": "next_9"
-						}
-					},
-					{
-						"state": "next_9",
-						"speaker": "Veterano",
-						"text": "A senha é 4269",
-						"options": {
-							"...": "next_10"
-						}
-					},
-					{
-						"state": "next_10",
-						"speaker": "Veterano",
-						"text": "Boa sorte",
-						"options": {
-							"...": "end"
-						}
-					},
-				]
-			},
-			{
-				"branch_id": "default",
-				"dialogs": [
-					{
-						"state": "start",
-						"speaker": "Veterano",
-						"text": "Bom, como eu disse a senha é 4269, e mais uma coisinha. De forma alguma fale com Faimisson que você leu esse livro. Pelo menos não até aprender tudo com ele. Confia em mim.",
-						"options": {
-							"Ok?": "exit"
-						}
-					}
-				]
-			},
-		]
-	},
-	"livro": {
-		"trees": [
-			{
-				"branch_id": "int_1",
-				"dialogs": [
-					{
-						"state": "start",
-						"speaker": "Aluno",
-						"text": "Então essa era a senha",
-						"options": {
-							"...": "next_1"
-						}
-					},
-					{
-						"state": "next_1",
-						"speaker": "Aluno",
-						"text": "Esse deve ser o tal livro que eles estavam falando",
-						"options": {
-							"...": "next_2"
-						}
-					},
-					{
-						"state": "next_2",
-						"speaker": "Livro",
-						"text": "Eu posso lhe dar todo o conhecimento que você precisa",
-						"options": {
-							"O livro fala??????????????": "next_3"
-						}
-					},
-					{
-						"state": "next_3",
-						"speaker": "Livro",
-						"text": "Mas primeiro, você terá que provar que você merece",
-						"options": {
-							"Estou dentro": "next_4"
-						}
-					},
-					{
-						"state": "next_4",
-						"speaker": "Livro",
-						"text": "Quando você estiver pronto, vai para aquela mesa ali e comece me ler",
-						"options": {
-							"OK": "end"
-						}
-					},
-				]
-			},
-			{
-				"branch_id": "defeat",
-				"dialogs": [
-					{
-						"state": "start",
-						"speaker": "Livro",
-						"text": "Você é fraco, Você realmente quer passar nessa prova?",
-						"options": {
-							"Tentar Novamente": "exit",
-							"Trancar a Matrícula": "quit"
-						}
-					}
-				]
-			},
-			{
-				"branch_id": "victory",
-				"dialogs": [
-					{
-						"state": "start",
-						"speaker": "Livro",
-						"text": "Parabéns, continue estudando, você pode ir conversar com Faimisson para aprender ainda mais.",
-						"options": {
-							"...": "next_1"
-						},
-						"state": "next_1",
-						"speaker": "Livro",
-						"text": "Só um conselho",
-						"options": {
-							"...": "next_2"
-						},
-						"state": "next_2",
-						"speaker": "Livro",
-						"text": "NÃO FALE DE MIM PARA ELE ATÉ QUE VOCÊ ESTEJA PREPARADO.",
-						"options": {
-							"...": "next_3"
-						},
-						"state": "next_3",
-						"speaker": "Livro",
-						"text": "Aprenda tudo com ele primeiro, esse é o único conselho que eu irei te dar.",
-						"options": {
-							"...": "end"
-						}
-					}
-				]
-			},
-			{
-				"branch_id": "victory",
-				"dialogs": [
-					{
-						"state": "start",
-						"speaker": "Livro",
-						"text": "Parabéns, continue estudando, você pode ir conversar com Faimisson para aprender ainda mais.",
-						"options": {
-							"...": "next_1"
-						},
-						"state": "next_1",
-						"speaker": "Livro",
-						"text": "Só um conselho",
-						"options": {
-							"...": "next_2"
-						},
-						"state": "next_2",
-						"speaker": "Livro",
-						"text": "NÃO FALE DE MIM PARA ELE ATÉ QUE VOCÊ ESTEJA PREPARADO.",
-						"options": {
-							"...": "next_3"
-						},
-						"state": "next_3",
-						"speaker": "Livro",
-						"text": "Aprenda tudo com ele primeiro, esse é o único conselho que eu irei te dar.",
-						"options": {
-							"...": "end"
-						}
-					}
-				]
-			},
+			}
 		]
 	},
 }
