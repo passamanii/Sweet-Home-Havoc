@@ -12,8 +12,8 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.get_parent() is BaseEnemy:
-		var enemy: BaseEnemy = area.get_parent()
+	if area.get_parent().has_method("get_hit"):
+		var enemy = area.get_parent()
 		
 		enemy.get_hit()
 		queue_free()

@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://b15iis0n61nx4"]
+
+[ext_resource type="Script" uid="uid://icsloelwks2s" path="res://scripts/UI/Boss/boss_health.gd" id="1_2wkoo"]
+[ext_resource type="Texture2D" uid="uid://c3falj2disa5v" path="res://assets/Personagens/Boss/health-bar.png" id="1_nhl3r"]
+
+[sub_resource type="Gradient" id="Gradient_nhl3r"]
+colors = PackedColorArray(0.69411767, 0, 0, 1, 0.7137255, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2wkoo"]
+gradient = SubResource("Gradient_nhl3r")
+
+[node name="BossHealth" type="CanvasLayer"]
+script = ExtResource("1_2wkoo")
+
+[node name="HealthBar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HealthBar"]
+custom_minimum_size = Vector2(320, 32)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -306.0
+offset_top = 660.0
+offset_right = 306.0
+offset_bottom = 692.0
+grow_horizontal = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HealthBar/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_nhl3r")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HealthBar/MarginContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.006134969
+anchor_top = 0.125
+anchor_right = 0.98977506
+anchor_bottom = 0.875
+max_value = 2000.0
+step = 0.01
+value = 2000.0
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture2D_2wkoo")
+metadata/_edit_use_anchors_ = true
