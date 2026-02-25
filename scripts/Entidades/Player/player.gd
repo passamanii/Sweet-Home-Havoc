@@ -369,7 +369,7 @@ func die() -> void:
 	cam.reparent(get_tree().current_scene)
 	cam.global_position = global_position
 	player_died.emit()
-	get_tree().reload_current_scene()
+	get_tree().call_deferred("reload_current_scene")
 	update_stats_on_death()
 
 func pause() -> void:

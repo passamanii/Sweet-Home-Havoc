@@ -5,12 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://brdrgoajua67a" path="res://scenes/Entidades/Boss/FaimissonPhase2/red_stone.tscn" id="2_vsmd2"]
 [ext_resource type="PackedScene" uid="uid://b37m6o3s8jlkg" path="res://scenes/Entidades/Boss/FaimissonPhase2/purple_stone.tscn" id="3_ppjuv"]
 [ext_resource type="PackedScene" uid="uid://d28005ch07b6e" path="res://scenes/Entidades/Boss/FaimissonPhase2/blue_stone.tscn" id="4_8r87q"]
-[ext_resource type="Script" uid="uid://d1dynej3y0rrn" path="res://scripts/Entidades/States/state_machine.gd" id="5_8r87q"]
+[ext_resource type="Script" path="res://scripts/Entidades/States/state_machine.gd" id="5_8r87q"]
 [ext_resource type="PackedScene" uid="uid://mykqxws22bec" path="res://scenes/Entidades/Inimigos/robot.tscn" id="5_v8gjt"]
 [ext_resource type="PackedScene" uid="uid://i1sny6dbrit4" path="res://scenes/Entidades/Boss/FaimissonPhase2/red_stone_projectile.tscn" id="6_kn25v"]
 [ext_resource type="Script" uid="uid://cyiobase1dc0h" path="res://scripts/Entidades/Boss/FaimissonPhase2/boss_attack_state.gd" id="7_2o72l"]
 [ext_resource type="Script" uid="uid://c8grh8wn8c8no" path="res://scripts/Entidades/Boss/FaimissonPhase2/flying_punch_state.gd" id="7_4vpvw"]
-[ext_resource type="Texture2D" uid="uid://dd03jbysefr7" path="res://assets/Personagens/Boss/Faimison/faimisson-aura-Sheet.png" id="8_mskrf"]
+[ext_resource type="Texture2D" uid="uid://baakif6567cds" path="res://assets/Personagens/Boss/Faimison/faimisson-aura-Sheet.png" id="8_mskrf"]
 [ext_resource type="Script" uid="uid://dk5frt8iv3eap" path="res://scripts/Entidades/Boss/FaimissonPhase2/orbit_expand_state.gd" id="8_w2yf1"]
 [ext_resource type="Script" uid="uid://dnbggqg174xvx" path="res://scripts/Entidades/Boss/FaimissonPhase2/stones_laser_state.gd" id="9_smqhx"]
 [ext_resource type="Script" uid="uid://dxmiydi6uy4bf" path="res://scripts/Entidades/Boss/FaimissonPhase2/blue_stone_stone.gd" id="11_p0551"]
@@ -145,7 +145,7 @@ boss_body = NodePath("Boss")
 fade_transition = NodePath("Fade_Transition")
 
 [node name="Boss" parent="." node_paths=PackedStringArray("fade_transition") instance=ExtResource("1_q4qic")]
-damage = 1
+max_health = 1
 fade_transition = NodePath("../Fade_Transition")
 
 [node name="ShielddArea" type="Area2D" parent="."]
@@ -166,7 +166,7 @@ frame_progress = 0.29563338
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_8r87q")
-initial_state = NodePath("FinishIt")
+initial_state = NodePath("FlyingPunch")
 
 [node name="FlyingPunch" type="Node" parent="StateMachine" node_paths=PackedStringArray("boss_body")]
 script = ExtResource("7_4vpvw")
@@ -243,8 +243,7 @@ shape = SubResource("CircleShape2D_mbmqo")
 
 [node name="Fade_Transition" parent="." instance=ExtResource("20_klpf5")]
 
-[node name="BossHealth" parent="." node_paths=PackedStringArray("boss2") instance=ExtResource("21_hon63")]
-boss2 = NodePath("../Boss")
+[node name="BossHealth" parent="." instance=ExtResource("21_hon63")]
 
 [connection signal="area_entered" from="ShielddArea" to="." method="_on_shieldd_area_area_entered"]
 [connection signal="timeout" from="StateMachine/BlueStone/Timer" to="StateMachine/BlueStone" method="_on_timer_timeout"]

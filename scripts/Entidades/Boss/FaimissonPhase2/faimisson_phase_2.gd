@@ -175,7 +175,7 @@ func expand_orbit(delta: float) -> void:
 	var collision = shield.get_children()[0] as CollisionShape2D
 	collision.shape.radius = orbit_radius / 3.8
 	
-	if orbit_radius >= 1500:
+	if orbit_radius >= 1100:
 		expanding = false
 		shrinking = true
 

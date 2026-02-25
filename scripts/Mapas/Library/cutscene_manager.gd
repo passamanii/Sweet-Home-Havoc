@@ -221,104 +221,106 @@ func open_locker_cutscene() -> void:
 
 func win_coming_back_from_dungeon_cutscene() -> void:
 	Game_Controller.is_cutscene = true
+	player.can_move = false
 	player.pause()
 	player.animation_player.play("Idle_Front")
 
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.1).timeout
 	print("*Você pisca os olhos e está de volta à biblioteca.*")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Aluno: ...")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Aluno: Eu voltei?")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("*A biblioteca está silenciosa demais.*")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Aluno: Aquilo foi real.")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Aluno: Eu lutei.")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Aluno: Eu venci.")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Livro: Você sobreviveu.")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Aluno: Sobrevivi?!")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Aluno: Eu achei que eu tava estudando!")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Livro: Você absorveu conhecimento bruto.")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Livro: Conceitos. Fórmulas. Definições.")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Livro: Todos despejados em sua mente.")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Aluno: Minha cabeça tá doendo...")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Aluno: Eu sei explicar coisas que eu nem lembro de ter lido.")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Aluno: Mas eu não sei o que realmente importa pra prova.")
-	await get_tree().create_timer(4).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Livro: Informação não é entendimento.")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Livro: Você aprendeu demais.")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Livro: Mas não aprendeu o suficiente.")
-	await get_tree().create_timer(4).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Aluno: Isso não faz sentido nenhum!")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Livro: Faz.")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Livro: O próximo capítulo filtrará o excesso.")
-	await get_tree().create_timer(4).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Livro: Apenas o que for essencial permanecerá.")
-	await get_tree().create_timer(4).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Aluno: E se eu não quiser continuar?")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Livro: Você pode fechar o livro.")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Livro: E encarar a prova... vazio.")
-	await get_tree().create_timer(4).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("...")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Aluno: Eu odeio quando você faz sentido.")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Livro: Prepare-se.")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Livro: O segundo capítulo será menos tolerante.")
-	await get_tree().create_timer(4).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	print("Objetivo atualizado: Dominar o próximo capítulo.")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.1).timeout
 
 	player.can_move = true
+	player.play()
 	Game_Controller.is_cutscene = false
 	Cutscenes_Controller.showed_first_dungeon_win_cutscene = true
 	
