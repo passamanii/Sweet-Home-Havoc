@@ -1,57 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://cr8m852vu74l8"]
+[gd_scene load_steps=16 format=3 uid="uid://cr8m852vu74l8"]
 
 [ext_resource type="Script" uid="uid://cbgp61ye6nr1j" path="res://scripts/Menus/pause_menu.gd" id="1_ccwpd"]
-[ext_resource type="FontFile" uid="uid://dl1p84ry4iww1" path="res://assets/General/UltimatePixelFont.ttf" id="2_smx8u"]
+[ext_resource type="PackedScene" uid="uid://cqys0xkjdptam" path="res://scenes/Menus/Base_Menu_Button/Base_Menu_Button.tscn" id="2_smx8u"]
+[ext_resource type="Texture2D" uid="uid://db5cr4iuhky05" path="res://assets/Caixas/Menu/resume-button-white.png" id="3_12em7"]
+[ext_resource type="Texture2D" uid="uid://dllqr15mn25bu" path="res://assets/Caixas/Menu/settings-button-white.png" id="3_nw05d"]
+[ext_resource type="Texture2D" uid="uid://c6s1ns8yw85w3" path="res://assets/Caixas/Menu/settings-button-black.png" id="4_1t6p0"]
+[ext_resource type="Texture2D" uid="uid://ca64ba876rwon" path="res://assets/Caixas/Menu/resume-button-black.png" id="4_kiq6w"]
+[ext_resource type="Texture2D" uid="uid://d07jnaxw0kth8" path="res://assets/Caixas/Menu/menu-button-white.png" id="5_12em7"]
+[ext_resource type="Texture2D" uid="uid://daq2n1x2u1mqq" path="res://assets/Caixas/Menu/menu-button-black.png" id="6_kiq6w"]
+[ext_resource type="Texture2D" uid="uid://cp3v0ye1a7wa" path="res://assets/Caixas/Menu/exit-button-white.png" id="7_pddaj"]
+[ext_resource type="Texture2D" uid="uid://bf0ytbyfwx1s0" path="res://assets/Caixas/Menu/exit-button-black.png" id="8_kt1n6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ees4b"]
-bg_color = Color(0, 0, 0, 0.46274507)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dc6e"]
-bg_color = Color(0, 0, 0, 0.31372547)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ccwpd"]
-bg_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
-border_width_left = 10
-border_width_top = 5
-border_width_right = 10
-border_width_bottom = 5
-border_blend = true
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 3
-shadow_offset = Vector2(4.225, 4.225)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smx8u"]
-bg_color = Color(0.6337563, 0.6337571, 0.63375634, 1)
-border_width_left = 10
-border_width_top = 5
-border_width_right = 10
-border_width_bottom = 5
-border_blend = true
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 3
-shadow_offset = Vector2(4.225, 4.225)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6uta"]
-bg_color = Color(0.8745098, 0.8745098, 0.8745098, 0.26666668)
-border_width_left = 10
-border_width_top = 5
-border_width_right = 10
-border_width_bottom = 5
-border_blend = true
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 3
-shadow_offset = Vector2(4.225, 4.225)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ees4b"]
+bg_color = Color(0, 0, 0, 0)
 
 [sub_resource type="Animation" id="Animation_2dc6e"]
 resource_name = "Background_Fade_In"
@@ -66,15 +27,51 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.4627451)]
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.5294118)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PauseMenu/PanelContainer:modulate")
+tracks/1/path = NodePath("PauseMenu/Panel/Resume:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PauseMenu/Panel/Options:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PauseMenu/Panel/Main_Menu:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PauseMenu/Panel/Exit_Game:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -94,15 +91,51 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0.3137255), Color(0, 0, 0, 0)]
+"values": [Color(0, 0, 0, 0.5294118), Color(0, 0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PauseMenu/PanelContainer:modulate")
+tracks/1/path = NodePath("PauseMenu/Panel/Resume:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PauseMenu/Panel/Options:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.039215688)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PauseMenu/Panel/Main_Menu:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PauseMenu/Panel/Exit_Game:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -114,14 +147,50 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PauseMenu/PanelContainer:modulate")
+tracks/0/path = NodePath("PauseMenu/Panel/Resume:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PauseMenu/Panel/Options:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PauseMenu/Panel/Main_Menu:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PauseMenu/Panel/Exit_Game:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_12em7"]
@@ -156,73 +225,62 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ees4b")
 
-[node name="PanelContainer" type="PanelContainer" parent="PauseMenu"]
-modulate = Color(1, 1, 1, 0)
+[node name="Resume" parent="PauseMenu/Panel" instance=ExtResource("2_smx8u")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -174.5
-offset_top = -227.5
-offset_right = 174.5
-offset_bottom = 227.5
+anchors_preset = -1
+anchor_left = 0.4092742
+anchor_top = 0.23194444
+anchor_right = 0.5907258
+anchor_bottom = 0.38472223
+offset_right = 6.1035156e-05
+offset_bottom = 0.0
+grow_horizontal = 2
+texture_normal = ExtResource("3_12em7")
+texture_pressed = ExtResource("4_kiq6w")
+metadata/_edit_use_anchors_ = true
+
+[node name="Options" parent="PauseMenu/Panel" instance=ExtResource("2_smx8u")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4092742
+anchor_top = 0.36527777
+anchor_right = 0.5907258
+anchor_bottom = 0.51805556
+offset_right = 6.1035156e-05
+offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_2dc6e")
+texture_normal = ExtResource("3_nw05d")
+texture_pressed = ExtResource("4_1t6p0")
+metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PanelContainer"]
-layout_mode = 2
-theme_override_constants/separation = 9
+[node name="Main_Menu" parent="PauseMenu/Panel" instance=ExtResource("2_smx8u")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4092742
+anchor_top = 0.49861112
+anchor_right = 0.5907258
+anchor_bottom = 0.6513889
+offset_right = 6.1035156e-05
+offset_bottom = 0.0
+grow_horizontal = 2
+texture_normal = ExtResource("5_12em7")
+texture_pressed = ExtResource("6_kiq6w")
+metadata/_edit_use_anchors_ = true
 
-[node name="Resume" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_smx8u")
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_ccwpd")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_smx8u")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h6uta")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ees4b")
-text = "Resume"
-
-[node name="Options" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_smx8u")
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_ccwpd")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_smx8u")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h6uta")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ees4b")
-text = "Options"
-
-[node name="Main Menu" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_smx8u")
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_ccwpd")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_smx8u")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h6uta")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ees4b")
-text = "Main Menu"
-
-[node name="Exit Game" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_smx8u")
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_ccwpd")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_smx8u")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h6uta")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ees4b")
-text = "Exit Game"
+[node name="Exit_Game" parent="PauseMenu/Panel" instance=ExtResource("2_smx8u")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4092742
+anchor_top = 0.6263889
+anchor_right = 0.5907258
+anchor_bottom = 0.77916664
+offset_right = 6.1035156e-05
+offset_bottom = 0.0
+grow_horizontal = 2
+texture_normal = ExtResource("7_pddaj")
+texture_pressed = ExtResource("8_kt1n6")
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PauseMenu"]
 root_node = NodePath("../..")
@@ -230,8 +288,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_12em7")
 }
 
-[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
-[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/Options" to="PauseMenu" method="_on_options_pressed"]
-[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/Main Menu" to="PauseMenu" method="_on_main_menu_pressed"]
-[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/Exit Game" to="PauseMenu" method="_on_exit_game_pressed"]
-[connection signal="animation_finished" from="PauseMenu/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="PauseMenu/Panel/Resume" to="PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/Panel/Options" to="PauseMenu" method="_on_options_pressed"]
+[connection signal="pressed" from="PauseMenu/Panel/Main_Menu" to="PauseMenu" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="PauseMenu/Panel/Exit_Game" to="PauseMenu" method="_on_exit_game_pressed"]

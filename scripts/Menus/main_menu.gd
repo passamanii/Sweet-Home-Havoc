@@ -7,6 +7,7 @@ var button_type: String = ''
 func _ready() -> void:
 	fade_transition.transition_end.connect(_on_transition_finished)
 	fade_transition.out()
+	PlayerHud.hide()
 	
 func _on_start_pressed() -> void:
 	button_type = 'start'

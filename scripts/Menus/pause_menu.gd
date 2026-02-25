@@ -8,14 +8,24 @@ func _process(_delta: float) -> void:
 	test_esc()
 	
 func resume() -> void:
+	Game_Controller.can_pause = false
 	anim_player.play("Menu_Fade_Out")
-	get_tree().paused = false
+	await anim_player.animation_finished
 	pause_menu_canvas.hide()
+	await get_tree().create_timer(0.5).timeout
+	get_tree().paused = false
+	Game_Controller.can_pause = true
+
+func resume_and_change_scene() -> void:
+	pause_menu_canvas.hide()
+	get_tree().paused = false
 	
 func pause() -> void:
+	Game_Controller.can_pause = false
 	get_tree().paused = true
-	pause_menu_canvas.show()
 	anim_player.play('Menu_Fade_In')
+	pause_menu_canvas.show()
+	Game_Controller.can_pause = true
 	
 func test_esc() -> void:
 	if Game_Controller.can_pause:
@@ -31,16 +41,16 @@ func _on_resume_pressed() -> void:
 	resume()
 
 func _on_options_pressed() -> void:
-	resume()
+	resume_and_change_scene()
 	get_tree().change_scene_to_file('res://scenes/Menus/Options.tscn')
-
+	PlayerHud.hide()
+	
 func _on_main_menu_pressed() -> void:
-	resume()
+	resume_and_change_scene()
 	get_tree().change_scene_to_file('res://scenes/Menus/Main_Menu.tscn')
+	PlayerHud.hide()
 	
 func _on_exit_game_pressed() -> void:
 	get_tree().quit()
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if (anim_name == "Menu_Fade_Out"):
-		pause_menu_canvas.hide()
+		
