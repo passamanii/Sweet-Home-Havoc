@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Faimisson2
 
 @export_category("Variables")
-@export var max_health: int = 1
+@export var max_health: int = 4000
 @export var flight_force: float = 3000.0
 @export var damage: int = 30
 

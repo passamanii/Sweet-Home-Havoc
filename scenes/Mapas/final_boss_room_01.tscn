@@ -83,7 +83,6 @@ tile_set = SubResource("TileSet_dhk0v")
 [node name="Warns" type="Node2D" parent="."]
 
 [node name="Faimisson" parent="." node_paths=PackedStringArray("health_bar", "warns", "fade_transition") instance=ExtResource("9_u3g6t")]
-max_health = 1.0
 damage = 1
 health_bar = NodePath("../BossHealth")
 warns = NodePath("../Warns")
@@ -92,10 +91,10 @@ fade_transition = NodePath("../Fade_Transition")
 [node name="Player" parent="." instance=ExtResource("10_n1jbp")]
 position = Vector2(-223, 328)
 
+[node name="Fade_Transition" parent="." instance=ExtResource("12_2q58a")]
+
 [node name="BossHealth" parent="." node_paths=PackedStringArray("boss") instance=ExtResource("11_5dptn")]
 visible = false
 boss = NodePath("../Faimisson")
-
-[node name="Fade_Transition" parent="." instance=ExtResource("12_2q58a")]
 
 [node name="PauseMenuCanvas" parent="." instance=ExtResource("13_sblk3")]

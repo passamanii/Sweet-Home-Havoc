@@ -2,7 +2,8 @@ extends CharacterBody2D
 class_name Faimisson1
 
 @export_category("Variables")
-@export var max_health: float
+@export var health: float = 2000
+@export var max_health: float = 2000
 @export var dash_force: float = 2000.0
 @export var dash_extra_distance: float = 300.0
 @export var dash_brake_force: float = 3000.0
@@ -22,7 +23,6 @@ class_name Faimisson1
 @export var warns: Node2D
 @export var fade_transition: FadeTransition
 
-var health: float
 var player: BasePlayer
 var dash: bool = false
 var state_machine
@@ -37,6 +37,7 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
 	health = max_health
 	boss_cycle()
+	print(health)
 
 func _physics_process(delta: float) -> void:
 	if dash:

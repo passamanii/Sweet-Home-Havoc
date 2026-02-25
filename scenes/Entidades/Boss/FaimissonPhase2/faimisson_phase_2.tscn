@@ -1,16 +1,16 @@
-[gd_scene load_steps=36 format=3 uid="uid://ccsnbkqk5gsj3"]
+[gd_scene load_steps=39 format=3 uid="uid://ccsnbkqk5gsj3"]
 
 [ext_resource type="Script" uid="uid://dlkvjij1ifpk5" path="res://scripts/Entidades/Boss/FaimissonPhase2/faimisson_phase_2.gd" id="1_hobne"]
 [ext_resource type="PackedScene" uid="uid://cw38ytq6wjnh3" path="res://scenes/Entidades/Boss/FaimissonPhase2/boss.tscn" id="1_q4qic"]
 [ext_resource type="PackedScene" uid="uid://brdrgoajua67a" path="res://scenes/Entidades/Boss/FaimissonPhase2/red_stone.tscn" id="2_vsmd2"]
 [ext_resource type="PackedScene" uid="uid://b37m6o3s8jlkg" path="res://scenes/Entidades/Boss/FaimissonPhase2/purple_stone.tscn" id="3_ppjuv"]
 [ext_resource type="PackedScene" uid="uid://d28005ch07b6e" path="res://scenes/Entidades/Boss/FaimissonPhase2/blue_stone.tscn" id="4_8r87q"]
-[ext_resource type="Script" path="res://scripts/Entidades/States/state_machine.gd" id="5_8r87q"]
-[ext_resource type="PackedScene" uid="uid://bk8cwdy7q3mnb" path="res://scenes/Entidades/Inimigos/robot.tscn" id="5_v8gjt"]
+[ext_resource type="Script" uid="uid://d1dynej3y0rrn" path="res://scripts/Entidades/States/state_machine.gd" id="5_8r87q"]
+[ext_resource type="PackedScene" uid="uid://mykqxws22bec" path="res://scenes/Entidades/Inimigos/robot.tscn" id="5_v8gjt"]
 [ext_resource type="PackedScene" uid="uid://i1sny6dbrit4" path="res://scenes/Entidades/Boss/FaimissonPhase2/red_stone_projectile.tscn" id="6_kn25v"]
 [ext_resource type="Script" uid="uid://cyiobase1dc0h" path="res://scripts/Entidades/Boss/FaimissonPhase2/boss_attack_state.gd" id="7_2o72l"]
 [ext_resource type="Script" uid="uid://c8grh8wn8c8no" path="res://scripts/Entidades/Boss/FaimissonPhase2/flying_punch_state.gd" id="7_4vpvw"]
-[ext_resource type="Texture2D" uid="uid://baakif6567cds" path="res://assets/Personagens/Boss/Faimison/faimisson-aura-Sheet.png" id="8_mskrf"]
+[ext_resource type="Texture2D" uid="uid://dd03jbysefr7" path="res://assets/Personagens/Boss/Faimison/faimisson-aura-Sheet.png" id="8_mskrf"]
 [ext_resource type="Script" uid="uid://dk5frt8iv3eap" path="res://scripts/Entidades/Boss/FaimissonPhase2/orbit_expand_state.gd" id="8_w2yf1"]
 [ext_resource type="Script" uid="uid://dnbggqg174xvx" path="res://scripts/Entidades/Boss/FaimissonPhase2/stones_laser_state.gd" id="9_smqhx"]
 [ext_resource type="Script" uid="uid://dxmiydi6uy4bf" path="res://scripts/Entidades/Boss/FaimissonPhase2/blue_stone_stone.gd" id="11_p0551"]
@@ -19,6 +19,8 @@
 [ext_resource type="Script" uid="uid://dr77wownxmb6b" path="res://scripts/Entidades/Boss/FaimissonPhase2/finish_it_state.gd" id="15_dh4gf"]
 [ext_resource type="Texture2D" uid="uid://dcmqqa4c6jgj5" path="res://assets/Personagens/Boss/Faimison/purple-aura-sheet.png" id="17_3kumv"]
 [ext_resource type="Texture2D" uid="uid://dc41e5vxrnsn4" path="res://assets/Personagens/Boss/Faimison/safe-zone.png" id="18_mbmqo"]
+[ext_resource type="PackedScene" uid="uid://dpm6regsguk6c" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="20_klpf5"]
+[ext_resource type="PackedScene" uid="uid://b15iis0n61nx4" path="res://scenes/UI/Boss/boss_health.tscn" id="21_hon63"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ppjuv"]
 radius = 80.0
@@ -121,7 +123,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kn25v"]
 size = Vector2(450, 180)
 
-[node name="FaimissonPhase2" type="Node2D" node_paths=PackedStringArray("stones_container", "purple_barrier_area", "purple_barrier_collision", "purple_barrier_safe_area", "purple_barrier_safe_collision", "purple_barrier_safe_sprite", "purple_barrier_sprite", "shield", "shield_sprite", "boss_body")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_mbmqo"]
+radius = 28.259954
+
+[node name="FaimissonPhase2" type="CharacterBody2D" node_paths=PackedStringArray("stones_container", "purple_barrier_area", "purple_barrier_collision", "purple_barrier_safe_area", "purple_barrier_safe_collision", "purple_barrier_safe_sprite", "purple_barrier_sprite", "shield", "shield_sprite", "boss_body", "fade_transition")]
 scale = Vector2(4, 4)
 script = ExtResource("1_hobne")
 stones_container = NodePath("StonesContainer")
@@ -137,9 +142,11 @@ purple_barrier_sprite = NodePath("StateMachine/PurpleStone/PurplerBarrier/Animat
 shield = NodePath("ShielddArea")
 shield_sprite = NodePath("ShielddArea/ShieldSprite")
 boss_body = NodePath("Boss")
+fade_transition = NodePath("Fade_Transition")
 
-[node name="Boss" parent="." instance=ExtResource("1_q4qic")]
+[node name="Boss" parent="." node_paths=PackedStringArray("fade_transition") instance=ExtResource("1_q4qic")]
 damage = 1
+fade_transition = NodePath("../Fade_Transition")
 
 [node name="ShielddArea" type="Area2D" parent="."]
 collision_layer = 64
@@ -230,6 +237,14 @@ offset = Vector2(0, -60)
 script = ExtResource("15_dh4gf")
 boss_head = NodePath("../..")
 boss_body = NodePath("../../Boss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mbmqo")
+
+[node name="Fade_Transition" parent="." instance=ExtResource("20_klpf5")]
+
+[node name="BossHealth" parent="." node_paths=PackedStringArray("boss2") instance=ExtResource("21_hon63")]
+boss2 = NodePath("../Boss")
 
 [connection signal="area_entered" from="ShielddArea" to="." method="_on_shieldd_area_area_entered"]
 [connection signal="timeout" from="StateMachine/BlueStone/Timer" to="StateMachine/BlueStone" method="_on_timer_timeout"]

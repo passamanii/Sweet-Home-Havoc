@@ -318,6 +318,7 @@ scale = Vector2(4, 4)
 collision_layer = 16
 platform_floor_layers = 4294901761
 script = ExtResource("1_pk2ip")
+health = 2000.0
 max_health = 2000.0
 damage = 15
 kick_marker = NodePath("PunchMarker")
