@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cqys0xkjdptam" path="res://scenes/Menus/Base_Menu_Button/Base_Menu_Button.tscn" id="2_30twq"]
 [ext_resource type="Texture2D" uid="uid://d07jnaxw0kth8" path="res://assets/Caixas/Menu/menu-button-white.png" id="3_8qsa4"]
 [ext_resource type="Texture2D" uid="uid://daq2n1x2u1mqq" path="res://assets/Caixas/Menu/menu-button-black.png" id="4_wbuks"]
-[ext_resource type="PackedScene" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="6_8qsa4"]
+[ext_resource type="PackedScene" uid="uid://c2j88fhmw3cm0" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="6_8qsa4"]
 [ext_resource type="PackedScene" uid="uid://dhfcpmtn4l14k" path="res://scenes/Menus/Collection/collection_base_item.tscn" id="6_wbuks"]
 [ext_resource type="Script" uid="uid://cffjhg6f7q4sx" path="res://scripts/Menus/Collection/Collection_Items/cheese.gd" id="7_qxdo3"]
 [ext_resource type="Script" uid="uid://bntmpch4q8kmc" path="res://scripts/Menus/Collection/Collection_Items/book.gd" id="8_conxu"]

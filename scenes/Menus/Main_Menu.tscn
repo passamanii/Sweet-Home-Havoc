@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://vqt0hc2oih5j"]
+[gd_scene load_steps=15 format=3 uid="uid://vqt0hc2oih5j"]
 
 [ext_resource type="Script" uid="uid://dit3tfk54f47b" path="res://scripts/Menus/main_menu.gd" id="1_ed1wg"]
 [ext_resource type="Texture2D" uid="uid://dne01oumimlub" path="res://assets/General/Capa Menu.png" id="2_xu3ct"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://c6s1ns8yw85w3" path="res://assets/Caixas/Menu/settings-button-black.png" id="8_q0heu"]
 [ext_resource type="Texture2D" uid="uid://cp3v0ye1a7wa" path="res://assets/Caixas/Menu/exit-button-white.png" id="9_jkj4f"]
 [ext_resource type="Texture2D" uid="uid://bf0ytbyfwx1s0" path="res://assets/Caixas/Menu/exit-button-black.png" id="10_gm8hh"]
+[ext_resource type="Texture2D" uid="uid://b1eyv8txuwv2d" path="res://assets/Caixas/Menu/collection-button-white.png" id="11_jkj4f"]
+[ext_resource type="Texture2D" uid="uid://y7gh60cup0k4" path="res://assets/Caixas/Menu/collection-button-black.png" id="12_gm8hh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x5no6"]
 texture = ExtResource("2_xu3ct")
@@ -68,12 +70,25 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -130.0
-offset_top = 221.0
+offset_top = 198.0
 offset_right = 130.0
-offset_bottom = 351.0
+offset_bottom = 328.0
 grow_horizontal = 2
 texture_normal = ExtResource("5_2cnol")
 texture_pressed = ExtResource("6_1y7b6")
+
+[node name="Collection" parent="Button_Manager" instance=ExtResource("4_8w4bl")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.0
+offset_top = 304.0
+offset_right = 130.0
+offset_bottom = 434.0
+grow_horizontal = 2
+texture_normal = ExtResource("11_jkj4f")
+texture_pressed = ExtResource("12_gm8hh")
 
 [node name="Options" parent="Button_Manager" instance=ExtResource("4_8w4bl")]
 layout_mode = 1
@@ -81,9 +96,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -130.0
-offset_top = 351.0
+offset_top = 417.0
 offset_right = 130.0
-offset_bottom = 481.0
+offset_bottom = 547.0
 grow_horizontal = 2
 texture_normal = ExtResource("7_jya74")
 texture_pressed = ExtResource("8_q0heu")
@@ -94,9 +109,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -130.0
-offset_top = 479.0
+offset_top = 525.0
 offset_right = 130.0
-offset_bottom = 609.0
+offset_bottom = 655.0
 grow_horizontal = 2
 texture_normal = ExtResource("9_jkj4f")
 texture_pressed = ExtResource("10_gm8hh")
@@ -106,6 +121,7 @@ texture_pressed = ExtResource("10_gm8hh")
 [node name="Fade_Transition" parent="CanvasLayer" instance=ExtResource("4_8ohjt")]
 
 [connection signal="pressed" from="Button_Manager/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Button_Manager/Collection" to="." method="_on_collection_pressed"]
 [connection signal="pressed" from="Button_Manager/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Button_Manager/Exit" to="." method="_on_exit_pressed"]
 [connection signal="transition_end" from="CanvasLayer/Fade_Transition" to="." method="_on_fade_transition_transition_end"]

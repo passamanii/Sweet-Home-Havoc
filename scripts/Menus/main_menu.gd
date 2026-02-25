@@ -16,8 +16,9 @@ func _on_start_pressed() -> void:
 func _on_options_pressed() -> void:
 	button_type = 'options'
 	
-func _on_collectibles_pressed() -> void:
-	button_type = 'collectibles'
+func _on_collection_pressed() -> void:
+	button_type = 'collection'
+	fade_transition.init()
 	
 func _on_exit_pressed() -> void:
 	var maestro = get_tree()
@@ -28,5 +29,5 @@ func _on_transition_finished() -> void:
 		get_tree().change_scene_to_file("res://scenes/Mapas/Main_Mapa.tscn")
 	elif (button_type == 'options'):
 		get_tree().change_scene_to_file("res://scenes/Menus/Options.tscn")
-	elif (button_type == 'collectibles'):
-		get_tree().change_scene_to_file('res://scenes/Menus/Collectibles.tscn')
+	elif (button_type == 'collection'):
+		get_tree().change_scene_to_file('res://scenes/Menus/Collection/Collection.tscn')
