@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://b7a5kqanlxmid"]
+[gd_scene load_steps=38 format=4 uid="uid://b7a5kqanlxmid"]
 
 [ext_resource type="Script" uid="uid://457sykiu4ioa" path="res://scripts/Mapas/sala_faimisson.gd" id="1_4yy4k"]
 [ext_resource type="Texture2D" uid="uid://cn10x4fb7lq6m" path="res://assets/Cenario/Sala/parede_madeira_frente.png" id="1_81uey"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://p7qk8wtkjguq" path="res://assets/Cenario/objetos/mesa_aluno.png" id="4_vc4hs"]
 [ext_resource type="Texture2D" uid="uid://bn1d705a4w61t" path="res://assets/Cenario/objetos/cadeira_aluno.png" id="7_2p6v7"]
 [ext_resource type="Texture2D" uid="uid://wlvkhklg1ufo" path="res://assets/Cenario/Sala/pisos_novos.png" id="7_n6pse"]
-[ext_resource type="PackedScene" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="7_n8c8v"]
+[ext_resource type="PackedScene" uid="uid://dpm6regsguk6c" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="7_n8c8v"]
 [ext_resource type="Texture2D" uid="uid://pubuf6tabxrf" path="res://assets/Cenario/Sala/piso_ceramica.png" id="8_pw1e3"]
 [ext_resource type="PackedScene" uid="uid://cr8m852vu74l8" path="res://scenes/Menus/Pause_Menu.tscn" id="8_u32h0"]
 [ext_resource type="Texture2D" uid="uid://djroyu6vnywh7" path="res://assets/Cenario/Sala/parede_cinza.png" id="8_ui406"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://cigoliscg1ljb" path="res://assets/Cenario/Sala/quadro_negro.png" id="10_xx5n8"]
 [ext_resource type="Texture2D" uid="uid://d1mi82i41trx5" path="res://assets/Cenario/objetos/mesa_longa.png" id="11_5dm6y"]
 [ext_resource type="PackedScene" uid="uid://bd3ekfcll3kxm" path="res://scenes/Entidades/NPC's/Faimisson.tscn" id="13_2p6v7"]
+[ext_resource type="Script" uid="uid://cu3ahpkwaprbw" path="res://scenes/Mapas/Boss_Fight.gd" id="18_5dm6y"]
+[ext_resource type="PackedScene" uid="uid://dj5r6a7mp8uo6" path="res://scenes/Modules/Interactions/Interact_With.tscn" id="18_xx5n8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_towr7"]
 texture = ExtResource("1_81uey")
@@ -137,6 +139,9 @@ sources/1 = SubResource("TileSetAtlasSource_5dm6y")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8c8v"]
 size = Vector2(50.5, 185.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xx5n8"]
+size = Vector2(125, 158)
+
 [node name="Sala_Faimisson" type="Node2D" node_paths=PackedStringArray("player", "fade_transition")]
 script = ExtResource("1_4yy4k")
 player = NodePath("Player")
@@ -182,6 +187,22 @@ position = Vector2(1504, -38)
 scale = Vector2(4, 4)
 
 [node name="Fade_Transition" parent="." instance=ExtResource("7_n8c8v")]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(1784, 664)
+script = ExtResource("18_5dm6y")
+
+[node name="Panel" type="Panel" parent="Node2D"]
+offset_left = -70.0
+offset_top = -77.0
+offset_bottom = 82.0
+
+[node name="InteractWith" parent="Node2D" instance=ExtResource("18_xx5n8")]
+action = "Boss Fight"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/InteractWith"]
+position = Vector2(-6.5, 2)
+shape = SubResource("RectangleShape2D_xx5n8")
 
 [node name="Player" parent="." instance=ExtResource("2_28b2l")]
 position = Vector2(116, -4)
