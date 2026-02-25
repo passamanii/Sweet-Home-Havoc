@@ -23,6 +23,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_transition_end() -> void:
 	if (area_entered == 'main_mapa'):
-		Player_Tracking.spawn_pos = Vector2(2407.0, -694)
+		Player_Tracking.spawn_pos = Vector2(2407.0, -500)
 		Player_Tracking.spawn_facing = Vector2.DOWN
 		get_tree().change_scene_to_file("res://scenes/Mapas/Main_Mapa.tscn")

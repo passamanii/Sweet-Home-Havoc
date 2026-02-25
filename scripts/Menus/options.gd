@@ -5,8 +5,8 @@ extends Control
 var button_type: String 
 
 func _ready() -> void:
-	fade_transition.transition_end.connect(_on_fade_end)
 	fade_transition.out()
+	fade_transition.transition_end.connect(_on_fade_end)
 	
 func _on_main_menu_pressed() -> void:
 	button_type = 'main_menu'

@@ -15,6 +15,7 @@ func _on_start_pressed() -> void:
 	
 func _on_options_pressed() -> void:
 	button_type = 'options'
+	fade_transition.init()
 	
 func _on_collection_pressed() -> void:
 	button_type = 'collection'

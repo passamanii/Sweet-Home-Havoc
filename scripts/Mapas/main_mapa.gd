@@ -7,6 +7,8 @@ extends Node2D
 var area_entered: String = ''
 
 func _ready() -> void:
+	Player_Tracking.spawn_pos = Vector2(2383, 2917)
+	Player_Tracking.spawn_facing = Vector2.UP
 	fade_transition.transition_end.connect(_on_transition_finished)
 	fade_transition.out()
 	PlayerHud.show()
@@ -34,10 +36,3 @@ func _on_transition_finished() -> void:
 		Player_Tracking.spawn_pos = Vector2.ZERO
 		Player_Tracking.spawn_facing = Vector2.UP
 		get_tree().change_scene_to_file('res://scenes/Mapas/Library/Biblioteca.tscn')
-
-func _on_button_pressed() -> void:
-	player.get_hit(10, Vector2.RIGHT)
-
-
-func _on_button_2_pressed() -> void:
-	Player_Stats.gain_xp(50)

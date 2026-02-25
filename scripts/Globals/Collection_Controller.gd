@@ -1,5 +1,9 @@
 extends Node
 
+#Control
+var interacted: bool = false
+
+#Collection
 var cheese: bool = false
 var cigarette: bool = false
 var book: bool = false

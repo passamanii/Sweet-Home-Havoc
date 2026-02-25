@@ -43,31 +43,10 @@ var armor: float = 0
 signal player_died
 
 func _ready() -> void:
-	if (Player_Tracking.spawn_pos != Vector2.ZERO):
-		print(Player_Tracking.spawn_pos)
-		print(Player_Tracking.spawn_facing)
-		position = Player_Tracking.spawn_pos
-	if (Player_Tracking.spawn_facing != Vector2.ZERO):
-		facing = Player_Tracking.spawn_facing
-		
-	if (Player_Stats.xp != 0):
-		xp = Player_Stats.xp
-	
-	if (Player_Stats.level != 1):
-		level = Player_Stats.level
-		
-	if (Player_Stats.health != 30):
-		health = Player_Stats.health
-		max_health = Player_Stats.max_health
-		
-	if (Player_Stats.damage != 10):
-		damage = Player_Stats.damage
-	
-	Player_Tracking.player = self
+	connect_signals()
 	define_spawn()
 	define_stats()
 	update_health_bar()
-	connect_signals()
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("change_weapon"):
@@ -110,11 +89,14 @@ func connect_signals():
 	Player_Stats.gained_lvl.connect(_show_new_level)
 	
 func define_spawn():
+	Player_Tracking.player = self
 	if (Player_Tracking.spawn_pos != Vector2.ZERO):
 		position = Player_Tracking.spawn_pos
+		print(position)
 	if (Player_Tracking.spawn_facing != Vector2.ZERO):
 		facing = Player_Tracking.spawn_facing
-
+		print(facing)
+		
 func save_stats():
 	Player_Stats.temp_xp = Player_Stats.xp
 	Player_Stats.temp_level = Player_Stats.level
@@ -184,14 +166,13 @@ func enable_hitbox_collision() -> void:
 func update_attack_direction() -> void:
 	var aim_dir := dir
 	
-	# Se estiver parado, usa a última direção que estava olhando
 	if (aim_dir == Vector2.ZERO):
 		match facing:
-			"right": aim_dir = Vector2.RIGHT
-			"left": aim_dir = Vector2.LEFT
-			"back": aim_dir = Vector2.UP
-			"front": aim_dir = Vector2.DOWN
-	
+			Vector2.RIGHT: aim_dir = Vector2.RIGHT
+			Vector2.LEFT: aim_dir = Vector2.LEFT
+			Vector2.UP: aim_dir = Vector2.UP
+			Vector2.DOWN: aim_dir = Vector2.DOWN
+		
 	if (aim_dir != Vector2.ZERO):
 		hitbox_area.rotation = aim_dir.angle()
 		hitbox_collision.position = Vector2(ATTACK_DISTANCE, 0)
@@ -349,6 +330,8 @@ func animationsPlayer() -> void:
 				animation_player.play("Jbl_Attack_Back")
 			elif (dir.y > 0 or facing == Vector2.DOWN):
 				animation_player.play("Jbl_Attack_Front")
+				
+	
 
 func dash() -> void:
 	is_dashing = true
