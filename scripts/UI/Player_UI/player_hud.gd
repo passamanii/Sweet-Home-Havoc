@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 @onready var heart_container: HFlowContainer = $Control/HFlowContainer
-
 var hearts: Array[HeartUI] = []
 
 func _ready() -> void:
@@ -9,7 +8,7 @@ func _ready() -> void:
 		if child is HeartUI:
 			hearts.append(child)
 			child.visible = false
-
+		
 func update_hp(hp: int, max_hp: float):
 	update_max_hp(max_hp)
 	for i in hearts.size():

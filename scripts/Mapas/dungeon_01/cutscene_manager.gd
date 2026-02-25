@@ -27,6 +27,7 @@ func hit_player() -> void:
 
 func first_time_in_dungeon_01_cutscene() -> void:
 	Game_Controller.is_cutscene = true
+	PlayerHud.hide()
 	player.pause()
 	spawn_controller.pause()
 	
@@ -141,12 +142,14 @@ func first_time_in_dungeon_01_cutscene() -> void:
 	await get_tree().create_timer(2).timeout
 
 	player.play()
+	PlayerHud.show()
 	spawn_controller.start()
 	Cutscenes_Controller.showed_enter_dungeon_01_cutscene = true
 	Game_Controller.is_cutscene = false
 
 func first_time_finishing_wave_1_cutscene() -> void:
 	Game_Controller.is_cutscene = true
+	PlayerHud.hide()
 	spawn_controller.pause()
 	player.pause()
 	player.animation_player.play("Idle_Front")
@@ -238,6 +241,7 @@ func first_time_finishing_wave_1_cutscene() -> void:
 	await get_tree().create_timer(2).timeout
 
 	Game_Controller.is_cutscene = false
+	PlayerHud.show()
 	Cutscenes_Controller.showed_first_wave_finished_cutscene = true
 	player.play()
 	
