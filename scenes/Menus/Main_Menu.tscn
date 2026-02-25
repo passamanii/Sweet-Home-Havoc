@@ -1,13 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://vqt0hc2oih5j"]
+[gd_scene load_steps=13 format=3 uid="uid://vqt0hc2oih5j"]
 
 [ext_resource type="Script" uid="uid://dit3tfk54f47b" path="res://scripts/Menus/main_menu.gd" id="1_ed1wg"]
 [ext_resource type="Texture2D" uid="uid://dne01oumimlub" path="res://assets/General/Capa Menu.png" id="2_xu3ct"]
 [ext_resource type="FontFile" uid="uid://5f0vtbtakhtc" path="res://assets/General/UltimatePixelFont.ttf" id="3_8ohjt"]
 [ext_resource type="PackedScene" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="4_8ohjt"]
+[ext_resource type="PackedScene" uid="uid://cqys0xkjdptam" path="res://scenes/Menus/Base_Menu_Button/Base_Menu_Button.tscn" id="4_8w4bl"]
+[ext_resource type="Texture2D" uid="uid://dx7gk5f76embo" path="res://assets/Caixas/Menu/play-button-white.png" id="5_2cnol"]
+[ext_resource type="Texture2D" uid="uid://crjc83c17jwb6" path="res://assets/Caixas/Menu/play-button-black.png" id="6_1y7b6"]
+[ext_resource type="Texture2D" uid="uid://dllqr15mn25bu" path="res://assets/Caixas/Menu/settings-button-white.png" id="7_jya74"]
+[ext_resource type="Texture2D" uid="uid://c6s1ns8yw85w3" path="res://assets/Caixas/Menu/settings-button-black.png" id="8_q0heu"]
+[ext_resource type="Texture2D" uid="uid://cp3v0ye1a7wa" path="res://assets/Caixas/Menu/exit-button-white.png" id="9_jkj4f"]
+[ext_resource type="Texture2D" uid="uid://bf0ytbyfwx1s0" path="res://assets/Caixas/Menu/exit-button-black.png" id="10_gm8hh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x5no6"]
 texture = ExtResource("2_xu3ct")
-modulate_color = Color(0.7708395, 0.77083945, 0.77083945, 1)
+modulate_color = Color(0.4506483, 0.4506483, 0.45064825, 1)
 
 [node name="Main_Menu" type="Control" node_paths=PackedStringArray("fade_transition")]
 layout_mode = 3
@@ -55,44 +62,52 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Button_Manager"]
+[node name="Start" parent="Button_Manager" instance=ExtResource("4_8w4bl")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -127.875
-offset_top = -137.375
-offset_right = 127.875
-offset_bottom = 137.375
+anchors_preset = -1
+anchor_left = 0.361304
+anchor_top = 0.27083334
+anchor_right = 0.6387234
+anchor_bottom = 0.4652778
+offset_right = 0.0
+offset_bottom = 0.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
+texture_normal = ExtResource("5_2cnol")
+texture_pressed = ExtResource("6_1y7b6")
+metadata/_edit_use_anchors_ = true
 
-[node name="Start" type="TextureButton" parent="Button_Manager/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
+[node name="Options" parent="Button_Manager" instance=ExtResource("4_8w4bl")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36129034
+anchor_top = 0.45972222
+anchor_right = 0.63870966
+anchor_bottom = 0.65416664
+offset_left = -3.0517578e-05
+offset_right = 0.0
+offset_bottom = 3.0517578e-05
+grow_horizontal = 2
+texture_normal = ExtResource("7_jya74")
+texture_pressed = ExtResource("8_q0heu")
+metadata/_edit_use_anchors_ = true
 
-[node name="Options" type="TextureButton" parent="Button_Manager/VBoxContainer"]
-light_mask = 3
-visibility_layer = 2
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Collectibles" type="TextureButton" parent="Button_Manager/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Exit" type="TextureButton" parent="Button_Manager/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
+[node name="Exit" parent="Button_Manager" instance=ExtResource("4_8w4bl")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -172.0
+offset_top = 481.0
+offset_right = 172.0
+offset_bottom = 621.0
+grow_horizontal = 2
+texture_normal = ExtResource("9_jkj4f")
+texture_pressed = ExtResource("10_gm8hh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Fade_Transition" parent="CanvasLayer" instance=ExtResource("4_8ohjt")]
 
-[connection signal="pressed" from="Button_Manager/VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Button_Manager/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="Button_Manager/VBoxContainer/Collectibles" to="." method="_on_collectibles_pressed"]
-[connection signal="pressed" from="Button_Manager/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Button_Manager/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Button_Manager/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Button_Manager/Exit" to="." method="_on_exit_pressed"]

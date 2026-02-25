@@ -9,6 +9,7 @@ var area_entered: String = ''
 func _ready() -> void:
 	fade_transition.transition_end.connect(_on_transition_finished)
 	fade_transition.out()
+	PlayerHud.show()
 	
 func on_Enter_Sala_Faimisson_body_entered(body: Node2D) -> void:
 	if (body.is_in_group('Player')):
