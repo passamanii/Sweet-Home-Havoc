@@ -72,7 +72,7 @@ _data = {
 &"fade_out_white": SubResource("Animation_5dw7m")
 }
 
-[node name="Fade_Transition" type="Control" unique_id=897182185 node_paths=PackedStringArray("timer", "anim_transition")]
+[node name="Fade_Transition" type="Control" node_paths=PackedStringArray("timer", "anim_transition")]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -80,7 +80,7 @@ script = ExtResource("1_4ydro")
 timer = NodePath("Timer")
 anim_transition = NodePath("AnimTransition")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1237257520]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = -31245.0
 offset_top = -19479.0
@@ -88,9 +88,11 @@ offset_right = 30381.0
 offset_bottom = 20551.0
 color = Color(0, 0, 0, 0)
 
-[node name="AnimTransition" type="AnimationPlayer" parent="." unique_id=610814774]
-libraries/ = SubResource("AnimationLibrary_jncpl")
+[node name="AnimTransition" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jncpl")
+}
 
-[node name="Timer" type="Timer" parent="." unique_id=2115473521]
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
