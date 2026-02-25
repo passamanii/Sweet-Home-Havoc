@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dn32nq6w615xl"]
 
 [ext_resource type="Script" uid="uid://bv3aqg20chrhg" path="res://scripts/Modules/Interactions/interaction_manager.gd" id="1_e0r4h"]
-[ext_resource type="FontFile" uid="uid://bk4s3llv2swwr" path="res://assets/General/MoonlitFlow-Regular.ttf" id="1_wwvro"]
-[ext_resource type="FontFile" uid="uid://dl1p84ry4iww1" path="res://assets/General/UltimatePixelFont.ttf" id="3_f6gn2"]
+[ext_resource type="FontFile" uid="uid://dytaks4k8o8x7" path="res://assets/General/MoonlitFlow-Regular.ttf" id="1_wwvro"]
+[ext_resource type="FontFile" uid="uid://5f0vtbtakhtc" path="res://assets/General/UltimatePixelFont.ttf" id="3_f6gn2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kibbl"]
 font = ExtResource("3_f6gn2")

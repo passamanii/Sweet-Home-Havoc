@@ -7,6 +7,8 @@ extends Node2D
 var area_entered: String = ''
 
 func _ready() -> void:
+	Player_Tracking.spawn_pos = Vector2(2383, 2917)
+	Player_Tracking.spawn_facing = Vector2.UP
 	fade_transition.transition_end.connect(_on_transition_finished)
 	fade_transition.out()
 	PlayerHud.show()
