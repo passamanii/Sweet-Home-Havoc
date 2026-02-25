@@ -1,57 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://cr8m852vu74l8"]
+[gd_scene load_steps=8 format=3 uid="uid://cr8m852vu74l8"]
 
 [ext_resource type="Script" uid="uid://cbgp61ye6nr1j" path="res://scripts/Menus/pause_menu.gd" id="1_ccwpd"]
-[ext_resource type="FontFile" uid="uid://dl1p84ry4iww1" path="res://assets/General/UltimatePixelFont.ttf" id="2_smx8u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ees4b"]
-bg_color = Color(0, 0, 0, 0.46274507)
+bg_color = Color(0, 0, 0, 0.31372547)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dc6e"]
 bg_color = Color(0, 0, 0, 0.31372547)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ccwpd"]
-bg_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
-border_width_left = 10
-border_width_top = 5
-border_width_right = 10
-border_width_bottom = 5
-border_blend = true
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 3
-shadow_offset = Vector2(4.225, 4.225)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smx8u"]
-bg_color = Color(0.6337563, 0.6337571, 0.63375634, 1)
-border_width_left = 10
-border_width_top = 5
-border_width_right = 10
-border_width_bottom = 5
-border_blend = true
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 3
-shadow_offset = Vector2(4.225, 4.225)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6uta"]
-bg_color = Color(0.8745098, 0.8745098, 0.8745098, 0.26666668)
-border_width_left = 10
-border_width_top = 5
-border_width_right = 10
-border_width_bottom = 5
-border_blend = true
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 3
-shadow_offset = Vector2(4.225, 4.225)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ees4b"]
 
 [sub_resource type="Animation" id="Animation_2dc6e"]
 resource_name = "Background_Fade_In"
@@ -133,7 +88,6 @@ _data = {
 
 [node name="PauseMenuCanvas" type="CanvasLayer"]
 process_mode = 3
-visible = false
 
 [node name="PauseMenu" type="Control" parent="." node_paths=PackedStringArray("pause_menu_canvas", "anim_player")]
 top_level = true
@@ -176,53 +130,21 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_2dc6e")
 layout_mode = 2
 theme_override_constants/separation = 9
 
-[node name="Resume" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
+[node name="Resume" type="TextureButton" parent="PauseMenu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_smx8u")
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_ccwpd")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_smx8u")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h6uta")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ees4b")
-text = "Resume"
 
-[node name="Options" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
+[node name="Options" type="TextureButton" parent="PauseMenu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_smx8u")
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_ccwpd")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_smx8u")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h6uta")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ees4b")
-text = "Options"
 
-[node name="Main Menu" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
+[node name="Main Menu" type="TextureButton" parent="PauseMenu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_smx8u")
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_ccwpd")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_smx8u")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h6uta")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ees4b")
-text = "Main Menu"
 
-[node name="Exit Game" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
+[node name="Exit Game" type="TextureButton" parent="PauseMenu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_smx8u")
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_ccwpd")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_smx8u")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h6uta")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ees4b")
-text = "Exit Game"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PauseMenu"]
 root_node = NodePath("../..")
