@@ -1,11 +1,13 @@
-[gd_scene load_steps=36 format=3 uid="uid://cfqstfbmkgj77"]
+[gd_scene load_steps=38 format=3 uid="uid://cfqstfbmkgj77"]
 
 [ext_resource type="Script" uid="uid://bpu0s5d30whls" path="res://scripts/Entidades/Boss/FaimissonPhase1/faimisson.gd" id="1_pk2ip"]
 [ext_resource type="Texture2D" uid="uid://b3h0x5gqusiyv" path="res://assets/Personagens/Boss/Faimison/faimisson-sheet.png" id="2_ee6pk"]
 [ext_resource type="PackedScene" uid="uid://db2mc4jnjevvn" path="res://scenes/Entidades/Boss/FaimissonPhase1/supersonic_power.tscn" id="2_iqxje"]
 [ext_resource type="PackedScene" uid="uid://30bvspxyjpt" path="res://scenes/Entidades/Boss/FaimissonPhase1/tornado.tscn" id="3_31ydo"]
-[ext_resource type="PackedScene" uid="uid://daxtrwmeb4u2g" path="res://scenes/Entidades/fall_warning.tscn" id="4_pab8x"]
-[ext_resource type="PackedScene" uid="uid://lhlrufu3najh" path="res://scenes/Entidades/Inimigos/naranja_gigante.tscn" id="5_ug4b0"]
+[ext_resource type="PackedScene" path="res://scenes/Entidades/fall_warning.tscn" id="4_pab8x"]
+[ext_resource type="PackedScene" path="res://scenes/Entidades/Inimigos/naranja_gigante.tscn" id="5_ug4b0"]
+[ext_resource type="PackedScene" uid="uid://b15iis0n61nx4" path="res://scenes/UI/Boss/boss_health.tscn" id="7_xyx8f"]
+[ext_resource type="PackedScene" uid="uid://dpm6regsguk6c" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="8_um2oe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iqxje"]
 radius = 12.75
@@ -311,7 +313,7 @@ states/Start/position = Vector2(344, 53)
 transitions = ["Dash", "Idle", SubResource("AnimationNodeStateMachineTransition_hfk5q"), "Idle", "Dash", SubResource("AnimationNodeStateMachineTransition_o65tj"), "Idle", "Naranjas", SubResource("AnimationNodeStateMachineTransition_1dyfc"), "Naranjas", "Idle", SubResource("AnimationNodeStateMachineTransition_kku5y"), "Kick", "Idle", SubResource("AnimationNodeStateMachineTransition_ne51p"), "Idle", "Kick", SubResource("AnimationNodeStateMachineTransition_j8rm7"), "Breath", "Idle", SubResource("AnimationNodeStateMachineTransition_iqxje"), "Idle", "Breath", SubResource("AnimationNodeStateMachineTransition_31ydo"), "Dash", "Dash_Brake", SubResource("AnimationNodeStateMachineTransition_sfy1f"), "Dash_Brake", "Dash", SubResource("AnimationNodeStateMachineTransition_gkcbo")]
 graph_offset = Vector2(-4, 21)
 
-[node name="Faimisson" type="CharacterBody2D" node_paths=PackedStringArray("kick_marker", "anim_tree", "sprite", "hitbox_area", "hurtbox_area")]
+[node name="Faimisson" type="CharacterBody2D" node_paths=PackedStringArray("kick_marker", "anim_tree", "sprite", "hitbox_area", "hurtbox_area", "health_bar", "warns", "fade_transition")]
 scale = Vector2(4, 4)
 collision_layer = 16
 platform_floor_layers = 4294901761
@@ -327,6 +329,9 @@ anim_tree = NodePath("AnimationTree")
 sprite = NodePath("Sprite2D")
 hitbox_area = NodePath("HitboxArea")
 hurtbox_area = NodePath("Hurtbox")
+health_bar = NodePath("BossHealth")
+warns = NodePath("PunchMarker")
+fade_transition = NodePath("Fade_Transition")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ee6pk")
@@ -367,6 +372,11 @@ anim_player = NodePath("../AnimPlayer")
 
 [node name="PunchMarker" type="Marker2D" parent="."]
 position = Vector2(0, 12.5)
+
+[node name="BossHealth" parent="." node_paths=PackedStringArray("boss") instance=ExtResource("7_xyx8f")]
+boss = NodePath("..")
+
+[node name="Fade_Transition" parent="." instance=ExtResource("8_um2oe")]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="HitboxArea" to="." method="_on_hitbox_area_area_entered"]
