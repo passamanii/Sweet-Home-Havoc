@@ -1,6 +1,7 @@
 extends Node
 
 var player: BasePlayer
+var pname: String = "Aluno"
 var xp: int = 0
 var temp_xp: int = 0
 var spentable_xp: int = xp

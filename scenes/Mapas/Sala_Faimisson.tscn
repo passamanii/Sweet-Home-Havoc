@@ -137,7 +137,7 @@ sources/1 = SubResource("TileSetAtlasSource_5dm6y")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8c8v"]
 size = Vector2(50.5, 185.5)
 
-[node name="Sala_Faimisson" type="Node2D" node_paths=PackedStringArray("player", "fade_transition")]
+[node name="Sala_Faimisson" type="Node2D" unique_id=1467858785 node_paths=PackedStringArray("player", "fade_transition")]
 script = ExtResource("1_4yy4k")
 player = NodePath("Player")
 fade_transition = NodePath("Fade_Transition")
@@ -170,10 +170,10 @@ scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAABAAMAAAAAAAAAAAABAAQAAQAAAAAAAAADAAMAAAAAAAAAAAADAAQAAQAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAQAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAQAAAAAAAAABAAYAAQAAAAAAAAABAAUAAAAAAAAAAAADAAYAAQAAAAAAAAADAAUAAAAAAAAAAAAFAAYAAQAAAAAAAAAFAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_6op72")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1448775564]
 collision_mask = 2
 
-[node name="Exit" type="CollisionShape2D" parent="Area2D"]
+[node name="Exit" type="CollisionShape2D" parent="Area2D" unique_id=1689163375]
 position = Vector2(38, -9)
 shape = SubResource("RectangleShape2D_n8c8v")
 
@@ -183,7 +183,7 @@ scale = Vector2(4, 4)
 
 [node name="Fade_Transition" parent="." instance=ExtResource("7_n8c8v")]
 
-[node name="Player" parent="." instance=ExtResource("2_28b2l")]
+[node name="Player" parent="." unique_id=1956581445 instance=ExtResource("2_28b2l")]
 position = Vector2(116, -4)
 up_direction = Vector2(0, 1)
 

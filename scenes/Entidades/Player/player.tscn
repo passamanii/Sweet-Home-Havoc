@@ -1,4 +1,4 @@
-[gd_scene load_steps=182 format=3 uid="uid://d0d3ltflnild1"]
+[gd_scene format=3 uid="uid://d0d3ltflnild1"]
 
 [ext_resource type="Script" uid="uid://ds510arw8whi" path="res://scripts/Entidades/Player/player.gd" id="1_m80qi"]
 [ext_resource type="PackedScene" uid="uid://b7kgygy0wqbr6" path="res://scenes/Entidades/Player/ink_ball.tscn" id="2_a0gy7"]
@@ -2062,7 +2062,7 @@ height = 32.77778
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
 height = 32.5
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1579435897 groups=["Player"]]
 scale = Vector2(4, 4)
 collision_layer = 2
 script = ExtResource("1_m80qi")
@@ -2071,45 +2071,43 @@ jbl_sound_scene = ExtResource("3_s4u2g")
 xp_popup = ExtResource("2_ok7js")
 lvl_popup = ExtResource("3_1rhju")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_a8ls1")
-}
-autoplay = "Idle_Back"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1489967792]
+libraries/ = SubResource("AnimationLibrary_a8ls1")
+autoplay = &"Idle_Back"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1636700039 groups=["Player"]]
 position = Vector2(0, -0.25)
 sprite_frames = SubResource("SpriteFrames_l71n6")
 animation = &"Shoot_Front"
 frame = 1
 
-[node name="HurtboxArea" type="Area2D" parent="."]
+[node name="HurtboxArea" type="Area2D" parent="." unique_id=1560831443]
 collision_layer = 4
 collision_mask = 64
 
-[node name="HurtboxCollision" type="CollisionShape2D" parent="HurtboxArea"]
+[node name="HurtboxCollision" type="CollisionShape2D" parent="HurtboxArea" unique_id=591283534]
 position = Vector2(0, -2)
 scale = Vector2(1.8, 1.8)
 shape = SubResource("CapsuleShape2D_oprun")
 debug_color = Color(0.9033771, 0.30645284, 0.06732032, 0.41960785)
 
-[node name="HitboxArea" type="Area2D" parent="."]
+[node name="HitboxArea" type="Area2D" parent="." unique_id=1533252206]
 collision_layer = 8
 collision_mask = 32
 
-[node name="HitboxCollision" type="CollisionShape2D" parent="HitboxArea"]
+[node name="HitboxCollision" type="CollisionShape2D" parent="HitboxArea" unique_id=1005193703]
 position = Vector2(22, 0)
 scale = Vector2(1.8, 1.8)
 shape = SubResource("CapsuleShape2D_g6mm2")
 disabled = true
 debug_color = Color(0.34153476, 0.6203204, 0, 0.41960785)
 
-[node name="PhysicsArea" type="CollisionShape2D" parent="."]
+[node name="PhysicsArea" type="CollisionShape2D" parent="." unique_id=261221523]
 position = Vector2(0, -1.75)
 scale = Vector2(1.1, 1.1)
 shape = SubResource("CapsuleShape2D_dqkch")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1197235281]
 zoom = Vector2(0.7, 0.7)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
@@ -2118,14 +2116,14 @@ drag_top_margin = 0.12
 drag_right_margin = 0.12
 drag_bottom_margin = 0.12
 
-[node name="Regeneration_Timer" type="Timer" parent="."]
+[node name="Regeneration_Timer" type="Timer" parent="." unique_id=47090952]
 wait_time = 5.0
 autostart = true
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="Marker2D" type="Marker2D" parent="." unique_id=285973338]
 position = Vector2(14.25, 6.5)
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=592579882]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Regeneration_Timer" to="." method="_on_regeneration_timer_timeout"]

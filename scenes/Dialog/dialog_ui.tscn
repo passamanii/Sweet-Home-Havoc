@@ -22,24 +22,30 @@ script = ExtResource("1_tubdg")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=55173605]
 
 [node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1771528483]
-anchors_preset = 12
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -192.0
+offset_left = -541.5
+offset_top = -233.0
+offset_right = 541.5
+offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_cmeh0")
 
 [node name="DialogBox" type="VBoxContainer" parent="CanvasLayer/Panel" unique_id=1633731771]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -10.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -521.5
+offset_top = -89.0
+offset_right = 521.5
+offset_bottom = 89.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -55,9 +61,11 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
-text = "Text blablabla"
+text = "Text blablabla dah ojsfdioj ioasdjf iasdjio fjsdioaj fiosdaj fiosjdaio fjsdaioj fiosdaj fiosjdaoi fjsdioj ioasdj fiojdsoi jsido jiosadj iosdjio jsaoi joidssdfji jsaojfd"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
 
 [node name="DialogOptions" type="HBoxContainer" parent="CanvasLayer/Panel/DialogBox" unique_id=40792853]
 layout_mode = 2
