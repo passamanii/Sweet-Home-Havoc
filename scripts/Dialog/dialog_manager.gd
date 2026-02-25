@@ -4,20 +4,14 @@ extends Node2D
 
 var npc: Node = null
 
-func show_dialog(speaker, text = "", options = {}):
+func show_dialog(npc, text = "", options = {}):
 	if text != "":
-		if speaker == "Aluno":
-			dialog_ui.show_dialog(Player_Stats.pname, text, options)
-		else:
-			dialog_ui.show_dialog(speaker, text, options)
+		dialog_ui.show_dialog(npc.npc_name, text, options)
 	else:
 		var dialog = npc.get_current_dialog()
 		if dialog == null:
 			return
-		if dialog["speaker"] == "Aluno":
-			dialog_ui.show_dialog(Player_Stats.pname, dialog["text"], dialog["options"])
-		else:
-			dialog_ui.show_dialog(dialog["speaker"], dialog["text"], dialog["options"])
+		dialog_ui.show_dialog(npc.npc_name, dialog["text"], dialog["options"])
 	
 func hide_dialog():
 	dialog_ui.hide_dialog()
@@ -31,14 +25,14 @@ func handle_dialog_choice(option):
 	npc.set_dialog_state(next_state)
 	
 	if next_state == "end":
-		if npc.dialog_info["current_branch_index"] < npc.dialog_resource.get_npc_dialog(npc.npc_id).size() - 1:
-			npc.set_dialog_tree(npc.dialog_info["current_branch_index"] + 1)
+		if npc.current_branch_index < npc.dialog_resource.get_npc_dialog(npc.npc_id).size() - 1:
+			npc.set_dialog_branch(npc.current_branch_index - 1)
 		hide_dialog()
 	elif next_state == "exit":
 		hide_dialog()
 		npc.set_dialog_state("start")
-	elif next_state == "quit":
-		get_tree().quit()
+	elif next_state == "quest":
+		show_dialog(npc)
 	else:
-		show_dialog(current_dialog["speaker"])
+		show_dialog(npc)
 	

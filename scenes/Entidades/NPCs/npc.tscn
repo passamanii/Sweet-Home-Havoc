@@ -1,17 +1,17 @@
-[gd_scene format=3 uid="uid://bvufwpnfl35e3"]
+[gd_scene load_steps=10 format=3 uid="uid://bvufwpnfl35e3"]
 
 [ext_resource type="Script" uid="uid://b3e5h8oqclk8v" path="res://scripts/Entidades/NPCs/npc.gd" id="1_ls1eb"]
-[ext_resource type="Script" uid="uid://44fq77a4gu4g" path="res://Resources/Dialog/Dialog.gd" id="2_btsg8"]
-[ext_resource type="Texture2D" uid="uid://blasdfe4r37m3" path="res://assets/Personagens/outros/veterano.png" id="4_l82u4"]
+[ext_resource type="Script" uid="uid://44fq77a4gu4g" path="res://resources/Dialog/Dialog.gd" id="2_btsg8"]
+[ext_resource type="Texture2D" uid="uid://biunqmhodul3h" path="res://assets/Personagens/outros/veterano.png" id="4_l82u4"]
 [ext_resource type="PackedScene" uid="uid://c20ij0oso17wr" path="res://scenes/Dialog/DialogManager.tscn" id="16_dgyu3"]
 
 [sub_resource type="Resource" id="Resource_cnjdt"]
 script = ExtResource("2_btsg8")
 metadata/_custom_type_script = "uid://44fq77a4gu4g"
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l82u4"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_higj2"]
 radius = 12.727272
-height = 40.0
+height = 32.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kmrf5"]
 atlas = ExtResource("4_l82u4")
@@ -31,22 +31,21 @@ animations = [{
 "texture": SubResource("AtlasTexture_t17yp")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"new_animation",
 "speed": 5.0
 }]
 
-[node name="NPC" type="CharacterBody2D" unique_id=1633589740 groups=["NPC"]]
+[node name="NPC" type="CharacterBody2D" groups=["NPC"]]
 script = ExtResource("1_ls1eb")
 dialog_resource = SubResource("Resource_cnjdt")
 
-[node name="PhysicsArea" type="CollisionShape2D" parent="." unique_id=175181691]
-position = Vector2(7, -4)
+[node name="PhysicsArea" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
 scale = Vector2(1.1, 1.1)
-shape = SubResource("CapsuleShape2D_l82u4")
+shape = SubResource("CapsuleShape2D_higj2")
 
-[node name="DialogManager" parent="." unique_id=1372733940 instance=ExtResource("16_dgyu3")]
+[node name="DialogManager" parent="." instance=ExtResource("16_dgyu3")]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1007361026]
-position = Vector2(7, -1)
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fn5fr")
-animation = &"idle"
+animation = &"new_animation"
