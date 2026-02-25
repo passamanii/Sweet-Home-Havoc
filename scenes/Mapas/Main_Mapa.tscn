@@ -1,13 +1,13 @@
 [gd_scene load_steps=20 format=4 uid="uid://bmqdk2hlt4s58"]
 
 [ext_resource type="Script" uid="uid://dvaoe2voghxfs" path="res://scripts/Mapas/main_mapa.gd" id="1_j4qt1"]
-[ext_resource type="Texture2D" uid="uid://bekoj3x21gc6r" path="res://assets/Cenario/Mundo/grama_alta.png" id="2_26lvq"]
-[ext_resource type="Texture2D" uid="uid://mytv0gjymvg0" path="res://assets/Cenario/Sala/piso15x15.png" id="2_j4qt1"]
-[ext_resource type="Texture2D" uid="uid://bne6lmybwoy6n" path="res://assets/Cenario/Mundo/grama_flor.png" id="3_h8wpe"]
+[ext_resource type="Texture2D" uid="uid://dpaecdaeyuv46" path="res://assets/Cenario/Mundo/grama_alta.png" id="2_26lvq"]
+[ext_resource type="Texture2D" uid="uid://dwfak01och6io" path="res://assets/Cenario/Sala/piso15x15.png" id="2_j4qt1"]
+[ext_resource type="Texture2D" uid="uid://bm87cakbaf3ew" path="res://assets/Cenario/Mundo/grama_flor.png" id="3_h8wpe"]
 [ext_resource type="PackedScene" uid="uid://d0d3ltflnild1" path="res://scenes/Entidades/Player/player.tscn" id="3_hiv4x"]
-[ext_resource type="Texture2D" uid="uid://cfn7yh0yaouib" path="res://assets/Cenario/Mundo/grama_nada.png" id="4_elsig"]
+[ext_resource type="Texture2D" uid="uid://b4078as21ehv2" path="res://assets/Cenario/Mundo/grama_nada.png" id="4_elsig"]
 [ext_resource type="PackedScene" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="5_tb2gh"]
-[ext_resource type="Texture2D" uid="uid://c457ai8ytlh5u" path="res://assets/Cenario/Mundo/arvore.png" id="6_elsig"]
+[ext_resource type="Texture2D" uid="uid://t263briyufjb" path="res://assets/Cenario/Mundo/arvore.png" id="6_elsig"]
 [ext_resource type="PackedScene" uid="uid://cr8m852vu74l8" path="res://scenes/Menus/Pause_Menu.tscn" id="8_h8wpe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r06wf"]

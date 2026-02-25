@@ -26,6 +26,7 @@ var damage: float = 10
 var regen: int = 0
 var armor: float = 0
 
+
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox_area: Area2D = $HitboxArea
@@ -33,10 +34,11 @@ var armor: float = 0
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var regeneration_timer: Timer = $Regeneration_Timer
 @onready var marker_2d: Marker2D = $Marker2D
+@onready var ray_cast_2d: RayCast2D = $RayCast2D
+@onready var xp_ui: XpUi = $"/root/PlayerHud/Control/MarginContainer/Xp_UI"
 
 @export var xp_popup: PackedScene
 @export var lvl_popup: PackedScene
-@onready var ray_cast_2d: RayCast2D = $RayCast2D
 
 signal player_died
 
@@ -112,6 +114,20 @@ func define_spawn():
 		position = Player_Tracking.spawn_pos
 	if (Player_Tracking.spawn_facing != Vector2.ZERO):
 		facing = Player_Tracking.spawn_facing
+
+func save_stats():
+	Player_Stats.temp_xp = Player_Stats.xp
+	Player_Stats.temp_level = Player_Stats.level
+	Player_Stats.temp_max_health = Player_Stats.max_health
+	Player_Stats.temp_damage = Player_Stats.damage
+	
+func update_stats_on_death():
+	Player_Stats.health = Player_Stats.temp_max_health
+	Player_Stats.damage = Player_Stats.temp_damage
+	Player_Stats.xp = Player_Stats.temp_xp
+	Player_Stats.level = Player_Stats.temp_level
+	xp_ui._update_lvl_shown(Player_Stats.level)
+	xp_ui._update_xp_shown(Player_Stats.xp)
 	
 func define_stats():
 	if (Player_Stats.xp != xp):
@@ -370,8 +386,8 @@ func die() -> void:
 	cam.reparent(get_tree().current_scene)
 	cam.global_position = global_position
 	player_died.emit()
-	var scene_path := get_tree().current_scene.scene_file_path
-	get_tree().call_deferred("change_scene_to_file", scene_path)
+	get_tree().reload_current_scene()
+	update_stats_on_death()
 
 func pause() -> void:
 	set_physics_process(false)

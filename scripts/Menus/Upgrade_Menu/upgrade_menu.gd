@@ -1,11 +1,11 @@
 extends Control
 
-@onready var menu_brackground: Panel = $Menu_Brackground
+@onready var menu_brackground: TextureRect = $Menu_Brackground
 @onready var label: Label = $"Menu_Brackground/Panel(Xp)/Label"
 @onready var name_label: Label = $Skills_Details/Nome
 @onready var desc_label: Label = $"Skills_Details/Descrição"
 @onready var cost_label: Label = $Skills_Details/Custo
-@onready var skills_details: Panel = $Skills_Details
+@onready var skills_details: TextureRect = $Skills_Details
 @export var skill_buttons: Array[SkillButton]
 
 var player: BasePlayer

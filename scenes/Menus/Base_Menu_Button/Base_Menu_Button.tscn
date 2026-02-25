@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cqys0xkjdptam"]
+
+[node name="Base" type="TextureButton"]
+offset_right = 159.0
+offset_bottom = 79.5
+size_flags_vertical = 3
+stretch_mode = 0

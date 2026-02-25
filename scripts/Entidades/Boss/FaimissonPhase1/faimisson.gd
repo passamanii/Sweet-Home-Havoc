@@ -147,7 +147,6 @@ func boss_cycle():
 		await do_vulnerable()
 		await do_breath()
 		await do_dash()
-		await do_kick()
 		await do_naranjas()
 		if health <= 0:
 			break
@@ -158,6 +157,7 @@ func go_to_second_fase() -> void:
 
 func _cabou() -> void:
 	get_tree().change_scene_to_file("res://scenes/Mapas/final_boss_room_02.tscn")
+	pass
 
 func _on_hitbox_area_area_entered(_area: Area2D) -> void:
 	player.get_hit(damage, (player.global_position - global_position).normalized())
