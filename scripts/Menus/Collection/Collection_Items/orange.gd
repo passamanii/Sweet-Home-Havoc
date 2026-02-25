@@ -1,0 +1,10 @@
+extends BaseColectionItem
+
+func _ready() -> void:
+	if CollectionController.orange:
+		mysterious_item.hide()
+		collection_item.texture = load("res://assets/Collectables/orange.png")
+		collection_item.show()
+	else:
+		return
+		

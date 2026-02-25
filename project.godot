@@ -28,6 +28,7 @@ Cutscenes_Controller="*res://scripts/Globals/Cutscenes_Controller.gd"
 Player_Stats="*res://scripts/Globals/player_stats.gd"
 Skills_Stats="*res://scripts/Globals/Skills_Stats.gd"
 PlayerHud="*res://scenes/UI/Player_UI/player_hud.tscn"
+CollectionController="*res://scripts/Globals/Collection_Controller.gd"
 
 [display]
 

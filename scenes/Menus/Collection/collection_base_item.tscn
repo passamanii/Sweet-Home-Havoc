@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhfcpmtn4l14k"]
+
+[ext_resource type="Texture2D" uid="uid://bua3oknb0ld1d" path="res://assets/Caixas/Habilidades/caixa_habilidades_mini.png" id="1_3q2bk"]
+[ext_resource type="Script" uid="uid://b8dyo1mn7xrl8" path="res://scenes/Menus/Collection/collection_base_item.gd" id="1_qlol1"]
+[ext_resource type="Texture2D" uid="uid://q6y5kndw5stk" path="res://assets/Collectables/question-mark.png" id="4_cml18"]
+
+[node name="Collection_Base_Item" type="Control"]
+layout_mode = 3
+anchor_right = 0.11129032
+anchor_bottom = 0.19166666
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qlol1")
+metadata/_edit_use_anchors_ = true
+
+[node name="Collection_Pedestal" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3q2bk")
+
+[node name="Mysterious_Item" type="TextureRect" parent="Collection_Pedestal"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_cml18")
+
+[node name="Collection_Item" type="TextureRect" parent="Collection_Pedestal"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2

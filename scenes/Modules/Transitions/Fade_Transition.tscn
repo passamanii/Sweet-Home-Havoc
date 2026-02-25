@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpm6regsguk6c"]
+[gd_scene load_steps=5 format=3 uid="uid://c2j88fhmw3cm0"]
 
-[ext_resource type="Script" path="res://scripts/Modules/Transitions/fade_transition.gd" id="1_4ydro"]
-
+[ext_resource type="Script" uid="uid://ba4qt08ack6wd" path="res://scripts/Modules/Transitions/fade_transition.gd" id="1_4ydro"]
 
 [sub_resource type="Animation" id="Animation_xie56"]
 resource_name = "fade_in"
@@ -54,7 +53,7 @@ offset_left = -31245.0
 offset_top = -19479.0
 offset_right = 30381.0
 offset_bottom = 20551.0
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 
 [node name="AnimTransition" type="AnimationPlayer" parent="."]
 libraries = {

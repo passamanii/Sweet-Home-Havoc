@@ -1,5 +1,98 @@
-[gd_scene format=3 uid="uid://b2376axyh5s4u"]
+[gd_scene load_steps=11 format=3 uid="uid://b2376axyh5s4u"]
+
+[ext_resource type="Script" uid="uid://bf0yyugurgccb" path="res://scripts/Menus/options.gd" id="1_1ypdw"]
+[ext_resource type="Texture2D" uid="uid://dne01oumimlub" path="res://assets/General/Capa Menu.png" id="1_12505"]
+[ext_resource type="PackedScene" uid="uid://cqys0xkjdptam" path="res://scenes/Menus/Base_Menu_Button/Base_Menu_Button.tscn" id="3_hr0t0"]
+[ext_resource type="Texture2D" uid="uid://d07jnaxw0kth8" path="res://assets/Caixas/Menu/menu-button-white.png" id="4_xvxgp"]
+[ext_resource type="Texture2D" uid="uid://daq2n1x2u1mqq" path="res://assets/Caixas/Menu/menu-button-black.png" id="5_fgxch"]
+[ext_resource type="PackedScene" uid="uid://c2j88fhmw3cm0" path="res://scenes/Modules/Transitions/Fade_Transition.tscn" id="6_hr0t0"]
+[ext_resource type="FontFile" uid="uid://5f0vtbtakhtc" path="res://assets/General/UltimatePixelFont.ttf" id="7_xvxgp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hr0t0"]
+bg_color = Color(0.6784314, 0.46666667, 0.34117648, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvxgp"]
+bg_color = Color(0.7529412, 0.5803922, 0.4509804, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_fgxch"]
+font = ExtResource("7_xvxgp")
+font_size = 46
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(3, 3)
 
 [node name="Options" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ypdw")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.4509804, 0.4509804, 0.4509804, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_12505")
+metadata/_edit_use_anchors_ = true
+
+[node name="Main_Menu" parent="." instance=ExtResource("3_hr0t0")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.80403227
+anchor_top = 0.82916665
+anchor_right = 0.9951613
+anchor_bottom = 0.99375
+offset_right = 0.0
+offset_bottom = 0.0
+texture_normal = ExtResource("4_xvxgp")
+texture_pressed = ExtResource("5_fgxch")
+metadata/_edit_use_anchors_ = true
+
+[node name="Outline_Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08467742
+anchor_top = 0.104166664
+anchor_right = 0.9072581
+anchor_bottom = 0.80972224
+theme_override_styles/panel = SubResource("StyleBoxFlat_hr0t0")
+metadata/_edit_use_anchors_ = true
+
+[node name="Interior_Panel" type="Panel" parent="Outline_Panel"]
+layout_mode = 0
+anchor_left = 0.010784314
+anchor_top = 0.037401576
+anchor_right = 0.9882353
+anchor_bottom = 0.96653545
+theme_override_styles/panel = SubResource("StyleBoxFlat_xvxgp")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Outline_Panel/Interior_Panel"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 32.0
+offset_right = 517.0
+offset_bottom = 154.0
+text = "Não deu tempo de terminar :("
+label_settings = SubResource("LabelSettings_fgxch")
+
+[node name="Fade_Transition" parent="." instance=ExtResource("6_hr0t0")]
+layout_mode = 0
+
+[connection signal="pressed" from="Main_Menu" to="." method="_on_main_menu_pressed"]
