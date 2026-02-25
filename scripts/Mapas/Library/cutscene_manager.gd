@@ -1,14 +1,14 @@
-extends Node
+class_name CutsceneManager extends Node
 
 @export var player: BasePlayer 
 @export var old_locker_1: Area2D
 @export var library_animation: AnimationPlayer
 @export var locker_code_canvas: CanvasLayer
 
+
 func _ready() -> void:
 	if (!Cutscenes_Controller.showed_enter_library_cutscene):
 		first_time_in_library_cutscene()
-	
 	if (Cutscenes_Controller.showed_enter_library_cutscene and
 		!Cutscenes_Controller.showed_first_dungeon_win_cutscene and
 		Game_Controller.has_first_book):
@@ -25,6 +25,7 @@ func move_right() -> void:
 
 func first_time_in_library_cutscene() -> void:
 	Game_Controller.is_cutscene = true
+	PlayerHud.hide()
 	player.pause()
 	player.can_move = false
 	
@@ -131,11 +132,13 @@ func first_time_in_library_cutscene() -> void:
 	print("Objetivo atualizado: Encontrar o armário do setor restrito.")
 	player.can_move = true
 	player.play()
+	PlayerHud.show()
 	Cutscenes_Controller.showed_enter_library_cutscene = true
 	Game_Controller.is_cutscene = false
 
 func open_locker_cutscene() -> void:
 	Game_Controller.is_cutscene = true
+	PlayerHud.hide()
 	locker_code_canvas.hide()
 	player.can_move = false
 	player.pause()
@@ -215,14 +218,16 @@ func open_locker_cutscene() -> void:
 	
 	Cutscenes_Controller.showed_open_locker_1 = true
 	Game_Controller.has_first_book = true
+	PlayerHud.show()
 	Game_Controller.is_cutscene = false
 	player.can_move = true
 	player.play()
 
 func win_coming_back_from_dungeon_cutscene() -> void:
 	Game_Controller.is_cutscene = true
-	player.can_move = false
 	player.pause()
+	PlayerHud.hide()
+	player.can_move = false
 	player.animation_player.play("Idle_Front")
 
 	await get_tree().create_timer(0.1).timeout
@@ -321,6 +326,7 @@ func win_coming_back_from_dungeon_cutscene() -> void:
 
 	player.can_move = true
 	player.play()
+	PlayerHud.show()
 	Game_Controller.is_cutscene = false
 	Cutscenes_Controller.showed_first_dungeon_win_cutscene = true
 	
