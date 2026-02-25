@@ -9,6 +9,7 @@ func Enter() -> void:
 	boss_head.purple_barrier_safe_area.monitoring = false
 	boss_head.shield.monitoring = false
 	boss_body.hitbox_area.monitoring = false
+	boss_body.hurtbox_area.monitoring = true
 
 func Update(delta: float) -> void:
 	if boss_head.rotation_speed <= 0:

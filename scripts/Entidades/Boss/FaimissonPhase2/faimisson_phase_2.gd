@@ -17,8 +17,8 @@ class_name Faimisson2Head
 @export var fade_transition: FadeTransition
 @export var orbit_increase_speed: int = 1000
 @export var orbit_shrink_speed: int = 400
-@export var blay_blade_speed: int = 300
-@export var purple_barrier_shrink_speed: int = 100
+@export var blay_blade_speed: int = 500
+@export var purple_barrier_shrink_speed: int = 300
 @export var purple_barrier_initial_radius: int = 1500
 
 var stones = []
@@ -87,7 +87,6 @@ func start_purple_barrier() -> void:
 	purple_barrier_sprite.show()
 	purple_barrier_safe_sprite.show()
 
-
 func spawn_safe_zone() -> void:
 	var pos = purple_barrier_initial_radius * Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
 	purple_barrier_safe_area.global_position = pos
@@ -119,11 +118,11 @@ func _on_safe_area_body_exited(body: Node2D) -> void:
 #########################
 
 func start_following_attack() -> void:
-	var quantity = 12
+	var quantity = 16
 	
 	for i in range(quantity):
 		var projectile: ProjectileBase = red_stone_projectiles.instantiate()
-		projectile.global_position = global_position + 800 * Vector2.RIGHT.rotated(deg_to_rad(i * (360./quantity)))
+		projectile.global_position = global_position + 100 * Vector2.RIGHT.rotated(deg_to_rad(i * (360./quantity)))
 		projectile.initial_dir = Vector2.RIGHT.rotated(deg_to_rad(i * (360./quantity))).normalized()
 		get_tree().current_scene.add_child(projectile)
 		
@@ -132,8 +131,10 @@ func start_following_attack() -> void:
 #########################
 
 func spawn_enemies() -> void:
-	for i in range(25):
+	for i in range(40):
 		var enemy: BaseEnemy = enemy_for_spawner.instantiate()
+		enemy.xp_amount = 0
+		enemy.damage = 1
 		enemy.global_position = global_position + 500 * Vector2.RIGHT.rotated(deg_to_rad(i * (360./25.)))
 		get_tree().current_scene.add_child(enemy)
 		
@@ -153,7 +154,7 @@ func start_stones_laser() -> bool:
 	for stone in stones:
 		stone.start_laser()
 	
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(5).timeout
 	return true
 
 #########################
@@ -198,4 +199,4 @@ func start_expand_orbit() -> void:
 	expand_orbit_mode = true
 
 func _on_shieldd_area_area_entered(_area: Area2D) -> void:
-	player.get_hit(0, (player.position - shield.position).normalized(), 1500)
+	player.get_hit(1, (player.position - shield.position).normalized(), 1500)

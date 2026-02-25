@@ -139,6 +139,7 @@ shield_sprite = NodePath("ShielddArea/ShieldSprite")
 boss_body = NodePath("Boss")
 
 [node name="Boss" parent="." instance=ExtResource("1_q4qic")]
+damage = 1
 
 [node name="ShielddArea" type="Area2D" parent="."]
 collision_layer = 64
@@ -158,7 +159,7 @@ frame_progress = 0.29563338
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_8r87q")
-initial_state = NodePath("FlyingPunch")
+initial_state = NodePath("FinishIt")
 
 [node name="FlyingPunch" type="Node" parent="StateMachine" node_paths=PackedStringArray("boss_body")]
 script = ExtResource("7_4vpvw")
@@ -184,7 +185,7 @@ boss_head = NodePath("../..")
 spawn_cooldown = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="StateMachine/BlueStone"]
-wait_time = 14.0
+wait_time = 7.0
 
 [node name="RedStone" type="Node" parent="StateMachine" node_paths=PackedStringArray("boss_head", "spawn_cooldown")]
 script = ExtResource("13_qcnwl")
@@ -192,7 +193,7 @@ boss_head = NodePath("../..")
 spawn_cooldown = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="StateMachine/RedStone"]
-wait_time = 8.0
+wait_time = 5.0
 
 [node name="PurpleStone" type="Node" parent="StateMachine" node_paths=PackedStringArray("boss_head")]
 script = ExtResource("14_d4kwe")

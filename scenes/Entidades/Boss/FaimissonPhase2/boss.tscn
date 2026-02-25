@@ -267,7 +267,7 @@ _data = {
 radius = 12.0
 height = 44.0
 
-[node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox_area", "anim_player")]
+[node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox_area", "hurtbox_area", "anim_player")]
 top_level = true
 scale = Vector2(4, 4)
 collision_layer = 16
@@ -276,6 +276,7 @@ platform_floor_layers = 4294901761
 script = ExtResource("1_p3t4s")
 sprite = NodePath("Sprite2D")
 hitbox_area = NodePath("HitboxArea")
+hurtbox_area = NodePath("HurtboxArea")
 anim_player = NodePath("AnimPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -305,6 +306,7 @@ autoplay = "Idle"
 [node name="HurtboxArea" type="Area2D" parent="."]
 collision_layer = 32
 collision_mask = 8
+monitoring = false
 
 [node name="HurboxCollision" type="CollisionShape2D" parent="HurtboxArea"]
 position = Vector2(0, -3)

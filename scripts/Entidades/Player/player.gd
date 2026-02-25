@@ -369,9 +369,9 @@ func die() -> void:
 	var cam = camera_2d
 	cam.reparent(get_tree().current_scene)
 	cam.global_position = global_position
-	queue_free()
 	player_died.emit()
-	get_tree().reload_current_scene()
+	var scene_path := get_tree().current_scene.scene_file_path
+	get_tree().call_deferred("change_scene_to_file", scene_path)
 
 func pause() -> void:
 	set_physics_process(false)

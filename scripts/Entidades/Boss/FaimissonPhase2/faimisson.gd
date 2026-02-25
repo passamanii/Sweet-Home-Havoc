@@ -3,12 +3,13 @@ class_name Faimisson2
 
 @export_category("Variables")
 @export var max_health: int = 1
-@export var flight_force: float = 2000.0
-@export var damage: int = 1
+@export var flight_force: float = 3000.0
+@export var damage: int = 30
 
 @export_category("Objects")
 @export var sprite: Sprite2D
 @export var hitbox_area: Area2D
+@export var hurtbox_area: Area2D
 @export var anim_player: AnimationPlayer
 @export var fade_transition: FadeTransition
 
@@ -60,8 +61,12 @@ func do_air_punchs() -> bool:
 	await get_tree().create_timer(2).timeout
 	return true
 
+func get_hit() -> void:
+	if hurtbox_area.monitoring:
+		health -= Player_Stats.damage
+		if health <= 0:
+			print("Matou")
+			killed_faimisson.emit()
+
 func _on_hurtbox_area_area_entered(_area: Area2D) -> void:
-	health -= Player_Stats.damage
-	if health <= 0:
-		print("Matou")
-		killed_faimisson.emit()
+	get_hit()
