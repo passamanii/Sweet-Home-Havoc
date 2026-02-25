@@ -24,8 +24,8 @@ func process_label():
 		label.hide()
 		
 func _sort_by_distance_to_player(area1, area2):
-	var area1_to_player: float = player.global_position.distance_to(area1.global_position)
-	var area2_to_player: float = player.global_position.distance_to(area2.global_position)
+	var area1_to_player: float = player.global_position.distance_to(area1.position)
+	var area2_to_player: float = player.global_position.distance_to(area2.position)
 	return area1_to_player < area2_to_player
 	
 func register_area(area: Interaction_With):
