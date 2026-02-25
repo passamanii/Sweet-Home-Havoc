@@ -29,4 +29,4 @@ func _on_option_selected(option):
 
 func hide_dialog():
 	panel.visible = false
-	Player_Tracking.player.can_move = true
+	

@@ -7,6 +7,7 @@ extends Node2D
 var area_entered: String = ''
 
 func _ready() -> void:
+	return
 	fade_transition.transition_end.connect(_on_transition_finished)
 	fade_transition.out()
 	

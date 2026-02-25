@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://cr8m852vu74l8"]
+[gd_scene format=3 uid="uid://cr8m852vu74l8"]
 
 [ext_resource type="Script" uid="uid://cbgp61ye6nr1j" path="res://scripts/Menus/pause_menu.gd" id="1_ccwpd"]
-[ext_resource type="FontFile" uid="uid://dl1p84ry4iww1" path="res://assets/General/UltimatePixelFont.ttf" id="2_smx8u"]
+[ext_resource type="FontFile" uid="uid://dyg7nkmtamnse" path="res://assets/General/UltimatePixelFont.ttf" id="2_smx8u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ees4b"]
 bg_color = Color(0, 0, 0, 0.46274507)
@@ -131,11 +131,11 @@ _data = {
 &"RESET": SubResource("Animation_283su")
 }
 
-[node name="PauseMenuCanvas" type="CanvasLayer"]
+[node name="PauseMenuCanvas" type="CanvasLayer" unique_id=1450921297]
 process_mode = 3
 visible = false
 
-[node name="PauseMenu" type="Control" parent="." node_paths=PackedStringArray("pause_menu_canvas", "anim_player")]
+[node name="PauseMenu" type="Control" parent="." unique_id=1922411991 node_paths=PackedStringArray("pause_menu_canvas", "anim_player")]
 top_level = true
 layout_mode = 3
 anchors_preset = 15
@@ -147,7 +147,7 @@ script = ExtResource("1_ccwpd")
 pause_menu_canvas = NodePath("..")
 anim_player = NodePath("AnimationPlayer")
 
-[node name="Panel" type="Panel" parent="PauseMenu"]
+[node name="Panel" type="Panel" parent="PauseMenu" unique_id=1642441085]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -156,7 +156,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ees4b")
 
-[node name="PanelContainer" type="PanelContainer" parent="PauseMenu"]
+[node name="PanelContainer" type="PanelContainer" parent="PauseMenu" unique_id=1235808857]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -172,11 +172,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2dc6e")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PanelContainer" unique_id=814042665]
 layout_mode = 2
 theme_override_constants/separation = 9
 
-[node name="Resume" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
+[node name="Resume" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer" unique_id=794785703]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -188,7 +188,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_h6uta")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ees4b")
 text = "Resume"
 
-[node name="Options" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer" unique_id=682529220]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -200,7 +200,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_h6uta")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ees4b")
 text = "Options"
 
-[node name="Main Menu" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
+[node name="Main Menu" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer" unique_id=2007177501]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -212,7 +212,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_h6uta")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ees4b")
 text = "Main Menu"
 
-[node name="Exit Game" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
+[node name="Exit Game" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer" unique_id=464190315]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -224,11 +224,9 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_h6uta")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ees4b")
 text = "Exit Game"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseMenu"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseMenu" unique_id=1325796333]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_12em7")
-}
+libraries/ = SubResource("AnimationLibrary_12em7")
 
 [connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/Options" to="PauseMenu" method="_on_options_pressed"]

@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Sweet Home Havoc"
 run/main_scene="uid://bmqdk2hlt4s58"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -28,6 +28,7 @@ Cutscenes_Controller="*res://scripts/Globals/Cutscenes_Controller.gd"
 Player_Stats="*res://scripts/Globals/player_stats.gd"
 Skills_Stats="*res://scripts/Globals/Skills_Stats.gd"
 PlayerHud="*res://scenes/UI/Player_UI/player_hud.tscn"
+NPC_Controller="*uid://u00mh55k7whi"
 
 [display]
 

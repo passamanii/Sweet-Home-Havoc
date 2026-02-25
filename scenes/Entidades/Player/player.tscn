@@ -1,32 +1,32 @@
-[gd_scene load_steps=182 format=3 uid="uid://d0d3ltflnild1"]
+[gd_scene format=3 uid="uid://d0d3ltflnild1"]
 
 [ext_resource type="Script" uid="uid://ds510arw8whi" path="res://scripts/Entidades/Player/player.gd" id="1_m80qi"]
 [ext_resource type="PackedScene" uid="uid://b7kgygy0wqbr6" path="res://scenes/Entidades/Player/ink_ball.tscn" id="2_a0gy7"]
-[ext_resource type="Texture2D" uid="uid://pwxq3yg5h0ba" path="res://assets/Ataques/Principal/ataque_mlee/principal_costa_ataque.png" id="2_j7qac"]
+[ext_resource type="Texture2D" uid="uid://dix613emsl4k0" path="res://assets/Ataques/Principal/ataque_mlee/principal_costa_ataque.png" id="2_j7qac"]
 [ext_resource type="PackedScene" uid="uid://c6a1wkp5gi3vb" path="res://scenes/UI/Popups/xp_popup.tscn" id="2_ok7js"]
 [ext_resource type="PackedScene" uid="uid://d1brrg00nr6is" path="res://scenes/UI/Popups/lvl_popup.tscn" id="3_1rhju"]
-[ext_resource type="Texture2D" uid="uid://pu8bqgr6yp4f" path="res://assets/Ataques/Principal/ataque_mlee/todos_novos_ataques.png" id="3_86t65"]
-[ext_resource type="Texture2D" uid="uid://bciauijpth4hx" path="res://assets/Ataques/Principal/ataque_mlee/principal_frente_ataque.png" id="3_2524u"]
+[ext_resource type="Texture2D" uid="uid://83womtgj7xc3" path="res://assets/Ataques/Principal/ataque_mlee/todos_novos_ataques.png" id="3_86t65"]
+[ext_resource type="Texture2D" uid="uid://dlocvw34sfc6v" path="res://assets/Ataques/Principal/ataque_mlee/principal_frente_ataque.png" id="3_2524u"]
 [ext_resource type="PackedScene" uid="uid://w8s4rygyr8i1" path="res://scenes/Entidades/Player/jbl_sound.tscn" id="3_s4u2g"]
-[ext_resource type="Texture2D" uid="uid://dt8ip54ehq5tq" path="res://assets/Ataques/Principal/ataque_mlee/principal_esquerda_ataque.png" id="4_qnq82"]
-[ext_resource type="Texture2D" uid="uid://cu2yjm7fk647e" path="res://assets/Ataques/Principal/ataque_mlee/principal_direita_ataque.png" id="5_3aj8x"]
-[ext_resource type="Texture2D" uid="uid://cmnu5tnrnrsjn" path="res://assets/Personagens/Principal/Dash/End Dash.png" id="6_ymj5y"]
-[ext_resource type="Texture2D" uid="uid://c4xpuu3ldxv8b" path="res://assets/Personagens/Principal/principal_costa_dano.png" id="7_6ditr"]
-[ext_resource type="Texture2D" uid="uid://dqb8nhm7odn3y" path="res://assets/Personagens/Principal/principal_costa.png" id="8_d6vmw"]
-[ext_resource type="Texture2D" uid="uid://f4tcyhirnidp" path="res://assets/Personagens/Principal/principal_frente_dano.png" id="9_j6wa4"]
-[ext_resource type="Texture2D" uid="uid://bof0vyen4rhs7" path="res://assets/Personagens/Principal/principal_frente.png" id="10_sk83l"]
-[ext_resource type="Texture2D" uid="uid://bygeouqmqs1my" path="res://assets/Personagens/Principal/principal_esquerda_dano.png" id="11_p3ake"]
-[ext_resource type="Texture2D" uid="uid://ctqoqc08dqppt" path="res://assets/Personagens/Principal/principal_esquerda.png" id="12_p6r1g"]
-[ext_resource type="Texture2D" uid="uid://oke0s7mkw2i5" path="res://assets/Personagens/Principal/principal_direita_dano.png" id="13_pvupx"]
-[ext_resource type="Texture2D" uid="uid://d1xlkaj6ccny0" path="res://assets/Personagens/Principal/principal_direita.png" id="14_4oy00"]
-[ext_resource type="Texture2D" uid="uid://ofv0skmqjapf" path="res://assets/Personagens/Principal/principal.png" id="15_e1vbf"]
-[ext_resource type="Texture2D" uid="uid://dvd23gldoekit" path="res://assets/Personagens/Principal/ataque_com_caneta_costa.png" id="16_1rhju"]
-[ext_resource type="Texture2D" uid="uid://6viwfi1asfqx" path="res://assets/Personagens/Principal/ataque_com_caneta_frente.png" id="17_v1io8"]
-[ext_resource type="Texture2D" uid="uid://dmwy2ajv7paq0" path="res://assets/Personagens/Principal/ataque_com_caneta.png" id="18_rlgvv"]
-[ext_resource type="Texture2D" uid="uid://dta2blqycoq8x" path="res://assets/Personagens/Principal/andando_com_caneta_costa.png" id="19_b0fij"]
-[ext_resource type="Texture2D" uid="uid://dygx5phaedr72" path="res://assets/Personagens/Principal/andando_com_caneta_frente.png" id="19_v1io8"]
-[ext_resource type="Texture2D" uid="uid://b8jo3ju85kglr" path="res://assets/Ataques/Principal/ataque_ranged/todos_jbl.png" id="20_re1tk"]
-[ext_resource type="Texture2D" uid="uid://cdk82jfod4xqn" path="res://assets/Personagens/Principal/andando_com_caneta.png" id="21_a0gy7"]
+[ext_resource type="Texture2D" uid="uid://cfij3jvfh3mwk" path="res://assets/Ataques/Principal/ataque_mlee/principal_esquerda_ataque.png" id="4_qnq82"]
+[ext_resource type="Texture2D" uid="uid://dh5slqj60rr4h" path="res://assets/Ataques/Principal/ataque_mlee/principal_direita_ataque.png" id="5_3aj8x"]
+[ext_resource type="Texture2D" uid="uid://0racs60t85d" path="res://assets/Personagens/Principal/Dash/End Dash.png" id="6_ymj5y"]
+[ext_resource type="Texture2D" uid="uid://cl02nmo47py3b" path="res://assets/Personagens/Principal/principal_costa_dano.png" id="7_6ditr"]
+[ext_resource type="Texture2D" uid="uid://2jflnkafr8mh" path="res://assets/Personagens/Principal/principal_costa.png" id="8_d6vmw"]
+[ext_resource type="Texture2D" uid="uid://cs2xwunl04mdb" path="res://assets/Personagens/Principal/principal_frente_dano.png" id="9_j6wa4"]
+[ext_resource type="Texture2D" uid="uid://o5ildkks4v4t" path="res://assets/Personagens/Principal/principal_frente.png" id="10_sk83l"]
+[ext_resource type="Texture2D" uid="uid://duklgrvvoocxj" path="res://assets/Personagens/Principal/principal_esquerda_dano.png" id="11_p3ake"]
+[ext_resource type="Texture2D" uid="uid://4pqt76x0yi0d" path="res://assets/Personagens/Principal/principal_esquerda.png" id="12_p6r1g"]
+[ext_resource type="Texture2D" uid="uid://bs3lfgfpxc6sa" path="res://assets/Personagens/Principal/principal_direita_dano.png" id="13_pvupx"]
+[ext_resource type="Texture2D" uid="uid://dgwhlhpekyyge" path="res://assets/Personagens/Principal/principal_direita.png" id="14_4oy00"]
+[ext_resource type="Texture2D" uid="uid://bo6dbx44167oe" path="res://assets/Personagens/Principal/principal.png" id="15_e1vbf"]
+[ext_resource type="Texture2D" uid="uid://d1m4vfsa0vu23" path="res://assets/Personagens/Principal/ataque_com_caneta_costa.png" id="16_1rhju"]
+[ext_resource type="Texture2D" uid="uid://c2e4gcxeqvht0" path="res://assets/Personagens/Principal/ataque_com_caneta_frente.png" id="17_v1io8"]
+[ext_resource type="Texture2D" uid="uid://dvf240hgxhwua" path="res://assets/Personagens/Principal/ataque_com_caneta.png" id="18_rlgvv"]
+[ext_resource type="Texture2D" uid="uid://c3hwe3oomnare" path="res://assets/Personagens/Principal/andando_com_caneta_costa.png" id="19_b0fij"]
+[ext_resource type="Texture2D" uid="uid://dbnv73f032d7p" path="res://assets/Personagens/Principal/andando_com_caneta_frente.png" id="19_v1io8"]
+[ext_resource type="Texture2D" uid="uid://bnu25siiwwakx" path="res://assets/Ataques/Principal/ataque_ranged/todos_jbl.png" id="20_re1tk"]
+[ext_resource type="Texture2D" uid="uid://cbmdvqh6p2duj" path="res://assets/Personagens/Principal/andando_com_caneta.png" id="21_a0gy7"]
 
 [sub_resource type="Animation" id="Animation_sabxm"]
 resource_name = "Dash"
@@ -2062,7 +2062,7 @@ height = 32.77778
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
 height = 32.5
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1579435897 groups=["Player"]]
 scale = Vector2(4, 4)
 collision_layer = 2
 script = ExtResource("1_m80qi")
@@ -2071,44 +2071,42 @@ jbl_sound_scene = ExtResource("3_s4u2g")
 xp_popup = ExtResource("2_ok7js")
 lvl_popup = ExtResource("3_1rhju")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_a8ls1")
-}
-autoplay = "Idle_Back"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1489967792]
+libraries/ = SubResource("AnimationLibrary_a8ls1")
+autoplay = &"Idle_Back"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1636700039 groups=["Player"]]
 position = Vector2(0, -0.25)
 sprite_frames = SubResource("SpriteFrames_l71n6")
 animation = &"Shoot_Front"
 
-[node name="HurtboxArea" type="Area2D" parent="."]
+[node name="HurtboxArea" type="Area2D" parent="." unique_id=1560831443]
 collision_layer = 4
 collision_mask = 64
 
-[node name="HurtboxCollision" type="CollisionShape2D" parent="HurtboxArea"]
+[node name="HurtboxCollision" type="CollisionShape2D" parent="HurtboxArea" unique_id=591283534]
 position = Vector2(0, -2)
 scale = Vector2(1.8, 1.8)
 shape = SubResource("CapsuleShape2D_oprun")
 debug_color = Color(0.9033771, 0.30645284, 0.06732032, 0.41960785)
 
-[node name="HitboxArea" type="Area2D" parent="."]
+[node name="HitboxArea" type="Area2D" parent="." unique_id=1533252206]
 collision_layer = 8
 collision_mask = 32
 
-[node name="HitboxCollision" type="CollisionShape2D" parent="HitboxArea"]
+[node name="HitboxCollision" type="CollisionShape2D" parent="HitboxArea" unique_id=1005193703]
 position = Vector2(22, 0)
 scale = Vector2(1.8, 1.8)
 shape = SubResource("CapsuleShape2D_g6mm2")
 disabled = true
 debug_color = Color(0.34153476, 0.6203204, 0, 0.41960785)
 
-[node name="PhysicsArea" type="CollisionShape2D" parent="."]
+[node name="PhysicsArea" type="CollisionShape2D" parent="." unique_id=261221523]
 position = Vector2(0, -1.75)
 scale = Vector2(1.1, 1.1)
 shape = SubResource("CapsuleShape2D_dqkch")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1197235281]
 zoom = Vector2(0.7, 0.7)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
@@ -2117,14 +2115,14 @@ drag_top_margin = 0.12
 drag_right_margin = 0.12
 drag_bottom_margin = 0.12
 
-[node name="Regeneration_Timer" type="Timer" parent="."]
+[node name="Regeneration_Timer" type="Timer" parent="." unique_id=47090952]
 wait_time = 5.0
 autostart = true
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="Marker2D" type="Marker2D" parent="." unique_id=285973338]
 position = Vector2(14.25, 6.5)
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=592579882]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Regeneration_Timer" to="." method="_on_regeneration_timer_timeout"]

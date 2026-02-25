@@ -10,6 +10,7 @@ const ATTACK_DISTANCE := 25.0
 var can_dash: bool = true
 var is_dashing: bool = false
 var is_attacking: bool = false
+var is_talking: bool = false
 var dir: Vector2
 var knockback_force: int = 1000
 var knockback_decay: int = 3000
@@ -390,13 +391,14 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		is_attacking = false
 
 func _input(event: InputEvent) -> void:
-	if can_move:
+	if can_move and !is_talking:
 		if event.is_action_pressed("interact"):
 			var target = ray_cast_2d.get_collider()
 			if target != null:
 				if target.is_in_group("NPC"):
 					can_move = false
 					target.start_dialog()
+					is_talking = true
 
 func _on_regeneration_timer_timeout() -> void:
 	regenerate()
