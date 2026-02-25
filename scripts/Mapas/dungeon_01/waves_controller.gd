@@ -14,6 +14,7 @@ signal won_dungeon_01
 
 func _ready() -> void:
 	player.player_died.connect(_on_player_die)
+	player.save_stats()
 
 func _on_player_die():
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
@@ -36,7 +37,6 @@ func wave_finished() -> void:
 	actual_wave += 1
 	wave_label.text = "Wave " + str(actual_wave)
 	spawner_controller.start()
-	player.save_stats()
 	print(actual_wave)
 
 func win() -> void:
