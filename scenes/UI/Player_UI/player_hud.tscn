@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cg6dkdf4iidr8"]
+[gd_scene load_steps=6 format=3 uid="uid://cg6dkdf4iidr8"]
 
 [ext_resource type="Script" uid="uid://bld05all2p7v2" path="res://scripts/UI/Player_UI/player_hud.gd" id="1_nopnq"]
 [ext_resource type="PackedScene" uid="uid://b0q667ht4varg" path="res://scenes/UI/Player_UI/heart_ui.tscn" id="2_cdrrh"]
 [ext_resource type="PackedScene" uid="uid://5v5ekpfvgx5m" path="res://scenes/UI/Player_UI/xp_ui.tscn" id="3_cdrrh"]
+[ext_resource type="Texture2D" uid="uid://bua3oknb0ld1d" path="res://assets/Caixas/Habilidades/caixa_habilidades_mini.png" id="4_w6ws6"]
+[ext_resource type="Texture2D" uid="uid://bhqfsg08lt3ci" path="res://assets/Personagens/armas/JBL.png" id="5_1qndp"]
 
 [node name="Player_HUD" type="CanvasLayer"]
 process_mode = 3
@@ -18,32 +20,32 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="HFlowContainer" type="HFlowContainer" parent="Control"]
+[node name="HeartContainer" type="HFlowContainer" parent="Control"]
 layout_mode = 0
 offset_right = 620.0
 offset_bottom = 96.0
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 
-[node name="Heart_UI" parent="Control/HFlowContainer" instance=ExtResource("2_cdrrh")]
+[node name="Heart_UI" parent="Control/HeartContainer" instance=ExtResource("2_cdrrh")]
 layout_mode = 2
 
-[node name="Heart_UI2" parent="Control/HFlowContainer" instance=ExtResource("2_cdrrh")]
+[node name="Heart_UI2" parent="Control/HeartContainer" instance=ExtResource("2_cdrrh")]
 layout_mode = 2
 
-[node name="Heart_UI3" parent="Control/HFlowContainer" instance=ExtResource("2_cdrrh")]
+[node name="Heart_UI3" parent="Control/HeartContainer" instance=ExtResource("2_cdrrh")]
 layout_mode = 2
 
-[node name="Heart_UI4" parent="Control/HFlowContainer" instance=ExtResource("2_cdrrh")]
+[node name="Heart_UI4" parent="Control/HeartContainer" instance=ExtResource("2_cdrrh")]
 layout_mode = 2
 
-[node name="Heart_UI5" parent="Control/HFlowContainer" instance=ExtResource("2_cdrrh")]
+[node name="Heart_UI5" parent="Control/HeartContainer" instance=ExtResource("2_cdrrh")]
 layout_mode = 2
 
-[node name="Heart_UI6" parent="Control/HFlowContainer" instance=ExtResource("2_cdrrh")]
+[node name="Heart_UI6" parent="Control/HeartContainer" instance=ExtResource("2_cdrrh")]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
+[node name="Xp" type="MarginContainer" parent="Control"]
 custom_minimum_size = Vector2(380, 27)
 layout_mode = 1
 anchors_preset = -1
@@ -54,6 +56,41 @@ anchor_bottom = 0.3138889
 offset_right = -19.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Xp_UI" parent="Control/MarginContainer" instance=ExtResource("3_cdrrh")]
+[node name="Xp_UI" parent="Control/Xp" instance=ExtResource("3_cdrrh")]
 layout_mode = 2
 size_flags_vertical = 0
+
+[node name="Weapon" type="MarginContainer" parent="Control"]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="WeaponBox" type="TextureRect" parent="Control/Weapon"]
+layout_mode = 2
+texture = ExtResource("4_w6ws6")
+
+[node name="WeaponIcon" type="TextureRect" parent="Control/Weapon/WeaponBox"]
+custom_minimum_size = Vector2(60, 75)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_1qndp")
