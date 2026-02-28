@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var heart_container: HFlowContainer = $Control/HeartContainer
-@onready var texture_rect: TextureRect = $Control/Weapon/TextureRect/TextureRect
+@onready var texture_rect: TextureRect = $Control/Weapon/WeaponBox/WeaponIcon
 var hearts: Array[HeartUI] = []
 
 func _ready() -> void:
@@ -11,7 +11,7 @@ func _ready() -> void:
 			child.visible = false
 
 func _process(_delta: float) -> void:
-	match Player_Stats.weapen_equipped:
+	match Player_Stats.weapon_equipped:
 		Player_Stats.weapon.PEN:
 			texture_rect.texture = preload("uid://biaq6a0v10fcv")
 		Player_Stats.weapon.INK:
