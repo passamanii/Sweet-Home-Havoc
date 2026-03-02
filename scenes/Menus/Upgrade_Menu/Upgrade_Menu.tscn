@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4xgm1m1pev1d"]
+[gd_scene format=3 uid="uid://c4xgm1m1pev1d"]
 
 [ext_resource type="Script" uid="uid://b44c54m0eqwkk" path="res://scripts/Menus/Upgrade_Menu/upgrade_menu.gd" id="1_bce5w"]
 [ext_resource type="Texture2D" uid="uid://b0qcfvafa3k6u" path="res://assets/Caixas/Habilidades/Livro_de_habilidades.png" id="2_6r5hu"]
@@ -23,7 +23,7 @@ shadow_offset = Vector2(3, 3)
 font = ExtResource("3_f0dl6")
 font_size = 36
 
-[node name="UpgradeMenu" type="Control" node_paths=PackedStringArray("skill_buttons")]
+[node name="UpgradeMenu" type="Control" unique_id=105902049 node_paths=PackedStringArray("skill_buttons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,7 +33,7 @@ grow_vertical = 2
 script = ExtResource("1_bce5w")
 skill_buttons = [NodePath("Menu_Brackground/Skill_Button_1"), NodePath("Menu_Brackground/Skill_Button_1/Skill_Button_2"), NodePath("Menu_Brackground/Skill_Button_1/Skill_Button_2/Skill_Button_3"), NodePath("Menu_Brackground/Skill_Button_1/Skill_Button_2/Skill_Button_4"), NodePath("Menu_Brackground/Skill_Button_1/Skill_Button_2/Skill_Button_5")]
 
-[node name="Menu_Brackground" type="TextureRect" parent="."]
+[node name="Menu_Brackground" type="TextureRect" parent="." unique_id=122532883]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.016935484
@@ -47,7 +47,7 @@ texture = ExtResource("2_6r5hu")
 expand_mode = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="Skill_Button_1" parent="Menu_Brackground" instance=ExtResource("2_op85r")]
+[node name="Skill_Button_1" parent="Menu_Brackground" unique_id=302536531 instance=ExtResource("2_op85r")]
 layout_mode = 1
 anchor_left = 0.45014244
 anchor_top = 0.69402117
@@ -57,7 +57,7 @@ grow_horizontal = 2
 grow_vertical = 0
 skill_data = ExtResource("3_0im3q")
 
-[node name="Skill_Button_2" parent="Menu_Brackground/Skill_Button_1" instance=ExtResource("2_op85r")]
+[node name="Skill_Button_2" parent="Menu_Brackground/Skill_Button_1" unique_id=1617328004 instance=ExtResource("2_op85r")]
 visible = false
 layout_mode = 1
 anchor_top = -1.8022839
@@ -67,7 +67,7 @@ grow_horizontal = 2
 grow_vertical = 0
 skill_data = ExtResource("4_0aebm")
 
-[node name="Skill_Button_3" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2" instance=ExtResource("2_op85r")]
+[node name="Skill_Button_3" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2" unique_id=1700039122 instance=ExtResource("2_op85r")]
 visible = false
 layout_mode = 1
 anchor_left = -1.6377265
@@ -78,7 +78,7 @@ grow_horizontal = 2
 grow_vertical = 0
 skill_data = ExtResource("5_v31v4")
 
-[node name="Skill_Button_4" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2" instance=ExtResource("2_op85r")]
+[node name="Skill_Button_4" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2" unique_id=1820849893 instance=ExtResource("2_op85r")]
 visible = false
 layout_mode = 1
 anchor_left = 1.7287111
@@ -89,7 +89,7 @@ grow_horizontal = 2
 grow_vertical = 0
 skill_data = ExtResource("6_lnq8a")
 
-[node name="Skill_Button_5" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2" instance=ExtResource("2_op85r")]
+[node name="Skill_Button_5" parent="Menu_Brackground/Skill_Button_1/Skill_Button_2" unique_id=777891903 instance=ExtResource("2_op85r")]
 visible = false
 layout_mode = 1
 anchor_left = -0.0008329908
@@ -100,7 +100,7 @@ grow_horizontal = 2
 grow_vertical = 2
 skill_data = ExtResource("7_eeyf2")
 
-[node name="Panel(Xp)" type="TextureRect" parent="Menu_Brackground"]
+[node name="Panel(Xp)" type="TextureRect" parent="Menu_Brackground" unique_id=156478631]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.292735
@@ -113,7 +113,7 @@ texture = ExtResource("9_eeyf2")
 expand_mode = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Menu_Brackground/Panel(Xp)"]
+[node name="Label" type="Label" parent="Menu_Brackground/Panel(Xp)" unique_id=1412213581]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -125,7 +125,7 @@ label_settings = SubResource("LabelSettings_f0dl6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Skills_Details" parent="." instance=ExtResource("4_mv2kd")]
+[node name="Skills_Details" parent="." unique_id=1211392970 instance=ExtResource("4_mv2kd")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.51532257
@@ -137,7 +137,7 @@ grow_horizontal = 1
 grow_vertical = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel(Close)" type="Panel" parent="."]
+[node name="Panel(Close)" type="Panel" parent="." unique_id=1422213004]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.71370965
@@ -149,7 +149,7 @@ grow_horizontal = 0
 grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Panel(Close)"]
+[node name="Label" type="Label" parent="Panel(Close)" unique_id=1540429597]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
